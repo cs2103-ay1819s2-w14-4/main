@@ -66,7 +66,7 @@ Course abbreviations are as follows:
 * `BZA` - Business Analytics
 * `CS` - Computer Science
 * `CEG` - Computer Engineering
-* IS` - Information System
+* 'IS` - Information System
 * `IFS` - Infocomm Security
 ****
 
@@ -77,9 +77,12 @@ Sets course of study to Infocomm Security.
 
 * `set c/CS` +
 Sets course of study to Computer Science +
+
 Since Computer Science requires Specialisation / Focused Area, +
 system prompts user for further input to select choice of focus area: +
+====
 Please input the corresponding digit for desired focus area: +
+
 .  Algorithms & Theory
 .  Artificial Intelligence
 .  Computer Graphics and Games
@@ -90,6 +93,7 @@ Please input the corresponding digit for desired focus area: +
 .  Parallel Computing
 .  Programming Languages
 .  Software Engineering
+====
 User wants to choose focus area to be Artificial Intelligence so inputs `2`
 
 
