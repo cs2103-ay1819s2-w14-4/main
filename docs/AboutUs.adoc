@@ -4,7 +4,7 @@
 :imagesDir: images
 :stylesDir: stylesheets
 
-GradTrak was developed by the https://github.com/orgs/cs2103-ay1819s2-w14-4/teams/developers[W14-4] team. +
+GradTrak is a module tracker that is able to track the acedemic progress of students to help them plan for modules for graduation. It is developed by the https://github.com/orgs/cs2103-ay1819s2-w14-4/teams/developers[W14-4] team. +
 {empty} +
 We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore].
 

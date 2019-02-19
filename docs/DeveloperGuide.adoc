@@ -72,7 +72,6 @@ This project follows https://github.com/oss-generic/process/blob/master/docs/Cod
 
 Optionally, you can follow the <<UsingCheckstyle#, UsingCheckstyle.adoc>> document to configure Intellij to check style-compliance as you write code.
 
-
 ==== Updating documentation to match your fork
 
 After forking the repo, the documentation will still have the SE-EDU branding and refer to the `cs2103-ay1819s2-w14-4/main` repo.
@@ -83,6 +82,8 @@ If you plan to develop this fork as a separate product (i.e. instead of contribu
 
 . Replace the URL in the attribute `repoURL` in link:{repoURL}/docs/DeveloperGuide.adoc[`DeveloperGuide.adoc`] and link:{repoURL}/docs/UserGuide.adoc[`UserGuide.adoc`] with the URL of your fork.
 
+=======
+>>>>>>> 4005dafb42ab545b0a4bc88e7f392bd3e3ef7ca9
 ==== Setting up CI
 
 Set up Travis to perform Continuous Integration (CI) for your fork. See <<UsingTravis#, UsingTravis.adoc>> to learn how to set it up.
