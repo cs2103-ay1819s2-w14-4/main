@@ -203,8 +203,9 @@ asciidoctor {
         idseparator: '-',
         'site-root': "${sourceDir}",  // must be the same as sourceDir, do not modify
         'site-name': 'GradTrak',
-        'site-githuburl': 'https://github.com/cs2103-ay1819s2-w14-4/main'
+        'site-githuburl': 'https://github.com/cs2103-ay1819s2-w14-4/main',
     ]
+
 
     options['template_dirs'].each {
         inputs.files fileTree(it)
