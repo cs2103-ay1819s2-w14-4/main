@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>GradTrak - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">GradTrak</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w14-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>GradTrak - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">GradTrak</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w14-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>GradTrak - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team W14-4</code>      Since: <code>Feb 2019</code>      Licence: <code>MIT</code></p>
@@ -19,13 +19,14 @@
 <li><a href="#delete-modules-code-delete-code">3.4. Delete modules : <code>delete</code></a></li>
 <li><a href="#display-module-information-code-displaym-code">3.5. Display module information : <code>displaym</code></a></li>
 <li><a href="#display-user-information-code-displayu-code">3.6. Display user information : <code>displayu</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.7. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.8. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.9. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clear-all-data-entered-code-clear-code">3.10. Clear all data entered: <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.11. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.12. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.13. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#update-module-information-code-update-code">3.7. Update module information : <code>update</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clear-all-data-entered-code-clear-code">3.11. Clear all data entered: <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.13. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -285,6 +286,62 @@ Deletes the 1st module on the list of display all.</p>
 <p>3 options to display module information, e.g. course description, prerequisites and courses succeeding the modules.<br>
 Format: <code>displaym o/OPTIONS [MORE_ARGUMENTS]</code></p>
 </div>
+<div class="paragraph">
+<p>3 modes for o/OPTIONS include:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>o/all</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Display all modules completed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>o/info m/MODULE_CODE</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Display information about a module and modules preceding and succeeding it</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>o/info k/KEYWORDS [n/NUMBER]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Display top n (3 if last argument is left blank, capped at 10) information most related modules based on keywords inserted.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>displaym o/all</code><br>
+Display all modules completed.</p>
+</li>
+<li>
+<p><code>displaym o/info m/CS2103T</code><br>
+System to display module information about CS2103T</p>
+</li>
+<li>
+<p><code>displaym o/info k/Software Engineering n/5</code><br>
+Display top 5 modules related to Software Engineering.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="display-user-information-code-displayu-code"><a class="link" href="#display-user-information-code-displayu-code">3.6. Display user information : <code>displayu</code></a></h3>
@@ -292,9 +349,96 @@ Format: <code>displaym o/OPTIONS [MORE_ARGUMENTS]</code></p>
 <p>Displays various user information based on options and other arguments given<br>
 Format: <code>displayu o/OPTIONS [MORE_ARGUMENTS]</code></p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>o/count</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Display user modular credit count.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>o/CAP</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Display Cumulative Average Point (CAP) of user based on grades keyed in.</p>
+</li>
+<li>
+<p>If grades are not keyed in, system will remind user that CAP calculated might not be accurate.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>o/req [n/NUMBER]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Display all requirements for the course of study.</p>
+</li>
+<li>
+<p>If number is specified: Displays information about n-th requirement in the order which it is displayed</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>o/req [c/BOOLEAN]</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Displays completed or incomplete requirements.</p>
+</li>
+<li>
+<p>Also shows modules that can be taken to fulfill incomplete requirements.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>displayu o/count</code><br>
+Display user modular credit count.</p>
+</li>
+<li>
+<p><code>displayu o/req</code><br>
+Display all requirements for the course of study.</p>
+</li>
+<li>
+<p><code>displayu o/req n/3</code><br>
+Displays information about 3rd requirement in the display all requirement command earlier.</p>
+</li>
+<li>
+<p><code>displayu o/req c/true</code><br>
+Displays completed requirement.</p>
+</li>
+<li>
+<p><code>displayu o/req c/false</code><br>
+Display requirements not completed and modules that can be taken to fulfil the requirements.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.7. Listing entered commands : <code>history</code></a></h3>
+<h3 id="update-module-information-code-update-code"><a class="link" href="#update-module-information-code-update-code">3.7. Update module information : <code>update</code></a></h3>
+<div class="paragraph">
+<p>Update latest information about modules from CORS.<br>
+Format: <code>update</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -315,7 +459,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.8. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -360,7 +504,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.9. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -392,28 +536,28 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear-all-data-entered-code-clear-code"><a class="link" href="#clear-all-data-entered-code-clear-code">3.10. Clear all data entered: <code>clear</code></a></h3>
+<h3 id="clear-all-data-entered-code-clear-code"><a class="link" href="#clear-all-data-entered-code-clear-code">3.11. Clear all data entered: <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clear all information on modules completed, course information etc.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.11. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.12. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
 <div class="paragraph">
 <p>Module data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.13. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -472,4 +616,4 @@ e.g. <code>displayu o/all</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-19 16:07:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-02-22 11:40:49 UTC</div></div></div></body></html>
