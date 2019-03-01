@@ -15,6 +15,7 @@ public class ModuleInfo {
         this.title = title;
         this.credits = credits;
         this.description = description;
+        this.workLoad = workLoad;
         this.preclusions = preclusions;
         this.department = department;
 
@@ -36,6 +37,8 @@ public class ModuleInfo {
     public String getDescription(){
         return this.description;
     }
+
+    public String getWorkLoad() {return this.workLoad;}
 
     public String getPreclusions(){
         return this.preclusions;

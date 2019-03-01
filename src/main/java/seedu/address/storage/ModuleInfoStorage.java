@@ -3,9 +3,10 @@ package seedu.address.storage;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.ModuleInfo;
+import seedu.address.model.ModuleInfoList;
 
 public interface ModuleInfoStorage {
 
@@ -21,5 +22,7 @@ public interface ModuleInfoStorage {
      * @throws DataConversionException
      * @throws IOException
      */
-    ArrayList<ModuleInfo> readModuleInfoFile(Path filePath) throws DataConversionException, IOException;
+    Optional<ModuleInfoList> readModuleInfoFile(Path filePath) throws DataConversionException;
+
+    Optional<ModuleInfoList> readModuleInfoFile()throws DataConversionException;
 }

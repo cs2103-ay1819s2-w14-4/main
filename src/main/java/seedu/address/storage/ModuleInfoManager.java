@@ -5,15 +5,30 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.logging.Logger;
-import java.util.*;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ModuleInfo;
+import seedu.address.model.ModuleInfoList;
 
+/**
+ * Manages storage of All the module information data in local storage.
+ */
 public class ModuleInfoManager implements ModuleInfoStorage{
 
-    private static final Path moduleInfoFilePath = Paths.get("test1.json");
+    private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
+    private static final Path moduleInfoFilePath = Paths.get("src","main","java","seedu.address","storage","test1.json");
+    private ModuleInfoStorage moduleInfoStorage;
 
+    public ModuleInfoManager(){
+        super();
+        this.moduleInfoStorage = new JsonModuleInfoStorage(moduleInfoFilePath);
+    }
+
+    @Override
+    public Optional<ModuleInfoList> readModuleInfoFile()throws DataConversionException{
+        return readModuleInfoFile(moduleInfoStorage.getModuleInfoFilePath());
+    }
 
     @Override
     public Path getModuleInfoFilePath(){
@@ -21,8 +36,8 @@ public class ModuleInfoManager implements ModuleInfoStorage{
     }
 
     @Override
-    public ArrayList<ModuleInfo> readModuleInfoFile(Path filePath) throws DataConversionException, IOException{
-        ArrayList<ModuleInfo> allModules = new ArrayList<>();
-        return allModules;
+    public Optional<ModuleInfoList> readModuleInfoFile(Path filePath) throws DataConversionException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return moduleInfoStorage.readModuleInfoFile();
     }
 }
