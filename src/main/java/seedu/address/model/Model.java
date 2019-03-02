@@ -127,4 +127,16 @@ public interface Model {
      * Sets the selected person in the filtered person list.
      */
     void setSelectedPerson(Person person);
+
+    /**
+     * Returns an Observable list of all module information from storage
+     * @return
+     */
+    ObservableList<ModuleInfo> getDisplayList();
+
+    /**
+     * Updates the filtered list based on the predicate provided by user input
+     * @param predicate
+     */
+    void updateDisplayList(Predicate<ModuleInfo> predicate);
 }

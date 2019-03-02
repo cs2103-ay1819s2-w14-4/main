@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.ModuleInfo;
@@ -16,7 +17,7 @@ import seedu.address.model.ModuleInfo;
  */
 public class ModuleInfoList {
 
-    private final ArrayList<ModuleInfo> moduleInfoList;
+    private final List<ModuleInfo> moduleInfoList;
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
     {
@@ -38,5 +39,10 @@ public class ModuleInfoList {
             }
         }
         return module;
+    }
+
+    public ObservableList<ModuleInfo> getObservableList(){
+        ObservableList<ModuleInfo> observableList = FXCollections.observableArrayList(moduleInfoList);
+        return observableList;
     }
 }

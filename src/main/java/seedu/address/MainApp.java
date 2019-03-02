@@ -81,26 +81,36 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs,ModuleInfoManager storageManager) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
-        Optional<ModuleInfoList> allModules;
+        Optional<ModuleInfoList> allModulesOptional;
+        ModuleInfoList allModules;
         ReadOnlyAddressBook initialData;
         try {
-            allModules = storageManager.readModuleInfoFile();
+            allModulesOptional = storageManager.readModuleInfoFile();
+            if(!allModulesOptional.isPresent()){
+                logger.info("File for all module Information not found! Starting with Empty Module List");
+            }
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
             }
+
+            //If unable to find the data file provide a blank Module Info List
+            allModules = allModulesOptional.orElse(new ModuleInfoList());
+
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
             initialData = new AddressBook();
+            allModules = new ModuleInfoList();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
             initialData = new AddressBook();
+            allModules = new ModuleInfoList();
         }
 
         //test for reading json file
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialData, userPrefs, allModules);
     }
 
     private void initLogging(Config config) {

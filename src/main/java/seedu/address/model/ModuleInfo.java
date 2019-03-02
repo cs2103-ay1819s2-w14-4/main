@@ -38,9 +38,7 @@ public class ModuleInfo {
         return this.credits;
     }
 
-    public String getDescription(){
-        return this.description;
-    }
+    public String getDescription() { return this.description; }
 
     public String getWorkLoad() {return this.workLoad;}
 
@@ -51,4 +49,6 @@ public class ModuleInfo {
     public String getDepartment(){
         return this.department;
     }
+
+    public String getPrerequisites() { return this.prerequisites; }
 }

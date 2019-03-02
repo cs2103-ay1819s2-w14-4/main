@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -29,12 +30,16 @@ public class ModelManager implements Model {
     private final FilteredList<Person> filteredPersons;
     private final SimpleObjectProperty<Person> selectedPerson = new SimpleObjectProperty<>();
 
+    //Model Information List for Model Manager to have Module Info List and list to be printed for displaymod
+    private final ObservableList<ModuleInfo> allModules;
+    private final FilteredList<ModuleInfo> displayList;
+
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given addressBook and userPrefs. And Module Info List
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ModuleInfoList allModules) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(addressBook, userPrefs, allModules);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
@@ -42,10 +47,14 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         filteredPersons.addListener(this::ensureSelectedPersonIsValid);
+
+        //Get an non Modifiable List of all modules and use a filtered list based on that to search for modules
+        this.allModules = allModules.getObservableList();
+        this.displayList = new FilteredList<>(this.allModules);
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs(), new ModuleInfoList());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -211,6 +220,18 @@ public class ModelManager implements Model {
             }
         }
     }
+
+    //=========== Module Info List ===========================================================================
+    @Override
+    public ObservableList<ModuleInfo> getDisplayList(){return this.displayList;}
+
+    @Override
+    public void updateDisplayList(Predicate<ModuleInfo> predicate){
+        requireAllNonNull(predicate);
+        displayList.setPredicate(predicate);
+    }
+
+
 
     @Override
     public boolean equals(Object obj) {
