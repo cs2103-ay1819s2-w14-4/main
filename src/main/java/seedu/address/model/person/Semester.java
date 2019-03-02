@@ -59,6 +59,6 @@ public enum Semester {
 
     @Override
     public String toString() {
-        return this.printedSemester;
+        return printedSemester;
     }
 }

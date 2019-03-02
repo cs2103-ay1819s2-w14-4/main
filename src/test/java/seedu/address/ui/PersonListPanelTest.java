@@ -79,9 +79,9 @@ public class PersonListPanelTest extends GuiUnitTest {
         ObservableList<Person> backingList = FXCollections.observableArrayList();
         for (int i = 0; i < personCount; i++) {
             Name name = new Name(i + "a");
-            Semester semester = Semester.valueOf("000");
-            Grade expectedMinGrade = Grade.valueOf("F");
-            Grade expectedMaxGrade = Grade.valueOf("A");
+            Semester semester = Semester.valueOf("Y1S1");
+            Grade expectedMinGrade = Grade.getGrade("D+");
+            Grade expectedMaxGrade = Grade.getGrade("A");
             Person person = new Person(name, semester, expectedMinGrade, expectedMaxGrade, Collections.emptySet());
             backingList.add(person);
         }

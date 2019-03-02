@@ -31,9 +31,9 @@ public class GuiTestAssert {
      */
     public static void assertCardDisplaysPerson(Person expectedPerson, PersonCardHandle actualCard) {
         assertEquals(expectedPerson.getModuleInfo().fullName, actualCard.getName());
-        assertEquals(expectedPerson.getSemester(), actualCard.getSemester());
-        assertEquals(expectedPerson.getExpectedMinGrade(), actualCard.getExpectedMinGrade());
-        assertEquals(expectedPerson.getExpectedMaxGrade(), actualCard.getExpectedMaxGrade());
+        assertEquals(expectedPerson.getSemester().toString(), actualCard.getSemester());
+        assertEquals(expectedPerson.getExpectedMinGrade().toString(), actualCard.getExpectedMinGrade());
+        assertEquals(expectedPerson.getExpectedMaxGrade().toString(), actualCard.getExpectedMaxGrade());
         assertEquals(expectedPerson.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
                 actualCard.getTags());
     }

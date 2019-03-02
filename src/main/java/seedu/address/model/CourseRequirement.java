@@ -1,6 +1,5 @@
 package seedu.address.model;
 
-
 /**
  * Represents requirement of a course
  */

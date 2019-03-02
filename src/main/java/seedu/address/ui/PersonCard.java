@@ -31,11 +31,11 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label phone;
+    private Label semester;
     @FXML
-    private Label address;
+    private Label expectedMaxGrade;
     @FXML
-    private Label email;
+    private Label expectedMinGrade;
     @FXML
     private FlowPane tags;
 
@@ -44,9 +44,9 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getModuleInfo().fullName);
-        phone.setText(person.getSemester().name());
-        email.setText(person.getExpectedMinGrade().toString());
-        address.setText(person.getExpectedMaxGrade().toString());
+        semester.setText(person.getSemester().toString());
+        expectedMinGrade.setText(person.getExpectedMinGrade().toString());
+        expectedMaxGrade.setText(person.getExpectedMaxGrade().toString());
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 

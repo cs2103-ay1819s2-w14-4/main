@@ -54,6 +54,7 @@ public class CommandTestUtil {
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_SEMESTER_DESC = " " + PREFIX_SEMESTER + "911a"; // 'a' not allowed in phones
+
     public static final String INVALID_EXPECTED_MIN_GRADE_DESC = " " + PREFIX_EXPECTED_MIN_GRADE + "FF";
     public static final String INVALID_EXPECTED_MAX_GRADE_DESC = " " + PREFIX_EXPECTED_MAX_GRADE;
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
