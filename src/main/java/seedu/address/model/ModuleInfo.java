@@ -44,7 +44,9 @@ public class ModuleInfo {
         return this.description;
     }
 
-    public String getWorkLoad() { return this.workLoad; }
+    public String getWorkLoad() {
+        return this.workLoad;
+    }
 
     public String getPreclusions() {
         return this.preclusions;
@@ -54,5 +56,7 @@ public class ModuleInfo {
         return this.department;
     }
 
-    public String getPrerequisites() { return this.prerequisites; }
+    public String getPrerequisites() {
+        return this.prerequisites;
+    }
 }

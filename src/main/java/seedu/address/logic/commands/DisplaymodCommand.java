@@ -1,8 +1,8 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MODDEPT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODCODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODDEPT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MODNAME;
 
 import seedu.address.logic.CommandHistory;
@@ -46,14 +46,16 @@ public class DisplaymodCommand extends Command {
 
     private final CodeContainsKeywordsPredicate keywords;
 
-    public DisplaymodCommand(CodeContainsKeywordsPredicate keywords) { this.keywords = keywords; }
+    public DisplaymodCommand(CodeContainsKeywordsPredicate keywords) {
+        this.keywords = keywords;
+    }
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         model.updateDisplayList(keywords);
 
-        if(model.getDisplayList().isEmpty()) {
+        if (model.getDisplayList().isEmpty()) {
             throw new CommandException(MESSAGE_NO_MODULE);
         }
         return new CommandResult(generateResultString(model));
