@@ -25,28 +25,28 @@ public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withExpectedMinGrade("F").withExpectedMaxGrade("A")
-            .withSemester("Y1S2")
+            .withSemester("Y2S2")
             .withTags("friends").build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withExpectedMinGrade("D")
-            .withExpectedMaxGrade("A").withSemester("Y3S2")
+            .withExpectedMaxGrade("A").withSemester("Y2S2")
             .withTags("owesMoney", "friends").build();
-    public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withSemester("Y5S2")
+    public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withSemester("Y2S2")
             .withExpectedMinGrade("D").withExpectedMaxGrade("A").build();
-    public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withSemester("Y4S2")
+    public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withSemester("Y2S2")
             .withExpectedMinGrade("F").withExpectedMaxGrade("A").withTags("friends").build();
-    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withSemester("Y3S1")
-            .withExpectedMinGrade("C").withExpectedMaxGrade("A").build();
-    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withSemester("Y4S2")
+    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withSemester("Y2S2")
             .withExpectedMinGrade("D").withExpectedMaxGrade("A").build();
-    public static final Person GEORGE = new PersonBuilder().withName("George Best").withSemester("Y4S1")
-            .withExpectedMinGrade("C").withExpectedMaxGrade("B").build();
+    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withSemester("Y2S2")
+            .withExpectedMinGrade("D").withExpectedMaxGrade("A").build();
+    public static final Person GEORGE = new PersonBuilder().withName("George Best").withSemester("Y2S2")
+            .withExpectedMinGrade("C").withExpectedMaxGrade("A").build();
 
     // Manually added
-    public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withSemester("Y1S1")
+    public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withSemester("Y2S2")
             .withExpectedMinGrade("B").withExpectedMaxGrade("A").build();
-    public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withSemester("Y3S2")
-            .withExpectedMinGrade("D").withExpectedMaxGrade("A").build();
+    public static final Person IDA = new PersonBuilder().withName("Ida Mueller").withSemester("Y2S2")
+            .withExpectedMinGrade("B").withExpectedMaxGrade("A").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder()

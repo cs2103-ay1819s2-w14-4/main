@@ -67,9 +67,9 @@ public class NameContainsKeywordsPredicateTest {
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("Carol"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
 
-        // Keywords match semester, min & max expected grade, but does not match name
+        // Keywords match semester, email and address, but does not match name
         predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withSemester("Y2S2")
-                .withExpectedMinGrade("C").withExpectedMaxGrade("B").build()));
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withSemester("12345")
+                .withExpectedMinGrade("alice@email.com").withExpectedMaxGrade("Main Street").build()));
     }
 }

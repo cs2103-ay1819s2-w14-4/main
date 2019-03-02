@@ -55,7 +55,7 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Grade} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code ExpectedMinGrade} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withExpectedMinGrade(String expectedMinGrade) {
         descriptor.setExpectedMinGrade(Grade.valueOf(expectedMinGrade));
@@ -63,7 +63,7 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Grade} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code ExpectedMaxGrade} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withExpectedMaxGrade(String expectedMaxGrade) {
         descriptor.setExpectedMaxGrade(Grade.valueOf(expectedMaxGrade));

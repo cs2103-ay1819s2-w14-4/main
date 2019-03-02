@@ -28,14 +28,14 @@ public class SemesterTest {
         // invalid semester numbers
         assertFalse(Semester.isValidSemester("")); // empty string
         assertFalse(Semester.isValidSemester(" ")); // spaces only
-        assertFalse(Semester.isValidSemester("S2")); // less than 3 numbers
-        assertFalse(Semester.isValidSemester("Y3S4")); // non-numeric
-        assertFalse(Semester.isValidSemester("Y6S2")); // alphabets within digits
-        assertFalse(Semester.isValidSemester("Y1")); // spaces within digits
+        assertFalse(Semester.isValidSemester("91")); // less than 3 numbers
+        assertFalse(Semester.isValidSemester("semester")); // non-numeric
+        assertFalse(Semester.isValidSemester("9011p041")); // alphabets within digits
+        assertFalse(Semester.isValidSemester("9312 1534")); // spaces within digits
 
         // valid semester numbers
-        assertTrue(Semester.isValidSemester("Y2S1")); // exactly 3 numbers
-        assertTrue(Semester.isValidSemester("Y1S1"));
-        assertTrue(Semester.isValidSemester("Y4S2")); // long semester numbers
+        assertTrue(Semester.isValidSemester("911")); // exactly 3 numbers
+        assertTrue(Semester.isValidSemester("93121534"));
+        assertTrue(Semester.isValidSemester("124293842033123")); // long semester numbers
     }
 }
