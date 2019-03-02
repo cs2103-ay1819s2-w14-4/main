@@ -18,20 +18,20 @@ endif::[]
 
 NUS graduation tracker is an application to aid School of Computing students to track their graduation progress. GradTrak is implemented to aid students in alleviating the hardships of module planning to tracking C.A.P scores so that students can focus on “student-ing”. Not to mention with the tremendous amount of uncollated information required to keep track of the graduation requirements, GradTrak is the one stop solution to solve all of these problems.
 
-=== Requirements
+== Requirements
 * GradTrak is written in *_java_* and uses *_JDK 9_* library.
 
-=== Plan Modules
+== Plan Modules
 * Plan when to take modules throughout your undergraduate studies
 * Recommends which modules to read based on module prerequisites and specialization
 * Able to account for Exchange Programmes, NUS Overseas College & Gap Year etc.
 
-=== Managing C.A.P
+== Managing C.A.P
 * Track Number of SU left and when to use them
 * Provides minimum grades required for current semester to hit your desired C.A.P
 * Even predict your potential C.A.P
 
-=== Specializations
+== Specializations
 * Ability to choose your specialization and GradTrak will aid to reach your goal
 * Recommend potential FYP projects based on selected specialization and modules read
 
