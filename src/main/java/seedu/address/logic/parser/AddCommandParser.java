@@ -30,17 +30,21 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_SEMESTER, PREFIX_EXPECTED_MIN_GRADE, PREFIX_EXPECTED_MAX_GRADE, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_SEMESTER,
+                        PREFIX_EXPECTED_MIN_GRADE, PREFIX_EXPECTED_MAX_GRADE, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_EXPECTED_MAX_GRADE, PREFIX_SEMESTER, PREFIX_EXPECTED_MIN_GRADE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_EXPECTED_MAX_GRADE,
+                PREFIX_SEMESTER, PREFIX_EXPECTED_MIN_GRADE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Semester phone = ParserUtil.parseSemester(argMultimap.getValue(PREFIX_SEMESTER).get());
-        Grade expectedMinGrade = ParserUtil.parseExpectedMinGrade(argMultimap.getValue(PREFIX_EXPECTED_MIN_GRADE).get());
-        Grade expectedMaxGrade = ParserUtil.parseExpectedMaxGrade(argMultimap.getValue(PREFIX_EXPECTED_MAX_GRADE).get());
+        Grade expectedMinGrade = ParserUtil.parseExpectedMinGrade(
+                argMultimap.getValue(PREFIX_EXPECTED_MIN_GRADE).get());
+        Grade expectedMaxGrade = ParserUtil.parseExpectedMaxGrade(
+                argMultimap.getValue(PREFIX_EXPECTED_MAX_GRADE).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Person person = new Person(name, phone, expectedMinGrade, expectedMaxGrade, tagList);

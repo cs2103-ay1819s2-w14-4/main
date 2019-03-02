@@ -2,7 +2,11 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXPECTED_MAX_GRADE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXPECTED_MIN_GRADE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SEMESTER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,9 +31,9 @@ public class CommandTestUtil {
     public static final String VALID_SEMESTER_AMY = "Y2S2";
     public static final String VALID_SEMESTER_BOB = "Y2S1";
     public static final String VALID_EXPECTED_MIN_GRADE_AMY = "C";
-    public static final String VALID_EXPECTED_MIN_GRADE_BOB = "C";
+    public static final String VALID_EXPECTED_MIN_GRADE_BOB = "D";
     public static final String VALID_EXPECTED_MAX_GRADE_AMY = "A";
-    public static final String VALID_EXPECTED_MAX_GRADE_BOB = "A";
+    public static final String VALID_EXPECTED_MAX_GRADE_BOB = "B";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
@@ -37,17 +41,21 @@ public class CommandTestUtil {
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String SEMESTER_DESC_AMY = " " + PREFIX_SEMESTER + VALID_SEMESTER_AMY;
     public static final String SEMESTER_DESC_BOB = " " + PREFIX_SEMESTER + VALID_SEMESTER_BOB;
-    public static final String EXPECTED_MIN_GRADE_DESC_AMY = " " + PREFIX_EXPECTED_MIN_GRADE + VALID_EXPECTED_MIN_GRADE_AMY;
-    public static final String EXPECTED_MIN_GRADE_DESC_BOB = " " + PREFIX_EXPECTED_MIN_GRADE + VALID_EXPECTED_MIN_GRADE_BOB;
-    public static final String EXPECTED_MAX_GRADE_DESC_AMY = " " + PREFIX_EXPECTED_MAX_GRADE + VALID_EXPECTED_MAX_GRADE_AMY;
-    public static final String EXPECTED_MAX_GRADE_DESC_BOB = " " + PREFIX_EXPECTED_MAX_GRADE + VALID_EXPECTED_MAX_GRADE_BOB;
+    public static final String EXPECTED_MIN_GRADE_DESC_AMY =
+            " " + PREFIX_EXPECTED_MIN_GRADE + VALID_EXPECTED_MIN_GRADE_AMY;
+    public static final String EXPECTED_MIN_GRADE_DESC_BOB =
+            " " + PREFIX_EXPECTED_MIN_GRADE + VALID_EXPECTED_MIN_GRADE_BOB;
+    public static final String EXPECTED_MAX_GRADE_DESC_AMY =
+            " " + PREFIX_EXPECTED_MAX_GRADE + VALID_EXPECTED_MAX_GRADE_AMY;
+    public static final String EXPECTED_MAX_GRADE_DESC_BOB =
+            " " + PREFIX_EXPECTED_MAX_GRADE + VALID_EXPECTED_MAX_GRADE_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_SEMESTER_DESC = " " + PREFIX_SEMESTER + "911a"; // 'a' not allowed in phones
-    public static final String INVALID_EXPECTED_MIN_GRADE_DESC = " " + PREFIX_EXPECTED_MIN_GRADE + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_EXPECTED_MAX_GRADE_DESC = " " + PREFIX_EXPECTED_MAX_GRADE; // empty string not allowed for addresses
+    public static final String INVALID_EXPECTED_MIN_GRADE_DESC = " " + PREFIX_EXPECTED_MIN_GRADE + "FF";
+    public static final String INVALID_EXPECTED_MAX_GRADE_DESC = " " + PREFIX_EXPECTED_MAX_GRADE;
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
@@ -58,10 +66,12 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withSemester(VALID_SEMESTER_AMY).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_AMY).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_AMY)
+                .withSemester(VALID_SEMESTER_AMY).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_AMY)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_AMY)
                 .withTags(VALID_TAG_FRIEND).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withSemester(VALID_SEMESTER_BOB).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB)
+                .withSemester(VALID_SEMESTER_BOB).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }
 

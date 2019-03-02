@@ -1,7 +1,7 @@
 package seedu.address.model.person;
 
 /**
- * Represents grade of a module taken
+ * Represents grade of a module taken.
  */
 public enum Grade {
 
@@ -24,11 +24,11 @@ public enum Grade {
     U(0, false, false, "U"),
     W(0, false, false, "W");
 
+    public static final String MESSAGE_CONSTRAINTS = "Grade must be from A+ to F. or S/U";
     private final double gradePoint;
     private final boolean isPass;
     private final boolean isCounted;
     private final String printedGrade;
-    public static final String MESSAGE_CONSTRAINTS = "Grade must be from A+ to F. or S/U";
 
     Grade(double gradePoint, boolean isPass, boolean isCounted, String printedGrade) {
         this.gradePoint = gradePoint;
@@ -51,39 +51,39 @@ public enum Grade {
 
     Grade getGrade(String grade) {
         switch (grade) {
-            case "A+":
-                return A_Plus;
-            case "A":
-                return A;
-            case "A-":
-                return A_Minus;
-            case "B+":
-                return B_Plus;
-            case "B":
-                return B;
-            case "B-":
-                return B_Minus;
-            case "C+":
-                return C_Plus;
-            case "C":
-                return C;
-            case "D+":
-                return D_Plus;
-            case "D":
-                return D;
-            case "F":
-                return F;
-            case "CS":
-                return CS;
-            case "CU":
-                return CU;
-            case "W":
-                return W;
-            case "IC":
-                return IC;
-            case "EXE":
-            default:
-                return EXE;
+        case "A+":
+            return A_Plus;
+        case "A":
+            return A;
+        case "A-":
+            return A_Minus;
+        case "B+":
+            return B_Plus;
+        case "B":
+            return B;
+        case "B-":
+            return B_Minus;
+        case "C+":
+            return C_Plus;
+        case "C":
+            return C;
+        case "D+":
+            return D_Plus;
+        case "D":
+            return D;
+        case "F":
+            return F;
+        case "CS":
+            return CS;
+        case "CU":
+            return CU;
+        case "W":
+            return W;
+        case "IC":
+            return IC;
+        case "EXE":
+        default:
+            return EXE;
         }
     }
 
@@ -92,25 +92,25 @@ public enum Grade {
      */
     public static boolean isValidGrade(String test) {
         switch (test) {
-            case "A+":
-            case "A":
-            case "A-":
-            case "B+":
-            case "B":
-            case "B-":
-            case "C+":
-            case "C":
-            case "D+":
-            case "D":
-            case "F":
-            case "CS":
-            case "CU":
-            case "W":
-            case "IC":
-            case "EXE":
-                return true;
-            default:
-                return false;
+        case "A+":
+        case "A":
+        case "A-":
+        case "B+":
+        case "B":
+        case "B-":
+        case "C+":
+        case "C":
+        case "D+":
+        case "D":
+        case "F":
+        case "CS":
+        case "CU":
+        case "W":
+        case "IC":
+        case "EXE":
+            return true;
+        default:
+            return false;
         }
     }
 

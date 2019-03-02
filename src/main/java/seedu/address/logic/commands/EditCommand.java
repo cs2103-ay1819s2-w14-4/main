@@ -96,8 +96,10 @@ public class EditCommand extends Command {
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getModuleInfo());
         Semester updatedSemester = editPersonDescriptor.getSemester().orElse(personToEdit.getSemester());
-        Grade updatedExpectedMinGrade = editPersonDescriptor.getExpectedMinGrade().orElse(personToEdit.getExpectedMinGrade());
-        Grade updatedExpectecMaxGrade = editPersonDescriptor.getExpectedMaxGrade().orElse(personToEdit.getExpectedMaxGrade());
+        Grade updatedExpectedMinGrade = editPersonDescriptor.getExpectedMinGrade()
+                .orElse(personToEdit.getExpectedMinGrade());
+        Grade updatedExpectecMaxGrade = editPersonDescriptor.getExpectedMaxGrade()
+                .orElse(personToEdit.getExpectedMaxGrade());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
         return new Person(updatedName, updatedSemester, updatedExpectedMinGrade, updatedExpectecMaxGrade, updatedTags);

@@ -29,9 +29,11 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_newPerson_success() {
+        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         Person validPerson = new PersonBuilder().build();
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        System.out.println(expectedModel);
         expectedModel.addPerson(validPerson);
         expectedModel.commitAddressBook();
 

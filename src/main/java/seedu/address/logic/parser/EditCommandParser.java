@@ -55,7 +55,8 @@ public class EditCommandParser implements Parser<EditCommand> {
                     argMultimap.getValue(PREFIX_EXPECTED_MIN_GRADE).get()));
         }
         if (argMultimap.getValue(PREFIX_EXPECTED_MAX_GRADE).isPresent()) {
-            editPersonDescriptor.setExpectedMaxGrade(ParserUtil.parseExpectedMaxGrade(argMultimap.getValue(PREFIX_EXPECTED_MAX_GRADE).get()));
+            editPersonDescriptor.setExpectedMaxGrade(
+                    ParserUtil.parseExpectedMaxGrade(argMultimap.getValue(PREFIX_EXPECTED_MAX_GRADE).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 

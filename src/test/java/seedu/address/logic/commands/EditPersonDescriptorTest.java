@@ -44,11 +44,13 @@ public class EditPersonDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).build();
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different address -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB).build();
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different tags -> returns false

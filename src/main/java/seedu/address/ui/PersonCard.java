@@ -44,7 +44,7 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getModuleInfo().fullName);
-        phone.setText(person.getSemester().toString());
+        phone.setText(person.getSemester().name());
         email.setText(person.getExpectedMinGrade().toString());
         address.setText(person.getExpectedMaxGrade().toString());
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

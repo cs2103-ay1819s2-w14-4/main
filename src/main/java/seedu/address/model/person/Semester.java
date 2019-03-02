@@ -1,7 +1,7 @@
 package seedu.address.model.person;
 
 /**
- * Represents semester of a module taken
+ * Represents semester of a module taken.
  */
 public enum Semester {
 
@@ -16,10 +16,10 @@ public enum Semester {
     Y5S1(5, 1, "Year 5 Semester 1"),
     Y5S2(5, 2, "Year 5 Semester 2");
 
+    public static final String MESSAGE_CONSTRAINTS = "Semester is Y{1-5}S{1-2}";
     private final int year;
     private final int semesterOfYear;
     private final String printedSemester;
-    public static final String MESSAGE_CONSTRAINTS = "Semester is Y{1-5}S{1-2}";
 
     Semester(int year, int semesterOfYear, String printedSemester) {
         this.year = year;
@@ -41,19 +41,19 @@ public enum Semester {
      */
     public static boolean isValidSemester(String test) {
         switch (test) {
-            case "Y1S1":
-            case "Y1S2":
-            case "Y2S1":
-            case "Y2S2":
-            case "Y3S1":
-            case "Y3S2":
-            case "Y4S1":
-            case "Y4S2":
-            case "Y5S1":
-            case "Y5S2":
-                return true;
-            default:
-                return false;
+        case "Y1S1":
+        case "Y1S2":
+        case "Y2S1":
+        case "Y2S2":
+        case "Y3S1":
+        case "Y3S2":
+        case "Y4S1":
+        case "Y4S2":
+        case "Y5S1":
+        case "Y5S2":
+            return true;
+        default:
+            return false;
         }
     }
 

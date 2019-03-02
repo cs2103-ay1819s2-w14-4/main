@@ -77,9 +77,9 @@ public class PersonCardHandle extends NodeHandle<Node> {
      */
     public boolean equals(Person person) {
         return getName().equals(person.getModuleInfo().fullName)
-                && getSemester().equals(person.getSemester().toString())
-                && getExpectedMinGrade().equals(person.getExpectedMinGrade().toString())
-                && getExpectedMaxGrade().equals(person.getExpectedMaxGrade().toString())
+                && getSemester().equals(person.getSemester())
+                && getExpectedMinGrade().equals(person.getExpectedMinGrade())
+                && getExpectedMaxGrade().equals(person.getExpectedMaxGrade())
                 && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(person.getTags().stream()
                         .map(tag -> tag.tagName)
                         .collect(Collectors.toList())));
