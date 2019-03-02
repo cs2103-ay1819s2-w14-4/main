@@ -1,15 +1,11 @@
 package seedu.address.model;
 
-import static java.util.Objects.requireNonNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.InvalidationListenerManager;
-import seedu.address.model.ModuleInfo;
 
 /**
  * Wraps all data at the Module Info List level
@@ -26,22 +22,31 @@ public class ModuleInfoList {
 
     public ModuleInfoList() {}
 
-    public void addModuleInfo(ModuleInfo module){
+    /**
+     * Adds Module to the List of all the modules
+     * @param module
+     */
+    public void addModuleInfo(ModuleInfo module) {
         this.moduleInfoList.add(module);
-        System.out.println("new module added:"+ module.getCode());
+        System.out.println("new module added:" + module.getCode());
     }
 
-    public ModuleInfo getModule(String code){
+    /**
+     * Returns Module which has the same module code
+     * @param code
+     * @return ModuleInfo
+     */
+    public ModuleInfo getModule(String code) {
         ModuleInfo module = null;
-        for(int i = 0; i < moduleInfoList.size(); i++){
-            if(moduleInfoList.get(i).getCode().equals(code)){
+        for (int i = 0; i < moduleInfoList.size(); i++) {
+            if (moduleInfoList.get(i).getCode().equals(code)) {
                 module = moduleInfoList.get(i);
             }
         }
         return module;
     }
 
-    public ObservableList<ModuleInfo> getObservableList(){
+    public ObservableList<ModuleInfo> getObservableList() {
         ObservableList<ModuleInfo> observableList = FXCollections.observableArrayList(moduleInfoList);
         return observableList;
     }

@@ -1,7 +1,7 @@
 package seedu.address.model;
 
-import java.util.function.Predicate;
 import java.util.List;
+import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
 
@@ -11,7 +11,9 @@ import seedu.address.commons.util.StringUtil;
 public class CodeContainsKeywordsPredicate implements Predicate<ModuleInfo> {
     private final List<String> keywords;
 
-    public CodeContainsKeywordsPredicate(List<String> keywords){this.keywords = keywords;}
+    public CodeContainsKeywordsPredicate(List<String> keywords) {
+        this.keywords = keywords;
+    }
 
     @Override
     public boolean test(ModuleInfo module) {

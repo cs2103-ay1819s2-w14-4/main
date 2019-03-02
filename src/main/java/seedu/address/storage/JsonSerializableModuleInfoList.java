@@ -12,6 +12,9 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.ModuleInfo;
 import seedu.address.model.ModuleInfoList;
 
+/**
+ * An Immutable Module Information List that is serializable to JSON format.
+ */
 @JsonRootName(value = "moduleinfolist")
 public class JsonSerializableModuleInfoList {
 

@@ -1,7 +1,9 @@
 package seedu.address.model;
 
-import java.util.ArrayList;
-
+/**
+ * Represents Module Information about a particular module available in NUS.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class ModuleInfo {
     private String code;
     private String title;
@@ -12,8 +14,8 @@ public class ModuleInfo {
     private String department;
     private String prerequisites;
 
-    public ModuleInfo(String code, String title, double credits, String description,String workLoad,
-                      String preclusions, String department, String prerequisites){
+    public ModuleInfo(String code, String title, double credits, String description, String workLoad,
+                      String preclusions, String department, String prerequisites) {
         this.code = code;
         this.title = title;
         this.credits = credits;
@@ -26,27 +28,29 @@ public class ModuleInfo {
         System.out.println("Module:" + code + " has been created");
     }
 
-    public String getCode(){
+    public String getCode() {
         return this.code;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return this.title;
     }
 
-    public double getCredits(){
+    public double getCredits() {
         return this.credits;
     }
 
-    public String getDescription() { return this.description; }
+    public String getDescription() {
+        return this.description;
+    }
 
-    public String getWorkLoad() {return this.workLoad;}
+    public String getWorkLoad() { return this.workLoad; }
 
-    public String getPreclusions(){
+    public String getPreclusions() {
         return this.preclusions;
     }
 
-    public String getDepartment(){
+    public String getDepartment() {
         return this.department;
     }
 

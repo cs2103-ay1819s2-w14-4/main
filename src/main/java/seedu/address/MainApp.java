@@ -66,7 +66,7 @@ public class MainApp extends Application {
 
         storageManager = new ModuleInfoManager();
 
-        model = initModelManager(storage, userPrefs,storageManager);
+        model = initModelManager(storage, userPrefs, storageManager);
 
         logic = new LogicManager(model, storage);
 
@@ -79,14 +79,14 @@ public class MainApp extends Application {
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
-    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs,ModuleInfoManager storageManager) {
+    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs, ModuleInfoManager storageManager) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         Optional<ModuleInfoList> allModulesOptional;
         ModuleInfoList allModules;
         ReadOnlyAddressBook initialData;
         try {
             allModulesOptional = storageManager.readModuleInfoFile();
-            if(!allModulesOptional.isPresent()){
+            if (!allModulesOptional.isPresent()) {
                 logger.info("File for all module Information not found! Starting with Empty Module List");
             }
             addressBookOptional = storage.readAddressBook();
