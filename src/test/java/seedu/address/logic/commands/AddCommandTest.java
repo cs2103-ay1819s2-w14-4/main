@@ -204,12 +204,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<ModuleInfo> getDisplayList(){
+        public ObservableList<ModuleInfo> getDisplayList() {
             throw new AssertionError("This method should not be called");
         }
 
         @Override
-        public void updateDisplayList(Predicate<ModuleInfo> predicate){
+        public void updateDisplayList(Predicate<ModuleInfo> predicate) {
             throw new AssertionError("This method should not be called");
         }
     }
