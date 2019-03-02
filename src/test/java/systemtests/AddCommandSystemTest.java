@@ -74,14 +74,18 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add a person with all fields same as another person in the address book except name -> added */
         toAdd = new PersonBuilder(AMY).withName(VALID_NAME_BOB).build();
-        command = AddCommand.COMMAND_WORD + NAME_DESC_BOB + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY
-                + TAG_DESC_FRIEND;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_BOB
+                + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY
+                + EXPECTED_MAX_GRADE_DESC_AMY + TAG_DESC_FRIEND;
         assertCommandSuccess(command, toAdd);
 
         /* Case: add a person with all fields same as another person in the address book except phone and email
          * -> added
          */
-        toAdd = new PersonBuilder(AMY).withSemester(VALID_SEMESTER_BOB).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).build();
+        toAdd = new PersonBuilder(AMY)
+                .withSemester(VALID_SEMESTER_BOB)
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB)
+                .build();
         command = PersonUtil.getAddCommand(toAdd);
         assertCommandSuccess(command, toAdd);
 
@@ -91,8 +95,10 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add a person with tags, command with parameters in random order -> added */
         toAdd = BOB;
-        command = AddCommand.COMMAND_WORD + TAG_DESC_FRIEND + SEMESTER_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB + NAME_DESC_BOB
-                + TAG_DESC_HUSBAND + EXPECTED_MIN_GRADE_DESC_BOB;
+        command = AddCommand.COMMAND_WORD + TAG_DESC_FRIEND
+                + SEMESTER_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
+                + NAME_DESC_BOB + TAG_DESC_HUSBAND
+                + EXPECTED_MIN_GRADE_DESC_BOB;
         assertCommandSuccess(command, toAdd);
 
         /* Case: add a person, missing tags -> added */
@@ -136,19 +142,23 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
         assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_PERSON);
 
         /* Case: missing name -> rejected */
-        command = AddCommand.COMMAND_WORD + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY;
+        command = AddCommand.COMMAND_WORD + SEMESTER_DESC_AMY
+                + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
         /* Case: missing phone -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY
+                + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
         /* Case: missing email -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + SEMESTER_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY
+                + SEMESTER_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
         /* Case: missing address -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY
+                + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
         /* Case: invalid keyword -> rejected */
@@ -156,24 +166,32 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
         assertCommandFailure(command, Messages.MESSAGE_UNKNOWN_COMMAND);
 
         /* Case: invalid name -> rejected */
-        command = AddCommand.COMMAND_WORD + INVALID_NAME_DESC + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY;
+        command = AddCommand.COMMAND_WORD + INVALID_NAME_DESC
+                + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY
+                + EXPECTED_MAX_GRADE_DESC_AMY;
         assertCommandFailure(command, Name.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid phone -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + INVALID_SEMESTER_DESC + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY
+                + INVALID_SEMESTER_DESC + EXPECTED_MIN_GRADE_DESC_AMY
+                + EXPECTED_MAX_GRADE_DESC_AMY;
         assertCommandFailure(command, Semester.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid email -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + SEMESTER_DESC_AMY + INVALID_EXPECTED_MIN_GRADE_DESC + EXPECTED_MAX_GRADE_DESC_AMY;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + SEMESTER_DESC_AMY
+                + INVALID_EXPECTED_MIN_GRADE_DESC + EXPECTED_MAX_GRADE_DESC_AMY;
         assertCommandFailure(command, Grade.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid address -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY + INVALID_EXPECTED_MAX_GRADE_DESC;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY
+                + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY
+                + INVALID_EXPECTED_MAX_GRADE_DESC;
         assertCommandFailure(command, Grade.MESSAGE_CONSTRAINTS);
 
         /* Case: invalid tag -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY
-                + INVALID_TAG_DESC;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY
+                + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY
+                + EXPECTED_MAX_GRADE_DESC_AMY + INVALID_TAG_DESC;
         assertCommandFailure(command, Tag.MESSAGE_CONSTRAINTS);
     }
 

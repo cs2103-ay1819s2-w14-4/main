@@ -1,14 +1,14 @@
 {
   "persons": [ {
     "name": "Alice Pauline",
-    "phone": "Y1S2",
-    "email": "A",
-    "address": "B",
+    "semester" : "Y3S2",
+    "expectedMinGrade" : "D",
+    "expectedMaxGrade" : "A",
     "tagged": [ "friends" ]
   }, {
     "name": "Alice Pauline",
-    "phone": "Y1S2",
-    "email": "A",
-    "address": "B"
+    "semester" : "Y3S1",
+    "expectedMinGrade" : "D",
+    "expectedMaxGrade" : "B"
   } ]
 }

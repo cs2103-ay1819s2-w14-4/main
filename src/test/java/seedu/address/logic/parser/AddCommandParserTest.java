@@ -25,29 +25,35 @@ public class AddCommandParserTest {
         Person expectedPerson = new PersonBuilder(BOB).withTags(VALID_TAG_FRIEND).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB
+                + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB
                 + EXPECTED_MAX_GRADE_DESC_BOB + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
 
         // multiple names - last name accepted
-        assertParseSuccess(parser, NAME_DESC_AMY + NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB
+        assertParseSuccess(parser, NAME_DESC_AMY + NAME_DESC_BOB
+                + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB
                 + EXPECTED_MAX_GRADE_DESC_BOB + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
 
         // multiple semesters - last semester accepted
-        assertParseSuccess(parser, NAME_DESC_BOB + SEMESTER_DESC_AMY + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB
+        assertParseSuccess(parser, NAME_DESC_BOB + SEMESTER_DESC_AMY
+                + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB
                 + EXPECTED_MAX_GRADE_DESC_BOB + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
 
         // multiple emails - last email accepted
-        assertParseSuccess(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MIN_GRADE_DESC_BOB
+        assertParseSuccess(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB
+                + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MIN_GRADE_DESC_BOB
                 + EXPECTED_MAX_GRADE_DESC_BOB + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
 
         // multiple addresses - last address accepted
-        assertParseSuccess(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_AMY
+        assertParseSuccess(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB
+                + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_AMY
                 + EXPECTED_MAX_GRADE_DESC_BOB + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
 
         // multiple tags - all accepted
         Person expectedPersonMultipleTags = new PersonBuilder(BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
-        assertParseSuccess(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
+        assertParseSuccess(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB
+                + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonMultipleTags));
     }
 
@@ -55,7 +61,8 @@ public class AddCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // zero tags
         Person expectedPerson = new PersonBuilder(AMY).withTags().build();
-        assertParseSuccess(parser, NAME_DESC_AMY + SEMESTER_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY,
+        assertParseSuccess(parser, NAME_DESC_AMY + SEMESTER_DESC_AMY
+                        + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY,
                 new AddCommand(expectedPerson));
     }
 
@@ -64,54 +71,66 @@ public class AddCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
 
         // missing name prefix
-        assertParseFailure(parser, VALID_NAME_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB,
+        assertParseFailure(parser, VALID_NAME_BOB + SEMESTER_DESC_BOB
+                        + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB,
                 expectedMessage);
 
         // missing semester prefix
-        assertParseFailure(parser, NAME_DESC_BOB + VALID_SEMESTER_BOB + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB,
+        assertParseFailure(parser, NAME_DESC_BOB + VALID_SEMESTER_BOB
+                        + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB,
                 expectedMessage);
 
         // missing email prefix
-        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB + VALID_EXPECTED_MIN_GRADE_BOB + EXPECTED_MAX_GRADE_DESC_BOB,
+        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB
+                        + VALID_EXPECTED_MIN_GRADE_BOB + EXPECTED_MAX_GRADE_DESC_BOB,
                 expectedMessage);
 
         // missing address prefix
-        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + VALID_EXPECTED_MAX_GRADE_BOB,
+        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB
+                        + EXPECTED_MIN_GRADE_DESC_BOB + VALID_EXPECTED_MAX_GRADE_BOB,
                 expectedMessage);
 
         // all prefixes missing
-        assertParseFailure(parser, VALID_NAME_BOB + VALID_SEMESTER_BOB + VALID_EXPECTED_MIN_GRADE_BOB + VALID_EXPECTED_MAX_GRADE_BOB,
+        assertParseFailure(parser, VALID_NAME_BOB + VALID_SEMESTER_BOB
+                        + VALID_EXPECTED_MIN_GRADE_BOB + VALID_EXPECTED_MAX_GRADE_BOB,
                 expectedMessage);
     }
 
     @Test
     public void parse_invalidValue_failure() {
         // invalid name
-        assertParseFailure(parser, INVALID_NAME_DESC + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
+        assertParseFailure(parser, INVALID_NAME_DESC + SEMESTER_DESC_BOB
+                + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Name.MESSAGE_CONSTRAINTS);
 
         // invalid semester
-        assertParseFailure(parser, NAME_DESC_BOB + INVALID_SEMESTER_DESC + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
+        assertParseFailure(parser, NAME_DESC_BOB + INVALID_SEMESTER_DESC
+                + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Semester.MESSAGE_CONSTRAINTS);
 
         // invalid email
-        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB + INVALID_EXPECTED_MIN_GRADE_DESC + EXPECTED_MAX_GRADE_DESC_BOB
+        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB
+                + INVALID_EXPECTED_MIN_GRADE_DESC + EXPECTED_MAX_GRADE_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Grade.MESSAGE_CONSTRAINTS);
 
         // invalid address
-        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + INVALID_EXPECTED_MAX_GRADE_DESC
+        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB
+                + EXPECTED_MIN_GRADE_DESC_BOB + INVALID_EXPECTED_MAX_GRADE_DESC
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, Grade.MESSAGE_CONSTRAINTS);
 
         // invalid tag
-        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
+        assertParseFailure(parser, NAME_DESC_BOB + SEMESTER_DESC_BOB
+                + EXPECTED_MIN_GRADE_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB
                 + INVALID_TAG_DESC + VALID_TAG_FRIEND, Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
-        assertParseFailure(parser, INVALID_NAME_DESC + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + INVALID_EXPECTED_MAX_GRADE_DESC,
+        assertParseFailure(parser, INVALID_NAME_DESC + SEMESTER_DESC_BOB
+                        + EXPECTED_MIN_GRADE_DESC_BOB + INVALID_EXPECTED_MAX_GRADE_DESC,
                 Name.MESSAGE_CONSTRAINTS);
 
         // non-empty preamble
-        assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB
+        assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB
+                        + SEMESTER_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB
                 + EXPECTED_MAX_GRADE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
     }

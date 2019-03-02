@@ -5,16 +5,16 @@ package seedu.address.model.person;
  */
 public enum Semester {
 
-    Y1S1(1, 1, "Year 1 Semester 1"),
-    Y1S2(1, 2, "Year 1 Semester 2"),
-    Y2S1(2, 1, "Year 2 Semester 1"),
-    Y2S2(2, 2, "Year 2 Semester 2"),
-    Y3S1(3, 1, "Year 3 Semester 1"),
-    Y3S2(3, 2, "Year 3 Semester 2"),
-    Y4S1(4, 1, "Year 4 Semester 1"),
-    Y4S2(4, 2, "Year 4 Semester 2"),
-    Y5S1(5, 1, "Year 5 Semester 1"),
-    Y5S2(5, 2, "Year 5 Semester 2");
+    Y1S1(1, 1, "Y1S1"),
+    Y1S2(1, 2, "Y1S2"),
+    Y2S1(2, 1, "Y2S1"),
+    Y2S2(2, 2, "Y2S2"),
+    Y3S1(3, 1, "Y3S1"),
+    Y3S2(3, 2, "Y3S2"),
+    Y4S1(4, 1, "Y4S1"),
+    Y4S2(4, 2, "Y4S2"),
+    Y5S1(5, 1, "Y5S1"),
+    Y5S2(5, 2, "Y5S2");
 
     public static final String MESSAGE_CONSTRAINTS = "Semester is Y{1-5}S{1-2}";
     private final int year;

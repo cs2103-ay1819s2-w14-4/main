@@ -1,46 +1,46 @@
 {
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
   "persons" : [ {
-    "name" : "Alice Paul",
-    "phone" : "Y5S3",
-    "email" : "F",
-    "address" : "A",
+    "name" : "Alice Pauline",
+    "semester" : "Y1S2",
+    "expectedMinGrade" : "F",
+    "expectedMaxGrade" : "A",
     "tagged" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
-    "phone" : "Y5S2",
-    "email" : "D",
-    "address" : "C",
+    "semester" : "Y3S2",
+    "expectedMinGrade" : "D",
+    "expectedMaxGrade" : "A",
     "tagged" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
-    "phone" : "Y2Y1",
-    "email" : "D",
-    "address" : "C",
+    "semester" : "Y5S2",
+    "expectedMinGrade" : "D",
+    "expectedMaxGrade" : "A",
     "tagged" : [ ]
   }, {
     "name" : "Daniel Meier",
-    "phone" : "Y4Y1",
-    "email" : "F",
-    "address" : "C",
+    "semester" : "Y4S2",
+    "expectedMinGrade" : "F",
+    "expectedMaxGrade" : "A",
     "tagged" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
-    "phone" : "Y1Y1",
-    "email" : "B",
-    "address" : "A",
+    "semester" : "Y3S1",
+    "expectedMinGrade" : "C",
+    "expectedMaxGrade" : "A",
     "tagged" : [ ]
   }, {
     "name" : "Fiona Kunz",
-    "phone" : "Y5Y1",
-    "email" : "C",
-    "address" : "A",
+    "semester" : "Y4S2",
+    "expectedMinGrade" : "D",
+    "expectedMaxGrade" : "A",
     "tagged" : [ ]
   }, {
     "name" : "George Best",
-    "phone" : "Y3Y1",
-    "email" : "D",
-    "address" : "B",
+    "semester" : "Y4S1",
+    "expectedMinGrade" : "C",
+    "expectedMaxGrade" : "B",
     "tagged" : [ ]
   } ]
 }

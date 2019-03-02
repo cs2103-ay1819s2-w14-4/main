@@ -41,10 +41,10 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Semester phone = ParserUtil.parseSemester(argMultimap.getValue(PREFIX_SEMESTER).get());
-        Grade expectedMinGrade = ParserUtil.parseExpectedMinGrade(
-                argMultimap.getValue(PREFIX_EXPECTED_MIN_GRADE).get());
-        Grade expectedMaxGrade = ParserUtil.parseExpectedMaxGrade(
-                argMultimap.getValue(PREFIX_EXPECTED_MAX_GRADE).get());
+        Grade expectedMinGrade = ParserUtil
+                .parseExpectedMinGrade(argMultimap.getValue(PREFIX_EXPECTED_MIN_GRADE).get());
+        Grade expectedMaxGrade = ParserUtil
+                .parseExpectedMaxGrade(argMultimap.getValue(PREFIX_EXPECTED_MAX_GRADE).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Person person = new Person(name, phone, expectedMinGrade, expectedMaxGrade, tagList);

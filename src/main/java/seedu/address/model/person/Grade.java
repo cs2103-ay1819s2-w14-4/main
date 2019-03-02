@@ -49,7 +49,7 @@ public enum Grade {
         return this.isCounted;
     }
 
-    Grade getGrade(String grade) {
+    public static Grade getGrade(String grade) {
         switch (grade) {
         case "A+":
             return A_Plus;

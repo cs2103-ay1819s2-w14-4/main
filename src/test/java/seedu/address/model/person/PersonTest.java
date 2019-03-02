@@ -36,7 +36,10 @@ public class PersonTest {
         assertFalse(ALICE.isSamePerson(null));
 
         // different semester and email -> returns false
-        Person editedAlice = new PersonBuilder(ALICE).withSemester(VALID_SEMESTER_BOB).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).build();
+        Person editedAlice = new PersonBuilder(ALICE)
+                .withSemester(VALID_SEMESTER_BOB)
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB)
+                .build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // different name -> returns false
@@ -44,17 +47,23 @@ public class PersonTest {
         assertFalse(ALICE.isSamePerson(editedAlice));
 
         // same name, same semester, different attributes -> returns true
-        editedAlice = new PersonBuilder(ALICE).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB)
+        editedAlice = new PersonBuilder(ALICE)
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
         // same name, same email, different attributes -> returns true
-        editedAlice = new PersonBuilder(ALICE).withSemester(VALID_SEMESTER_BOB).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB)
+        editedAlice = new PersonBuilder(ALICE)
+                .withSemester(VALID_SEMESTER_BOB)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
         // same name, same semester, same email, different attributes -> returns true
-        editedAlice = new PersonBuilder(ALICE).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB).withTags(VALID_TAG_HUSBAND).build();
+        editedAlice = new PersonBuilder(ALICE)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB)
+                .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
     }
 
@@ -77,23 +86,28 @@ public class PersonTest {
         assertFalse(ALICE.equals(BOB));
 
         // different name -> returns false
-        Person editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        Person editedAlice = new PersonBuilder(ALICE)
+                .withName(VALID_NAME_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different semester -> returns false
-        editedAlice = new PersonBuilder(ALICE).withSemester(VALID_SEMESTER_BOB).build();
+        editedAlice = new PersonBuilder(ALICE)
+                .withSemester(VALID_SEMESTER_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different email -> returns false
-        editedAlice = new PersonBuilder(ALICE).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).build();
+        editedAlice = new PersonBuilder(ALICE)
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different address -> returns false
-        editedAlice = new PersonBuilder(ALICE).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB).build();
+        editedAlice = new PersonBuilder(ALICE)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different tags -> returns false
-        editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
+        editedAlice = new PersonBuilder(ALICE)
+                .withTags(VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.equals(editedAlice));
     }
 }

@@ -40,14 +40,19 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(INVALID_NAME, VALID_SEMESTER, VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_TAGS);
+                new JsonAdaptedPerson(INVALID_NAME, VALID_SEMESTER,
+                        VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE,
+                        VALID_TAGS);
         String expectedMessage = Name.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(null, VALID_SEMESTER, VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_TAGS);
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson(null, VALID_SEMESTER,
+                VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE,
+                VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -55,29 +60,37 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidSemester_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, INVALID_SEMESTER, VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_TAGS);
+                new JsonAdaptedPerson(VALID_NAME, INVALID_SEMESTER,
+                        VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE,
+                        VALID_TAGS);
         String expectedMessage = Semester.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
     @Test
     public void toModelType_nullSemester_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, null, VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_TAGS);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Semester.class.getSimpleName());
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, null,
+                VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE,
+                VALID_TAGS);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                Semester.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
     @Test
     public void toModelType_invalidExpectedMinGrade_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER, INVALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_TAGS);
+                new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER,
+                        INVALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE,
+                        VALID_TAGS);
         String expectedMessage = Grade.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
     @Test
     public void toModelType_nullExpectedMinGrade_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER, null, VALID_EXPECTED_MAX_GRADE, VALID_TAGS);
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER,
+                null, VALID_EXPECTED_MAX_GRADE, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -85,14 +98,17 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidExpectedMaxGrade_throwsIllegalValueException() {
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER, VALID_EXPECTED_MIN_GRADE, INVALID_ADDRESS, VALID_TAGS);
+                new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER,
+                        VALID_EXPECTED_MIN_GRADE, INVALID_ADDRESS,
+                        VALID_TAGS);
         String expectedMessage = Grade.MESSAGE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
     @Test
     public void toModelType_nullExpectedMaxGrade_throwsIllegalValueException() {
-        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER, VALID_EXPECTED_MIN_GRADE, null, VALID_TAGS);
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER,
+                VALID_EXPECTED_MIN_GRADE, null, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -102,7 +118,8 @@ public class JsonAdaptedPersonTest {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
         JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER, VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, invalidTags);
+                new JsonAdaptedPerson(VALID_NAME, VALID_SEMESTER,
+                        VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, invalidTags);
         Assert.assertThrows(IllegalValueException.class, person::toModelType);
     }
 

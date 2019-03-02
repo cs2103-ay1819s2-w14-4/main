@@ -18,22 +18,22 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         return new Person[] {
-            new Person(new Name("Alex Yeoh"), Semester.valueOf("87438807"), Grade.valueOf("C"),
+            new Person(new Name("Alex Yeoh"), Semester.valueOf("Y1S1"), Grade.valueOf("C"),
                 Grade.valueOf("A"),
                 getTagSet("friends")),
-            new Person(new Name("Bernice Yu"), Semester.valueOf("99272758"), Grade.valueOf("C"),
+            new Person(new Name("Bernice Yu"), Semester.valueOf("Y1S1"), Grade.valueOf("C"),
                 Grade.valueOf("A"),
                 getTagSet("colleagues", "friends")),
-            new Person(new Name("Charlotte Oliveiro"), Semester.valueOf("93210283"), Grade.valueOf("C"),
+            new Person(new Name("Charlotte Oliveiro"), Semester.valueOf("Y2S1"), Grade.valueOf("C"),
                 Grade.valueOf("A"),
                 getTagSet("neighbours")),
-            new Person(new Name("David Li"), Semester.valueOf("91031282"), Grade.valueOf("C"),
+            new Person(new Name("David Li"), Semester.valueOf("Y2S2"), Grade.valueOf("C"),
                 Grade.valueOf("A"),
                 getTagSet("family")),
-            new Person(new Name("Irfan Ibrahim"), Semester.valueOf("92492021"), Grade.valueOf("C"),
+            new Person(new Name("Irfan Ibrahim"), Semester.valueOf("Y2S1"), Grade.valueOf("C"),
                 Grade.valueOf("A"),
                 getTagSet("classmates")),
-            new Person(new Name("Roy Balakrishnan"), Semester.valueOf("92624417"), Grade.valueOf("C"),
+            new Person(new Name("Roy Balakrishnan"), Semester.valueOf("Y2S2"), Grade.valueOf("C"),
                 Grade.valueOf("A"),
                 getTagSet("colleagues"))
         };

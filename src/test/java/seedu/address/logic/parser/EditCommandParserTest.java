@@ -87,31 +87,40 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid semester followed by valid email
-        assertParseFailure(parser, "1" + INVALID_SEMESTER_DESC + EXPECTED_MIN_GRADE_DESC_AMY, Semester.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_SEMESTER_DESC
+                + EXPECTED_MIN_GRADE_DESC_AMY, Semester.MESSAGE_CONSTRAINTS);
 
         // valid semester followed by invalid semester. The test case for invalid semester followed by valid semester
         // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
-        assertParseFailure(parser, "1" + SEMESTER_DESC_BOB + INVALID_SEMESTER_DESC, Semester.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + SEMESTER_DESC_BOB
+                + INVALID_SEMESTER_DESC, Semester.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
-        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND
+                + TAG_DESC_HUSBAND + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND
+                + TAG_EMPTY + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND
+                + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EXPECTED_MIN_GRADE_DESC + VALID_EXPECTED_MAX_GRADE_AMY + VALID_SEMESTER_AMY,
-                Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC
+                + INVALID_EXPECTED_MIN_GRADE_DESC + VALID_EXPECTED_MAX_GRADE_AMY
+                + VALID_SEMESTER_AMY, Name.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + SEMESTER_DESC_BOB + TAG_DESC_HUSBAND
-                + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
+                + EXPECTED_MIN_GRADE_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY
+                + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withSemester(VALID_SEMESTER_BOB).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_AMY).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_AMY)
+                .withSemester(VALID_SEMESTER_BOB)
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_AMY)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_AMY)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -147,13 +156,17 @@ public class EditCommandParserTest {
 
         // email
         userInput = targetIndex.getOneBased() + EXPECTED_MIN_GRADE_DESC_AMY;
-        descriptor = new EditPersonDescriptorBuilder().withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_AMY).build();
+        descriptor = new EditPersonDescriptorBuilder()
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_AMY)
+                .build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // address
         userInput = targetIndex.getOneBased() + EXPECTED_MAX_GRADE_DESC_AMY;
-        descriptor = new EditPersonDescriptorBuilder().withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_AMY).build();
+        descriptor = new EditPersonDescriptorBuilder()
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_AMY)
+                .build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -167,12 +180,17 @@ public class EditCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + SEMESTER_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY
-                + TAG_DESC_FRIEND + SEMESTER_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY + TAG_DESC_FRIEND
-                + SEMESTER_DESC_BOB + EXPECTED_MAX_GRADE_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + TAG_DESC_HUSBAND;
+        String userInput = targetIndex.getOneBased() + SEMESTER_DESC_AMY
+                + EXPECTED_MAX_GRADE_DESC_AMY + EXPECTED_MIN_GRADE_DESC_AMY
+                + TAG_DESC_FRIEND + SEMESTER_DESC_AMY + EXPECTED_MAX_GRADE_DESC_AMY
+                + EXPECTED_MIN_GRADE_DESC_AMY + TAG_DESC_FRIEND + SEMESTER_DESC_BOB
+                + EXPECTED_MAX_GRADE_DESC_BOB + EXPECTED_MIN_GRADE_DESC_BOB + TAG_DESC_HUSBAND;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withSemester(VALID_SEMESTER_BOB)
-                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB).withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
+                .withSemester(VALID_SEMESTER_BOB)
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB)
+                .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB)
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -184,14 +202,18 @@ public class EditCommandParserTest {
         // no other valid values specified
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + INVALID_SEMESTER_DESC + SEMESTER_DESC_BOB;
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withSemester(VALID_SEMESTER_BOB).build();
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
+                .withSemester(VALID_SEMESTER_BOB).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // other valid values specified
-        userInput = targetIndex.getOneBased() + EXPECTED_MIN_GRADE_DESC_BOB + INVALID_SEMESTER_DESC + EXPECTED_MAX_GRADE_DESC_BOB
+        userInput = targetIndex.getOneBased() + EXPECTED_MIN_GRADE_DESC_BOB
+                + INVALID_SEMESTER_DESC + EXPECTED_MAX_GRADE_DESC_BOB
                 + SEMESTER_DESC_BOB;
-        descriptor = new EditPersonDescriptorBuilder().withSemester(VALID_SEMESTER_BOB).withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB)
+        descriptor = new EditPersonDescriptorBuilder()
+                .withSemester(VALID_SEMESTER_BOB)
+                .withExpectedMinGrade(VALID_EXPECTED_MIN_GRADE_BOB)
                 .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_BOB).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
