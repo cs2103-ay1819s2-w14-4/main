@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.logic.commands.AddCommandIntegrationTest;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -103,8 +104,16 @@ public class TestApp extends MainApp {
         ui.start(primaryStage);
     }
 
+    /**
+     * main
+     */
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+
+        //Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        //Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+
+        new AddCommandIntegrationTest().execute_newPerson_success();
     }
 
 }

@@ -1,4 +1,4 @@
-= AddressBook Level 4 - User Guide
+= GradTrak - User Guide
 :site-section: UserGuide
 :toc:
 :toc-title:
@@ -12,18 +12,18 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level4
+:repoURL: https://github.com/cs2103-ay1819s2-w14-4/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team W14-4`      Since: `Feb 2019`      Licence: `MIT`
 
 == Introduction
 
-AddressBook Level 4 (AB4) is for those who *prefer to use a desktop app for managing contacts*. More importantly, AB4 is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+GradTrak is an application for NUS students to track their graduation progress without much fuss. It is currently only limited to courses offered in School of Computing. The primary method of input is Command Line Interface (CLI) which will benefit students of SoC because they generally type rather quickly. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
 == Quick Start
 
 .  Ensure you have Java version `9` or later installed in your Computer.
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
+.  Download the latest `gradtrak.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
@@ -33,9 +33,9 @@ image::Ui.png[width="790"]
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
-* *`list`* : lists all contacts
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
-* **`delete`**`3` : deletes the 3rd contact shown in the current list
+* *`update`* : Update latest information about modules from CORS.
+* **`add`**`m/CS2103T g/B-` : adds `CS2103T` into list of modules completed with a grade of B-.
+* **`delete`**`n/1` : deletes the 1st module on the list of display all.
 * *`exit`* : exits the app
 
 .  Refer to <<Features>> for details of each command.
@@ -46,113 +46,150 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ====
 *Command Format*
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-* Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add m/MODULE_CODE`, `MODULE_CODE` is a parameter which can be used as `add m/CS2103T`.
+* Items in square brackets are optional e.g `m/MODULE_CODE [g/GRADE_OBTAINED]` can be used as `m/CS2103T g/B-` or as `m/CS2103T`.
 ====
 
-=== Viewing help : `help`
+=== View all other commands : `help`
 
+Displays list of all available commands. +
 Format: `help`
 
-=== Adding a person: `add`
+=== Set course of study: `set`
 
-Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
+Set the course of study the user is undertaking +
+Format: `set c/COURSE` +
+If course requires specialisation or focus area, system will prompt user for further input.+
 
-[TIP]
-A person can have any number of tags (including 0)
-
-Examples:
-
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
-
-=== Listing all persons : `list`
-
-Shows a list of all persons in the address book. +
-Format: `list`
-
-=== Editing a person : `edit`
-
-Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
-
+Course abbreviations are as follows:
 ****
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index *must be a positive integer* 1, 2, 3, ...
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person's tags by typing `t/` without specifying any tags after it.
+* `BZA` - Business Analytics
+* `CS` - Computer Science
+* `CEG` - Computer Engineering
+* IS` - Information System
+* `IFS` - Infocomm Security
 ****
 
 Examples:
 
-* `edit 1 p/91234567 e/johndoe@example.com` +
-Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-* `edit 2 n/Betsy Crower t/` +
-Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* `set c/IFS` +
+Sets course of study to Infocomm Security.
 
-=== Locating persons by name: `find`
+* `set c/CS` +
+Sets course of study to Computer Science +
+Since Computer Science requires Specialisation / Focused Area, +
+system prompts user for further input to select choice of focus area: +
+Please input the corresponding digit for desired focus area: +
+.  Algorithms & Theory
+.  Artificial Intelligence
+.  Computer Graphics and Games
+.  Computer Security
+.  Database Systems
+.  Multimedia Information Retrieval
+.  Networking and Distributed Systems
+.  Parallel Computing
+.  Programming Languages
+.  Software Engineering
+User wants to choose focus area to be Artificial Intelligence so inputs `2`
 
-Finds persons whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
 
-****
-* The search is case insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-****
+=== Add modules completed and grades : `add`
 
-Examples:
-
-* `find John` +
-Returns `john` and `John Doe`
-* `find Betsy Tim John` +
-Returns any person having names `Betsy`, `Tim`, or `John`
-
-=== Deleting a person : `delete`
-
-Deletes the specified person from the address book. +
-Format: `delete INDEX`
+Adds module based on module code. +
+Format: `add m/MODULE_CODE s/YEAR_SEMESTER [min/MIN_GRADE_EXPECTED] [max/MAX_GRADE_EXPECTED]`
 
 ****
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index *must be a positive integer* 1, 2, 3, ...
+* Possible grade options are the standard letter grades (A+, A, A-, B+, B, B- etc.) and IC, EXE, CS, CU, W, S, U.
+* Adding same module again but with different grades will update the grades obtained.
 ****
 
 Examples:
 
-* `list` +
-`delete 2` +
-Deletes the 2nd person in the address book.
-* `find Betsy` +
-`delete 1` +
-Deletes the 1st person in the results of the `find` command.
+* `add m/CS2103T` +
+Adds CS2103T into list of modules completed.
 
-=== Selecting a person : `select`
+* `add m/CS2103T g/B-` +
+Adds CS2103T into list of modules completed with a grade of B-.
 
-Selects the person identified by the index number used in the displayed person list. +
-Format: `select INDEX`
+=== Delete modules : `delete`
+
+Removes module based on module code. +
+Format: `delete m/MODULE_CODE` or `delete n/number`
 
 ****
-* Selects the person and loads the Google search page the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index *must be a positive integer* `1, 2, 3, ...`
+* Gives message if the module code of the module to be deleted is not found.
+* Or delete based on position on display all position (see below).
 ****
 
 Examples:
 
-* `list` +
-`select 2` +
-Selects the 2nd person in the address book.
-* `find Betsy` +
-`select 1` +
-Selects the 1st person in the results of the `find` command.
+* `delete m/CS2103T` +
+Deletes CS2103T from the list of modules completed.
+* `delete n/1` +
+Deletes the 1st module on the list of display all.
+
+=== Display module information : `displaym`
+
+3 options to display module information, e.g. course description, prerequisites and courses succeeding the modules. +
+Format: `displaym o/OPTIONS [MORE_ARGUMENTS]`
+
+3 modes for o/OPTIONS include:
+
+.  `o/all`
+* Display all modules completed.
+
+.  `o/info m/MODULE_CODE`
+* Display information about a module and modules preceding and succeeding it
+
+.  `o/info k/KEYWORDS [n/NUMBER]`
+* Display top n (3 if last argument is left blank, capped at 10) information most related modules based on keywords inserted.
+
+Examples:
+
+* `displaym o/all` +
+Display all modules completed.
+* `displaym o/info m/CS2103T` +
+System to display module information about CS2103T
+* `displaym o/info k/Software Engineering n/5` +
+Display top 5 modules related to Software Engineering.
+
+=== Display user information : `displayu`
+
+Displays various user information based on options and other arguments given +
+Format: `displayu o/OPTIONS [MORE_ARGUMENTS]`
+
+* `o/count`
+** Display user modular credit count.
+
+* `o/CAP`
+** Display Cumulative Average Point (CAP) of user based on grades keyed in.
+** If grades are not keyed in, system will remind user that CAP calculated might not be accurate.
+
+* `o/req [n/NUMBER]`
+** Display all requirements for the course of study.
+** If number is specified: Displays information about n-th requirement in the order which it is displayed
+
+* `o/req [c/BOOLEAN]`
+** Displays completed or incomplete requirements.
+** Also shows modules that can be taken to fulfill incomplete requirements.
+
+Examples:
+
+* `displayu o/count` +
+Display user modular credit count.
+* `displayu o/req` +
+Display all requirements for the course of study.
+* `displayu o/req n/3` +
+Displays information about 3rd requirement in the display all requirement command earlier.
+* `displayu o/req c/true` +
+Displays completed requirement.
+* `displayu o/req c/false` +
+Display requirements not completed and modules that can be taken to fulfil the requirements.
+
+=== Update module information : `update`
+
+Update latest information about modules from CORS. +
+Format: `update`
 
 === Listing entered commands : `history`
 
@@ -172,24 +209,24 @@ Format: `undo`
 
 [NOTE]
 ====
-Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
+Undoable commands: those commands that modify the list of completed modules or course (`set`, `add`, `delete` and `clear`).
 ====
 
 Examples:
 
-* `delete 1` +
-`list` +
-`undo` (reverses the `delete 1` command) +
+* `delete n/1` +
+`displaym o/all` +
+`undo` (reverses the `delete n/1` command) +
 
-* `select 1` +
-`list` +
+* `displaym o/all` +
+`history` +
 `undo` +
 The `undo` command fails as there are no undoable commands executed previously.
 
-* `delete 1` +
+* `delete n/1` +
 `clear` +
 `undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
+`undo` (reverses the `delete n/1` command) +
 
 === Redoing the previously undone command : `redo`
 
@@ -198,25 +235,25 @@ Format: `redo`
 
 Examples:
 
-* `delete 1` +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
+* `delete n/1` +
+`undo` (reverses the `delete n/1` command) +
+`redo` (reapplies the `delete n/1` command) +
 
-* `delete 1` +
+* `delete n/1` +
 `redo` +
 The `redo` command fails as there are no `undo` commands executed previously.
 
-* `delete 1` +
+* `delete n/1` +
 `clear` +
 `undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
+`undo` (reverses the `delete n/1` command) +
+`redo` (reapplies the `delete n/1` command) +
 `redo` (reapplies the `clear` command) +
 // end::undoredo[]
 
-=== Clearing all entries : `clear`
+=== Clear all data entered: `clear`
 
-Clears all entries from the address book. +
+Clear all information on modules completed, course information etc. +
 Format: `clear`
 
 === Exiting the program : `exit`
@@ -226,7 +263,7 @@ Format: `exit`
 
 === Saving the data
 
-Address book data are saved in the hard disk automatically after any command that changes the data. +
+Module data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
 // tag::dataencryption[]
@@ -238,23 +275,22 @@ _{explain how the user can enable/disable data encryption}_
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GradTrak folder.
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+* *Set* `set c/COURSE` +
+e.g. `set c/IFS`
 * *Clear* : `clear`
-* *Delete* : `delete INDEX` +
-e.g. `delete 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
-e.g. `edit 2 n/James Lee e/jameslee@example.com`
-* *Find* : `find KEYWORD [MORE_KEYWORDS]` +
-e.g. `find James Jake`
-* *List* : `list`
+* *Delete* : `delete m/MODULE_CODE` or `delete n/NUMBER` +
+e.g. `delete n/3`
+* *Add* : `add m/MODULE_CODE [g/GRADE_OBTAINED]` +
+e.g. `add m/CS2103T`
+* *Displaym* : `displaym o/OPTIONS [MORE_ARGUMENTS]` +
+e.g. `displaym o/all`
+* *Displayu* : `displayu o/OPTIONS [MORE_ARGUMENTS]` +
+e.g. `displayu o/all`
 * *Help* : `help`
-* *Select* : `select INDEX` +
-e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`

@@ -1,12 +1,17 @@
 package seedu.address.model;
 
+import static java.util.Objects.requireNonNull;
+
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
 import javafx.beans.property.ReadOnlyProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.Course.Course;
+import seedu.address.model.PlanPreference.Cap;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Semester;
 
 /**
  * The API of the Model component.
@@ -14,6 +19,36 @@ import seedu.address.model.person.Person;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+
+    /**
+     * Replaces course data with the data in {@code course}.
+     */
+    void setCourse(Course course);
+
+    /**
+     * Returns the course data.
+     */
+    Course getCourse();
+
+    /**
+     * Returns the user's current semester.
+     */
+    Semester getCurrentSemester();
+
+    /**
+     * Returns the user's cap up to the current semester.
+     */
+    Cap computeCumulativeCap();
+
+    /**
+     * Returns the user's expected minimum cap based on user's prediction of future results.
+     */
+    Cap computeExpectedMinimumCap();
+
+    /**
+     * Returns the user's expected maximum cap based on user's prediction of future results.
+     */
+    Cap computeExpectedMaximumCap();
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.

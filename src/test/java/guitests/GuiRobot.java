@@ -95,7 +95,7 @@ public class GuiRobot extends FxRobot {
     }
 
     /**
-     * Returns the first stage, ordered by proximity to the current target window, with the stage title.
+     * Returns the first stage, ordered by proximity to the current target window, with the stage description.
      * The order that the windows are searched are as follows (proximity): current target window,
      * children of the target window, rest of the windows.
      *

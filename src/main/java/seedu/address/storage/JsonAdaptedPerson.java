@@ -10,11 +10,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.Semester;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -25,22 +24,23 @@ class JsonAdaptedPerson {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
 
     private final String name;
-    private final String phone;
-    private final String email;
-    private final String address;
+    private final String semester;
+    private final String expectedMinGrade;
+    private final String expectedMaxGrade;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("semester") String semester,
+                             @JsonProperty("expectedMinGrade") String expectedMinGrade,
+                             @JsonProperty("expectedMaxGrade") String expectedMaxGrade,
+                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
+        this.semester = semester;
+        this.expectedMinGrade = expectedMinGrade;
+        this.expectedMaxGrade = expectedMaxGrade;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -50,10 +50,10 @@ class JsonAdaptedPerson {
      * Converts a given {@code Person} into this class for Jackson use.
      */
     public JsonAdaptedPerson(Person source) {
-        name = source.getName().fullName;
-        phone = source.getPhone().value;
-        email = source.getEmail().value;
-        address = source.getAddress().value;
+        name = source.getModuleInfo().fullName;
+        semester = source.getSemester().name();
+        expectedMinGrade = source.getExpectedMinGrade().toString();
+        expectedMaxGrade = source.getExpectedMaxGrade().toString();
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -71,39 +71,41 @@ class JsonAdaptedPerson {
         }
 
         if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
         if (!Name.isValidName(name)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
         final Name modelName = new Name(name);
 
-        if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        if (semester == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Semester.class.getSimpleName()));
         }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        if (!Semester.isValidSemester(semester)) {
+            throw new IllegalValueException(Semester.MESSAGE_CONSTRAINTS);
         }
-        final Phone modelPhone = new Phone(phone);
+        final Semester modelSemester = Semester.valueOf(semester);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+        if (expectedMinGrade == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!Grade.isValidGrade(expectedMinGrade)) {
+            throw new IllegalValueException(Grade.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final Grade modelExpectedMinGrade = Grade.getGrade(expectedMinGrade);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+        if (expectedMaxGrade == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        if (!Grade.isValidGrade(expectedMaxGrade)) {
+            throw new IllegalValueException(Grade.MESSAGE_CONSTRAINTS);
         }
-        final Address modelAddress = new Address(address);
+        final Grade modelExpectedMaxGrade = Grade.getGrade(expectedMaxGrade);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Person(modelName, modelSemester, modelExpectedMinGrade, modelExpectedMaxGrade, modelTags);
     }
 
 }

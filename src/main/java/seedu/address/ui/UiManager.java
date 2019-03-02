@@ -73,7 +73,7 @@ public class UiManager implements Ui {
     }
 
     /**
-     * Shows an error alert dialog with {@code title} and error message, {@code e},
+     * Shows an error alert dialog with {@code description} and error message, {@code e},
      * and exits the application after the user has closed the alert dialog.
      */
     private void showFatalErrorDialogAndShutdown(String title, Throwable e) {

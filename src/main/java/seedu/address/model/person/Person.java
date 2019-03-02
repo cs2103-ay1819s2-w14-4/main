@@ -16,40 +16,40 @@ import seedu.address.model.tag.Tag;
 public class Person {
 
     // Identity fields
-    private final Name name;
-    private final Phone phone;
-    private final Email email;
+    private final Name moduleInfo;
+    private final Semester semester;
 
     // Data fields
-    private final Address address;
+    private final Grade expectedMinGrade;
+    private final Grade expectedMaxGrade;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
+    public Person(Name moduleInfo, Semester semester, Grade expectedMinGrade, Grade expectedMaxGrade, Set<Tag> tags) {
+        requireAllNonNull(moduleInfo, semester, expectedMinGrade, expectedMaxGrade, tags);
+        this.moduleInfo = moduleInfo;
+        this.semester = semester;
+        this.expectedMinGrade = expectedMinGrade;
+        this.expectedMaxGrade = expectedMaxGrade;
         this.tags.addAll(tags);
     }
 
-    public Name getName() {
-        return name;
+    public Name getModuleInfo() {
+        return moduleInfo;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Semester getSemester() {
+        return semester;
     }
 
-    public Email getEmail() {
-        return email;
+    public Grade getExpectedMinGrade() {
+        return expectedMinGrade;
     }
 
-    public Address getAddress() {
-        return address;
+    public Grade getExpectedMaxGrade() {
+        return expectedMaxGrade;
     }
 
     /**
@@ -70,8 +70,9 @@ public class Person {
         }
 
         return otherPerson != null
-                && otherPerson.getName().equals(getName())
-                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()));
+                && otherPerson.getModuleInfo().equals(getModuleInfo())
+                && (otherPerson.getSemester().equals(getSemester())
+                || otherPerson.getExpectedMinGrade().equals(getExpectedMinGrade()));
     }
 
     /**
@@ -89,29 +90,29 @@ public class Person {
         }
 
         Person otherPerson = (Person) other;
-        return otherPerson.getName().equals(getName())
-                && otherPerson.getPhone().equals(getPhone())
-                && otherPerson.getEmail().equals(getEmail())
-                && otherPerson.getAddress().equals(getAddress())
+        return otherPerson.getModuleInfo().equals(getModuleInfo())
+                && otherPerson.getSemester().equals(getSemester())
+                && otherPerson.getExpectedMinGrade().equals(getExpectedMinGrade())
+                && otherPerson.getExpectedMaxGrade().equals(getExpectedMaxGrade())
                 && otherPerson.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(moduleInfo, semester, expectedMinGrade, expectedMaxGrade, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
+        builder.append(getModuleInfo())
+                .append(" Semester: ")
+                .append(getSemester())
+                .append(" Expected Min Grade: ")
+                .append(getExpectedMinGrade())
+                .append(" Expected Max Grade: ")
+                .append(getExpectedMaxGrade())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

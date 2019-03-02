@@ -20,11 +20,14 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.Course.Course;
 import seedu.address.model.Model;
 import seedu.address.model.ModuleInfo;
+
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Semester;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -93,6 +96,36 @@ public class AddCommandTest {
      * A default model stub that have all of the methods failing.
      */
     private class ModelStub implements Model {
+        @Override
+        public void setCourse(Course course) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Course getCourse() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Semester getCurrentSemester() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Cap computeCumulativeCap() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Cap computeExpectedMinimumCap() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Cap computeExpectedMaximumCap() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");

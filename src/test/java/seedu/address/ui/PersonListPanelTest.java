@@ -17,11 +17,10 @@ import guitests.guihandles.PersonListPanelHandle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.Semester;
 
 public class PersonListPanelTest extends GuiUnitTest {
     private static final ObservableList<Person> TYPICAL_PERSONS =
@@ -80,10 +79,10 @@ public class PersonListPanelTest extends GuiUnitTest {
         ObservableList<Person> backingList = FXCollections.observableArrayList();
         for (int i = 0; i < personCount; i++) {
             Name name = new Name(i + "a");
-            Phone phone = new Phone("000");
-            Email email = new Email("a@aa");
-            Address address = new Address("a");
-            Person person = new Person(name, phone, email, address, Collections.emptySet());
+            Semester semester = Semester.valueOf("000");
+            Grade expectedMinGrade = Grade.valueOf("F");
+            Grade expectedMaxGrade = Grade.valueOf("A");
+            Person person = new Person(name, semester, expectedMinGrade, expectedMaxGrade, Collections.emptySet());
             backingList.add(person);
         }
         return backingList;

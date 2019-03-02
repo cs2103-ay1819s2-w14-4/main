@@ -9,10 +9,9 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
+import seedu.address.model.person.Grade;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.Semester;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -51,18 +50,18 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
+     * Parses a {@code String semester} into a {@code Semester}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code phone} is invalid.
+     * @throws ParseException if the given {@code semester} is invalid.
      */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!Phone.isValidPhone(trimmedPhone)) {
-            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
+    public static Semester parseSemester(String semester) throws ParseException {
+        requireNonNull(semester);
+        String trimmedSemester = semester.trim();
+        if (!Semester.isValidSemester(trimmedSemester)) {
+            throw new ParseException(Semester.MESSAGE_CONSTRAINTS);
         }
-        return new Phone(trimmedPhone);
+        return Semester.valueOf(trimmedSemester);
     }
 
     /**
@@ -71,13 +70,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static Address parseAddress(String address) throws ParseException {
+    public static Grade parseExpectedMaxGrade(String address) throws ParseException {
         requireNonNull(address);
         String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        if (!Grade.isValidGrade(trimmedAddress)) {
+            throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
         }
-        return new Address(trimmedAddress);
+        return Grade.getGrade(trimmedAddress);
     }
 
     /**
@@ -86,13 +85,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code email} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+    public static Grade parseExpectedMinGrade(String expectedMinGrade) throws ParseException {
+        requireNonNull(expectedMinGrade);
+        String trimmedGrade = expectedMinGrade.trim();
+        if (!Grade.isValidGrade(trimmedGrade)) {
+            throw new ParseException(Grade.MESSAGE_CONSTRAINTS);
         }
-        return new Email(trimmedEmail);
+        return Grade.getGrade(trimmedGrade);
     }
 
     /**

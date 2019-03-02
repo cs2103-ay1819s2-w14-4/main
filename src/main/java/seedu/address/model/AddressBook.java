@@ -76,6 +76,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addPerson(Person p) {
         persons.add(p);
+        System.out.println(p);
         indicateModified();
     }
 

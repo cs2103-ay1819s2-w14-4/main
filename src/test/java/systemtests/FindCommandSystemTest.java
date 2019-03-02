@@ -112,17 +112,17 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         assertSelectedCardUnchanged();
 
         /* Case: find phone number of person in address book -> 0 persons found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL.getPhone().value;
+        command = FindCommand.COMMAND_WORD + " " + DANIEL.getSemester().name();
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find address of person in address book -> 0 persons found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL.getAddress().value;
+        command = FindCommand.COMMAND_WORD + " " + DANIEL.getExpectedMaxGrade().toString();
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find email of person in address book -> 0 persons found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL.getEmail().value;
+        command = FindCommand.COMMAND_WORD + " " + DANIEL.getExpectedMinGrade().toString();
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -135,7 +135,7 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         /* Case: find while a person is selected -> selected card deselected */
         showAllPersons();
         selectPerson(Index.fromOneBased(1));
-        assertFalse(getPersonListPanel().getHandleToSelectedCard().getName().equals(DANIEL.getName().fullName));
+        assertFalse(getPersonListPanel().getHandleToSelectedCard().getName().equals(DANIEL.getModuleInfo().fullName));
         command = FindCommand.COMMAND_WORD + " Daniel";
         ModelHelper.setFilteredList(expectedModel, DANIEL);
         assertCommandSuccess(command, expectedModel);
