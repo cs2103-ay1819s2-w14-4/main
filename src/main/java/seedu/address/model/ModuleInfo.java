@@ -1,16 +1,19 @@
 package seedu.address.model;
 
+import java.util.ArrayList;
+
 public class ModuleInfo {
     private String code;
     private String title;
-    private int    credits;
+    private double credits;
     private String description;
     private String workLoad;
     private String preclusions;
     private String department;
+    private String prerequisites;
 
-    public ModuleInfo(String code, String title, int credits, String description,String workLoad,
-                      String preclusions, String department){
+    public ModuleInfo(String code, String title, double credits, String description,String workLoad,
+                      String preclusions, String department, String prerequisites){
         this.code = code;
         this.title = title;
         this.credits = credits;
@@ -18,6 +21,7 @@ public class ModuleInfo {
         this.workLoad = workLoad;
         this.preclusions = preclusions;
         this.department = department;
+        this.prerequisites = prerequisites;
 
         System.out.println("Module:" + code + " has been created");
     }
@@ -30,7 +34,7 @@ public class ModuleInfo {
         return this.title;
     }
 
-    public int getCredits(){
+    public double getCredits(){
         return this.credits;
     }
 

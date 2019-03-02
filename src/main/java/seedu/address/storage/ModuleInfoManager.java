@@ -11,13 +11,15 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ModuleInfo;
 import seedu.address.model.ModuleInfoList;
 
+//TODO: Find a way to set the relative path of the JSON file currently uses
 /**
  * Manages storage of All the module information data in local storage.
  */
 public class ModuleInfoManager implements ModuleInfoStorage{
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private static final Path moduleInfoFilePath = Paths.get("src","main","java","seedu.address","storage","test1.json");
+    private static final Path moduleInfoFilePath = Paths.get("D:\\YR4S2\\CS2103T\\Projects\\main\\src\\main\\java" +
+            "\\seedu\\address\\storage\\test1.json");
     private ModuleInfoStorage moduleInfoStorage;
 
     public ModuleInfoManager(){

@@ -11,18 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.ModuleInfo;
-
+//TODO: Find a way to split the prerequisites into class Module Info to that module infos can be linked.
 public class JsonAdaptedModuleInfo {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Module has a missing field %s!";
 
     private final String code;
     private final  String title;
-    private final int    credits;
+    private final double  credits;
     private final String description;
     private final String workLoad;
     private final String preclusions;
     private final String department;
+    private final String prerequisites;
 
     /**
      * Constructs a {@code JsonAdaptedModuleInfo} with the given Module details from JSON file.
@@ -32,18 +33,35 @@ public class JsonAdaptedModuleInfo {
                                  @JsonProperty("ModuleTitle") String title,
                                  @JsonProperty("Department") String department,
                                  @JsonProperty("ModuleDescription") String description,
-                                 @JsonProperty("ModuleCredit") int credits,
+                                 @JsonProperty("ModuleCredit") double credits,
                                  @JsonProperty("Workload") String workLoad,
-                                 @JsonProperty("Preclusion") String preclusions) {
+                                 @JsonProperty("Preclusion") String preclusions,
+                                 @JsonProperty("Prerequisite")String prerequisite) {
         this.code = code;
         this.title = title;
         this.credits = credits;
-        this.description = description;
-        this.workLoad = workLoad;
         this.department = department;
 
+        if(prerequisite == null){
+          this.prerequisites = " No prerequisites needed";
+        }else{
+            this.prerequisites = prerequisite;
+        }
+
+        if(description == null){
+            this.description = "No work load information provided";
+        }else{
+            this.description = description;
+        }
+
+        if(workLoad == null){
+            this.workLoad = "No work load information provided";
+        }else{
+            this.workLoad = workLoad;
+        }
+
         if(preclusions == null){
-            this.preclusions = " ";
+            this.preclusions = "No preclusions provided";
         }else{
             this.preclusions = preclusions;
         }
@@ -61,16 +79,16 @@ public class JsonAdaptedModuleInfo {
         if(title == null){
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT," module title"));
         }
-        if(description == null){
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT," module description"));
-        }
-        if(workLoad == null){
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT," module work load"));
-        }
+//        if(description == null){
+//            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT," module description"));
+//        }
+//        if(workLoad == null){
+//            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT," module work load"));
+//        }
         if(department == null){
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT," module department"));
         }
 
-        return new ModuleInfo(code,title,credits,description,workLoad,preclusions,department);
+        return new ModuleInfo(code,title,credits,description,workLoad,preclusions,department,prerequisites);
     }
 }
