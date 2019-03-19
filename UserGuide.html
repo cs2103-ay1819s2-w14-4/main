@@ -19,7 +19,7 @@
 <li><a href="#edit-module-code-edit-code">3.4. Edit module: <code>edit</code></a></li>
 <li><a href="#delete-module-code-delete-code">3.5. Delete module: <code>delete</code></a></li>
 <li><a href="#find-module-code-find-code">3.6. Find module: <code>find</code></a></li>
-<li><a href="#display-module-information-code-displaym-code">3.7. Display module information: <code>displaym</code></a></li>
+<li><a href="#display-module-information-code-displaymod-code">3.7. Display module information: <code>displaymod</code></a></li>
 <li><a href="#display-user-information-code-displayu-code">3.8. Display user information: <code>displayu</code></a></li>
 <li><a href="#list-entered-commands-code-history-code">3.9. List entered commands: <code>history</code></a></li>
 <li><a href="#undo-previous-command-code-undo-code">3.10. Undo previous command: <code>undo</code></a></li>
@@ -370,38 +370,19 @@ Lists all CS modules taken in Y1S2.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-module-information-code-displaym-code"><a class="link" href="#display-module-information-code-displaym-code">3.7. Display module information: <code>displaym</code></a></h3>
+<h3 id="display-module-information-code-displaymod-code"><a class="link" href="#display-module-information-code-displaymod-code">3.7. Display module information: <code>displaymod</code></a></h3>
 <div class="paragraph">
-<p>3 options to display module information, e.g. course description, prerequisites and courses succeeding the modules.<br>
-Format: <code>displaym o/OPTIONS [MORE_ARGUMENTS]</code></p>
+<p>2 options to display module information, e.g. course description, prerequisites and courses succeeding the modules.
+It is possible to search for multiple modules at the same time by typing the next module code preceded by a whitespace.+
+Format: <code>displaymod [MODULE_CODE]++</code></p>
 </div>
 <div class="paragraph">
-<p>3 modes for o/OPTIONS include:</p>
+<p>1 mode for o/OPTIONS include:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>o/all</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Display all modules completed.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>o/info c/MODULE_CODE</code></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Display information about a module and modules preceding and succeeding it</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>o/info k/KEYWORDS n/[NUMBER]</code></p>
+<p><code>o/info k/KEYWORDS n/[NUMBER]</code> <strong>Coming in V1.3</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -418,15 +399,15 @@ Format: <code>displaym o/OPTIONS [MORE_ARGUMENTS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>displaym o/all</code><br>
-Display all modules completed.</p>
+<p><code>displaymod CS2103T</code><br>
+Display all information with regards to Module: CS2103T i.e Module name, Module description etc. .</p>
 </li>
 <li>
-<p><code>displaym o/info c/CS2103T</code><br>
-System to display module information about CS2103T</p>
+<p><code>displaymod CS2103T CS2101 CS1010 ACC1002X</code><br>
+Displays all the of the 4 module information in-order with the search.</p>
 </li>
 <li>
-<p><code>displaym o/info k/Software Engineering n/5</code><br>
+<p><code>displaymod o/info k/Software Engineering n/5</code><br>
 Display top 5 modules related to Software Engineering.</p>
 </li>
 </ul>
@@ -711,4 +692,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 09:38:14 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 13:20:27 UTC</div></div></div></body></html>

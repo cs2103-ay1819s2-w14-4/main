@@ -29,10 +29,11 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#displaymod-feature">3.1. Displaymod feature</a></li>
+<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -548,9 +549,138 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.1. Undo/Redo feature</a></h3>
+<h3 id="displaymod-feature"><a class="link" href="#displaymod-feature">3.1. Displaymod feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>displaymod</code> is a search function that displays all available information with regards to the module codes the user types
+into the command box.</p>
+</div>
+<div class="paragraph">
+<p>When the application is launched, a JSON file containing all of NUS module information is then converted
+into an Object Class called ModuleInfo individually and stored into an ObservableList&lt;ModuleInfo&gt; called ModuleInfoList.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ConversionModuleInfo.png" alt="ConversionModuleInfo" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The usage of ModuleInfoList is only temporary as it is passed into <code>ModelManager</code> and then converted into an ObservableList&lt;&gt;.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The purpose of having ModuleInfoList is not only for temporary use; it also serves as form of Error handling if the application
+is unable to find the location of the JSON file containing all of the module information, a blank ModuleInfoList is handed to the
+ModelManager.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ObservableList.png" alt="ObservableList" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>This is done as <code>ObservableList&lt;&gt;</code> comes with a <code>FilteredList&lt;&gt;</code> feature: which wraps an ObservableList and filters the contents
+based on <code>predicates</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Predicates</code>&#8201;&#8212;&#8201;All search keywords i.e <strong>Module Code</strong> is saved as a list of <code>predicates</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This allows for easier search throughout the list of all Module Information, as the User can search for multiple modules in
+a single search.</p>
+</div>
+<div class="paragraph">
+<p>The FilteredList is then collected and the ModuleInfo Objects will be formatted into Strings so that the information required
+is displayed by the UI.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-displaymod-executes"><a class="link" href="#aspect-how-displaymod-executes">Aspect: How Displaymod executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Implementation :</strong> Searches based on Module Codes Only</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Searches is slightly faster since its only based on Module Codes</p>
+</li>
+<li>
+<p>Cons: Limited search since it requires User to know Module Codes beforehand.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Future Implementation :</strong> Search based on keywords</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can search for Modules based on keywords thus require no prior knowledge on a particular module code</p>
+</li>
+<li>
+<p>Cons: Have to combine all module information into a single String and search for keywords; slower searches.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-data-structure-used"><a class="link" href="#aspect-data-structure-used">3.1.3. Aspect: Data Structure Used</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Implementation :</strong> <code>ObservableList&lt;&gt;</code> is used</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for <code>FilteredList&lt;&gt;</code> to be used based on predicates; easy implementation.</p>
+</li>
+<li>
+<p>Cons: Requires additional classes to be implemented to handle the use of <code>Predicates</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative :</strong> Sticking to the <code>ArrayList&lt;&gt;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to handle as it is a simple data structure.</p>
+</li>
+<li>
+<p>Cons: Harder to search for specific Keywords(future implementation)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -680,7 +810,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -750,20 +880,20 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -794,7 +924,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2489,4 +2619,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 09:38:14 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 13:20:27 UTC</div></div></div></body></html>
