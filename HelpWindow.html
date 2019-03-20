@@ -19,16 +19,17 @@
 <li><a href="#edit-module-code-edit-code">3.4. Edit module: <code>edit</code></a></li>
 <li><a href="#delete-module-code-delete-code">3.5. Delete module: <code>delete</code></a></li>
 <li><a href="#find-module-code-find-code">3.6. Find module: <code>find</code></a></li>
-<li><a href="#display-module-information-code-displaymod-code">3.7. Display module information: <code>displaymod</code></a></li>
-<li><a href="#display-user-information-code-displayu-code">3.8. Display user information: <code>displayu</code></a></li>
-<li><a href="#list-entered-commands-code-history-code">3.9. List entered commands: <code>history</code></a></li>
-<li><a href="#undo-previous-command-code-undo-code">3.10. Undo previous command: <code>undo</code></a></li>
-<li><a href="#redo-the-previously-undone-command-code-redo-code">3.11. Redo the previously undone command: <code>redo</code></a></li>
-<li><a href="#clear-all-data-entered-code-clear-code">3.12. Clear all data entered: <code>clear</code></a></li>
-<li><a href="#exit-the-program-code-exit-code">3.13. Exit the program: <code>exit</code></a></li>
-<li><a href="#save-data">3.14. Save data</a></li>
-<li><a href="#encrypt-data-files-code-coming-in-v2-0-code">3.15. Encrypt data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#update-module-information-code-coming-in-v2-0-code">3.16. Update module information <code>[coming in v2.0]</code></a></li>
+<li><a href="#recommend-module-code-rec-code">3.7. Recommend module: <code>rec</code></a></li>
+<li><a href="#display-module-information-code-displaymod-code">3.8. Display module information: <code>displaymod</code></a></li>
+<li><a href="#display-user-information-code-displayu-code">3.9. Display user information: <code>displayu</code></a></li>
+<li><a href="#list-entered-commands-code-history-code">3.10. List entered commands: <code>history</code></a></li>
+<li><a href="#undo-previous-command-code-undo-code">3.11. Undo previous command: <code>undo</code></a></li>
+<li><a href="#redo-the-previously-undone-command-code-redo-code">3.12. Redo the previously undone command: <code>redo</code></a></li>
+<li><a href="#clear-all-data-entered-code-clear-code">3.13. Clear all data entered: <code>clear</code></a></li>
+<li><a href="#exit-the-program-code-exit-code">3.14. Exit the program: <code>exit</code></a></li>
+<li><a href="#save-data">3.15. Save data</a></li>
+<li><a href="#encrypt-data-files-code-coming-in-v2-0-code">3.16. Encrypt data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#update-module-information-code-coming-in-v2-0-code">3.17. Update module information <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -40,7 +41,8 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>GradTrak is an application designed for NUS students to easily track their graduation progress. It is currently only limited to courses offered in School of Computing. The primary method of input is Command Line Interface (CLI) which will benefit students of SoC as they generally type quickly. Proceed to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>GradTrak is an application designed for students of National University of Singapore (NUS) to easily track their graduation progress.
+It is currently limited to courses offered in School of Computing (SoC). The primary method of input is the Command Line Interface (CLI) which will benefit students of SoC as they generally type quickly. Proceed to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -75,10 +77,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>update</code></strong> : retrieves the latest information of all modules from CORS.</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>c/cs1010 s/y1s1 g/A</code> : adds the module "CS1010", taken in Y1S1 with grade A, into the list of completed modules.</p>
+<p><strong><code>add</code></strong><code>c/cs1010 s/y1s1</code> : adds the module "CS1010", taken in Y1S1, into the module plan.</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>1</code> : deletes the first module on the most recently displayed list.</p>
@@ -107,7 +106,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add c/MODULE_CODE</code>, <code>MODULE_CODE</code> is a parameter which can be used as <code>add c/cs1010</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user, e.g. in <code>add c/MODULE_CODE</code>, <code>MODULE_CODE</code> is a parameter which can be used as <code>add c/cs1010</code>.</p>
 </li>
 <li>
 <p>Items in square brackets are optional e.g <code>c/MODULE_CODE [g/GRADE_OBTAINED]</code> can be used as <code>c/cs1010 g/A</code> or as <code>c/cs1010</code>.</p>
@@ -290,8 +289,12 @@ Deletes the first module on the most recently displayed list.</p>
 <div class="sect2">
 <h3 id="find-module-code-find-code"><a class="link" href="#find-module-code-find-code">3.6. Find module: <code>find</code></a></h3>
 <div class="paragraph">
-<p>Finds module(s) in the module plan based on module code, semester taken or grade obtained.<br>
-Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE_OBTAINED]</code></p>
+<p>Finds module(s) in the module plan based on module code, semester, grade or finished status.<br>
+Module code can be entered partially, but semester and grade must be exact.
+Finished status must be 'y' (YES) or 'n' (NO).</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -302,9 +305,6 @@ Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE_OBTAINED]</code></p>
 </li>
 <li>
 <p>Parameters are case-insensitive.</p>
-</li>
-<li>
-<p>Module code can be entered partially, but semester taken and grade obtained must be exact.</p>
 </li>
 <li>
 <p>Modules matching ALL of the above parameters will be listed.</p>
@@ -320,20 +320,28 @@ Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE_OBTAINED]</code></p>
 <ul>
 <li>
 <p><code>find c/cs2</code><br>
-Lists all level-2K CS modules in the module plan.</p>
+Lists all level-2000 CS modules in the module plan.</p>
 </li>
 <li>
 <p><code>find c/cs s/y1s2</code><br>
-Lists all CS modules taken in Y1S2.</p>
+Lists all CS modules (to be) taken in Y1S2.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-module-information-code-displaymod-code"><a class="link" href="#display-module-information-code-displaymod-code">3.7. Display module information: <code>displaymod</code></a></h3>
+<h3 id="recommend-module-code-rec-code"><a class="link" href="#recommend-module-code-rec-code">3.7. Recommend module: <code>rec</code></a></h3>
+<div class="paragraph">
+<p>Recommends a list of modules that can be taken based on completed modules, FA and course requirements.
+Modules are displayed according to the following order of priority: Core, FA, non-FA, General Education and Unrestricted Elective modules.<br>
+Format: <code>rec</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="display-module-information-code-displaymod-code"><a class="link" href="#display-module-information-code-displaymod-code">3.8. Display module information: <code>displaymod</code></a></h3>
 <div class="paragraph">
 <p>2 options to display module information, e.g. course description, prerequisites and courses succeeding the modules.
-It is possible to search for multiple modules at the same time by typing the next module code preceded by a whitespace.+
+It is possible to search for multiple modules at the same time by typing the next module code preceded by a whitespace.<br>
 Format: <code>displaymod [MODULE_CODE]++</code></p>
 </div>
 <div class="paragraph">
@@ -374,7 +382,7 @@ Display top 5 modules related to Software Engineering.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-user-information-code-displayu-code"><a class="link" href="#display-user-information-code-displayu-code">3.8. Display user information: <code>displayu</code></a></h3>
+<h3 id="display-user-information-code-displayu-code"><a class="link" href="#display-user-information-code-displayu-code">3.9. Display user information: <code>displayu</code></a></h3>
 <div class="paragraph">
 <p>Displays various user information based on options and other arguments given<br>
 Format: <code>displayu o/OPTIONS [MORE_ARGUMENTS]</code></p>
@@ -461,9 +469,9 @@ Display requirements not completed and modules that can be taken to fulfil the r
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-entered-commands-code-history-code"><a class="link" href="#list-entered-commands-code-history-code">3.9. List entered commands: <code>history</code></a></h3>
+<h3 id="list-entered-commands-code-history-code"><a class="link" href="#list-entered-commands-code-history-code">3.10. List entered commands: <code>history</code></a></h3>
 <div class="paragraph">
-<p>Lists all the commands entered in reverse chronological order.<br>
+<p>Lists all commands entered in reverse chronological order.<br>
 Format: <code>history</code></p>
 </div>
 <div class="admonitionblock note">
@@ -482,7 +490,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-previous-command-code-undo-code"><a class="link" href="#undo-previous-command-code-undo-code">3.10. Undo previous command: <code>undo</code></a></h3>
+<h3 id="undo-previous-command-code-undo-code"><a class="link" href="#undo-previous-command-code-undo-code">3.11. Undo previous command: <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the module plan to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -527,7 +535,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redo-the-previously-undone-command-code-redo-code"><a class="link" href="#redo-the-previously-undone-command-code-redo-code">3.11. Redo the previously undone command: <code>redo</code></a></h3>
+<h3 id="redo-the-previously-undone-command-code-redo-code"><a class="link" href="#redo-the-previously-undone-command-code-redo-code">3.12. Redo the previously undone command: <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -559,34 +567,33 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear-all-data-entered-code-clear-code"><a class="link" href="#clear-all-data-entered-code-clear-code">3.12. Clear all data entered: <code>clear</code></a></h3>
+<h3 id="clear-all-data-entered-code-clear-code"><a class="link" href="#clear-all-data-entered-code-clear-code">3.13. Clear all data entered: <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears the module plan.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">3.13. Exit the program: <code>exit</code></a></h3>
+<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">3.14. Exit the program: <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="save-data"><a class="link" href="#save-data">3.14. Save data</a></h3>
+<h3 id="save-data"><a class="link" href="#save-data">3.15. Save data</a></h3>
 <div class="paragraph">
-<p>Module data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>Data are saved in the hard disk automatically after any command that changes them. There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypt-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypt-data-files-code-coming-in-v2-0-code">3.15. Encrypt data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypt-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypt-data-files-code-coming-in-v2-0-code">3.16. Encrypt data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Encrypts user data files.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="update-module-information-code-coming-in-v2-0-code"><a class="link" href="#update-module-information-code-coming-in-v2-0-code">3.16. Update module information <code>[coming in v2.0]</code></a></h3>
+<h3 id="update-module-information-code-coming-in-v2-0-code"><a class="link" href="#update-module-information-code-coming-in-v2-0-code">3.17. Update module information <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Retrieves the latest information of all modules from CORS.</p>
 </div>
@@ -626,7 +633,10 @@ or<br>
 <code>delete INDEX</code><br></p>
 </li>
 <li>
-<p><strong>Find</strong>: <code>find [c/MODULE_CODE] [t/MODULE_TITLE] [s/SEMESTER] [g/GRADE_OBTAINED]</code></p>
+<p><strong>Find</strong>: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code></p>
+</li>
+<li>
+<p><strong>Recommend</strong>: <code>rec</code></p>
 </li>
 <li>
 <p><strong>Clear</strong>: <code>clear</code></p>
@@ -652,4 +662,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 15:54:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-20 13:52:59 UTC</div></div></div></body></html>
