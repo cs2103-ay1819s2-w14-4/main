@@ -395,12 +395,8 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="find-module-code-find-code"><a class="link" href="#find-module-code-find-code">3.10. Find module: <code>find</code></a></h3>
 <div class="paragraph">
-<p>Finds module(s) in the module plan based on module code, semester, grade or finished status.<br>
-Module code can be entered partially, but semester and grade must be exact.
-Finished status must be 'y' (YES) or 'n' (NO).</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code></p>
+<p>Finds module(s) in the module plan matching all given module code, semester, grade or finished status.<br>
+Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -413,7 +409,10 @@ Finished status must be 'y' (YES) or 'n' (NO).</p>
 <p>Parameters are case-insensitive.</p>
 </li>
 <li>
-<p>Modules matching ALL of the above parameters will be listed.</p>
+<p>Module code can be entered partially, but semester and grade must be exact.</p>
+</li>
+<li>
+<p>Enter 'y' for finished status to indicate finished module, or any other value to indicate unfinished.</p>
 </li>
 </ul>
 </div>
@@ -713,4 +712,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-23 11:41:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-23 14:46:27 UTC</div></div></div></body></html>
