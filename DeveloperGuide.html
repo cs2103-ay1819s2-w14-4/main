@@ -1506,7 +1506,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a shorthand equivalent alias for each of the individual commands. For example, besides typing <code>clear</code>, the user can also type <code>c</code> to remove all persons in the list.</p>
+<p>Add a shorthand equivalent alias for each of the individual commands. For example, besides typing <code>clear</code>, the user can also type <code>c</code> to remove all modulesTaken in the list.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -1813,16 +1813,16 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the constructor of <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the courseReqCredits of persons when the application just started.</p>
+<p>Modify the constructor of <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the courseReqCredits of modulesTaken when the application just started.</p>
 </li>
 <li>
-<p>Use <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the courseReqCredits of persons whenever there are new changes to the addressbook.</p>
+<p>Use <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the courseReqCredits of modulesTaken whenever there are new changes to the addressbook.</p>
 </li>
 <li>
 <p>For tests, modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total courseReqCredits of people status, just like what we did for save location and sync status.</p>
 </li>
 <li>
-<p>For system tests, modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total courseReqCredits of persons status bar.</p>
+<p>For system tests, modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total courseReqCredits of modulesTaken status bar.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
@@ -2586,7 +2586,7 @@ for <code>RemarkCommandParser</code>.</p>
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 1000 modulesTaken without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
@@ -2713,11 +2713,11 @@ Expected: The most recent window size and location is retained.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Deleting a person while all modulesTaken are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: List all modulesTaken using the <code>list</code> command. Multiple modulesTaken in the list.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
@@ -2761,4 +2761,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-25 14:50:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-26 04:11:00 UTC</div></div></div></body></html>
