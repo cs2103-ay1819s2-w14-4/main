@@ -11,15 +11,15 @@
 <ul class="sectlevel1">
 <li><a href="#setting-up">1. Setting up</a>
 <ul class="sectlevel2">
-<li><a href="#prerequisites">1.1. Prerequisites</a></li>
-<li><a href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></li>
+<li><a href="#checking-prerequisites">1.1. Checking prerequisites</a></li>
+<li><a href="#setting-up-the-project">1.2. Setting up the project</a></li>
 <li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></li>
+<li><a href="#configurating-the-project">1.4. Configurating the project</a></li>
 </ul>
 </li>
 <li><a href="#design">2. Design</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
+<li><a href="#architecture">2.1. Architecture</a></li>
 <li><a href="#Design-Ui">2.2. UI component</a></li>
 <li><a href="#Design-Logic">2.3. Logic component</a></li>
 <li><a href="#Design-Model">2.4. Model component</a></li>
@@ -89,8 +89,14 @@
 <div class="sect1">
 <h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Go through the following sections to set up GradTrak.</p>
+</div>
 <div class="sect2">
-<h3 id="prerequisites"><a class="link" href="#prerequisites">1.1. Prerequisites</a></h3>
+<h3 id="checking-prerequisites"><a class="link" href="#checking-prerequisites">1.1. Checking prerequisites</a></h3>
+<div class="paragraph">
+<p>Ensure that each of the following software has been installed.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -129,100 +135,110 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">1.2. Setting up the project in your computer</a></h3>
+<h3 id="setting-up-the-project"><a class="link" href="#setting-up-the-project">1.2. Setting up the project</a></h3>
+<div class="paragraph">
+<p>Follow the instructions below to set up the project on your computer.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Fork this repo, and clone the fork to your computer</p>
+<p>Fork this repo, and clone the fork to your computer.</p>
 </li>
 <li>
-<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first).</p>
 </li>
 <li>
-<p>Set up the correct JDK version for Gradle</p>
+<p>Set up the correct JDK version for Gradle.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code></p>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code>.</p>
 </li>
 <li>
-<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK</p>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Click <code>Import Project</code></p>
+<p>Click <code>Import Project</code>.</p>
 </li>
 <li>
-<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code></p>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code>.</p>
 </li>
 <li>
-<p>Click <code>Open as Project</code></p>
+<p>Click <code>Open as Project</code>.</p>
 </li>
 <li>
-<p>Click <code>OK</code> to accept the default settings</p>
+<p>Click <code>OK</code> to accept the default settings.</p>
 </li>
 <li>
 <p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
 This will generate all resources required by the application and tests.</p>
 </li>
 <li>
-<p>Open <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors</p>
+<p>Open <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Due to an ongoing <a href="https://youtrack.jetbrains.com/issue/IDEA-189060">issue</a> with some of the newer versions of IntelliJ, code errors may be detected even if the project can be built and run successfully</p>
+<p>Due to an ongoing <a href="https://youtrack.jetbrains.com/issue/IDEA-189060">issue</a> with some of the newer versions of IntelliJ, code errors may be detected even if the project can be built and run successfully.</p>
 </li>
 <li>
-<p>To resolve this, place your cursor over any of the code section highlighted in red. Press <span class="keyseq"><kbd>ALT</kbd>+<kbd>ENTER</kbd></span>, and select <code>Add '--add-modules=&#8230;&#8203;' to module compiler options</code> for each error</p>
+<p>To resolve this, place your cursor over any of the code section highlighted in red. Press <span class="keyseq"><kbd>ALT</kbd>+<kbd>ENTER</kbd></span>, and select <code>Add '--add-modules=&#8230;&#8203;' to module compiler options</code> for each error.</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way)</p>
+<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way).</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
 <h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the setup</a></h3>
+<div class="paragraph">
+<p>Follow the instructions below to verify that the setup is successful.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Run the <code>seedu.address.MainApp</code> and try a few commands</p>
+<p>Run <code>seedu.address.MainApp</code> and try a few commands.</p>
 </li>
 <li>
-<p><a href="#Testing">Run the tests</a> to ensure they all pass.</p>
+<p><a href="#Testing">Run the tests</a> to ensure all of them pass.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">1.4. Configurations to do before writing code</a></h3>
+<h3 id="configurating-the-project"><a class="link" href="#configurating-the-project">1.4. Configurating the project</a></h3>
+<div class="paragraph">
+<p>Go through the following sections to configure the project.</p>
+</div>
 <div class="sect3">
 <h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the coding style</a></h4>
 <div class="paragraph">
-<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify,</p>
+<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order.
+Follow the instructions below to rectify this issue.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS)</p>
+<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS).</p>
 </li>
 <li>
-<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code></p>
+<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code>.</p>
 </li>
 <li>
-<p>Click on the <code>Imports</code> tab to set the order</p>
+<p>Click on the <code>Imports</code> tab to set the order.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements</p>
+<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements.</p>
 </li>
 <li>
-<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code></p>
+<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code>.</p>
 </li>
 </ul>
 </div>
@@ -272,12 +288,12 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sect3">
 <h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.3. Getting started with coding</a></h4>
 <div class="paragraph">
-<p>When you are ready to start coding,</p>
+<p>Follow the instructions below when you are ready to start coding.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Get some sense of the overall design by reading <a href="#Design-Architecture">Section 2.1, &#8220;Architecture&#8221;</a>.</p>
+<p>Get some sense of the overall design by reading <a href="#Design-Architecture">[Design-Architecture]</a>.</p>
 </li>
 <li>
 <p>Take a look at <a href="#GetStartedProgramming">Appendix A, <em>Suggested Programming Tasks to Get Started</em></a>.</p>
@@ -291,8 +307,11 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sect1">
 <h2 id="design"><a class="link" href="#design">2. Design</a></h2>
 <div class="sectionbody">
+<div id="Design-Architecture" class="paragraph">
+<p>The following sections explain the design of GradTrak.</p>
+</div>
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="architecture"><a class="link" href="#architecture">2.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/Architecture.png" alt="Architecture" width="600">
@@ -315,15 +334,15 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has only one class called <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</p>
+<p>At app launch: Initializing the components in the correct sequence and connecting them with one another.</p>
 </li>
 <li>
-<p>At shut down: Shuts down the components and invokes cleanup method where necessary.</p>
+<p>At shut down: Shutting down the components and invoking cleanup methods where necessary.</p>
 </li>
 </ul>
 </div>
@@ -344,26 +363,26 @@ The following class plays an important role at the architecture level:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the App.</p>
+<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The user interface (UI) of the App.</p>
 </li>
 <li>
 <p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
 </li>
 <li>
-<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: The model holding the data of the App in-memory.</p>
 </li>
 <li>
-<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
+<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: The storage which reads data from and writes data to the hard disk.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of the four components</p>
+<p>Each of the four components above:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Defines its <em>API</em> in an <code>interface</code> with the same name as the Component.</p>
+<p>Defines its Application Programming Interface (API) in an <code>interface</code> with the same name as the Component.</p>
 </li>
 <li>
 <p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
@@ -371,7 +390,7 @@ The following class plays an important role at the architecture level:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, the <code>Logic</code> component (see the class diagram given below) defines it&#8217;s API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+<p>For example, the <code>Logic</code> component (see the class diagram given below) defines its API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -385,7 +404,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
+<img src="images/SDforDeleteModuleTaken.png" alt="SDforDeleteModuleTaken" width="800">
 </div>
 <div class="title">Figure 3. Component interactions for <code>delete 1</code> command</div>
 </div>
@@ -411,7 +430,7 @@ The following class plays an important role at the architecture level:</p>
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component,</p>
+<p>The <code>UI</code> component:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -439,13 +458,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>GradTrakParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a person).</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a module).</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -477,7 +496,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The <code>Model</code>,</p>
+<p>The <code>Model</code>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -485,10 +504,10 @@ The following class plays an important role at the architecture level:</p>
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the GradTrak data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;ModuleTaken&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -502,7 +521,7 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+As a more OOP model, we can store a <code>Tag</code> list in <code>GradTrak</code>, which <code>ModuleTaken</code> can reference. This would allow <code>GradTrak</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>ModuleTaken</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
 <br>
 <span class="image"><img src="images/ModelClassBetterOopDiagram.png" alt="ModelClassBetterOopDiagram" width="800"></span>
 </td>
@@ -683,31 +702,31 @@ is displayed by the UI.</p>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
+<p>The undo/redo mechanism is facilitated by <code>VersionedGradTrak</code>.
+It extends <code>GradTrak</code> with an undo/redo history, stored internally as an <code>gradTrakStateList</code> and <code>currentStatePointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p><code>VersionedGradTrak#commit()</code>&#8201;&#8212;&#8201;Saves the current GradTrak state in its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
+<p><code>VersionedGradTrak#undo()</code>&#8201;&#8212;&#8201;Restores the previous GradTrak state from its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p><code>VersionedGradTrak#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone GradTrak state from its history.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitGradTrak()</code>, <code>Model#undoGradTrak()</code> and <code>Model#redoGradTrak()</code> respectively.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedGradTrak</code> will be initialized with the initial GradTrak state, and the <code>currentStatePointer</code> pointing to that single GradTrak state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -715,7 +734,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th module in the GradTrak. The <code>delete</code> command calls <code>Model#commitGradTrak()</code>, causing the modified state of the GradTrak after the <code>delete 5</code> command executes to be saved in the <code>GradTrakStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted GradTrak state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -723,7 +742,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>add c/CS2103T &#8230;&#8203;</code> to add a new module. The <code>add</code> command also calls <code>Model#commitGradTrak()</code>, causing another modified GradTrak state to be saved into the <code>gradTrakStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -737,13 +756,13 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will not call <code>Model#commitGradTrak()</code>, so the GradTrak state will not be saved into the <code>gradTrakStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the module was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoGradTrak()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous GradTrak state, and restores the GradTrak to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -757,7 +776,7 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial GradTrak state, then there are no previous GradTrak states to restore. The <code>undo</code> command uses <code>Model#canUndoGradTrak()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -771,7 +790,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoGradTrak()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the GradTrak to that state.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -780,13 +799,13 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size() - 1</code>, pointing to the latest GradTrak state, then there are no undone GradTrak states to restore. The <code>redo</code> command uses <code>Model#canRedoGradTrak()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the GradTrak, such as <code>list</code>, will usually not call <code>Model#commitGradTrak()</code>, <code>Model#undoGradTrak()</code> or <code>Model#redoGradTrak()</code>. Thus, the <code>gradTrakStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -794,7 +813,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitGradTrak()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>gradTrakStateList</code>, all GradTrak states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add c/CS2103T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -817,7 +836,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire GradTrak.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -850,14 +869,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of GradTrak states.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Pros: Easy for less experienced developers to understand.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedGradTrak</code>.</p>
 </li>
 </ul>
 </div>
@@ -987,17 +1006,17 @@ older CourseRequirement defined by user. Also alot of dependency issues in Stora
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current implementation</a></h4>
 <div class="paragraph">
-<p>The module recommendation feature generates a list of module codes representing the modules which the user is recommended to take,
-based on the user&#8217;s module plan and course requirements. The entire list is printed on the GUI upon
-entering the <code>rec</code> command.</p>
+<p>The module recommendation feature generates a list of <code>RecModule</code> representing the modules which the user is recommended to take,
+based on the user&#8217;s passed modules and course requirements. Each <code>RecModule</code> contains a <code>ModuleInfoCode</code> and its
+corresponding <code>CourseReqType</code> satisfied. The entire list is printed on the GUI upon entering the <code>rec</code> command.</p>
 </div>
 <div class="paragraph">
 <p>Whenever the <code>rec</code> command is called, a <code>RecModuleManager</code> is created which generates a <code>RecModulePredicate</code> and
-a <code>RecModuleComparator</code> given the user&#8217;s <code>Course</code> and <code>ModulePlan</code>. This ensures that the recommendation list is updated
-according to any changes in <code>Course</code> and <code>ModulePlan</code>.</p>
+a <code>RecModuleComparator</code> given the user&#8217;s <code>Course</code> and <code>GradTrak</code>. This ensures that the recommendation list is updated
+according to any changes in <code>Course</code> and <code>GradTrak</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>RecModulePredicate</code> is applied to a <code>FilteredList</code> of <code>ModuleInfoCode</code> stored in <code>ModelManager</code>, to remove modules which
+<p>The <code>RecModulePredicate</code> is applied to a <code>FilteredList</code> of <code>RecModule</code> stored in <code>ModelManager</code>, to remove modules which
 the user is ineligible to take or does not contribute to the <code>CourseRequirement</code>.
 This <code>FilteredList</code> is wrapped in a <code>SortedList</code> which accepts the <code>RecModuleComparator</code>, sorting the list in
 decreasing priority of the <code>CourseReqType</code> satisfied by the module.
@@ -1006,18 +1025,10 @@ The order of priority is determined by the enum ordering in <code>CourseReqType<
 Modules with equal priority are sorted lexicographically, considering the fact that lower-level modules should usually be taken first.</p>
 </div>
 <div class="paragraph">
-<p>Within each test by the <code>RecModulePredicate</code>, a module is checked for the <code>CourseReqType</code>(s) it satisfies.
+<p>Within each test by the <code>RecModulePredicate</code>, a <code>RecModule</code> is checked for the <code>CourseReqType</code>(s) it satisfies using its <code>ModuleInfoCode</code>.
 The <code>CourseReqType</code> with highest priority, which has yet to be fully completed, is then selected.
-A mapping of <code>ModuleInfoCode</code> to this <code>CourseReqType</code> is put into a <code>HashMap</code> stored in <code>RecModuleManager</code>.
-Subsequently, within each comparison by the <code>RecModuleComparator</code>, the <code>CourseReqType</code> satisfied by the two modules are
-retrieved from the <code>HashMap</code> and compared.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect"><a class="link" href="#aspect">Aspect:</a></h5>
-
+This <code>CourseReqType</code> is set into the <code>RecModule</code> being tested.
+Subsequently, within each comparison by the <code>RecModuleComparator</code>, the <code>CourseReqType</code> satisfied by the two <code>RecModule</code> are compared.</p>
 </div>
 </div>
 </div>
@@ -1579,13 +1590,13 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> API need to be updated.</p>
+<p>The <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/Model.java"><code>Model</code></a> and the <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/GradTrak.java"><code>GradTrak</code></a> API need to be updated.</p>
 </li>
 <li>
 <p>Think about how you can use SLAP to design the method. Where should we place the main logic of deleting tags?</p>
 </li>
 <li>
-<p>Find out which of the existing API methods in  <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a person, and <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a> allows you to update the tags.</p>
+<p>Find out which of the existing API methods in  <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/GradTrak.java"><code>GradTrak</code></a> and <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/person/ModuleTaken.java"><code>ModuleTaken</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/GradTrak.java"><code>GradTrak</code></a> allows you to update a module, and <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/person/ModuleTaken.java"><code>ModuleTaken</code></a> allows you to update the tags.</p>
 </li>
 </ul>
 </div>
@@ -1595,10 +1606,10 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each person, and remove the <code>tag</code> from each person.</p>
+<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/GradTrak.java"><code>GradTrak</code></a>. Loop through each module, and remove the <code>tag</code> from each module.</p>
 </li>
 <li>
-<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
+<p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>GradTrak#removeTag(Tag)</code>.</p>
 </li>
 <li>
 <p>Add new tests for each of the new public methods that you have added.</p>
@@ -1816,13 +1827,13 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <p>Modify the constructor of <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the courseReqCredits of modulesTaken when the application just started.</p>
 </li>
 <li>
-<p>Use <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the courseReqCredits of modulesTaken whenever there are new changes to the addressbook.</p>
+<p>Use <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleGradTrakChangedEvent(GradTrakChangedEvent)</code></a> to update the courseReqCredits of modulesTaken whenever there are new changes to the GradTrak.</p>
 </li>
 <li>
 <p>For tests, modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total courseReqCredits of people status, just like what we did for save location and sync status.</p>
 </li>
 <li>
-<p>For system tests, modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total courseReqCredits of modulesTaken status bar.</p>
+<p>For system tests, modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/systemtests/GradTrakSystemTest.java"><code>GradTrakSystemTest</code></a> to also verify the new total courseReqCredits of modulesTaken status bar.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
@@ -1839,7 +1850,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 </div>
 <h4 id="code-storage-code-component" class="discrete"><code>Storage</code> component</h4>
 <div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>storage</code>. For your next project milestone, your team plans to implement a new feature of saving the address book to the cloud. However, the current implementation of the application constantly saves the address book after the execution of each command, which is not ideal if the user is working on limited internet connection. Your team decided that the application should instead save the changes to a temporary local backup file first, and only upload to the cloud after the user closes the application. Your job is to implement a backup API for the address book storage.</p>
+<p><strong>Scenario:</strong> You are in charge of <code>storage</code>. For your next project milestone, your team plans to implement a new feature of saving the GradTrak to the cloud. However, the current implementation of the application constantly saves the GradTrak after the execution of each command, which is not ideal if the user is working on limited internet connection. Your team decided that the application should instead save the changes to a temporary local backup file first, and only upload to the cloud after the user closes the application. Your job is to implement a backup API for the GradTrak storage.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1856,7 +1867,7 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a new method <code>backupAddressBook(ReadOnlyAddressBook)</code>, so that the address book can be saved in a fixed temporary location.</p>
+<p>Add a new method <code>backupGradTrak(ReadOnlyGradTrak)</code>, so that the address book can be saved in a fixed temporary location.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -1866,10 +1877,10 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <div class="ulist">
 <ul>
 <li>
-<p>Add the API method in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/AddressBookStorage.java"><code>AddressBookStorage</code></a> interface.</p>
+<p>Add the API method in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/GradTrakStorage.java"><code>GradTrakStorage</code></a> interface.</p>
 </li>
 <li>
-<p>Implement the logic in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/JsonAddressBookStorage.java"><code>JsonAddressBookStorage</code></a> class.</p>
+<p>Implement the logic in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/StorageManager.java"><code>StorageManager</code></a> and <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/JsonGradTrakStorage.java"><code>JsonGradTrakStorage</code></a> class.</p>
 </li>
 </ul>
 </div>
@@ -1898,7 +1909,7 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <p>By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major components of the app.</p>
 </div>
 <div class="paragraph">
-<p><strong>Scenario:</strong> You are a software maintainer for <code>addressbook</code>, as the former developer team has moved on to new projects. The current users of your application have a list of new feature requests that they hope the software will eventually have. The most popular request is to allow adding additional comments/notes about a particular contact, by providing a flexible <code>remark</code> field for each contact, rather than relying on tags alone. After designing the specification for the <code>remark</code> command, you are convinced that this feature is worth implementing. Your job is to implement the <code>remark</code> command.</p>
+<p><strong>Scenario:</strong> You are a software maintainer for <code>GradTrak</code>, as the former developer team has moved on to new projects. The current users of your application have a list of new feature requests that they hope the software will eventually have. The most popular request is to allow adding additional comments/notes about a particular module, by providing a flexible <code>remark</code> field for each module, rather than relying on tags alone. After designing the specification for the <code>remark</code> command, you are convinced that this feature is worth implementing. Your job is to implement the <code>remark</code> command.</p>
 </div>
 <div class="sect3">
 <h4 id="description"><a class="link" href="#description">A.2.1. Description</a></h4>
@@ -1912,12 +1923,12 @@ Format: <code>remark INDEX r/[REMARK]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>remark 1 r/Likes to drink coffee.</code><br>
-Edits the remark for the first person to <code>Likes to drink coffee.</code></p>
+<p><code>remark 1 r/Very difficult!</code><br>
+Edits the remark for the first module to <code>Very difficult!</code></p>
 </li>
 <li>
 <p><code>remark 1 r/</code><br>
-Removes the remark for the first person.</p>
+Removes the remark for the first module.</p>
 </li>
 </ul>
 </div>
@@ -1938,7 +1949,7 @@ Removes the remark for the first person.</p>
 <p>Add a <code>RemarkCommand</code> that extends <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/logic/commands/Command.java"><code>Command</code></a>. Upon execution, it should just throw an <code>Exception</code>.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to accept a <code>RemarkCommand</code>.</p>
+<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/logic/parser/GradTrakParser.java"><code>GradTrakParser</code></a> to accept a <code>RemarkCommand</code>.</p>
 </li>
 </ol>
 </div>
@@ -1951,7 +1962,7 @@ Removes the remark for the first person.</p>
 <p>Add <code>RemarkCommandTest</code> that tests that <code>execute()</code> throws an Exception.</p>
 </li>
 <li>
-<p>Add new test method to <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
+<p>Add new test method to <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/logic/parser/GradTrakParserTest.java"><code>GradTrakTest</code></a>, which tests that typing "remark" returns an instance of <code>RemarkCommand</code>.</p>
 </li>
 </ol>
 </div>
@@ -1959,7 +1970,7 @@ Removes the remark for the first person.</p>
 <div class="sect4">
 <h5 id="step-2-logic-teach-the-app-to-accept-remark-arguments"><a class="link" href="#step-2-logic-teach-the-app-to-accept-remark-arguments">[Step 2] Logic: Teach the app to accept 'remark' arguments</a></h5>
 <div class="paragraph">
-<p>Let&#8217;s teach the application to parse arguments that our <code>remark</code> command will accept. E.g. <code>1 r/Likes to drink coffee.</code></p>
+<p>Let&#8217;s teach the application to parse arguments that our <code>remark</code> command will accept. E.g. <code>1 r/Very Difficult!</code></p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1973,7 +1984,7 @@ Removes the remark for the first person.</p>
 <p>Add <code>RemarkCommandParser</code> that knows how to parse two arguments, one index and one with prefix 'r/'.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/logic/parser/AddressBookParser.java"><code>AddressBookParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
+<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/logic/parser/GradTrakParser.java"><code>GradTrakParser</code></a> to use the newly implemented <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
@@ -1990,7 +2001,7 @@ Removes the remark for the first person.</p>
 for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/logic/parser/AddressBookParserTest.java"><code>AddressBookParserTest</code></a> to test that the correct command is generated according to the user input.</p>
+<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/logic/parser/GradTrakParserTest.java"><code>GradTrakParserTest</code></a> to test that the correct command is generated according to the user input.</p>
 </li>
 </ol>
 </div>
@@ -2054,9 +2065,9 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-5-model-modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-person-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Person</code> to support a <code>Remark</code> field</a></h5>
+<h5 id="step-5-model-modify-code-moduletaken-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-moduletaken-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>ModuleTaken</code> to support a <code>Remark</code> field</a></h5>
 <div class="paragraph">
-<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/moduletaken/ModuleTaken.java"><code>ModuleTaken</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2064,21 +2075,21 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>getRemark()</code> in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Add <code>getRemark()</code> in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/moduletaken/ModuleTaken.java"><code>ModuleTaken</code></a>.</p>
 </li>
 <li>
-<p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the person will be created without a remark).</p>
+<p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the module will be created without a remark).</p>
 </li>
 <li>
-<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>data/addressbook.json</code> so that the application will load the sample data when you launch it.)</p>
+<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>data/gradtrak.json</code> so that the application will load the sample data when you launch it.)</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-6-storage-add-code-remark-code-field-to-code-jsonadaptedperson-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-jsonadaptedperson-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>JsonAdaptedPerson</code> class</a></h5>
+<h5 id="step-6-storage-add-code-remark-code-field-to-code-jsonadaptedmoduletaken-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-jsonadaptedmoduletaken-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>JsonAdaptedModuleTaken</code> class</a></h5>
 <div class="paragraph">
-<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/JsonAdaptedPerson.java"><code>JsonAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
+<p>We now have <code>Remark</code> s for <code>ModuleTaken</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/JsonAdaptedModuleTaken.java"><code>JsonModuleTaken</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -2096,15 +2107,15 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Fix <code>invalidAndValidPersonAddressBook.json</code>, <code>typicalPersonsAddressBook.json</code>, <code>validAddressBook.json</code> etc., such that the JSON tests will not fail due to a missing <code>remark</code> field.</p>
+<p>Fix <code>invalidAndValidModuleTakenGradTrak.json</code>, <code>typicalModuleTakenGradTrak.json</code>, <code>validGradTrak.json</code> etc., such that the JSON tests will not fail due to a missing <code>remark</code> field.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-6b-test-add-withremark-for-code-personbuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-personbuilder-code">[Step 6b] Test: Add withRemark() for <code>PersonBuilder</code></a></h5>
+<h5 id="step-6b-test-add-withremark-for-code-moduletaken-code"><a class="link" href="#step-6b-test-add-withremark-for-code-moduletaken-code">[Step 6b] Test: Add withRemark() for <code>ModuleTaken</code></a></h5>
 <div class="paragraph">
-<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/person/Person.java"><code>Person</code></a>.</p>
+<p>Since <code>ModuleTaken</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/testutil/ModuleTakenBuilder.java"><code>ModuleTakenBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/model/moduletaken/ModuleTaken.java"><code>ModuleTaken</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Tests:</strong></p>
@@ -2112,10 +2123,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the person that it is currently building.</p>
+<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/testutil/ModuleTakenBuilder.java"><code>ModuleTakenBuilder</code></a>. This method will create a new <code>Remark</code> for the module that it is currently building.</p>
 </li>
 <li>
-<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
+<p>Try and use the method on any sample <code>ModuleTaken</code> in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/testutil/TypicalModuleTaken.java"><code>TypicalModuleTaken</code></a>.</p>
 </li>
 </ol>
 </div>
@@ -2131,7 +2142,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
+<p>Modify <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>ModuleTaken</code> 's remark.</p>
 </li>
 </ol>
 </div>
@@ -2761,4 +2772,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 14:12:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 15:29:04 UTC</div></div></div></body></html>
