@@ -31,7 +31,7 @@
 <ul class="sectlevel2">
 <li><a href="#displaymod-feature">3.1. Displaymod feature</a></li>
 <li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
-<li><a href="#adding-removing-checking-courses-and-course-requirement-feature">3.3. Adding/Removing/Checking Courses and Course Requirement Feature</a></li>
+<li><a href="#checking-whether-course-requirement-is-fulfilled-feature">3.3. Checking whether Course Requirement is fulfilled Feature</a></li>
 <li><a href="#module-recommendation-feature">3.4. Module recommendation feature</a></li>
 <li><a href="#semester-cap-and-workload-management-feature">3.5. Semester CAP and workload management feature</a></li>
 <li><a href="#logging">3.6. Logging</a></li>
@@ -901,42 +901,64 @@ If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-removing-checking-courses-and-course-requirement-feature"><a class="link" href="#adding-removing-checking-courses-and-course-requirement-feature">3.3. Adding/Removing/Checking Courses and Course Requirement Feature</a></h3>
+<h3 id="checking-whether-course-requirement-is-fulfilled-feature"><a class="link" href="#checking-whether-course-requirement-is-fulfilled-feature">3.3. Checking whether Course Requirement is fulfilled Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>Users are able to add and remove and the course requirements and also check if that they have satisfied course requirements
-from the list of modules that they have completed.</p>
-</div>
-<div class="paragraph">
-<p>Similar to the implementation of the display modules feature, when the application is
+<p>Users are able to check whether they have satisfied course requirements thru a function <code>displayreq</code>.
+Similar to the implementation of the feature related to <code>displaymod</code>, when the application is
 launched, a JSON file containing pre-existing information on courses (either default or pre-defined by users) and their respective course requirement
-will loaded as <code>Course</code> and <code>CourseRequirement</code> Objects (<code>Course</code> contains multiple <code>CourseRequirement</code> objects) and stored in an <code>ObservableList</code> inside of <code>ModelManager</code>.</p>
+will loaded as <code>Course</code> objects and <code>CourseRequirement</code> interface (<code>Course</code> contains multiple <code>CourseRequirement</code> interface implementees)
+and stored in an <code>CourseList</code> inside of <code>ModelManager</code>. While the app does not support adding or removing courses and course requirements,
+users can still define their own course or course requirements by modifying the JSON file.</p>
 </div>
 <div class="paragraph">
-<p>In the ModelManager, we also store an instance of <code>ActiveCourse</code> which extends from Course. Only
-one <code>Course</code> can be active since it represents the Course the user is currently
-undertaking when using the Graduation Tracker. However, we allow for different multiple Course object to
-allow extension of different courses not in the default implementation.</p>
+<p>We employ the "Composite" design pattern for this class as there are desirable boolean binary operations such as
+"and", "or", that we would like to apply on two different requirements and we would want to regard the "simple" CourseRequirement,
+(one that can be achieved without "and", "or") and a more complicated one (one that can only be achieved with "and", "or") to be the same.
+As such the logical choice would be to make <code>CourseRequirement</code> an interface and its implementation is restricted to
+the <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code> classes.</p>
 </div>
 <div class="paragraph">
-<p>The core of the feature is the <code>CourseRequirement</code> feature; we use Java 9&#8217;s <code>Predicate</code> to check against a <code>List&lt;Module&gt;</code>
-to see whether the user fulfilled the <code>CourseRequirement</code> as well as <code>Function&lt;List&lt;Module&gt;, String&gt;</code> classes to identify the parts of <code>CourseRequirement</code> not satisfied.
-Currently, there are two subclasses that extends <code>CourseRequirement</code>; <code>ContainsAll</code> and <code>ContainsAtLeast</code>. Given a list of regular expression,
-<code>ContainsAll</code> ensure that there is at least 1 module taken by the user has module code that matches regex the list whereas on
-the other hand <code>ContainsAtLeast</code> checks that at a minimum number of modules have
-module code that fits the list. For now, users can only create <code>CourseRequirement</code> of the form
-<code>ContainsAll</code>, <code>ContainsAtLeast</code> as well as combining them by using <code>or</code> and <code>and</code> functions defined in <code>CourseRequirement</code>.</p>
+<p>As the name suggests,
+<code>CompositeRequirement</code> is made up of two other <code>CourseRequirements</code>, a <code>LogicalConnector</code> class (which is used to represent
+logical conjunctions and disjunctions). On the other hand, a <code>PrimitiveRequirement</code> is a standalone <code>CourseRequirement</code> implementation
+that contains a <code>Condition</code> class, which is really a helper class that is used to check whether a list of <code>ModuleInfoCode</code> can satisfy the <code>CourseRequirement</code>.
+The <code>Condition</code> class has several attributes to decide whether the <code>PrimitiveRequirement</code> is fulfilled, namely a list of Regular Expression,
+and an integer <code>minToSatisfy</code>, we will further elaborate the details below.</p>
+</div>
+<div class="paragraph">
+<p>There currently 3 ways that information on <code>CourseRequirement</code> is revealed to the user, they are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>isFulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of ModuleInfoCode and returns a boolean to indicate whether the list of
+moduleInfoCode can satisfy the requirement. For <code>PrimitiveRequirement</code>, if the number of distinct <code>ModuleInfoCode</code> satisfies the list of Regular Expression pre-defined in
+<code>Condition</code> class exceeds <code>minToSatisfy</code>, we define the <code>PrimitiveRequirement</code> to be satisfied.
+Similarly, for <code>CompositeRequirement</code>, it depends on the <code>LogicalConnector</code>; if we have "and", then both <code>CourseRequirement</code> must be satisfied
+in order for <code>CompositeRequirement</code> to be satisfied and likewise for "or".</p>
+</li>
+<li>
+<p><code>percentageFulfilled()</code>&#8201;&#8212;&#8201;a method that also accepts a list of ModuleInfoCode returns a <code>double</code> value on the percentage of completion of the
+<code>CourseRequirement</code>. For <code>PrimitiveRequirement</code> this will be the proportion of distinct modules that satisfy at least one of the regular expression
+divided by <code>minToSatisfy</code>. For <code>CompositeRequirement</code>, a <code>LogicalConnector</code> of "or" wil result in the max of the two requirements.</p>
+</li>
+<li>
+<p><code>getUnfulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of ModuleInfoCode and returns a list of Strings that has regular expressions of the module code
+that can be used to satisfy the CourseRequirement.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-type-of-courserequirement-users-can-add-define"><a class="link" href="#aspect-type-of-courserequirement-users-can-add-define">Aspect: Type of CourseRequirement Users can add/define</a></h5>
+<h5 id="aspect-type-of-courserequirement-that-can-be-defined"><a class="link" href="#aspect-type-of-courserequirement-that-can-be-defined">Aspect: Type of CourseRequirement that can be defined</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice): User can only create and combine limited types of requirements
+<p><strong>Alternative 1 (current choice): Only create and combine limited types of requirements
 and check based on regex of module code</strong></p>
 <div class="ulist">
 <ul>
@@ -944,55 +966,21 @@ and check based on regex of module code</strong></p>
 <p>Pros: Safer to implement since we are restricting scope to only checking of strings</p>
 </li>
 <li>
-<p>Con: Unless sufficiently many types that can be combined,
-there might be requirements that are difficult to set properly.</p>
+<p>Con: There could be 'corner cases' that we left out; actual NUS CourseRequirement that we cannot represent by
+merely checking the module code.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong> Alternative 2: Allowing user to check on any attributes of the Module that they have taken</strong></p>
+<p><strong> Alternative 2: Checking other attributes of the module taken</strong></p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Increased flexibility allows for more powerful expressions and increased usability for users side</p>
 </li>
 <li>
-<p>Cons: More code required; one more class for one additional attribute user can check</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-containsall-containsatleast-isfulfilled-implementation"><a class="link" href="#aspect-containsall-containsatleast-isfulfilled-implementation">Aspect: ContainsAll/ContainsAtLeast isFulfilled() implementation</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice): Check for regex matching of strings</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easier to implement in the storage stage since each regex string defines the predicate</p>
-</li>
-<li>
-<p>Cons: User might find it hard to isolate the correct regex to achieve the desired expression</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2: Stores module and check for set-containment against a set of ModuleInfo</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Type-safe and can use pre-defined equality in 'ModuleInfo' class</p>
-</li>
-<li>
-<p>Cons: Modules can change frequently and be outdated quite quickly; might cause problem for
-older CourseRequirement defined by user. Also alot of dependency issues in Storage and other areas</p>
+<p>Cons: More coding required; a few classes for each additional attribute we want to check.</p>
 </li>
 </ul>
 </div>
@@ -2794,4 +2782,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 19:26:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 19:39:50 UTC</div></div></div></body></html>
