@@ -33,8 +33,9 @@
 <li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
 <li><a href="#adding-removing-checking-courses-and-course-requirement-feature">3.3. Adding/Removing/Checking Courses and Course Requirement Feature</a></li>
 <li><a href="#module-recommendation-feature">3.4. Module recommendation feature</a></li>
-<li><a href="#logging">3.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
+<li><a href="#semester-cap-and-workload-management-feature">3.5. Semester CAP and workload management feature</a></li>
+<li><a href="#logging">3.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -1033,14 +1034,35 @@ Subsequently, within each comparison by the <code>RecModuleComparator</code>, th
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
+<h3 id="semester-cap-and-workload-management-feature"><a class="link" href="#semester-cap-and-workload-management-feature">3.5. Semester CAP and workload management feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>Users are able to set their preferred minimum and maximum CAP limits for each semester. They are also able to set the minimum and maximum workload limits for each semester in terms of the number of hours per week in terms of lectures, tutorials, labs, projects, and preparation.</p>
+</div>
+<div class="paragraph">
+<p>The current stored semester limits will be loaded from the GradTrak.json file into a list of <code>SemLimit</code> Objects for each semester on app startup.
+If the user has not set any limits, the json file will contain a list with default limit values.</p>
+</div>
+<div class="paragraph">
+<p>Users able to set the expected minimum and maximum grade for each module they take, as well as the number of workload hours.
+The <code>EditCommand</code> is used to set the grades and workload expected using an single argument for each variable.</p>
+</div>
+<div class="paragraph">
+<p>Users can check if their expected grades and workload per semester falls within their preferred limits.
+A class <code>LimitChecker</code> handles the computation of CAP and total workload of the semesters and generates a table in HTML with the information computed.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1071,7 +1093,7 @@ Subsequently, within each comparison by the <code>RecModuleComparator</code>, th
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2772,4 +2794,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 18:35:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-31 19:26:12 UTC</div></div></div></body></html>
