@@ -926,32 +926,52 @@ the <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code> clas
 </div>
 <div class="paragraph">
 <p>As the name suggests,
-<code>CompositeRequirement</code> is made up of two other <code>CourseRequirements</code>, a <code>LogicalConnector</code> class (which is used to represent
-logical conjunctions and disjunctions). On the other hand, a <code>PrimitiveRequirement</code> is a standalone <code>CourseRequirement</code> implementation
+<code>CompositeRequirement</code> is made up of two other <code>CourseRequirements</code>, a <code>LogicalConnector</code> enumerations (which is used to represent
+logical binary operators such conjunctions and disjunctions). On the other hand, a <code>PrimitiveRequirement</code> is a standalone <code>CourseRequirement</code> implementation
 that contains a <code>Condition</code> class, which is really a helper class that is used to check whether a list of <code>ModuleInfoCode</code> can satisfy the <code>CourseRequirement</code>.
-The <code>Condition</code> class has several attributes to decide whether the <code>PrimitiveRequirement</code> is fulfilled, namely a list of Regular Expression,
-and an integer <code>minToSatisfy</code>, we will further elaborate the details below.</p>
+The <code>Condition</code> class has the following attribute to decide whether the a condition of <code>PrimitiveRequirement</code> is fulfilled, namely one String, Regular Expression,
+and an integer <code>minToSatisfy</code>. We will further elaborate the details below.</p>
 </div>
 <div class="paragraph">
-<p>There currently 3 ways that information on <code>CourseRequirement</code> is revealed to the user, they are:</p>
+<p>There currently 3 ways that <code>CourseRequirement</code> provides information to the user:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>isFulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of ModuleInfoCode and returns a boolean to indicate whether the list of
-moduleInfoCode can satisfy the requirement. For <code>PrimitiveRequirement</code>, if the number of distinct <code>ModuleInfoCode</code> satisfies the list of Regular Expression pre-defined in
-<code>Condition</code> class exceeds <code>minToSatisfy</code>, we define the <code>PrimitiveRequirement</code> to be satisfied.
-Similarly, for <code>CompositeRequirement</code>, it depends on the <code>LogicalConnector</code>; if we have "and", then both <code>CourseRequirement</code> must be satisfied
+<p><code>isFulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a <code>boolean</code> to indicate whether the list of
+<code>ModuleInfoCode</code> can satisfy the requirement.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <code>PrimitiveRequirement</code>, if the number of distinct <code>ModuleInfoCode</code> satisfies the list of Regular Expression pre-defined in
+<code>Condition</code> class exceeds <code>minToSatisfy</code>, we define the <code>PrimitiveRequirement</code> to be satisfied.</p>
+</li>
+<li>
+<p>Similarly, for <code>CompositeRequirement</code>, it depends on the <code>LogicalConnector</code>; if we have "and", then both <code>CourseRequirement</code> must be satisfied
 in order for <code>CompositeRequirement</code> to be satisfied and likewise for "or".</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>percentageFulfilled()</code>&#8201;&#8212;&#8201;a method that also accepts a list of ModuleInfoCode returns a <code>double</code> value on the percentage of completion of the
-<code>CourseRequirement</code>. For <code>PrimitiveRequirement</code> this will be the proportion of distinct modules that satisfy at least one of the regular expression
-divided by <code>minToSatisfy</code>. For <code>CompositeRequirement</code>, a <code>LogicalConnector</code> of "or" wil result in the max of the two requirements.</p>
+<code>CourseRequirement</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <code>PrimitiveRequirement</code> this will be the proportion of distinct modules that satisfy at least one of the regular expression
+divided by <code>minToSatisfy</code>.</p>
 </li>
 <li>
-<p><code>getUnfulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of ModuleInfoCode and returns a list of Strings that has regular expressions of the module code
-that can be used to satisfy the CourseRequirement.</p>
+<p>For <code>CompositeRequirement</code>, a <code>LogicalConnector</code> of "or" wil result in the max of the two requirements whereas for "and", we take average
+of both classes to approximate the degree of completion.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>getUnfulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a list of Strings that matches regular expressions (defined under Condition) of the <code>ModuleInfoCode</code>
+that can be used to satisfy the <code>CourseRequirement</code>.</p>
 </li>
 </ul>
 </div>
@@ -959,38 +979,45 @@ that can be used to satisfy the CourseRequirement.</p>
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-type-of-courserequirement-that-can-be-defined"><a class="link" href="#aspect-type-of-courserequirement-that-can-be-defined">Aspect: Type of CourseRequirement that can be defined</a></h5>
+<h5 id="aspect-how-condition-checks-whether-course-requirement-is-fulfilled"><a class="link" href="#aspect-how-condition-checks-whether-course-requirement-is-fulfilled">Aspect: How condition checks whether Course Requirement is fulfilled</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice): Only create and combine limited types of requirements
-and check based on regex of module code</strong></p>
+<p><strong>Alternative 1 (current choice): Checking Requirement fulfilled by only using <code>ModuleInfoCode</code> of
+<code>ModuleTaken</code></strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Safer to implement since we are restricting scope to only checking of strings</p>
+<p>Pros: Easier to implement since we are restricting scope to only checking of strings</p>
 </li>
 <li>
-<p>Con: There could be 'corner cases' that we left out; actual NUS CourseRequirement that we cannot represent by
+<p>Cons: There could be 'corner cases' that we left out; actual NUS Course Requirement that we cannot represent by
 merely checking the module code.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong> Alternative 2: Checking other attributes of the module taken</strong></p>
+<p><strong> Alternative 2: Checking Requirement fulfilled by accessing any attribute of <code>ModuleTaken</code></strong></p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Increased flexibility allows for more powerful expressions and increased usability for users side</p>
 </li>
 <li>
-<p>Cons: More coding required; a few classes for each additional attribute we want to check.</p>
+<p>Cons: More Java classes/coding required (to Separate Responsibilities and Concerns) also means that more tests
+and storage components for different classes.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Alternative 1 is chosen over alternative 2 because it is much easier to implement in terms of scope.
+Another reason why we chose alternative 1 over alternative 2 is due to the lack of time.
+For most cases, alternative 1 seems to be sufficient.
+However, in the future, we might extend the Condition class to check for other attributes of <code>ModuleTaken</code>.</p>
 </div>
 </div>
 </div>
@@ -2918,4 +2945,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:22:01 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:50:36 UTC</div></div></div></body></html>
