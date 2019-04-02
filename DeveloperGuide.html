@@ -550,7 +550,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>GradTrak</cod
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>can save the GradTrak data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -605,7 +605,7 @@ ModelManager.
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ObservableList.png" alt="ObservableList" width="200">
+<img src="images/Observable.png" alt="Observable" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -918,6 +918,11 @@ users can still define their own course or course requirements by modifying the 
 (one that can be achieved without "and", "or") and a more complicated one (one that can only be achieved with "and", "or") to be the same.
 As such the logical choice would be to make <code>CourseRequirement</code> an interface and its implementation is restricted to
 the <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code> classes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CompositeDesignPattern.png" alt="CompositeDesignPattern" width="=800">
+</div>
 </div>
 <div class="paragraph">
 <p>As the name suggests,
@@ -1472,7 +1477,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect2">
 <h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing Dependencies</a></h3>
 <div class="paragraph">
-<p>A project often depends on third-party libraries. For example, Address Book depends on the <a href="https://github.com/FasterXML/jackson">Jackson library</a> for JSON parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives:</p>
+<p>A project often depends on third-party libraries. For example, GradTrak depends on the <a href="https://github.com/FasterXML/jackson">Jackson library</a> for JSON parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives:</p>
 </div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
@@ -2782,4 +2787,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-01 15:26:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 06:42:23 UTC</div></div></div></body></html>
