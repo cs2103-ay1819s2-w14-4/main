@@ -89,7 +89,7 @@ Stay tuned as we will be adding other courses in the near future!</p>
 <div class="content">
 <img src="images/annotated-ui.png" alt="annotated ui" width="790">
 </div>
-<div class="title">Fig. 1: Parts of the User Interface</div>
+<div class="title">Figure 1. Parts of the User Interface</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -411,16 +411,16 @@ Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code>
 <div class="ulist">
 <ul>
 <li>
-<p>Parameters can be in any order.</p>
+<p>Parameters can be in any order and are case-insensitive.</p>
 </li>
 <li>
-<p>Parameters are case-insensitive.</p>
+<p>Module code can be entered partially, but semester and grade must be in the exact format.</p>
 </li>
 <li>
-<p>Module code can be entered partially, but semester and grade must be exact.</p>
+<p>For modules yet to be taken, searching by grade will display those whose grade range covers that grade.</p>
 </li>
 <li>
-<p>Enter 'y' for finished status to indicate finished module, or any other value to indicate unfinished.</p>
+<p>Finished status is indicated by 'y' for finished module (i.e. semester taken is before current semester) or any other value for unfinished.</p>
 </li>
 </ul>
 </div>
@@ -432,12 +432,16 @@ Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find c/CS2</code><br>
-Lists all level-2000 CS modules in GradTrak.</p>
+<p><code>find c/CS</code><br>
+Lists all CS modules in GradTrak.</p>
 </li>
 <li>
-<p><code>find c/CS s/Y1S2</code><br>
-Lists all CS modules in Y1S2 in GradTrak.</p>
+<p><code>find s/Y1S2</code><br>
+Lists all modules in Y1S2 in GradTrak.</p>
+</li>
+<li>
+<p><code>find g/A f/y</code><br>
+Lists all finished modules with grade A.</p>
 </li>
 </ul>
 </div>
@@ -479,9 +483,17 @@ Format: <code>list</code></p>
 </div>
 <div class="sect2">
 <h3 id="recommend-module-code-rec-code"><a class="link" href="#recommend-module-code-rec-code">4.14. Recommend module: <code>rec</code></a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/recommend.png" alt="recommend" width="790">
+</div>
+<div class="title">Figure 2. Recommendation list for Computer Science Algorithms</div>
+</div>
 <div class="paragraph">
-<p>Recommends a list of modules that can be taken based on GradTrak modules and course requirements.
-Modules are displayed in order of requirement satisfied: Core, Programme/Technical Electives or Focus Area, Industry Experience, Faculty, General Education, Unrestricted Electives.<br>
+<p>Recommends a list of modules that can be taken based on GradTrak modules and course requirements, as shown above.
+Modules with unmet prerequisites or preclusions present in GradTrak as well as modules already added (unless they have been failed) will not be recommended.<br>
+Recommended modules are displayed in order of requirement satisfied: Core, Breadth &amp; Depth, Industry Experience, Faculty, General Education, Unrestricted Electives.
+Modules with the same requirement satisfied are sorted by level.<br>
 Format: <code>rec</code></p>
 </div>
 </div>
@@ -721,4 +733,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 10:43:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 11:37:40 UTC</div></div></div></body></html>

@@ -1057,7 +1057,7 @@ which are already passed or to be taken in a future semester (non-failed modules
 <li>
 <p>The <code>codeToTest</code> is then passed into <code>Course#getCourseReqTypeOf</code>, which in turn calls <code>CourseRequirement#canFulfill</code> for each <code>CourseRequirement</code> listed in <code>Course</code>.
  A list of <code>CourseReqType</code> that the <code>codeToTest</code> can satisfy is returned.
-This <code>courseReqTypeList</code> is sorted by the priority of <code>CourseReqType</code> as defined in the <code>enum</code> class: CORE, TE, IE, FAC, GE, UE.</p>
+This <code>courseReqTypeList</code> is sorted by the priority of <code>CourseReqType</code> as defined in the <code>enum</code> class: <code>CORE</code>, <code>BD</code>, <code>IE</code>, <code>FAC</code>, <code>GE</code>, <code>UE</code>.</p>
 </li>
 <li>
 <p>A <code>nonFailedCodeList</code> of <code>ModuleInfoCode</code> corresponding to non-failed <code>ModuleTaken</code> is retrieved from <code>GradTrak</code>.
@@ -1088,7 +1088,7 @@ contribute to any of the <code>CourseRequirement</code> listed in <code>Course</
 <li>
 <p>The <code>RecModuleComparator</code> is applied to the <code>SortedList</code> of <code>RecModule</code>. It sorts the list in decreasing priority of the
 <code>CourseReqType</code> satisfied by the <code>RecModule</code>. Those <code>RecModule</code> with equal priority are sorted by module level (the first numerical digit of its <code>ModuleInfoCode</code>),
-considering the fact that lower level modules are usually taken first. In the case of equal priority and module level, lexicographical sorting is used.</p>
+considering that lower level modules are usually taken first. In the case of equal priority and module level, lexicographical sorting is used.</p>
 </li>
 <li>
 <p>The <code>SortedList</code> of <code>RecModule</code> is retrieved from the <code>ModelManager</code>. If it is empty, the user will be notified that all course requirements have been satisfied by the current GradTrak.
@@ -1097,7 +1097,7 @@ Otherwise, it will be displayed to the user in the Result Panel.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>If there are changes to <code>GradTrak</code> (adding, editing or deleting modules) or <code>Course</code> (changing the Focus Area), the <code>rec</code> command
+<p>If there are changes to <code>GradTrak</code> (adding, editing or deleting modules) or <code>Course</code> (changing the Course of study), the <code>rec</code> command
 must be run again to reflect the updated recommendation list.</p>
 </div>
 </div>
@@ -2945,4 +2945,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 10:43:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-04 11:37:40 UTC</div></div></div></body></html>
