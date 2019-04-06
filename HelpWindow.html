@@ -14,7 +14,7 @@
 <li><a href="#quick-guide">3. Quick Guide</a></li>
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#add-module-code-add-code">4.1. Add module: <code>add</code></a></li>
+<li><a href="#add">4.1. Add module: <code>add</code></a></li>
 <li><a href="#listing-all-modules-in-module-plan-code-cklimit-code">4.2. Listing all modules in module plan: <code>cklimit</code></a></li>
 <li><a href="#clear-all-data-entered-code-clear-code">4.3. Clear all data entered: <code>clear</code></a></li>
 <li><a href="#sets-the-current-semester-code-cursem-code">4.4. Sets the current semester: <code>cursem</code></a></li>
@@ -176,7 +176,7 @@ will give you a more detailed guide/walk through for each command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-module-code-add-code"><a class="link" href="#add-module-code-add-code">4.1. Add module: <code>add</code></a></h3>
+<h3 id="add"><a class="link" href="#add">4.1. Add module: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a module to GradTrak based on the given module code, semester taken and expected / obtained grade.<br>
 Format: <code>add c/MODULE_CODE s/SEMESTER [min/NEW_EXPECTED_MIN_GRADE] [max/NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code><br>
@@ -275,53 +275,149 @@ Deletes the first module on the most recently displayed list.</p>
 <div class="sect2">
 <h3 id="display-module-information-code-displaymod-code"><a class="link" href="#display-module-information-code-displaymod-code">4.6. Display module information: <code>displaymod</code></a></h3>
 <div class="paragraph">
-<p>2 options to display module information either by the module code or module title.
-It is possible to search for multiple modules at the same time by typing the next module code preceded by a comma.<br>
-Format: <code>displaymod c/[Module Code],[Module Code]</code></p>
+<p>The <code>displaymod</code> command shows all modules that is available in NUS based on the user&#8217;s search. This command simply
+shows modules straight from NUS&#8217;s database of modules and does not check if the user has met the prerequisites to read
+a particular module.</p>
 </div>
 <div class="paragraph">
-<p>It is also possible to search for modules by typing out a word found in the module title. For a more streamlined
-search, type in the specific keywords found in the title combined with a <code>+</code> symbol.
-Format: <code>displaymod n/[keyword]+[keyword]</code></p>
+<p>This command will allow users to find out more about a module or even compare modules so as to decide which modules to read
+in the upcoming semesters. Once decided on which module the user plans to read, they can use <a href="#add">Section 4.1, &#8220;Add module: <code>add</code>&#8221;</a> command to add the
+module to their own list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Searches are <strong>case-insensitive</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Users must strictly adhere to syntax of the <code>displaymod</code> command in order to get optimum search results.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>User can also use both type of searches concurrently for ease of search.</p>
+<p>There are <strong>2</strong> ways to search for modules:</p>
 </div>
-<div class="paragraph">
-<p>1 mode for o/OPTIONS include:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><code>n/KEYWORDS n/[NUMBER]</code> <strong>Coming in V2.0</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Displays top n (3 if last argument is left blank, capped at 10) information most related modules based on keywords inserted.</p>
+<p>Search by <strong>code</strong>:
+All modules have module code associated with it, this makes it easier to remember modules.To search for modules based on
+code, a <code>c/</code> prefix must be added after <code>displaymod</code> command, followed by a list of modules which are separated by <code>,</code>.<br>
+Format: `displaymod c/MODULE_CODE,[MODULE_CODE]</p>
 </li>
 </ul>
 </div>
-</li>
-</ol>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymod1cexamplecmd.png" alt="displaymod1cexamplecmd" width="500">
+</div>
+<div class="title">Figure 2. Single module code search command format<br></div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>The search above should yield a result:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymod1cexampleresult.png" alt="displaymod1cexampleresult" width="800">
+</div>
+<div class="title">Figure 3. Single module code search result<br></div>
+</div>
+<div class="paragraph">
+<p>However if users wishes to search for multiple modules at once they can follow the example given below:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymodMcexamplecmd.png" alt="displaymodMcexamplecmd" width="500">
+</div>
+<div class="title">Figure 4. Multiple module codes search command format<br></div>
+</div>
+<div class="paragraph">
+<p>The search above should yield a result:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymodMcexampleresult.png" alt="displaymodMcexampleresult" width="800">
+</div>
+<div class="title">Figure 5. Multiple module code search result<br></div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>displaymod c/CS2103T</code><br>
-Displays all information with regards to Module: CS2103T i.e Module name, Module description etc. .</p>
-</li>
-<li>
-<p><code>displaymod c/CS2103T,CS2101,CS1010,ACC1002X</code><br>
-Displays all of the 4 module information in-order with the search.</p>
-</li>
-<li>
-<p><code>displaymod c/CS2103T,CS2101 n/computer+science</code><br>
-Displays the modules CS2103T,CS2101 and all modules with the words 'computer' and 'science' in its title.</p>
+<p>Search by <strong>name</strong>:
+There are cases where students may not remember or know a module&#8217;s code but vaguely remember the module&#8217;s name. Users
+who find themselves in such a situation can search for modules by their names by adding a <code>n/</code> prefix after the
+<code>displaymod</code> command, followed by keyword/s that can be found in the module&#8217;s name. Keywords have to be separated by <code>+</code>
+symbol.<br>
+Format: <code>displaymod n/KEYWORD+[KEYWORD]</code></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymod1nexamplecmd.png" alt="displaymod1nexamplecmd" width="500">
+</div>
+<div class="title">Figure 6. Single module name search command format</div>
+</div>
+<div class="paragraph">
+<p>The search above should yield a result:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymod1nexampleresult.png" alt="displaymod1nexampleresult" width="800">
+</div>
+<div class="title">Figure 7. Single module name search command result<br></div>
+</div>
+<div class="paragraph">
+<p>However if users wishes to search for multiple modules at once they can follow the example given below:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymodMnexamplecmd.png" alt="displaymodMnexamplecmd" width="500">
+</div>
+<div class="title">Figure 8. Multiple module name keyword search format<br></div>
+</div>
+<div class="paragraph">
+<p>The search above should yield a result:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymodMnexampleresult.png" alt="displaymodMnexampleresult" width="800">
+</div>
+<div class="title">Figure 9. Multiple module name keyword search result<br></div>
+</div>
+<div class="paragraph">
+<p>If the user has successfully managed to display a module of their choice, they will be presented with module/s containing
+several information that the user will find useful. The example below will show the information provided for each module
+after a successful search:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displaymoddisplay.png" alt="displaymoddisplay" width="800">
+</div>
+<div class="title">Figure 10. What information each module contains</div>
+</div>
+<div class="paragraph">
+<p>What each number displays:<br>
+<strong>1.</strong> Shows the module <strong>code</strong> and module <strong>name</strong>.<br>
+<strong>2.</strong> Shows which <strong>department</strong> the module belongs to.<br>
+<strong>3.</strong> Displays the amount of module <strong>credits</strong> a student can gain by reading this module.<br>
+<strong>4.</strong> Displays a brief description of the modules and potentially the topics that may be covered.<br>
+<strong>5.</strong> Contains the <strong>prerequisite tree</strong> for each module.<br>
+<strong>6.</strong> Contains <strong>workload</strong> load information, the values are meant to be read as <strong>Hours</strong>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -487,7 +583,7 @@ Format: <code>list</code></p>
 <div class="content">
 <img src="images/recommend.png" alt="recommend" width="790">
 </div>
-<div class="title">Figure 2. Recommendation list for Computer Science Algorithms</div>
+<div class="title">Figure 11. Recommendation list for Computer Science Algorithms</div>
 </div>
 <div class="paragraph">
 <p>Recommends a list of modules that can be taken based on GradTrak modules and course requirements, as shown above.
@@ -690,7 +786,7 @@ or<br>
 <code>delete INDEX</code><br></p>
 </li>
 <li>
-<p><strong>Displaym</strong>: <code>displaym o/OPTIONS [MORE_ARGUMENTS]</code><br></p>
+<p><strong>Displaymod</strong>: <code>displaym o/OPTIONS [MORE_ARGUMENTS]</code><br></p>
 </li>
 <li>
 <p><strong>Displayu</strong>: <code>displayu o/OPTIONS [MORE_ARGUMENTS]</code><br></p>
@@ -733,4 +829,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-06 09:30:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-06 11:11:44 UTC</div></div></div></body></html>
