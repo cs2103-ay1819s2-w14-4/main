@@ -533,6 +533,13 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>GradTrak</cod
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<div class="paragraph">
+<p>Within the <code>Storage</code> component there are <strong>2</strong> types of storage classes:<br>
+1. read and write storage<br>
+2. read only storage</p>
+</div>
+<div class="sect3">
+<h4 id="read-and-write-storage"><a class="link" href="#read-and-write-storage">2.5.1. Read and write storage</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
@@ -554,6 +561,30 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>GradTrak</cod
 <p>can save the GradTrak data in json format and read it back.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="read-only-storage"><a class="link" href="#read-only-storage">2.5.2. Read only storage</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/moduleinfostorage.png" alt="moduleinfostorage" width="800">
+</div>
+<div class="title">Figure 9. Structure of read only storage component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/Storage/ModuleInfoStorage.java"><code>ModuleInfoStorage.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The ModuleInfoStorage is a read-only form of storage as it is only reads the list of module information saved in a JSON
+file and coverts them into <code>ModuleInfo</code> and the stores all the <code>ModuleInfo</code> into list called <code>ModuleInfoList</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can only read <code>ModuleInfo</code> objects in json format.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1324,7 +1355,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 9. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 10. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2959,4 +2990,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 12:49:59 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 13:39:50 UTC</div></div></div></body></html>
