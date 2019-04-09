@@ -513,7 +513,7 @@ Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code>
 <p>Module code can be entered partially, but semester and grade must be in the exact format.</p>
 </li>
 <li>
-<p>For modules yet to be taken, searching by grade will display those whose grade range covers that grade.</p>
+<p>For unfinished modules, searching by grade will display those whose grade range covers that grade.</p>
 </li>
 <li>
 <p>Finished status is indicated by 'y' for finished module (i.e. semester taken is before current semester) or any other value for unfinished.</p>
@@ -531,15 +531,41 @@ Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code>
 <p><code>find c/CS</code><br>
 Lists all CS modules in GradTrak.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/find(c).png" alt="find(c)" width="790">
+</div>
+<div class="title">Figure 11. Finding CS modules</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>find s/Y1S2</code><br>
 Lists all modules in Y1S2 in GradTrak.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/find(s).png" alt="find(s)" width="790">
+</div>
+<div class="title">Figure 12. Finding modules in Y1S2</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>find g/A f/y</code><br>
 Lists all finished modules with grade A.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/find(g,f).png" alt="find(g,f)" width="790">
+</div>
+<div class="title">Figure 13. Finding finished modules with grade A (current semester: Y1S2)</div>
 </div>
 </div>
 <div class="sect2">
@@ -579,18 +605,18 @@ Format: <code>list</code></p>
 </div>
 <div class="sect2">
 <h3 id="recommend-module-code-rec-code"><a class="link" href="#recommend-module-code-rec-code">4.14. Recommend module: <code>rec</code></a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/recommend.png" alt="recommend" width="790">
-</div>
-<div class="title">Figure 11. Recommendation list for Computer Science Algorithms</div>
-</div>
 <div class="paragraph">
 <p>Recommends a list of modules that can be taken based on GradTrak modules and course requirements, as shown above.
 Modules with unmet prerequisites or preclusions present in GradTrak as well as modules already added (unless they have been failed) will not be recommended.<br>
 Recommended modules are displayed in order of requirement satisfied: Core, Breadth &amp; Depth, Industry Experience, Faculty, General Education, Unrestricted Electives.
 Modules with the same requirement satisfied are sorted by level.<br>
 Format: <code>rec</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/recommend.png" alt="recommend" width="790">
+</div>
+<div class="title">Figure 14. Recommendation list for Computer Science Algorithms</div>
 </div>
 </div>
 <div class="sect2">
@@ -829,4 +855,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 15:25:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-09 17:33:36 UTC</div></div></div></body></html>
