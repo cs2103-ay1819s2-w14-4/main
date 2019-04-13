@@ -27,7 +27,7 @@
 <li><a href="#find-module-code-find-code">4.11. Find module: <code>find</code></a></li>
 <li><a href="#view-all-other-commands-code-help-code">4.12. View all other commands : <code>help</code></a></li>
 <li><a href="#list-entered-commands-code-history-code">4.13. List entered commands: <code>history</code></a></li>
-<li><a href="#listing-all-modules-in-module-plan-code-list-code">4.14. Listing all modules in module plan: <code>list</code></a></li>
+<li><a href="#listing-all-modules-in-gradtrak-code-list-code">4.14. Listing all modules in GradTrak: <code>list</code></a></li>
 <li><a href="#recommend-module-code-rec-code">4.15. Recommend module: <code>rec</code></a></li>
 <li><a href="#redo-the-previously-undone-command-code-redo-code">4.16. Redo the previously undone command: <code>redo</code></a></li>
 <li><a href="#set-the-current-course-of-study-code-study-code">4.17. Set the current course of study: <code>study</code></a></li>
@@ -623,7 +623,7 @@ Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code>
 <p>For unfinished modules, searching by grade will display those whose grade range covers that grade.</p>
 </li>
 <li>
-<p>Finished status is indicated by 'y' for finished module (i.e. semester read is before current semester) or any other value for unfinished.</p>
+<p>Finished status is indicated by <code>y</code> for finished module (i.e. semester read is before current semester) or any other value for unfinished.</p>
 </li>
 </ul>
 </div>
@@ -642,7 +642,7 @@ Lists all CS modules in GradTrak.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/find(c).png" alt="find(c)" width="790">
+<img src="images/find(c).png" alt="find(c)" width="800">
 </div>
 <div class="title">Figure 12. Finding CS modules</div>
 </div>
@@ -656,7 +656,7 @@ Lists all modules in Y1S2 in GradTrak.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/find(s).png" alt="find(s)" width="790">
+<img src="images/find(s).png" alt="find(s)" width="800">
 </div>
 <div class="title">Figure 13. Finding modules in Y1S2</div>
 </div>
@@ -670,7 +670,7 @@ Lists all finished modules with grade A.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/find(g,f).png" alt="find(g,f)" width="790">
+<img src="images/find(g,f).png" alt="find(g,f)" width="800">
 </div>
 <div class="title">Figure 14. Finding finished modules with grade A (current semester: Y1S2)</div>
 </div>
@@ -704,7 +704,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-modules-in-module-plan-code-list-code"><a class="link" href="#listing-all-modules-in-module-plan-code-list-code">4.14. Listing all modules in module plan: <code>list</code></a></h3>
+<h3 id="listing-all-modules-in-gradtrak-code-list-code"><a class="link" href="#listing-all-modules-in-gradtrak-code-list-code">4.14. Listing all modules in GradTrak: <code>list</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all modules in GradTrak.<br>
 Format: <code>list</code></p>
@@ -713,15 +713,16 @@ Format: <code>list</code></p>
 <div class="sect2">
 <h3 id="recommend-module-code-rec-code"><a class="link" href="#recommend-module-code-rec-code">4.15. Recommend module: <code>rec</code></a></h3>
 <div class="paragraph">
-<p>Recommends a list of modules that can be read based on GradTrak modules and course requirements, as shown above.
-Modules with unmet prerequisites or preclusions present in GradTrak as well as modules already added (unless they have been failed) will not be recommended.<br>
-Recommended modules are displayed in order of requirement satisfied: Core, Breadth &amp; Depth, Industry Experience, Faculty, General Education, Unrestricted Electives.
-Modules with the same requirement satisfied are sorted by level.<br>
-Format: <code>rec</code></p>
+<p>Recommends a list of modules that can be read based on GradTrak modules and course requirements.
+Modules with unmet prerequisites or those already added (unless they have been failed) will not be recommended.<br>
+Recommended modules are displayed in order of requirement type satisfied: Core, Breadth &amp; Depth, Industry Experience, Faculty, General Education, Unrestricted Electives.
+Modules with the same requirement type satisfied are sorted by level.<br>
+Format: <code>rec</code><br>
+The figure below shows a sample recommendation list for a user studying Computer Science Algorithms.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/recommend.png" alt="recommend" width="790">
+<img src="images/recommend.png" alt="recommend" width="800">
 </div>
 <div class="title">Figure 15. Recommendation list for Computer Science Algorithms</div>
 </div>
@@ -1073,4 +1074,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 11:19:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 12:48:54 UTC</div></div></div></body></html>
