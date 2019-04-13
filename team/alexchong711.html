@@ -236,6 +236,148 @@ or else the <code>cursem</code> command will fail and be rejected with an error 
 <img src="../images/SetCurrentSemesterSequenceDiagram.png" alt="SetCurrentSemesterSequenceDiagram" width="1000">
 </div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SetSemesterLimitSequenceDiagram.png" alt="SetSemesterLimitSequenceDiagram" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>7: Some students have a target CAP they want for graduation
+And may like to follow a CAP plan to ensure their cap remains at a suitable range at all times so that they can apply for SEP/NOC/or maintain their scholarship such that a suitable CAP is maintained for each semester</p>
+</div>
+<div class="paragraph">
+<p>2: This could be achieved if there was a command that could tell them if their current plans are suitable in maintaining a preferred CAP for each semester</p>
+</div>
+<div class="paragraph">
+<p>6:
+Users would like to know what their current CAP is
+(which is why we need allow them to set and pull out their current semester later)
+Users would like to be able to estimate their minimum and maximum projected CAP based on their estimated grade range for each module
+(which is why we need allow them to set and pull out their projected min/max grade for each semester)
+Users would like to know if any semesters have modules that have too many difficult modules that would pull down their cap unexpectedly or too many easy modules that could be distributed to other semesters to lighten the stress over all semesters.
+(which is why we need to allow them to set their limits)</p>
+</div>
+<div class="paragraph">
+<p>3: Since GradTrak is a command based application that has consolidated information about all the modules they plan to take,
+1: users would like a single command to show them all the information they want to see about their CAP in one page.</p>
+</div>
+<div class="paragraph">
+<p>8The cklimit command is implemented that takes in no arguments and allow users to run a cap analysis on their current module plan and generate the results to be printed into the browser panel</p>
+</div>
+<div class="paragraph">
+<p>&lt;sequence diagram&gt;</p>
+</div>
+<div class="paragraph">
+<p>Alternative considerations that were rejected:
+?
+Prints while checking which rows are violated?</p>
+</div>
+<div class="paragraph">
+<p>7: Students may want ensure that their total workload for each semester fulfils their plan preference that they set with See:setlimit.</p>
+</div>
+<div class="paragraph">
+<p>2: This could be achieved if there was command that could tell them if their current plans are suitable in keeping within their preferred workload limits</p>
+</div>
+<div class="paragraph">
+<p>6: Users would like to know if any semester have modules that total up to too little or too much of a certain type of workload.</p>
+</div>
+<div class="paragraph">
+<p>3: Each semester has 5 types of total workload hour ranges acceptable to the user to be checked against
+Min max lec
+Min max tut
+Min max lab
+Min max proj
+Min max prep
+(note: these limits could be personalized by the user with see:setlimit)(describes why. Describes alternatives to have 5)</p>
+</div>
+<div class="paragraph">
+<p>Each module has workload information provided so we need those
+(note: these workloads could be personalized by the user when they see:add, or see:edit the module)(describes why. Describes alternatives to have 5)</p>
+</div>
+<div class="paragraph">
+<p>1: users would like a single command to show them all the information they want to see about their module plan workloads in one page.</p>
+</div>
+<div class="paragraph">
+<p>8The see:cklimit command is implemented that takes in no arguments and allow users to run a workload analysis on their current module plan and generate the results to be printed into the browser panel</p>
+</div>
+<div class="paragraph">
+<p>&lt;sequence diagram&gt;</p>
+</div>
+<div class="paragraph">
+<p>Alternatives:</p>
+</div>
+<div class="paragraph">
+<p>Having a separate command to track cap with workload</p>
+</div>
+<div class="paragraph">
+<p>Using the same command to track for cap and workload</p>
+</div>
+<div class="paragraph">
+<p>It is more convenient for the user to only know 1 command that can tell them how well their current plan is aligned with their preferences. Since the limits for hour and cap are stored and used in similar ways, the same classes(Semlimit, json adapted sem limits) and command could be used to handle both types of limits. This could increase code readability and still allow for unique modifications in the future for each type of workload.
+If they made any changes, they could view all the workload and cap analysis results changes with 1 command</p>
+</div>
+<div class="paragraph">
+<p>7: Some students who do not have a strong programming background may be slightly uncomfortable taking multiple programming modules in year 1 as they may feel too stressed from huge weekly lab workloads. Other students who like project work may like to take 1 or 2 team-based modules per semester that focuses on communication skills.</p>
+</div>
+<div class="paragraph">
+<p>2: Students may have a preference for a limit on the workload amount to take for each semester. Various types of workload such as number of lecture hours, tutorial hours, lab hours, project hours, and preparation hours.</p>
+</div>
+<div class="paragraph">
+<p>1: Students want the application to keep track of their preferences so that it is possible for gradtrak to help them detect if their current module plans fulfil their plan preferences</p>
+</div>
+<div class="paragraph">
+<p>8The setlimit command(See:full description of the setlimit command)
+Takes in the first argument without prefix as the semester to apply the set limits
+Then takes in at least 1 argument that specifies which type of semester limit to set.
+Edits the user&#8217;s semester limit preferences that are stored in gradtrak.json
+Displays a message to indicate success or error message.</p>
+</div>
+<div class="paragraph">
+<p>Constraints for the command input:</p>
+</div>
+<div class="paragraph">
+<p>Semester set must be a valid semester. (See:semester in the DG)
+Newly edited CAP limits must be not be out of order. Minimum CAP must not be more than maximum CAP
+Newly edited lecture hour limits must be not be out of order. Minimum lecture hour must not be more than maximum lecture hour
+Newly edited tutorial hour limits must be not be out of order. Minimum tutorial hour must not be more than maximum tutorial hour
+Newly edited lab hour limits must be not be out of order. Minimum lab hour must not be more than maximum lab hour
+Newly edited project hour limits must be not be out of order. Minimum project hour must not be more than maximum project hour
+Newly edited preparation hour limits must be not be out of order. Minimum preparation hour must not be more than maximum preparation hour</p>
+</div>
+<div class="paragraph">
+<p>Prints the current semester and generates sets of information
+Table 1 the user&#8217;s overall cap information for entire module plan:
+A single row with 3 columns
+The left most column shows the minimum possible cap attained upon graduation based on all the minimum expected grades of all the modules in the user&#8217;s plan
+It is calculated by
+The middle column shows the current known cap of the user based on completed modules only. Modules that are considered complete if it is taken in a semester before the current semester. Completed modules will have a finalized grade where the maximum and minimum grades are finalized to be identical.
+It is calculated by
+The right most column shows…
+It is calculated by
+Table 2 the user&#8217;s cap information for each semester:
+10 rows. 1 for each semester
+From leftmost to rightmost column,
+The first column shows the minimum cap of the semester set by the user
+See link:setlimit:below for how it is it stored
+The second column shows the minimum expected cap for that semester based on the modules taken in the user&#8217;s current module plan
+It is calculated by
+The third
+It is calculated by
+The fourth
+See link</p>
+</div>
+<div class="paragraph">
+<p>Table 3 the workload information for each semester:</p>
+</div>
+<div class="paragraph">
+<p>Made of 10 minitables
+1 mini table for each of the 10 semesters from Y1S1 to Y5S2
+Each mini table shows has 5 rows of information for the 5 types of module workloads for lecture hours, tutorial hours, lab hours, project hours and preparation hours for the semester
+The minimum total semester workload set for each workload type is on the left most column
+The maximum total semester workload set for each workload type is on the right most column
+The middle column shows the total current workload for each type based the current user&#8217;s module plan where each workload type is set by the user
+It is calculated by adding up all the modules</p>
+</div>
 </div>
 </div>
 </div>
@@ -250,4 +392,4 @@ to investigate various effects of different Cuckoo Hash schemes.
 and <a href="https://github.com/monikernemo/CS5330-Experimental-Assignment">more on the codes of the implementation here</a></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:11:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:36:52 UTC</div></div></div></body></html>

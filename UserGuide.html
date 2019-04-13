@@ -15,7 +15,7 @@
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
 <li><a href="#add">4.1. Add module: <code>add</code></a></li>
-<li><a href="#listing-all-modules-in-module-plan-code-cklimit-code">4.2. Listing all modules in module plan: <code>cklimit</code></a></li>
+<li><a href="#checking-the-preferred-limits-of-the-user-against-the-planned-modules-for-all-semesters-code-cklimit-code">4.2. Checking the preferred limits of the user against the planned modules for all semesters: <code>cklimit</code></a></li>
 <li><a href="#clear-all-data-entered-code-clear-code">4.3. Clear all data entered: <code>clear</code></a></li>
 <li><a href="#sets-the-current-semester-code-cursem-code">4.4. Sets the current semester: <code>cursem</code></a></li>
 <li><a href="#delete-module-code-delete-code">4.5. Delete module: <code>delete</code></a></li>
@@ -30,11 +30,12 @@
 <li><a href="#recommend-module-code-rec-code">4.14. Recommend module: <code>rec</code></a></li>
 <li><a href="#redo-the-previously-undone-command-code-redo-code">4.15. Redo the previously undone command: <code>redo</code></a></li>
 <li><a href="#set-current-course-of-study-code-study-code">4.16. Set current course of study: <code>study</code></a></li>
-<li><a href="#sets-the-total-expected-cap-and-workload-limit-for-each-semester-code-setlimit-code">4.17. Sets the total expected CAP and workload limit for each semester: <code>setlimit</code></a></li>
-<li><a href="#undo-previous-command-code-undo-code">4.18. Undo previous command: <code>undo</code></a></li>
-<li><a href="#save-data">4.19. Save data</a></li>
-<li><a href="#encrypt-data-files-code-coming-in-v2-0-code">4.20. Encrypt data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#update-module-information-code-coming-in-v2-0-code">4.21. Update module information <code>[coming in v2.0]</code></a></li>
+<li><a href="#sets-the-total-expected-cap-limit-for-each-semester-code-setlimit-code">4.17. Sets the total expected CAP limit for each semester: <code>setlimit</code></a></li>
+<li><a href="#sets-the-total-expected-workload-limit-for-each-semester-code-setlimit-code">4.18. Sets the total expected workload limit for each semester: <code>setlimit</code></a></li>
+<li><a href="#undo-previous-command-code-undo-code">4.19. Undo previous command: <code>undo</code></a></li>
+<li><a href="#save-data">4.20. Save data</a></li>
+<li><a href="#encrypt-data-files-code-coming-in-v2-0-code">4.21. Encrypt data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#update-module-information-code-coming-in-v2-0-code">4.22. Update module information <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -211,15 +212,15 @@ Adds CS2103T, to be taken in Y2S2, to the module plan.</p>
 </li>
 <li>
 <p><code>add c/CS2103T s/Y2S2 max/B_MINUS</code><br>
-Adds CS2103T, to be taken in Y2S2 with expected max grade B-, to the module plan.</p>
+Adds CS2103T, to be taken in the second semester of year 2 with expected max grade B-, to the module plan.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-modules-in-module-plan-code-cklimit-code"><a class="link" href="#listing-all-modules-in-module-plan-code-cklimit-code">4.2. Listing all modules in module plan: <code>cklimit</code></a></h3>
+<h3 id="checking-the-preferred-limits-of-the-user-against-the-planned-modules-for-all-semesters-code-cklimit-code"><a class="link" href="#checking-the-preferred-limits-of-the-user-against-the-planned-modules-for-all-semesters-code-cklimit-code">4.2. Checking the preferred limits of the user against the planned modules for all semesters: <code>cklimit</code></a></h3>
 <div class="paragraph">
-<p>Calculates the expected total workload and expected min and max CAP of each semester and checks against the limit set by the user.<br>
+<p>Calculates the total expected weekly workload and expected min and max CAP of each semester and checks against the limit set by the user.<br>
 Format: <code>cklimit</code></p>
 </div>
 </div>
@@ -233,8 +234,29 @@ Format: <code>clear</code></p>
 <div class="sect2">
 <h3 id="sets-the-current-semester-code-cursem-code"><a class="link" href="#sets-the-current-semester-code-cursem-code">4.4. Sets the current semester: <code>cursem</code></a></h3>
 <div class="paragraph">
-<p>Indicates that the previous semesters must have a single finalized grade in the expected grade range.<br>
-Format: <code>cursem</code></p>
+<p>Indicates that the previous semesters are completed and can be included in the current CAP computation.<br>
+Format: <code>cursem SEMESTER</code></p>
+</div>
+<div class="paragraph">
+<p>Constraints for the command input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Semester set must be a valid semester from year 1 to 5, in either the first or second semester, or GRAD if the user has completed all semesters.</p>
+</li>
+<li>
+<p>All modules taken in the previous semesters must have a finalized grade. The minimum expected grade and maximum expected grade must be the same.</p>
+</li>
+<li>
+<p><code>cursem Y3S2</code><br>
+Sets the current semester to the second semester of year 3.</p>
+</li>
+<li>
+<p><code>cursem GRAD</code><br>
+Sets the current semester to graduated semester.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -730,10 +752,29 @@ Sets the course of study to Computer Science with Focus Area Algorithms. Invokin
 </div>
 </div>
 <div class="sect2">
-<h3 id="sets-the-total-expected-cap-and-workload-limit-for-each-semester-code-setlimit-code"><a class="link" href="#sets-the-total-expected-cap-and-workload-limit-for-each-semester-code-setlimit-code">4.17. Sets the total expected CAP and workload limit for each semester: <code>setlimit</code></a></h3>
+<h3 id="sets-the-total-expected-cap-limit-for-each-semester-code-setlimit-code"><a class="link" href="#sets-the-total-expected-cap-limit-for-each-semester-code-setlimit-code">4.17. Sets the total expected CAP limit for each semester: <code>setlimit</code></a></h3>
 <div class="paragraph">
-<p>Calculates the expected total workload and expected min and max CAP of each semester and checks against the limit set by the user.<br>
-Format: <code>setlimit s/SEMESTER [g/MIN_GRADE MAX_GRADE] [lec/MIN_LECTURE_HOURS MAX_LECTURE_HOURS] [tut/MIN_TUTORIAL_HOURS MAX_TUTORIAL_HOURS] [lab/MIN_LAB_HOURS MAX_LAB_HOURS] [proj/MIN_PROJ_HOURS MAX_PROJ_HOURS] [prep/MIN_PREP_HOURS MAX_PREP_HOURS]</code></p>
+<p>Some students have a desired CAP for graduation. They may like to plan modules to take that ensures that their cap remains at a suitable range at all times, so that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Challenge, or maintain the CAP requirement of their scholarship for each semester.</p>
+</div>
+<div class="paragraph">
+<p>GradTrak can keep track of their CAP limit preferences so that it is possible to help them detect whether their current module plan fulfils their preferences.</p>
+</div>
+<div class="paragraph">
+<p>The <code>setlimit</code> command allows you to set the minimum and maximum preferred CAP for a semester.<br>
+Format: <code>setlimit s/SEMESTER [mincap/MIN_CAP] [maxcap/MAX_CAP]</code></p>
+</div>
+<div class="paragraph">
+<p>Constraints for the command input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Semester set must be a valid semester from year 1 to 5, in either the first or second semester.</p>
+</li>
+<li>
+<p>Newly edited limits must be not be out of order. Minimum CAP must not be more than maximum CAP</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -741,13 +782,70 @@ Format: <code>setlimit s/SEMESTER [g/MIN_GRADE MAX_GRADE] [lec/MIN_LECTURE_HOURS
 <div class="ulist">
 <ul>
 <li>
-<p><code>setlimit s/Y1S1 g/2.5 5.0</code></p>
+<p><code>setlimit s/Y1S1 mincap/2.52 maxcap/5</code><br>
+This sets the minimum CAP acceptable to 2.52 and maximum CAP acceptable to 5.00 for the first semester in year 1.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-previous-command-code-undo-code"><a class="link" href="#undo-previous-command-code-undo-code">4.18. Undo previous command: <code>undo</code></a></h3>
+<h3 id="sets-the-total-expected-workload-limit-for-each-semester-code-setlimit-code"><a class="link" href="#sets-the-total-expected-workload-limit-for-each-semester-code-setlimit-code">4.18. Sets the total expected workload limit for each semester: <code>setlimit</code></a></h3>
+<div class="paragraph">
+<p>Some students who do not have a strong programming background may be slightly uncomfortable taking multiple programming modules in year 1 as they may feel too stressed from huge weekly lab workloads. Other students who like project work may like to take 1 or 2 team-based modules per semester that focuses on communication skills.</p>
+</div>
+<div class="paragraph">
+<p>GradTrak can keep track of their workload limit preferences for each semester so that it is possible to help them detect whether their current module plan fulfils their preferences. Various types of workload limits  such as total number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours could be tracked.</p>
+</div>
+<div class="paragraph">
+<p>The <code>setlimit</code> command allows you to set the minimum and maximum total weekly workload limits for a semester.<br>
+Format: <code>setlimit s/SEMESTER [minlec/MIN_LECTURE_HOURS] [maxlec/MAX_LECTURE_HOURS] [mintut/MIN_TUTORIAL_HOURS] [maxtut/MAX_TUTORIAL_HOURS] [minlab/MIN_LAB_HOURS] [maxlab/MAX_LAB_HOURS] [minproj/MIN_PROJ_HOURS] [maxproj/MAX_PROJ_HOURS] [minprep/MIN_PREP_HOURS] [maxprep/MAX_PREP_HOURS]</code></p>
+</div>
+<div class="paragraph">
+<p>Constraints for the command input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Semester set must be a valid semester from year 1 to 5, in either the first or second semester.</p>
+</li>
+<li>
+<p>Newly edited limits must be not be out of order.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Minimum lecture hours must not be more than maximum lecture hours</p>
+</li>
+<li>
+<p>Minimum tutorial hours must not be more than maximum tutorial hours</p>
+</li>
+<li>
+<p>Minimum lab hours must not be more than maximum lab hours</p>
+</li>
+<li>
+<p>Minimum project hours must not be more than maximum project hours</p>
+</li>
+<li>
+<p>Minimum preparation hours must not be more than maximum preparation hours</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setlimit s/Y1S2 minlec/2.5 maxproj/3 maxprep/12</code><br>
+This sets the minimum number of weekly lecture hours acceptable to 2.5 and maximum number of weekly project hours acceptable to 3 for the second semester in year 1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-previous-command-code-undo-code"><a class="link" href="#undo-previous-command-code-undo-code">4.19. Undo previous command: <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores GradTrak to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -778,33 +876,33 @@ Format: <code>undo</code></p>
 </li>
 <li>
 <p><code>displayreq</code><br>
-<code>history</code><br>
+<code>cklimit</code><br>
 <code>undo</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p><code>cursem Y2S2</code><br>
+<code>setlimit Y3S1 minprep/4</code><br>
+<code>undo</code> (reverses the <code>setlimit Y3S1 minprep/4</code> command)<br>
+<code>undo</code> (reverses the <code>cursem Y2S2</code> command)<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="save-data"><a class="link" href="#save-data">4.19. Save data</a></h3>
+<h3 id="save-data"><a class="link" href="#save-data">4.20. Save data</a></h3>
 <div class="paragraph">
 <p>Data are saved in the hard disk automatically after any command that changes them. There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypt-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypt-data-files-code-coming-in-v2-0-code">4.20. Encrypt data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypt-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypt-data-files-code-coming-in-v2-0-code">4.21. Encrypt data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Encrypts your data files.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="update-module-information-code-coming-in-v2-0-code"><a class="link" href="#update-module-information-code-coming-in-v2-0-code">4.21. Update module information <code>[coming in v2.0]</code></a></h3>
+<h3 id="update-module-information-code-coming-in-v2-0-code"><a class="link" href="#update-module-information-code-coming-in-v2-0-code">4.22. Update module information <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Retrieves the latest information of all modules from CORS.</p>
 </div>
@@ -888,4 +986,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:11:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:36:52 UTC</div></div></div></body></html>
