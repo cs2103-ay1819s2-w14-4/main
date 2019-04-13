@@ -105,7 +105,7 @@ Before being able to check their plan against their preferences, the user must f
 <div class="sect2">
 <h3 id="display-course-requirements-code-displayreq-code"><a class="link" href="#display-course-requirements-code-displayreq-code">Display Course Requirements: <code>displayreq</code></a></h3>
 <div class="paragraph">
-<p>One of the core functions of GradTrak is to track whether the user has fulfilled his/her degree requirement.
+<p>One of the core functions of GradTrak is to check whether the user has fulfilled his/her degree requirement.
 As of <code>v1.3</code> of the application, GradTrak currently only has course information of 3 Computer Science major Focus Areas, namely:</p>
 </div>
 <div class="ulist">
@@ -125,9 +125,35 @@ As of <code>v1.3</code> of the application, GradTrak currently only has course i
 <p>You may refer to the guide on <code>study</code> command to understand how to set your current course of study.</p>
 </div>
 <div class="paragraph">
-<p>Using the information of the modules the user has already taken or is planning to take in the future semesters,
-this command informs the user whether they have completed a certain Graduation / Course Requirement. If a certain requirement is not completed, this command will also inform the user an approximate degree of completion of the requirement and also
-at the same time, suggest some other modules offered by NUS which they can take to fulfill the requirement.</p>
+<p>This command uses information of the modules the user has already taken or is planning to take in the future semesters,
+keyed in through the <code>add</code> command. It displays to the user the degree to which they have completed their course requirements
+and other relevant information. This can be seen in the annotated screenshot below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displayreqcommand.png" alt="displayreqcommand" width="800">
+</div>
+<div class="title">Figure 1. Annotated screenshot when <code>displayreq</code> is invoked</div>
+</div>
+<div class="paragraph">
+<p>These information are displayed in the result panel when <code>displayreq</code> is invoked:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Name of the course requirement.<br></p>
+</li>
+<li>
+<p>Description of the course requirement. Gives an overview of the modules the user should take to fulfill the requirement.<br></p>
+</li>
+<li>
+<p>Requirement type. Informs the user the importance of the requirement in relation to their course of study.<br></p>
+</li>
+<li>
+<p>Requirement progress bar and percentage. Informs the user the extent to which he/she have fulfilled the course
+requirement.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Format: <code>displayreq</code></p>
@@ -136,13 +162,25 @@ at the same time, suggest some other modules offered by NUS which they can take 
 <div class="sect2">
 <h3 id="set-current-course-of-study-code-study-code"><a class="link" href="#set-current-course-of-study-code-study-code">Set current course of study: <code>study</code></a></h3>
 <div class="paragraph">
-<p>To set the course of study you are currently undertaking, just simply key in the following command:</p>
+<p>To set the desired course of study, the user can simply key in the following command:</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>study COURSE</code><br></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The parameter <code>COURSE</code> is case-sensitive.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>As of <code>v1.3</code>, GradTrak has the functionalities to keep track of Graduation Requirements
+<p>As of <code>v1.4</code>, GradTrak has information to keep track of course requirement
 from the courses mentioned below:</p>
 </div>
 <div class="sidebarblock">
@@ -174,8 +212,7 @@ Sets the course of study to Computer Science with Focus Area Algorithms. Invokin
 </ul>
 </div>
 <div class="paragraph">
-<p>Feeling left out as you are unable to track your course of study? Fear not! We will roll
-out more courses of study in a future version of GradTrak, so stay tuned!</p>
+<p>More courses will be rolled out in GradTrak in its future iteration.</p>
 </div>
 </div>
 </div>
@@ -213,4 +250,4 @@ to investigate various effects of different Cuckoo Hash schemes.
 and <a href="https://github.com/monikernemo/CS5330-Experimental-Assignment">more on the codes of the implementation here</a></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 04:37:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:11:00 UTC</div></div></div></body></html>

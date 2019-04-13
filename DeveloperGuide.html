@@ -31,7 +31,7 @@
 <ul class="sectlevel2">
 <li><a href="#displaymod-feature">3.1. Displaymod feature</a></li>
 <li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
-<li><a href="#checking-whether-course-requirement-is-fulfilled-feature">3.3. Checking whether Course Requirement is fulfilled Feature</a></li>
+<li><a href="#display-course-requirement-feature">3.3. Display Course Requirement feature</a></li>
 <li><a href="#module-recommendation-feature">3.4. Module recommendation feature</a></li>
 <li><a href="#semester-cap-and-workload-management-feature">3.5. Semester CAP and workload management feature</a></li>
 <li><a href="#current-semester-tracking">3.6. Current Semester Tracking</a></li>
@@ -417,10 +417,8 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 3. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a>
+The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -500,7 +498,16 @@ The following class plays an important role at the architecture level:</p>
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
+<p>stores a <code>UserInfo</code> object that represents user&#8217;s information such as <code>Course</code> and <code>SemLimit</code></p>
+</li>
+<li>
 <p>stores the GradTrak data.</p>
+</li>
+<li>
+<p>stores a filtered list of <code>ModuleInfo</code>, <code>RecModule</code> that represents a list of modules NUS offers</p>
+</li>
+<li>
+<p>stores a <code>RequirementStatus</code> that keep tracks of the status of the requirement of the Course</p>
 </li>
 <li>
 <p>exposes an unmodifiable <code>ObservableList&lt;ModuleTaken&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
@@ -541,15 +548,13 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>GradTrak</cod
 <div class="title">Figure 7. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The <code>Storage</code> component,</p>
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a>
+The <code>Storage</code> component,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>can save <code>UserPref</code> objects in json format and read it back.</p>
+<p>can save <code>UserPref</code>, <code>UserInfo</code> objects in json format and read it back.</p>
 </li>
 <li>
 <p>can save the GradTrak data in json format and read it back.</p>
@@ -566,18 +571,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>GradTrak</cod
 <div class="title">Figure 8. Structure of read only storage component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/Storage/ModuleInfoStorage.java"><code>ModuleInfoStorage.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>The ModuleInfoStorage is a read-only form of storage as it is only reads the list of module information saved in a JSON
-file and coverts them into <code>ModuleInfo</code> and the stores all the <code>ModuleInfo</code> into list called <code>ModuleInfoList</code>.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>can only read <code>ModuleInfo</code> objects in json format.</p>
-</li>
-</ul>
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/Storage/ModuleInfoStorage.java"><code>ModuleInfoStorage.java</code></a>
+The <code>ModuleInfoStorage</code> and <code>CourseStorage</code> is a read-only storage in <code>GradTrak</code>. It is only reads the list of module
+and course information saved in a JSON file and coverts them into <code>ModuleInfo</code> and <code>Course</code> objects stored in model.</p>
 </div>
 </div>
 </div>
@@ -927,112 +923,193 @@ If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size
 </div>
 </div>
 <div class="sect2">
-<h3 id="checking-whether-course-requirement-is-fulfilled-feature"><a class="link" href="#checking-whether-course-requirement-is-fulfilled-feature">3.3. Checking whether Course Requirement is fulfilled Feature</a></h3>
+<h3 id="display-course-requirement-feature"><a class="link" href="#display-course-requirement-feature">3.3. Display Course Requirement feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>Users are able to check whether they have satisfied course requirements through a function <code>displayreq</code>.
-Similar to the implementation of the feature related to <code>displaymod</code>, when the application is
-launched, a JSON file containing pre-existing information on courses (either default or pre-defined by users) and their respective course requirement
-will loaded as <code>Course</code> objects and <code>CourseRequirement</code> interface (<code>Course</code> contains multiple <code>CourseRequirement</code> interface implementees)
-and stored in an <code>CourseList</code> inside of <code>ModelManager</code>. While the app does not support adding or removing courses and course requirements,
-users can still define their own course or course requirements by modifying the JSON file.</p>
+<p>The <code>displayreq</code> command allows the users to see all their course requirements and also check if the modules they have
+taken fulfils them. This command is currently facilitated by 2 classes in <code>Model</code>, <code>CourseRequirement</code> and
+<code>RequirementStatus</code>:</p>
 </div>
+<div class="sect4">
+<h5 id="code-courserequirement-code-interface"><a class="link" href="#code-courserequirement-code-interface"><code>CourseRequirement</code> Interface</a></h5>
 <div class="paragraph">
-<p>We employ the "Composite" design pattern for this class as there are desirable boolean binary operations such as
-"and", "or", that we would like to apply on two different requirements and we would want to regard the "simple" CourseRequirement,
-(one that can be achieved without "and", "or") and a more complicated one (one that can only be achieved with "and", "or") to be the same.
-As such the logical choice would be to make <code>CourseRequirement</code> an interface and its implementation is restricted to
-the <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code> classes.</p>
+<p>As there are many different kinds of course requirements that can be found in NUS, it is difficult to iron down the common characteristic
+they all share. This can be seen in the examples found below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/CompositeDesignPattern.png" alt="CompositeDesignPattern" width="=800">
+<img src="images/nus_requirement.PNG" alt="nus requirement" width="800">
 </div>
+<div class="title">Figure 9. Computer Systems Team Project Requirement</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/nus_requirement2.PNG" alt="nus requirement2" width="800">
+</div>
+<div class="title">Figure 10. Focus Area Requirement</div>
 </div>
 <div class="paragraph">
-<p>As the name suggests,
-<code>CompositeRequirement</code> is made up of two other <code>CourseRequirements</code>, a <code>LogicalConnector</code> enumerations (which is used to represent
-logical binary operators such conjunctions and disjunctions). On the other hand, a <code>PrimitiveRequirement</code> is a standalone <code>CourseRequirement</code> implementation
-that contains a <code>Condition</code> class, which is really a helper class that is used to check whether a list of <code>ModuleInfoCode</code> can satisfy the <code>CourseRequirement</code>.
-The <code>Condition</code> class has the following attribute to decide whether the a condition of <code>PrimitiveRequirement</code> is fulfilled, namely one String, Regular Expression,
-and an integer <code>minToSatisfy</code>. We will further elaborate the details below.</p>
+<p>For the requirement shown in Figure 9, students just have to complete at least one of CS3203 or
+CS3216 and CS3217 or CS3281 and CS3282. Whereas for the requirement in Figure 10, students have to fulfill
+all of the conditions stated above. Even though these two conditions might seem quite different,
+we are still able to draw some key observations about what they have in common:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Each requirement is composed of conjunction or disjunction of condition and each condition can
+be composed by conjunction and disjunction of other simpler conditions.</p>
+</li>
+<li>
+<p>Conditions that cannot be further broken down into simpler conditions usually contains information on the list of
+modules that can be used to satisfy the condition and how many of the modules should be completed to satisfy the
+condition.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>There currently 3 ways that <code>CourseRequirement</code> provides information to the user:</p>
+<p>These observations gives us some insight as to how we should design the interface. As such, the <code>CourseRequirement</code> interface follows a <code>Composite</code> design pattern. This is favoured as it allows
+us to treat individual and composition of <code>CourseRequirement</code> objects uniformly. The diagram below gives an overview of
+how <code>CourseRequirement</code> is implemented.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CompositeDesignPattern.png" alt="CompositeDesignPattern" width="800">
+</div>
+<div class="title">Figure 11. <code>CourseRequirement</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>This interface is implemented by 2 subclasses - <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code>.
+The <code>PrimitiveRequirement</code> is the simplest building block for <code>CourseRequirement</code>. Each <code>PrimitiveRequirement</code> stores a
+list of <code>Condition</code> objects. A <code>Condition</code> object stores a <code>Java</code> <code>Pattern</code> and an <code>int</code>, <code>minToSatisfy</code>. A <code>Condition</code>
+is satisfied if there are at least <code>minToSatisfy</code> many distinct
+<code>ModuleInfoCode</code> that matches <code>Pattern</code> in it. <code>PrimitiveRequirement</code> is satisfied only if all <code>Condition</code> objects in the list are
+fulfilled.</p>
+</div>
+<div class="paragraph">
+<p>For instance in Figure 9, a suitable <code>Condition</code> for completing CS3216 and CS3217 would be
+a <code>Pattern</code> that accepts only CS3216 or CS3217, and a <code>minToSatisfy</code> of 2.</p>
+</div>
+<div class="paragraph">
+<p>The <code>CompositeRequirement</code> can replicate the behaviour of more complex course requirements. Each <code>CompositeRequirement</code>
+object contains two <code>CourseRequirement</code> objects. It also contains a <code>LogicalConnector</code> enumeration
+that tells the <code>CompositeRequirement</code> how two different <code>CourseRequirement</code> are composed using logical operations. For instance, for
+a list of <code>ModuleInfoCode</code> to satisfy a <code>CompositeRequirement</code> that has a <code>AND</code> <code>LogicalConnector</code>, the list must
+satisfy the both <code>CourseRequirement</code> objects contained in <code>CompositeRequirement</code>.</p>
+</div>
+<div class="paragraph">
+<p>There currently 3 methods that <code>CourseRequirement</code> provides information to the user:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>isFulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a <code>boolean</code> to indicate whether the list of
-<code>ModuleInfoCode</code> can satisfy the requirement.</p>
+<p><code>isFulfilled</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a <code>boolean</code> to indicate whether the list of
+<code>ModuleInfoCode</code> can satisfy the all the <code>CourseRequirement</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>For <code>PrimitiveRequirement</code>, if the number of distinct <code>ModuleInfoCode</code> satisfies the list of Regular Expression pre-defined in
-<code>Condition</code> class exceeds <code>minToSatisfy</code>, we define the <code>PrimitiveRequirement</code> to be satisfied.</p>
+<p>In <code>PrimitiveRequirement</code>, this is achieved by checking whether all the <code>ModuleInfoCode</code> satisfies all the
+<code>Condition</code> stored in it.</p>
 </li>
 <li>
-<p>Similarly, for <code>CompositeRequirement</code>, it depends on the <code>LogicalConnector</code>; if we have "and", then both <code>CourseRequirement</code> must be satisfied
-in order for <code>CompositeRequirement</code> to be satisfied and likewise for "or".</p>
+<p>In <code>CompositeRequirement</code>, this is dependent on the <code>LogicalConnector</code> it has. It would return the value of
+first <code>CourseRequirement#isFulfilled</code> <code>LogicalConnector</code> second <code>CourseRequirement#isFulfilled</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><code>percentageFulfilled()</code>&#8201;&#8212;&#8201;a method that also accepts a list of ModuleInfoCode returns a <code>double</code> value on the percentage of completion of the
-<code>CourseRequirement</code>.</p>
+<p><code>percentageFulfilled</code>&#8201;&#8212;&#8201;a method that also accepts a list of ModuleInfoCode returns a <code>double</code> value that represents the
+percentage of completion of the <code>CourseRequirement</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>For <code>PrimitiveRequirement</code> this will be the proportion of distinct modules that satisfy at least one of the regular expression
-divided by <code>minToSatisfy</code>.</p>
+<p>In <code>PrimitiveRequirement</code>, this is achieved by calculating the number of distinct modules that satisfy at least
+1 of the <code>Condition</code> in the list and divided by the sum of <code>minToSatisfy</code>.</p>
 </li>
 <li>
-<p>For <code>CompositeRequirement</code>, a <code>LogicalConnector</code> of "or" wil result in the max of the two requirements whereas for "and", we take average
-of both classes to approximate the degree of completion.</p>
+<p>This depends on the <code>LogicalConnector</code> in <code>CompositeRequirement</code>. If it is a <code>OR</code> connector, we return the maximum
+of the two. The <code>AND</code> logical connector returns the average of the degree of completion for both requirements.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><code>getUnfulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a list of Strings that matches regular expressions (defined under Condition) of the <code>ModuleInfoCode</code>
-that can be used to satisfy the <code>CourseRequirement</code>.</p>
+<p><code>getUnfulfilled</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a list of RegExes from where none of the
+<code>ModuleInfoCode</code> matches. This method is used in the recommend feature.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="code-requirementstatus-code-class"><a class="link" href="#code-requirementstatus-code-class"><code>RequirementStatus</code> Class</a></h5>
+<div class="paragraph">
+<p>The <code>RequirementStatus</code> is an association class that links a <code>CourseRequirement</code> with <code>VersionedGradTrak</code> in <code>Model</code>.
+This can be seen in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RequirementStatusClassDiagram.png" alt="RequirementStatusClassDiagram" width="800">
+</div>
+<div class="title">Figure 12. <code>RequirementStatus</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>It also stores the result of the associated <code>CourseRequirement</code> object&#8217;s <code>isFulfilled</code> and <code>percentageFulfilled</code>
+methods acting on the list of <code>ModuleInfoCode</code>.</p>
+</div>
+<div class="paragraph">
+<p>Below is a sequence of execution when <code>displayreq</code> command is executed by the user:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Model#updateRequirementStatusList</code> is called. This clears the pre-existing <code>RequirementStatusList</code>
+and fills it with new <code>RequirementStatus</code> objects based on current <code>Course</code> and <code>ModulesTakenList</code>.</p>
+</li>
+<li>
+<p><code>UI</code> calls <code>getRequirementStatusList</code> from <code>Logic</code> and retrieves the updated <code>RequirementStatusList</code>
+from <code>Model</code>. This list is displayed in the <code>ResultPanel</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below summarises the execution as described above.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-condition-checks-whether-course-requirement-is-fulfilled"><a class="link" href="#aspect-how-condition-checks-whether-course-requirement-is-fulfilled">Aspect: How condition checks whether Course Requirement is fulfilled</a></h5>
+<h5 id="aspect-how-code-condition-code-class-checks-if-it-is-fulfilled"><a class="link" href="#aspect-how-code-condition-code-class-checks-if-it-is-fulfilled">Aspect: How <code>Condition</code> class checks if it is fulfilled.</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice): Checking Requirement fulfilled by only using <code>ModuleInfoCode</code> of
+<p><strong>Current choice: Checking <code>Condition</code> fulfilled by only using <code>ModuleInfoCode</code> of
 <code>ModuleTaken</code></strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easier to implement since we are restricting scope to only checking of strings</p>
+<p>Pros: Easy to implement since we are restricting scope to only checking whether strings match
+pattern in <code>Condition</code></p>
 </li>
 <li>
-<p>Cons: There could be 'corner cases' that we left out; actual NUS Course Requirement that we cannot represent by
-merely checking the module code.</p>
+<p>Cons: Possibility that the <code>CourseRequirement</code> class fails to check requirements that does not
+not depend on <code>ModuleInfoCode</code></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong> Alternative 2: Checking Requirement fulfilled by accessing any attribute of <code>ModuleTaken</code></strong></p>
+<p><strong> Alternative: Checking Requirement fulfilled by accessing any attribute of <code>ModuleTaken</code></strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Increased flexibility allows for more powerful expressions and increased usability for users side</p>
+<p>Pros: Increased flexibility and easier to replicate actual NUS requirements that does not depend
+on <code>ModuleInfoCode</code></p>
 </li>
 <li>
-<p>Cons: More Java classes/coding required (to Separate Responsibilities and Concerns) also means that more tests
-and storage components for different classes.</p>
+<p>Cons: Increased complexity to implement <code>CourseRequirement</code> class properly.</p>
 </li>
 </ul>
 </div>
@@ -1040,11 +1117,61 @@ and storage components for different classes.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Alternative 1 is chosen over alternative 2 because it is much easier to implement in terms of scope.
-Another reason why we chose alternative 1 over alternative 2 is due to the lack of time.
-For most cases, alternative 1 seems to be sufficient.
-However, in the future, we might extend the Condition class to check for other attributes of <code>ModuleTaken</code>.</p>
+<p>We chose the current choice over the alternative due to time constraints in the project. Moreover, our current choice
+is sufficient to replicate most NUS requirements accurately.</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="aspect-choice-of-information-stored-in-code-condition-code-class"><a class="link" href="#aspect-choice-of-information-stored-in-code-condition-code-class">Aspect: Choice of information stored in <code>Condition</code> class</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: <code>Condition</code> class stores a <code>Pattern</code> to check whether a requirement is satisfied</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Compact representation of which <code>ModuleInfoCode</code> fulfills the requirement</p>
+</li>
+<li>
+<p>Cons: Difficult to find the correct regular expression for some <code>Condition.</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative: <code>Condition</code> class stores an exact list of <code>String</code> to check whether a condition is satisfied</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy and interpretive to use.</p>
+</li>
+<li>
+<p>Cons: Might need to store a long list of <code>String</code> if many modules can fulfil the <code>Condition</code> eg: General Education
+Modules</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose our current choice over the alternative as it takes up much fewer space to store. Moreover, storing a pattern
+also improves performance time since each <code>ModuleInfoCode</code> is matched against a <code>Pattern</code> instead a list of <code>String</code>
+objects.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements"><a class="link" href="#possible-improvements">3.3.3. Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Allow users to create and export their own <code>Course</code> and <code>CourseRequirement</code> objects.</p>
+</li>
+<li>
+<p>Allow <code>Condition</code> to check its fulfillment access other attributes of a <code>ModuleTaken</code> object in the future.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1065,7 +1192,7 @@ types satisfied. The entire list is displayed on the Result Panel upon entering 
 <div class="content">
 <img src="images/RecModuleClassDiagram.png" alt="RecModuleClassDiagram" width="400">
 </div>
-<div class="title">Figure 9. <code>RecModule</code> class diagram</div>
+<div class="title">Figure 13. <code>RecModule</code> class diagram</div>
 </div>
 <div class="paragraph">
 <p>When <code>ModelManager</code> is initialised, <code>Model#getObservableRecModuleList</code> is called which generates an
@@ -1143,19 +1270,19 @@ must be run again to reflect the updated recommendation list.</p>
 <div class="content">
 <img src="images/RecCommandSequenceDiagram.png" alt="RecCommandSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 10. <code>RecCommand</code> sequence diagram</div>
+<div class="title">Figure 14. <code>RecCommand</code> sequence diagram</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/RecModulePredicateSequenceDiagram.png" alt="RecModulePredicateSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 11. <code>RecModulePredicate</code> sequence diagram</div>
+<div class="title">Figure 15. <code>RecModulePredicate</code> sequence diagram</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/RecModuleComparatorSequenceDiagram.png" alt="RecModuleComparatorSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 12. <code>RecModuleComparator</code> sequence diagram</div>
+<div class="title">Figure 16. <code>RecModuleComparator</code> sequence diagram</div>
 </div>
 </div>
 <div class="sect3">
@@ -1195,7 +1322,7 @@ must be run again to reflect the updated recommendation list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="possible-improvements"><a class="link" href="#possible-improvements">3.4.3. Possible Improvements</a></h4>
+<h4 id="possible-improvements-2"><a class="link" href="#possible-improvements-2">3.4.3. Possible Improvements</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1352,7 +1479,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 13. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2987,4 +3114,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 04:37:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:11:00 UTC</div></div></div></body></html>

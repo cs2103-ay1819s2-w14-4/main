@@ -126,7 +126,7 @@ For example, typing <strong><code>help</code></strong> and pressing <kbd>Enter</
 <p>You might wish to set the course of study first. There are currently 3 courses available in this app: Computer Science Algorithms,
 Computer Science Artificial Intelligence, Computer Science Software Engineering.
 To set the course, enter one of the following commands:
-<code>study Computer Science Algorithms</code>, <code>study Computer Science Software Engineering</code> or <code>study Computer Science Artificial Intelligence</code>.</p>
+<code>study [COURSE]</code></p>
 </li>
 <li>
 <p>Here are some commands you can try:</p>
@@ -194,7 +194,7 @@ or<br>
 <p>You cannot add an existing module with the same semester.</p>
 </li>
 <li>
-<p>You can only add a module if you have previously added its prerequisites.</p>
+<p>You can only add a module if you have previously added its prerequisites. <code>[coming in v2.0]</code></p>
 </li>
 </ul>
 </div>
@@ -423,7 +423,7 @@ after a successful search:</p>
 <div class="sect2">
 <h3 id="display-course-requirements-code-displayreq-code"><a class="link" href="#display-course-requirements-code-displayreq-code">4.7. Display Course Requirements: <code>displayreq</code></a></h3>
 <div class="paragraph">
-<p>One of the core functions of GradTrak is to track whether the user has fulfilled his/her degree requirement.
+<p>One of the core functions of GradTrak is to check whether the user has fulfilled his/her degree requirement.
 As of <code>v1.3</code> of the application, GradTrak currently only has course information of 3 Computer Science major Focus Areas, namely:</p>
 </div>
 <div class="ulist">
@@ -443,9 +443,35 @@ As of <code>v1.3</code> of the application, GradTrak currently only has course i
 <p>You may refer to the guide on <code>study</code> command to understand how to set your current course of study.</p>
 </div>
 <div class="paragraph">
-<p>Using the information of the modules the user has already taken or is planning to take in the future semesters,
-this command informs the user whether they have completed a certain Graduation / Course Requirement. If a certain requirement is not completed, this command will also inform the user an approximate degree of completion of the requirement and also
-at the same time, suggest some other modules offered by NUS which they can take to fulfill the requirement.</p>
+<p>This command uses information of the modules the user has already taken or is planning to take in the future semesters,
+keyed in through the <code>add</code> command. It displays to the user the degree to which they have completed their course requirements
+and other relevant information. This can be seen in the annotated screenshot below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displayreqcommand.png" alt="displayreqcommand" width="800">
+</div>
+<div class="title">Figure 11. Annotated screenshot when <code>displayreq</code> is invoked</div>
+</div>
+<div class="paragraph">
+<p>These information are displayed in the result panel when <code>displayreq</code> is invoked:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Name of the course requirement.<br></p>
+</li>
+<li>
+<p>Description of the course requirement. Gives an overview of the modules the user should take to fulfill the requirement.<br></p>
+</li>
+<li>
+<p>Requirement type. Informs the user the importance of the requirement in relation to their course of study.<br></p>
+</li>
+<li>
+<p>Requirement progress bar and percentage. Informs the user the extent to which he/she have fulfilled the course
+requirement.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Format: <code>displayreq</code></p>
@@ -478,10 +504,6 @@ or<br>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>edit c/CS2103T s/Y2S2</code><br>
-Changes the semester taken of CS2103T to Y2S2.</p>
-</li>
 <li>
 <p><code>edit 2 min/A_PLUS</code><br>
 Changes the expected min grade of the second module in the most recently displayed list to A+.</p>
@@ -537,7 +559,7 @@ Lists all CS modules in GradTrak.</p>
 <div class="content">
 <img src="images/find(c).png" alt="find(c)" width="790">
 </div>
-<div class="title">Figure 11. Finding CS modules</div>
+<div class="title">Figure 12. Finding CS modules</div>
 </div>
 <div class="ulist">
 <ul>
@@ -551,7 +573,7 @@ Lists all modules in Y1S2 in GradTrak.</p>
 <div class="content">
 <img src="images/find(s).png" alt="find(s)" width="790">
 </div>
-<div class="title">Figure 12. Finding modules in Y1S2</div>
+<div class="title">Figure 13. Finding modules in Y1S2</div>
 </div>
 <div class="ulist">
 <ul>
@@ -565,7 +587,7 @@ Lists all finished modules with grade A.</p>
 <div class="content">
 <img src="images/find(g,f).png" alt="find(g,f)" width="790">
 </div>
-<div class="title">Figure 13. Finding finished modules with grade A (current semester: Y1S2)</div>
+<div class="title">Figure 14. Finding finished modules with grade A (current semester: Y1S2)</div>
 </div>
 </div>
 <div class="sect2">
@@ -616,7 +638,7 @@ Format: <code>rec</code></p>
 <div class="content">
 <img src="images/recommend.png" alt="recommend" width="790">
 </div>
-<div class="title">Figure 14. Recommendation list for Computer Science Algorithms</div>
+<div class="title">Figure 15. Recommendation list for Computer Science Algorithms</div>
 </div>
 </div>
 <div class="sect2">
@@ -654,13 +676,25 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect2">
 <h3 id="set-current-course-of-study-code-study-code"><a class="link" href="#set-current-course-of-study-code-study-code">4.16. Set current course of study: <code>study</code></a></h3>
 <div class="paragraph">
-<p>To set the course of study you are currently undertaking, just simply key in the following command:</p>
+<p>To set the desired course of study, the user can simply key in the following command:</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>study COURSE</code><br></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The parameter <code>COURSE</code> is case-sensitive.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>As of <code>v1.3</code>, GradTrak has the functionalities to keep track of Graduation Requirements
+<p>As of <code>v1.4</code>, GradTrak has information to keep track of course requirement
 from the courses mentioned below:</p>
 </div>
 <div class="sidebarblock">
@@ -692,8 +726,7 @@ Sets the course of study to Computer Science with Focus Area Algorithms. Invokin
 </ul>
 </div>
 <div class="paragraph">
-<p>Feeling left out as you are unable to track your course of study? Fear not! We will roll
-out more courses of study in a future version of GradTrak, so stay tuned!</p>
+<p>More courses will be rolled out in GradTrak in its future iteration.</p>
 </div>
 </div>
 <div class="sect2">
@@ -740,11 +773,11 @@ Format: <code>undo</code></p>
 <ul>
 <li>
 <p><code>delete 1</code><br>
-<code>displaym o/all</code><br>
+<code>displayreq</code><br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 <li>
-<p><code>displaym o/all</code><br>
+<p><code>displayreq</code><br>
 <code>history</code><br>
 <code>undo</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
@@ -815,7 +848,7 @@ or<br>
 <p><strong>Displaymod</strong>: <code>displaym o/OPTIONS [MORE_ARGUMENTS]</code><br></p>
 </li>
 <li>
-<p><strong>Displayu</strong>: <code>displayu o/OPTIONS [MORE_ARGUMENTS]</code><br></p>
+<p><strong>Displayreq</strong>: <code>displayreq</code></p>
 </li>
 <li>
 <p><strong>Edit</strong>: <code>edit c/MODULE_CODE [s/NEW_SEMESTER] [g/NEW_GRADE_OBTAINED]</code><br>
@@ -844,7 +877,7 @@ or<br>
 <p><strong>Redo</strong>: <code>redo</code></p>
 </li>
 <li>
-<p><strong>Set</strong>: <code>set COURSE</code><br></p>
+<p><strong>Set</strong>: <code>study COURSE</code><br></p>
 </li>
 <li>
 <p><strong>Setlimit</strong>: <code>setlimit s/SEMESTER [g/MIN_GRADE MAX_GRADE] [lec/MIN_LECTURE_HOURS MAX_LECTURE_HOURS] [tut/MIN_TUTORIAL_HOURS MAX_TUTORIAL_HOURS] [lab/MIN_LAB_HOURS MAX_LAB_HOURS] [proj/MIN_PROJ_HOURS MAX_PROJ_HOURS] [prep/MIN_PREP_HOURS MAX_PREP_HOURS]</code></p>
@@ -855,4 +888,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 04:37:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:11:00 UTC</div></div></div></body></html>
