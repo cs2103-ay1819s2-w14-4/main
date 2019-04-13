@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta moduleInfoCode="viewport" content="width=device-width, initial-scale=1.0"><meta moduleInfoCode="generator" content="Asciidoctor 1.5.6.1"><title>Chong Hong Yun - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w14-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Chong Hong Yun - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-gradtrak-a-graduation-tracker-for-nus"><a class="link" href="#project-gradtrak-a-graduation-tracker-for-nus">PROJECT: GradTrak - A Graduation Tracker for NUS</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GradTrak is an application that was morphed from the codebase of <a href="https://github.com/nus-cs2103-AY1819S2/addressbook-level4">Address Book - Level 4</a>.
+It was conceptualised and designed in mind to assist students of NUS to track their graduation progress and plan future modules that they want to take.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major feature</strong>: added the ability for users to manage CAP and workload limits</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to check if their current module plan for all semesters is aligned with their preferences.
+The user can set their own preferences and check against the modules they plan to take.</p>
+</li>
+<li>
+<p>Why this feature: This is critical for users to ensure that they can manage their workload and maintain their targeted CAP for graduation.
+It is easier for users to detect if any semester will be too challenging or too easy for them.
+This may suggest reallocating some modules to distribute the difficulty more evenly across all semesters.</p>
+</li>
+<li>
+<p>Highlights: This feature depends on many attributes that originally does not exist in the system and can only be implemented after implementing the other smaller features.
+Before being able to check their plan against their preferences, the user must first be able to set their preferences, as well as estimate their workload and grades for each planned module.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added the ability to shift the current semester when grades have been finalized. The current semester indicates that all modules taken in previous semesters have been completed and should be included in the calculation of the current CAP.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=alexchong711">Reposense</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/cs2103-ay1819s2-w14-4/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+author%3Aalexchong711">Pull Requests Made</a></p>
+</li>
+<li>
+<p><a href="https://github.com/cs2103-ay1819s2-w14-4/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+is%3Aclosed+reviewed-by%3Aalexchong711">Pull Requests Reviewed</a></p>
+</li>
+<li>
+<p>Project Management</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Set up milestones, issue tracker</p>
+</li>
+<li>
+<p>Put up user stories</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Refactored Code</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Morphed the original Person class in Address Book to contain the attributes of the module taken by the user - Level 4 code base</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Changed some of the prose of the User Guide, Developer Guide (see above PR)</p>
+</li>
+<li>
+<p>Modified some sections of User Guide, Developer Guide</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="display-course-requirements-code-displayreq-code"><a class="link" href="#display-course-requirements-code-displayreq-code">Display Course Requirements: <code>displayreq</code></a></h3>
+<div class="paragraph">
+<p>One of the core functions of GradTrak is to track whether the user has fulfilled his/her degree requirement.
+As of <code>v1.3</code> of the application, GradTrak currently only has course information of 3 Computer Science major Focus Areas, namely:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Algorithms</p>
+</li>
+<li>
+<p>Artificial Intelligence</p>
+</li>
+<li>
+<p>Software Engineering</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You may refer to the guide on <code>study</code> command to understand how to set your current course of study.</p>
+</div>
+<div class="paragraph">
+<p>Using the information of the modules the user has already taken or is planning to take in the future semesters,
+this command informs the user whether they have completed a certain Graduation / Course Requirement. If a certain requirement is not completed, this command will also inform the user an approximate degree of completion of the requirement and also
+at the same time, suggest some other modules offered by NUS which they can take to fulfill the requirement.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>displayreq</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-current-course-of-study-code-study-code"><a class="link" href="#set-current-course-of-study-code-study-code">Set current course of study: <code>study</code></a></h3>
+<div class="paragraph">
+<p>To set the course of study you are currently undertaking, just simply key in the following command:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>study COURSE</code><br></p>
+</div>
+<div class="paragraph">
+<p>As of <code>v1.3</code>, GradTrak has the functionalities to keep track of Graduation Requirements
+from the courses mentioned below:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Computer Science Algorithms</p>
+</li>
+<li>
+<p>Computer Science Artificial Intelligence</p>
+</li>
+<li>
+<p>Computer Science Software Engineering</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>study Computer Science Algorithms</code><br>
+Sets the course of study to Computer Science with Focus Area Algorithms. Invoking <code>study</code> command again will change your course of study.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Feeling left out as you are unable to track your course of study? Fear not! We will roll
+out more courses of study in a future version of GradTrak, so stay tuned!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="current-semester-tracking"><a class="link" href="#current-semester-tracking">Current Semester Tracking</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Modules taken before the current semester must have a finalized grade such that</p>
+</div>
+<div class="paragraph">
+<p>when the user tries to shift the current semester forward, the app will check through all the modules taken before the current semester to ensure that the maximum and minimum expected grades are set to be the same.
+or else the <code>cursem</code> command will fail and be rejected with an error message</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SetCurrentSemesterSequenceDiagram.png" alt="SetCurrentSemesterSequenceDiagram" width="1000">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-cuckoo-hash"><a class="link" href="#project-cuckoo-hash">PROJECT: Cuckoo Hash</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An experimental assignment from <a href="https://www.comp.nus.edu.sg/~gilbert/CS5330/">CS5330 - Randomised Algorithm</a>
+to investigate various effects of different Cuckoo Hash schemes.
+<a href="https://www.comp.nus.edu.sg/~gilbert/CS5330/2019/psets/ExperimentalAlgorithms.pdf">More information on assignment here</a>
+and <a href="https://github.com/monikernemo/CS5330-Experimental-Assignment">more on the codes of the implementation here</a></p>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 04:37:21 UTC</div></div></div></body></html>
