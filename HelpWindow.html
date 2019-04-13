@@ -15,27 +15,28 @@
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
 <li><a href="#add">4.1. Add module: <code>add</code></a></li>
-<li><a href="#checking-the-preferred-limits-of-the-user-against-the-planned-modules-for-all-semesters-code-cklimit-code">4.2. Checking the preferred limits of the user against the planned modules for all semesters: <code>cklimit</code></a></li>
-<li><a href="#clear-all-data-entered-code-clear-code">4.3. Clear all data entered: <code>clear</code></a></li>
-<li><a href="#sets-the-current-semester-code-cursem-code">4.4. Sets the current semester: <code>cursem</code></a></li>
-<li><a href="#delete-module-code-delete-code">4.5. Delete module: <code>delete</code></a></li>
-<li><a href="#display-module-information-code-displaymod-code">4.6. Display module information: <code>displaymod</code></a></li>
-<li><a href="#display-course-requirements-code-displayreq-code">4.7. Display Course Requirements: <code>displayreq</code></a></li>
-<li><a href="#edit-module-code-edit-code">4.8. Edit module: <code>edit</code></a></li>
-<li><a href="#exit-the-program-code-exit-code">4.9. Exit the program: <code>exit</code></a></li>
-<li><a href="#find-module-code-find-code">4.10. Find module: <code>find</code></a></li>
-<li><a href="#view-all-other-commands-code-help-code">4.11. View all other commands : <code>help</code></a></li>
-<li><a href="#list-entered-commands-code-history-code">4.12. List entered commands: <code>history</code></a></li>
-<li><a href="#listing-all-modules-in-module-plan-code-list-code">4.13. Listing all modules in module plan: <code>list</code></a></li>
-<li><a href="#recommend-module-code-rec-code">4.14. Recommend module: <code>rec</code></a></li>
-<li><a href="#redo-the-previously-undone-command-code-redo-code">4.15. Redo the previously undone command: <code>redo</code></a></li>
-<li><a href="#set-current-course-of-study-code-study-code">4.16. Set current course of study: <code>study</code></a></li>
-<li><a href="#sets-the-total-expected-cap-limit-for-each-semester-code-setlimit-code">4.17. Sets the total expected CAP limit for each semester: <code>setlimit</code></a></li>
-<li><a href="#sets-the-total-expected-workload-limit-for-each-semester-code-setlimit-code">4.18. Sets the total expected workload limit for each semester: <code>setlimit</code></a></li>
-<li><a href="#undo-previous-command-code-undo-code">4.19. Undo previous command: <code>undo</code></a></li>
-<li><a href="#save-data">4.20. Save data</a></li>
-<li><a href="#encrypt-data-files-code-coming-in-v2-0-code">4.21. Encrypt data files <code>[coming in v2.0]</code></a></li>
-<li><a href="#update-module-information-code-coming-in-v2-0-code">4.22. Update module information <code>[coming in v2.0]</code></a></li>
+<li><a href="#check-cap-limits-code-cklimit-code">4.2. Check CAP limits: <code>cklimit</code></a></li>
+<li><a href="#check-workload-limits-code-cklimit-code">4.3. Check workload limits: <code>cklimit</code></a></li>
+<li><a href="#clear-all-data-entered-code-clear-code">4.4. Clear all data entered: <code>clear</code></a></li>
+<li><a href="#set-the-current-semester-code-cursem-code">4.5. Set the current semester: <code>cursem</code></a></li>
+<li><a href="#delete-module-code-delete-code">4.6. Delete module: <code>delete</code></a></li>
+<li><a href="#display-module-information-code-displaymod-code">4.7. Display module information: <code>displaymod</code></a></li>
+<li><a href="#display-course-requirements-code-displayreq-code">4.8. Display Course Requirements: <code>displayreq</code></a></li>
+<li><a href="#edit-module-code-edit-code">4.9. Edit module: <code>edit</code></a></li>
+<li><a href="#exit-the-program-code-exit-code">4.10. Exit the program: <code>exit</code></a></li>
+<li><a href="#find-module-code-find-code">4.11. Find module: <code>find</code></a></li>
+<li><a href="#view-all-other-commands-code-help-code">4.12. View all other commands : <code>help</code></a></li>
+<li><a href="#list-entered-commands-code-history-code">4.13. List entered commands: <code>history</code></a></li>
+<li><a href="#listing-all-modules-in-module-plan-code-list-code">4.14. Listing all modules in module plan: <code>list</code></a></li>
+<li><a href="#recommend-module-code-rec-code">4.15. Recommend module: <code>rec</code></a></li>
+<li><a href="#redo-the-previously-undone-command-code-redo-code">4.16. Redo the previously undone command: <code>redo</code></a></li>
+<li><a href="#set-the-current-course-of-study-code-study-code">4.17. Set the current course of study: <code>study</code></a></li>
+<li><a href="#set-the-cap-limit-code-setlimit-code">4.18. Set the CAP limit: <code>setlimit</code></a></li>
+<li><a href="#set-the-workload-limit-code-setlimit-code">4.19. Set the workload limit: <code>setlimit</code></a></li>
+<li><a href="#undo-previous-command-code-undo-code">4.20. Undo previous command: <code>undo</code></a></li>
+<li><a href="#save-data">4.21. Save data</a></li>
+<li><a href="#encrypt-data-files-code-coming-in-v2-0-code">4.22. Encrypt data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#update-module-information-code-coming-in-v2-0-code">4.23. Update module information <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -180,9 +181,7 @@ will give you a more detailed guide/walk through for each command.</p>
 <h3 id="add"><a class="link" href="#add">4.1. Add module: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a module to GradTrak based on the given module code, semester taken and expected / obtained grade.<br>
-Format: <code>add c/MODULE_CODE s/SEMESTER [min/NEW_EXPECTED_MIN_GRADE] [max/NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code><br>
-or<br>
-<code>add c/MODULE_CODE s/SEMESTER [g/NEW_EXPECTED_MIN_GRADE NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code></p>
+Format: <code>add c/MODULE_CODE s/SEMESTER [ming/NEW_EXPECTED_MIN_GRADE] [maxg/NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -207,32 +206,98 @@ or<br>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add c/CS2103T s/Y2S2</code><br>
-Adds CS2103T, to be taken in Y2S2, to the module plan.</p>
+<p><code>add c/CS2103T s/Y1S1</code><br>
+Adds the module CS2103T, to be taken in the first semester of year 1, to the module plan.</p>
 </li>
 <li>
 <p><code>add c/CS2103T s/Y2S2 max/B_MINUS</code><br>
-Adds CS2103T, to be taken in the second semester of year 2 with expected max grade B-, to the module plan.</p>
+Adds the module CS2103T, to be taken in the second semester of year 2 with expected max grade B-, to the module plan.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="checking-the-preferred-limits-of-the-user-against-the-planned-modules-for-all-semesters-code-cklimit-code"><a class="link" href="#checking-the-preferred-limits-of-the-user-against-the-planned-modules-for-all-semesters-code-cklimit-code">4.2. Checking the preferred limits of the user against the planned modules for all semesters: <code>cklimit</code></a></h3>
+<h3 id="check-cap-limits-code-cklimit-code"><a class="link" href="#check-cap-limits-code-cklimit-code">4.2. Check CAP limits: <code>cklimit</code></a></h3>
 <div class="paragraph">
-<p>Calculates the total expected weekly workload and expected min and max CAP of each semester and checks against the limit set by the user.<br>
+<p>To find out if their current plans are suitable in maintaining their CAP for each semester, users would like to:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>know what their current CAP is.</p>
+</li>
+<li>
+<p>be able to estimate their minimum and maximum projected CAP based on their estimated grade range for each module</p>
+</li>
+<li>
+<p>know if any semesters have modules that have too many difficult modules that would pull down their cap unexpectedly, or too many easy modules that could be distributed to other semesters to maintain and more steady and predictable CAP for all semesters.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>GradTrak is able to consolidate all the information about the modules they plan to take and the limit preferences they have for each semester. This allows the user to run a CAP analysis on their current module plan and generate the results to be printed all in one page on their screen.</p>
+</div>
+<div class="paragraph">
+<p>The cklimit command calculates the expected minimum and maximum CAP of each semester and checks them against the limit preferences set by the user.<br>
 Format: <code>cklimit</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command also analyzes and prints workload information.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear-all-data-entered-code-clear-code"><a class="link" href="#clear-all-data-entered-code-clear-code">4.3. Clear all data entered: <code>clear</code></a></h3>
+<h3 id="check-workload-limits-code-cklimit-code"><a class="link" href="#check-workload-limits-code-cklimit-code">4.3. Check workload limits: <code>cklimit</code></a></h3>
+<div class="paragraph">
+<p>To find out if their current plans are optimized in workload distribution, users would like to:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>know how many hours of workload their current module plan has for each semester in total.</p>
+</li>
+<li>
+<p>find out if any semester is too heavy or light on any type of workload that could suggest a reallocation of modules to redistribute the workload across all semesters.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>GradTrak is able to consolidate all the information about the modules they plan to take and what limit preferences they have for each semester. This allows the user to run a workload analysis on their current module plan and generate the results to be printed all in one page on their screen.</p>
+</div>
+<div class="paragraph">
+<p>The cklimit command calculates the total expected weekly workload of each semester and checks against the limit preferences set by the user.<br>
+Format: <code>cklimit</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command also analyzes and prints CAP information
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clear-all-data-entered-code-clear-code"><a class="link" href="#clear-all-data-entered-code-clear-code">4.4. Clear all data entered: <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Deletes all the added modules.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sets-the-current-semester-code-cursem-code"><a class="link" href="#sets-the-current-semester-code-cursem-code">4.4. Sets the current semester: <code>cursem</code></a></h3>
+<h3 id="set-the-current-semester-code-cursem-code"><a class="link" href="#set-the-current-semester-code-cursem-code">4.5. Set the current semester: <code>cursem</code></a></h3>
 <div class="paragraph">
 <p>Indicates that the previous semesters are completed and can be included in the current CAP computation.<br>
 Format: <code>cursem SEMESTER</code></p>
@@ -243,7 +308,7 @@ Format: <code>cursem SEMESTER</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Semester set must be a valid semester from year 1 to 5, in either the first or second semester, or GRAD if the user has completed all semesters.</p>
+<p>The given semester must be a valid semester from year 1 to 5, in either the first or second semester, or GRAD if the user has completed all semesters.</p>
 </li>
 <li>
 <p>All modules taken in the previous semesters must have a finalized grade. The minimum expected grade and maximum expected grade must be the same.</p>
@@ -254,13 +319,13 @@ Sets the current semester to the second semester of year 3.</p>
 </li>
 <li>
 <p><code>cursem GRAD</code><br>
-Sets the current semester to graduated semester.</p>
+Sets the current semester to the graduated semester.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-module-code-delete-code"><a class="link" href="#delete-module-code-delete-code">4.5. Delete module: <code>delete</code></a></h3>
+<h3 id="delete-module-code-delete-code"><a class="link" href="#delete-module-code-delete-code">4.6. Delete module: <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Removes a module from GradTrak based on module code or index in the most recently displayed list.<br>
 Format: <code>delete INDEX</code><br>
@@ -295,7 +360,7 @@ Deletes the first module on the most recently displayed list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-module-information-code-displaymod-code"><a class="link" href="#display-module-information-code-displaymod-code">4.6. Display module information: <code>displaymod</code></a></h3>
+<h3 id="display-module-information-code-displaymod-code"><a class="link" href="#display-module-information-code-displaymod-code">4.7. Display module information: <code>displaymod</code></a></h3>
 <div class="paragraph">
 <p>The <code>displaymod</code> command shows all modules that is available in NUS based on the user&#8217;s search. This command simply
 shows modules straight from NUS&#8217;s database of modules and does not check if the user has met the prerequisites to read
@@ -443,7 +508,7 @@ after a successful search:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-course-requirements-code-displayreq-code"><a class="link" href="#display-course-requirements-code-displayreq-code">4.7. Display Course Requirements: <code>displayreq</code></a></h3>
+<h3 id="display-course-requirements-code-displayreq-code"><a class="link" href="#display-course-requirements-code-displayreq-code">4.8. Display Course Requirements: <code>displayreq</code></a></h3>
 <div class="paragraph">
 <p>One of the core functions of GradTrak is to check whether the user has fulfilled his/her degree requirement.
 As of <code>v1.3</code> of the application, GradTrak currently only has course information of 3 Computer Science major Focus Areas, namely:</p>
@@ -500,12 +565,10 @@ requirement.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-module-code-edit-code"><a class="link" href="#edit-module-code-edit-code">4.8. Edit module: <code>edit</code></a></h3>
+<h3 id="edit-module-code-edit-code"><a class="link" href="#edit-module-code-edit-code">4.9. Edit module: <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits the semester or grade of a module in the module plan based on module code or index in the most recently displayed list.<br>
-Format: <code>edit INDEX [s/NEW_SEMESTER] [min/NEW_EXPECTED_MIN_GRADE] [max/NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code>
-or<br>
-<code>edit INDEX [s/NEW_SEMESTER] [g/NEW_EXPECTED_MIN_GRADE NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code><br></p>
+<p>Edits the grade and workload of a module as well as which semester it should be taken in the module plan based on module code or index in the most recently displayed list.<br>
+Format: <code>edit INDEX [s/NEW_SEMESTER] [ming/NEW_EXPECTED_MIN_GRADE] [maxg/NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -534,14 +597,14 @@ Changes the expected min grade of the second module in the most recently display
 </div>
 </div>
 <div class="sect2">
-<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">4.9. Exit the program: <code>exit</code></a></h3>
+<h3 id="exit-the-program-code-exit-code"><a class="link" href="#exit-the-program-code-exit-code">4.10. Exit the program: <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="find-module-code-find-code"><a class="link" href="#find-module-code-find-code">4.10. Find module: <code>find</code></a></h3>
+<h3 id="find-module-code-find-code"><a class="link" href="#find-module-code-find-code">4.11. Find module: <code>find</code></a></h3>
 <div class="paragraph">
 <p>Finds modules in GradTrak matching all given module code, semester, grade or finished status.<br>
 Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code></p>
@@ -613,14 +676,14 @@ Lists all finished modules with grade A.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-all-other-commands-code-help-code"><a class="link" href="#view-all-other-commands-code-help-code">4.11. View all other commands : <code>help</code></a></h3>
+<h3 id="view-all-other-commands-code-help-code"><a class="link" href="#view-all-other-commands-code-help-code">4.12. View all other commands : <code>help</code></a></h3>
 <div class="paragraph">
 <p>Displays a list of all available commands.<br>
 Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-entered-commands-code-history-code"><a class="link" href="#list-entered-commands-code-history-code">4.12. List entered commands: <code>history</code></a></h3>
+<h3 id="list-entered-commands-code-history-code"><a class="link" href="#list-entered-commands-code-history-code">4.13. List entered commands: <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all commands entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -641,14 +704,14 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-modules-in-module-plan-code-list-code"><a class="link" href="#listing-all-modules-in-module-plan-code-list-code">4.13. Listing all modules in module plan: <code>list</code></a></h3>
+<h3 id="listing-all-modules-in-module-plan-code-list-code"><a class="link" href="#listing-all-modules-in-module-plan-code-list-code">4.14. Listing all modules in module plan: <code>list</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all modules in GradTrak.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="recommend-module-code-rec-code"><a class="link" href="#recommend-module-code-rec-code">4.14. Recommend module: <code>rec</code></a></h3>
+<h3 id="recommend-module-code-rec-code"><a class="link" href="#recommend-module-code-rec-code">4.15. Recommend module: <code>rec</code></a></h3>
 <div class="paragraph">
 <p>Recommends a list of modules that can be read based on GradTrak modules and course requirements, as shown above.
 Modules with unmet prerequisites or preclusions present in GradTrak as well as modules already added (unless they have been failed) will not be recommended.<br>
@@ -664,7 +727,7 @@ Format: <code>rec</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redo-the-previously-undone-command-code-redo-code"><a class="link" href="#redo-the-previously-undone-command-code-redo-code">4.15. Redo the previously undone command: <code>redo</code></a></h3>
+<h3 id="redo-the-previously-undone-command-code-redo-code"><a class="link" href="#redo-the-previously-undone-command-code-redo-code">4.16. Redo the previously undone command: <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -696,7 +759,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-current-course-of-study-code-study-code"><a class="link" href="#set-current-course-of-study-code-study-code">4.16. Set current course of study: <code>study</code></a></h3>
+<h3 id="set-the-current-course-of-study-code-study-code"><a class="link" href="#set-the-current-course-of-study-code-study-code">4.17. Set the current course of study: <code>study</code></a></h3>
 <div class="paragraph">
 <p>To set the desired course of study, the user can simply key in the following command:</p>
 </div>
@@ -752,9 +815,9 @@ Sets the course of study to Computer Science with Focus Area Algorithms. Invokin
 </div>
 </div>
 <div class="sect2">
-<h3 id="sets-the-total-expected-cap-limit-for-each-semester-code-setlimit-code"><a class="link" href="#sets-the-total-expected-cap-limit-for-each-semester-code-setlimit-code">4.17. Sets the total expected CAP limit for each semester: <code>setlimit</code></a></h3>
+<h3 id="set-the-cap-limit-code-setlimit-code"><a class="link" href="#set-the-cap-limit-code-setlimit-code">4.18. Set the CAP limit: <code>setlimit</code></a></h3>
 <div class="paragraph">
-<p>Some students have a desired CAP for graduation. They may like to plan modules to take that ensures that their cap remains at a suitable range at all times, so that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Challenge, or maintain the CAP requirement of their scholarship for each semester.</p>
+<p>Some students have a desired CAP for graduation. They may like to plan modules to take that ensures that their cap remains at a suitable range at all times. This helps to ensure that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Challenge, or maintain the CAP requirement of their scholarship for each semester.</p>
 </div>
 <div class="paragraph">
 <p>GradTrak can keep track of their CAP limit preferences so that it is possible to help them detect whether their current module plan fulfils their preferences.</p>
@@ -769,7 +832,7 @@ Format: <code>setlimit s/SEMESTER [mincap/MIN_CAP] [maxcap/MAX_CAP]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Semester set must be a valid semester from year 1 to 5, in either the first or second semester.</p>
+<p>Given semester must be a valid semester from year 1 to 5, in either the first or second semester.</p>
 </li>
 <li>
 <p>Newly edited limits must be not be out of order. Minimum CAP must not be more than maximum CAP</p>
@@ -787,14 +850,26 @@ This sets the minimum CAP acceptable to 2.52 and maximum CAP acceptable to 5.00 
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command also able to set workload limits for each semester.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="sets-the-total-expected-workload-limit-for-each-semester-code-setlimit-code"><a class="link" href="#sets-the-total-expected-workload-limit-for-each-semester-code-setlimit-code">4.18. Sets the total expected workload limit for each semester: <code>setlimit</code></a></h3>
+<h3 id="set-the-workload-limit-code-setlimit-code"><a class="link" href="#set-the-workload-limit-code-setlimit-code">4.19. Set the workload limit: <code>setlimit</code></a></h3>
 <div class="paragraph">
 <p>Some students who do not have a strong programming background may be slightly uncomfortable taking multiple programming modules in year 1 as they may feel too stressed from huge weekly lab workloads. Other students who like project work may like to take 1 or 2 team-based modules per semester that focuses on communication skills.</p>
 </div>
 <div class="paragraph">
-<p>GradTrak can keep track of their workload limit preferences for each semester so that it is possible to help them detect whether their current module plan fulfils their preferences. Various types of workload limits  such as total number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours could be tracked.</p>
+<p>GradTrak can keep track of their workload limit preferences for each semester so that it is possible to help them detect whether their current module plan fulfils their preferences. Various types of workload limits  such as total number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours can be tracked.</p>
 </div>
 <div class="paragraph">
 <p>The <code>setlimit</code> command allows you to set the minimum and maximum total weekly workload limits for a semester.<br>
@@ -809,23 +884,23 @@ Format: <code>setlimit s/SEMESTER [minlec/MIN_LECTURE_HOURS] [maxlec/MAX_LECTURE
 <p>Semester set must be a valid semester from year 1 to 5, in either the first or second semester.</p>
 </li>
 <li>
-<p>Newly edited limits must be not be out of order.</p>
+<p>Newly edited limits must be not be out of order such that the following requirements are met:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Minimum lecture hours must not be more than maximum lecture hours</p>
+<p>Minimum lecture hours must not be more than the maximum lecture hours</p>
 </li>
 <li>
-<p>Minimum tutorial hours must not be more than maximum tutorial hours</p>
+<p>Minimum tutorial hours must not be more than the maximum tutorial hours</p>
 </li>
 <li>
-<p>Minimum lab hours must not be more than maximum lab hours</p>
+<p>Minimum lab hours must not be more than the maximum lab hours</p>
 </li>
 <li>
-<p>Minimum project hours must not be more than maximum project hours</p>
+<p>Minimum project hours must not be more than the maximum project hours</p>
 </li>
 <li>
-<p>Minimum preparation hours must not be more than maximum preparation hours</p>
+<p>Minimum preparation hours must not be more than the maximum preparation hours</p>
 </li>
 </ul>
 </div>
@@ -843,9 +918,21 @@ This sets the minimum number of weekly lecture hours acceptable to 2.5 and maxim
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This command also able to set CAP limits for each semester.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="undo-previous-command-code-undo-code"><a class="link" href="#undo-previous-command-code-undo-code">4.19. Undo previous command: <code>undo</code></a></h3>
+<h3 id="undo-previous-command-code-undo-code"><a class="link" href="#undo-previous-command-code-undo-code">4.20. Undo previous command: <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores GradTrak to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -890,19 +977,19 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="save-data"><a class="link" href="#save-data">4.20. Save data</a></h3>
+<h3 id="save-data"><a class="link" href="#save-data">4.21. Save data</a></h3>
 <div class="paragraph">
 <p>Data are saved in the hard disk automatically after any command that changes them. There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypt-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypt-data-files-code-coming-in-v2-0-code">4.21. Encrypt data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypt-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypt-data-files-code-coming-in-v2-0-code">4.22. Encrypt data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Encrypts your data files.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="update-module-information-code-coming-in-v2-0-code"><a class="link" href="#update-module-information-code-coming-in-v2-0-code">4.22. Update module information <code>[coming in v2.0]</code></a></h3>
+<h3 id="update-module-information-code-coming-in-v2-0-code"><a class="link" href="#update-module-information-code-coming-in-v2-0-code">4.23. Update module information <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Retrieves the latest information of all modules from CORS.</p>
 </div>
@@ -986,4 +1073,4 @@ or<br>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 10:36:52 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 11:19:29 UTC</div></div></div></body></html>
