@@ -415,8 +415,10 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 3. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a>
-The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -471,9 +473,9 @@ The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/DeletePersonSdForLogic.png" alt="DeletePersonSdForLogic" width="800">
+<img src="images/DeleteModuleTakenSdForLogic.png" alt="DeleteModuleTakenSdForLogic" width="800">
 </div>
-<div class="title">Figure 5. Interactions Inside the Logic Component for the <code>delete 1</code> Command</div>
+<div class="title">Figure 5. Interactions inside the Logic Component for the <code>delete 1</code> Command</div>
 </div>
 </div>
 <div class="sect2">
@@ -1318,6 +1320,39 @@ must be run again to reflect the updated recommendation list.</p>
 </ul>
 </div>
 </div>
+<div class="sect4">
+<h5 id="aspect-format-of-recommendation"><a class="link" href="#aspect-format-of-recommendation">Aspect: Format of recommendation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): Display a list of all eligible modules that contribute to course requirements</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User has a greater freedom of choice</p>
+</li>
+<li>
+<p>Cons: User may be confused or unable to decide if the list is too long</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: Display <code>n</code> modules for each semester, where <code>n</code> is decided by the user</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can plan modules for specific semesters easily and quickly</p>
+</li>
+<li>
+<p>Cons: Algorithm required to plan for all semesters can be complex; user may not prefer the given plan</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="possible-improvements-2"><a class="link" href="#possible-improvements-2">3.4.3. Possible Improvements</a></h4>
@@ -1327,7 +1362,7 @@ must be run again to reflect the updated recommendation list.</p>
 <p>Allow the user to display a module&#8217;s information (from <code>displaymod</code> command) using its index in the recommendation list</p>
 </li>
 <li>
-<p>Allow the user to add a module to GradTrak using its index in the recommendation list</p>
+<p>Allow the user to add a module to the module plan using its index in the recommendation list</p>
 </li>
 </ol>
 </div>
@@ -3186,4 +3221,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:16:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 07:20:47 UTC</div></div></div></body></html>
