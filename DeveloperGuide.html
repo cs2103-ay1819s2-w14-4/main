@@ -603,8 +603,8 @@ The <code>Storage</code> component,</p>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
 <div class="paragraph">
-<p><code>displaymod</code> is a command that displays a module&#8217;s information based on the user&#8217;s search. The main reason for implementing
-such a feature is so that users can have immediate access to all available modules in NUS instead of searching through the
+<p><code>displaymod</code> is a command that displays the information of a module based on the search by the student. The main reason for implementing
+such a feature is so that students can have immediate access to all available modules in NUS instead of searching through the
 internet.</p>
 </div>
 </div>
@@ -664,14 +664,14 @@ code. All of these objects are created in the construction of the <code>ModuleIn
 <div class="sect3">
 <h4 id="generating-prerequisite-trees"><a class="link" href="#generating-prerequisite-trees">3.1.3. Generating prerequisite trees</a></h4>
 <div class="paragraph">
-<p>Within the <code>ModuleInfo</code> class, the <code>ModuleInfoPrerequisite</code> class requires the most pre-processing. If users wishes to take
+<p>Within the <code>ModuleInfo</code> class, the <code>ModuleInfoPrerequisite</code> class requires the most pre-processing. If a student wishes to take
 a particular module, they have to check if they can satisfy the prerequisites, thus presenting the prerequisite tree is
 paramount to the <code>ModuleInfo</code> class.<br></p>
 </div>
 <div class="paragraph">
 <p><code>ModuleInfoPrerequisite</code> contains a custom data structure called <code>ModuleTree</code> which can be found in the
 <code>commons.Util</code> package. It was place in the <code>commons</code> package since it was a data structure and other functions
-or feature may require the <code>ModuleTree</code> <strong>i.e.</strong> when adding/deleting modules from user&#8217;s <code>ModuleTaken</code> list.<br></p>
+or feature may require the <code>ModuleTree</code> <strong>i.e.</strong> when adding/deleting modules from the <code>ModuleTaken</code> list of the student.<br></p>
 </div>
 <div class="paragraph">
 <p>The <code>ModuleTree</code> data structure consist of "smaller" objects called <code>Node</code>, which can also be found in <code>commons.Util</code>.
@@ -770,8 +770,8 @@ an <code>ObservableList&lt;&gt;</code>, this is done so that we can take advanta
 </div>
 </div>
 <div class="paragraph">
-<p>Whenever the user searches for a particular <code>ModuleInfo</code> , the <code>ObservableList&lt;&gt;</code> is always ready and the <code>FilteredList&lt;&gt;</code>
-will be updated using a <code>Predicate</code> List generated from the user&#8217;s search keywords.</p>
+<p>Whenever the student searches for a particular <code>ModuleInfo</code> , the <code>ObservableList&lt;&gt;</code> is always ready and the <code>FilteredList&lt;&gt;</code>
+will be updated using a <code>Predicate</code> List generated from the keywords searched by the student.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -878,7 +878,7 @@ Additionally, it implements the following operations:</p>
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedGradTrak</code> will be initialized with the initial GradTrak state, and the <code>currentStatePointer</code> pointing to that single GradTrak state.</p>
+<p>Step 1. The student launches the application for the first time. The <code>VersionedGradTrak</code> will be initialized with the initial GradTrak state, and the <code>currentStatePointer</code> pointing to that single GradTrak state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -886,7 +886,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th module in the GradTrak. The <code>delete</code> command calls <code>Model#commitGradTrak()</code>, causing the modified state of the GradTrak after the <code>delete 5</code> command executes to be saved in the <code>GradTrakStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted GradTrak state.</p>
+<p>Step 2. The student executes <code>delete 5</code> command to delete the 5th module in the GradTrak. The <code>delete</code> command calls <code>Model#commitGradTrak()</code>, causing the modified state of the GradTrak after the <code>delete 5</code> command executes to be saved in the <code>GradTrakStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted GradTrak state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -894,7 +894,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add c/CS2103T &#8230;&#8203;</code> to add a new module. The <code>add</code> command also calls <code>Model#commitGradTrak()</code>, causing another modified GradTrak state to be saved into the <code>gradTrakStateList</code>.</p>
+<p>Step 3. The student executes <code>add c/CS2103T &#8230;&#8203;</code> to add a new module. The <code>add</code> command also calls <code>Model#commitGradTrak()</code>, causing another modified GradTrak state to be saved into the <code>gradTrakStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -914,7 +914,7 @@ If a command fails its execution, it will not call <code>Model#commitGradTrak()<
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the module was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoGradTrak()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous GradTrak state, and restores the GradTrak to that state.</p>
+<p>Step 4. The student now decides that adding the module was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoGradTrak()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous GradTrak state, and restores the GradTrak to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -928,7 +928,7 @@ If a command fails its execution, it will not call <code>Model#commitGradTrak()<
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial GradTrak state, then there are no previous GradTrak states to restore. The <code>undo</code> command uses <code>Model#canUndoGradTrak()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial GradTrak state, then there are no previous GradTrak states to restore. The <code>undo</code> command uses <code>Model#canUndoGradTrak()</code> to check if this is the case. If so, it will return an error to the student rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -951,13 +951,13 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial G
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size() - 1</code>, pointing to the latest GradTrak state, then there are no undone GradTrak states to restore. The <code>redo</code> command uses <code>Model#canRedoGradTrak()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size() - 1</code>, pointing to the latest GradTrak state, then there are no undone GradTrak states to restore. The <code>redo</code> command uses <code>Model#canRedoGradTrak()</code> to check if this is the case. If so, it will return an error to the student rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the GradTrak, such as <code>list</code>, will usually not call <code>Model#commitGradTrak()</code>, <code>Model#undoGradTrak()</code> or <code>Model#redoGradTrak()</code>. Thus, the <code>gradTrakStateList</code> remains unchanged.</p>
+<p>Step 5. The student then decides to execute the command <code>list</code>. Commands that do not modify the GradTrak, such as <code>list</code>, will usually not call <code>Model#commitGradTrak()</code>, <code>Model#undoGradTrak()</code> or <code>Model#redoGradTrak()</code>. Thus, the <code>gradTrakStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -965,7 +965,7 @@ If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitGradTrak()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>gradTrakStateList</code>, all GradTrak states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add c/CS2103T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The student executes <code>clear</code>, which calls <code>Model#commitGradTrak()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>gradTrakStateList</code>, all GradTrak states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add c/CS2103T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -973,7 +973,7 @@ If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size
 </div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+<p>The following activity diagram summarizes what happens when a student executes a new command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1056,7 +1056,7 @@ If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>displayreq</code> command allows the users to see all their course requirements and also check if the modules they have
+<p>The <code>displayreq</code> command allows the students to see all their course requirements and also check if the modules they have
 taken fulfils them. This command is currently facilitated by 2 classes in <code>Model</code>, <code>CourseRequirement</code> and
 <code>RequirementStatus</code>:</p>
 </div>
@@ -1136,7 +1136,7 @@ a list of <code>ModuleInfoCode</code> to satisfy a <code>CompositeRequirement</c
 satisfy the both <code>CourseRequirement</code> objects contained in <code>CompositeRequirement</code>.</p>
 </div>
 <div class="paragraph">
-<p>There currently 3 methods that <code>CourseRequirement</code> provides information to the user:</p>
+<p>There currently 3 methods that <code>CourseRequirement</code> provides information to the student:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1196,7 +1196,7 @@ This can be seen in the class diagram below:</p>
 methods acting on the list of <code>ModuleInfoCode</code>.</p>
 </div>
 <div class="paragraph">
-<p>Below is a sequence of execution when <code>displayreq</code> command is executed by the user:</p>
+<p>Below is a sequence of execution when <code>displayreq</code> command is executed by the student:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1309,7 +1309,7 @@ list of <code>String</code> objects.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Allow users to create and export their own <code>Course</code> and <code>CourseRequirement</code> objects.</p>
+<p>Allow students to create and export their own <code>Course</code> and <code>CourseRequirement</code> objects.</p>
 </li>
 <li>
 <p>Allow <code>Condition</code> to check its fulfillment by accessing other attributes of a <code>ModuleTaken</code> object in the future.</p>
@@ -1321,7 +1321,7 @@ list of <code>String</code> objects.</p>
 <div class="sect2">
 <h3 id="module-recommendation-feature"><a class="link" href="#module-recommendation-feature">3.4. Module recommendation feature</a></h3>
 <div class="paragraph">
-<p>The module recommendation feature displays modules which the user is recommended to read based on the current module plan
+<p>The module recommendation feature displays modules which the student is recommended to read based on the current module plan
 and specific course requirements. It generates a list of module codes together with their corresponding titles and requirement
 types satisfied. The entire list is displayed on the Result Panel upon entering the <code>rec</code> command.</p>
 </div>
@@ -1348,7 +1348,7 @@ which is further wrapped in a <code>SortedList</code>, both stored in <code>Mode
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Model#updateRecModuleList</code> is called, which creates a <code>RecModulePredicate</code> given the user&#8217;s <code>Course</code> and <code>GradTrak</code>, and a <code>RecModuleComparator</code>.</p>
+<p><code>Model#updateRecModuleList</code> is called, which creates a <code>RecModulePredicate</code> given the student&#8217;s <code>Course</code> and <code>GradTrak</code>, and a <code>RecModuleComparator</code>.</p>
 </li>
 <li>
 <p>The <code>RecModulePredicate</code> is applied to the <code>FilteredList</code> of <code>RecModule</code>. In each test:</p>
@@ -1398,7 +1398,7 @@ contribute to any of the <code>CourseRequirement</code> listed in <code>Course</
 considering that lower level modules are usually read first. In the case of equal priority and module level, lexicographical sorting of its <code>ModuleInfoCode</code> is used.</p>
 </li>
 <li>
-<p>The <code>SortedList</code> of <code>RecModule</code> is retrieved from <code>ModelManager</code> and displayed to the user in the Result Panel.</p>
+<p>The <code>SortedList</code> of <code>RecModule</code> is retrieved from <code>ModelManager</code> and displayed to the student in the Result Panel.</p>
 </li>
 </ol>
 </div>
@@ -1448,7 +1448,7 @@ must be run again to reflect the updated recommendation list.</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2: Recommendation list can be sorted by a custom order defined by the user</strong></p>
+<p><strong>Alternative 2: Recommendation list can be sorted by a custom order defined by the student</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1481,14 +1481,14 @@ must be run again to reflect the updated recommendation list.</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2: Display <code>n</code> modules for each semester, where <code>n</code> is decided by the user</strong></p>
+<p><strong>Alternative 2: Display <code>n</code> modules for each semester, where <code>n</code> is decided by the student</strong></p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: User can plan modules for specific semesters easily and quickly</p>
 </li>
 <li>
-<p>Cons: Algorithm required to plan for all semesters can be complex; user may not prefer the given plan</p>
+<p>Cons: Algorithm required to plan for all semesters can be complex; student may not prefer the given plan</p>
 </li>
 </ul>
 </div>
@@ -1502,10 +1502,10 @@ must be run again to reflect the updated recommendation list.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Allow the user to display a module&#8217;s information (from <code>displaymod</code> command) using its index in the recommendation list</p>
+<p>Allow the student to display a module&#8217;s information (from <code>displaymod</code> command) using its index in the recommendation list</p>
 </li>
 <li>
-<p>Allow the user to add a module to the module plan using its index in the recommendation list</p>
+<p>Allow the student to add a module to the module plan using its index in the recommendation list</p>
 </li>
 </ol>
 </div>
@@ -1520,7 +1520,7 @@ must be run again to reflect the updated recommendation list.</p>
 </div>
 <div class="paragraph">
 <p>The <code>LimitChecker</code> class does all the computation and generation of the report.
-It makes use of the following classes:</p>
+It makes use of the following classes as input:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1551,7 +1551,7 @@ It makes use of the following classes:</p>
 <div class="title">Figure 23. Formula for CAP calculation</div>
 </div>
 <div class="paragraph">
-<p>GradTrak uses the Classes <code>CapAverage</code>, <code>WeightedGrade</code>, and <code>ModuleInfoCredits</code> to store and manipulate the variables for calculation.</p>
+<p>GradTrak uses the classes <code>CapAverage</code>, <code>WeightedGrade</code>, and <code>ModuleInfoCredits</code> to store and manipulate the variables for calculation.</p>
 </div>
 <div class="paragraph">
 <p>The <code>CapAverage</code> class contains an <code>ArrayList</code> of <code>WeightedGrade</code>.
@@ -1620,10 +1620,10 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Check if any row has their minimum or maximum limits violated and highlight them to user</p>
+<p>Check if any row has their minimum or maximum limits violated and highlight them to student</p>
 </li>
 <li>
-<p>Style the table to suit the theme of the app so that the user has a better experience using the app</p>
+<p>Style the table to suit the theme of the app so that the student has a better experience using the app</p>
 </li>
 </ol>
 </div>
@@ -1634,7 +1634,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="sect3">
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>cursem</code> command allows the user to track the current semester using GradTrak. This indicates completion of all modules in the previous semesters and includes them in the current CAP computation during the <code>cklimit</code> command.</p>
+<p>The <code>cursem</code> command allows the student to track the current semester using GradTrak. This indicates completion of all modules in the previous semesters and includes them in the current CAP computation during the <code>cklimit</code> command.</p>
 </div>
 <div class="paragraph">
 <p>The interaction of how the <code>cursem</code> command interacts with the system is shown below as a sequence diagram.</p>
@@ -1704,7 +1704,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="sect3">
 <h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The <code>setlimit</code> command allows the user to set CAP limits and workload limits for each semester. This helps the student manage the difficulty and time required of the modules taken. Various types of limits can be set, such as the minimum and maximum amount of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours acceptable for each semester, as well as the minimum and maximum CAP acceptable for the semester.</p>
+<p>The <code>setlimit</code> command allows the student to set CAP limits and workload limits for each semester. This helps the student manage the difficulty and time required of the modules taken. Various types of limits can be set, such as the minimum and maximum number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours acceptable for each semester, as well as the minimum and maximum CAP acceptable for the semester.</p>
 </div>
 <div class="paragraph">
 <p>The interaction of how the <code>setlimit</code> command interacts with the system is shown below as a sequence diagram.</p>
@@ -1758,7 +1758,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="sect2">
 <h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
-<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
+<p>Certain properties of the application can be controlled (e.g student prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 </div>
@@ -2359,7 +2359,7 @@ to refer to different webpages.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. GT prompts user that grade is invalid.</p>
+<p>1a1. GT informs student that grade is invalid.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -2376,7 +2376,7 @@ to refer to different webpages.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. GT prompts user that module code is invalid.</p>
+<p>1b1. GT informs student that module code is invalid.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -2393,7 +2393,7 @@ to refer to different webpages.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1c1. GT prompts user that semester is invalid.</p>
+<p>1c1. GT informs student that semester is invalid.</p>
 <div class="paragraph">
 <p>Use case resumes at step 1.</p>
 </div>
@@ -2410,7 +2410,7 @@ to refer to different webpages.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1d1. GT prompts user that there is a repeat of module code.</p>
+<p>1d1. GT informs student that there is a repeat of module code.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2617,7 +2617,7 @@ to refer to different webpages.</p>
 <p>User enters <code>rec</code> command.</p>
 </li>
 <li>
-<p>System returns a list of module codes (with title) that the user is recommended to take.</p>
+<p>System returns a list of module codes (with title) that the student is recommended to take.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2701,7 +2701,7 @@ to refer to different webpages.</p>
 <p>User enters <code>study</code> command with some course parameter.</p>
 </li>
 <li>
-<p>System changes course of study to course intended by user.</p>
+<p>System changes course of study to course intended by student.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2718,7 +2718,7 @@ to refer to different webpages.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. System informs user that no such course is available.<br>
+<p>1a1. System informs student that no such course is available.<br>
 Use case ends.</p>
 </li>
 </ul>
@@ -2729,7 +2729,7 @@ Use case ends.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. System informs user of the right command format.<br>
+<p>1b1. System informs student of the right command format.<br>
 Use case ends.</p>
 </li>
 </ul>
@@ -2912,4 +2912,4 @@ but failed a module in Y1S1. The failed module does not count towards any requir
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 16:30:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 18:13:59 UTC</div></div></div></body></html>
