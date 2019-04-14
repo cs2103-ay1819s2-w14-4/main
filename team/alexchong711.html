@@ -105,12 +105,19 @@ Before being able to check their plan against their preferences, the user must f
 <div class="sect2">
 <h3 id="set-the-current-semester-code-cursem-code"><a class="link" href="#set-the-current-semester-code-cursem-code">Set the current semester: <code>cursem</code></a></h3>
 <div class="paragraph">
-<p>Indicates that the previous semesters are completed and can be included in the current CAP computation.<br>
-Format: <code>cursem SEMESTER</code></p>
+<p>GradTrak keeps track of the current semester of the user and considers all modules taken before the current semester to be completed.
+All completed modules must have a finalized grade and will be included in the calculation of the current CAP during the <code>cklimit</code> command.</p>
 </div>
 <div class="paragraph">
-<p>Constraints for the command input:</p>
+<p>After the user receives the results of the modules they took in the latest semester, they can confirm the grades attained in that semester and update GradTrak with their final grades.
+They can then inform GradTrak of their current semester to indicate completion of all modules in the previous semesters, so that the calculation of their current CAP will be updated as well.</p>
 </div>
+<div class="paragraph">
+<p>The <code>cursem</code> command updates GradTrak with the current semester.<br>
+Format: <code>cursem SEMESTER</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
@@ -119,6 +126,15 @@ Format: <code>cursem SEMESTER</code></p>
 <li>
 <p>All modules taken in the previous semesters must have a finalized grade. The minimum expected grade and maximum expected grade must be the same.</p>
 </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>cursem Y3S2</code><br>
 Sets the current semester to the second semester of year 3.</p>
@@ -133,20 +149,37 @@ Sets the current semester to the graduated semester.</p>
 <div class="sect2">
 <h3 id="set-the-cap-limit-code-setlimit-code"><a class="link" href="#set-the-cap-limit-code-setlimit-code">Set the CAP limit: <code>setlimit</code></a></h3>
 <div class="paragraph">
-<p>Some students have a desired CAP for graduation. They may like to plan modules to take that ensures that their cap remains at a suitable range at all times. This helps to ensure that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Challenge, or maintain the CAP requirement of their scholarship for each semester.</p>
+<p>Some students have a desired CAP for graduation. They may like to plan their modules such that it helps them to keep their CAP at a suitable range at all times. This helps to ensure that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Challenge, or maintain the CAP requirement of their scholarship for each semester.</p>
 </div>
 <div class="paragraph">
 <p>GradTrak can keep track of their CAP limit preferences so that it is possible to help them detect whether their current module plan fulfils their preferences.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>cklimit</code> command allows the user to check their limit preferences agains their current module plan.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>The <code>setlimit</code> command allows you to set the minimum and maximum preferred CAP for a semester.<br>
-Format: <code>setlimit s/SEMESTER [mincap/MIN_CAP] [maxcap/MAX_CAP]</code></p>
+Format: <code>setlimit SEMESTER [mincap/MIN_CAP] [maxcap/MAX_CAP]</code></p>
 </div>
-<div class="paragraph">
-<p>Constraints for the command input:</p>
-</div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>Parameters can be in any order, but the semester must be entered first.</p>
+</li>
+<li>
+<p>At least one field to be edited must be given.</p>
+</li>
 <li>
 <p>Given semester must be a valid semester from year 1 to 5, in either the first or second semester.</p>
 </li>
@@ -154,6 +187,8 @@ Format: <code>setlimit s/SEMESTER [mincap/MIN_CAP] [maxcap/MAX_CAP]</code></p>
 <p>Newly edited limits must be not be out of order. Minimum CAP must not be more than maximum CAP</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -166,17 +201,19 @@ This sets the minimum CAP acceptable to 2.52 and maximum CAP acceptable to 5.00 
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This command also able to set workload limits for each semester.
-</td>
-</tr>
-</table>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This command also able to set workload limits for each semester.</p>
+</li>
+<li>
+<p>This command is undoable and redoable</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -189,13 +226,18 @@ This command also able to set workload limits for each semester.
 </div>
 <div class="paragraph">
 <p>The <code>setlimit</code> command allows you to set the minimum and maximum total weekly workload limits for a semester.<br>
-Format: <code>setlimit s/SEMESTER [minlec/MIN_LECTURE_HOURS] [maxlec/MAX_LECTURE_HOURS] [mintut/MIN_TUTORIAL_HOURS] [maxtut/MAX_TUTORIAL_HOURS] [minlab/MIN_LAB_HOURS] [maxlab/MAX_LAB_HOURS] [minproj/MIN_PROJ_HOURS] [maxproj/MAX_PROJ_HOURS] [minprep/MIN_PREP_HOURS] [maxprep/MAX_PREP_HOURS]</code></p>
+Format: <code>setlimit SEMESTER [minlec/MIN_LECTURE_HOURS] [maxlec/MAX_LECTURE_HOURS] [mintut/MIN_TUTORIAL_HOURS] [maxtut/MAX_TUTORIAL_HOURS] [minlab/MIN_LAB_HOURS] [maxlab/MAX_LAB_HOURS] [minproj/MIN_PROJ_HOURS] [maxproj/MAX_PROJ_HOURS] [minprep/MIN_PREP_HOURS] [maxprep/MAX_PREP_HOURS]</code></p>
 </div>
-<div class="paragraph">
-<p>Constraints for the command input:</p>
-</div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>Parameters can be in any order, but the semester must be entered first.</p>
+</li>
+<li>
+<p>At least one field to be edited must be given.</p>
+</li>
 <li>
 <p>Semester set must be a valid semester from year 1 to 5, in either the first or second semester.</p>
 </li>
@@ -223,6 +265,8 @@ Format: <code>setlimit s/SEMESTER [minlec/MIN_LECTURE_HOURS] [maxlec/MAX_LECTURE
 </li>
 </ul>
 </div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -234,17 +278,19 @@ This sets the minimum number of weekly lecture hours acceptable to 2.5 and maxim
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This command also able to set CAP limits for each semester.
-</td>
-</tr>
-</table>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This command also able to set CAP limits for each semester.</p>
+</li>
+<li>
+<p>This command is undoable and redoable</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -255,21 +301,45 @@ This command also able to set CAP limits for each semester.
 <div class="ulist">
 <ul>
 <li>
-<p>know what their current CAP is.</p>
+<p>Know what their current CAP is.</p>
 </li>
 <li>
-<p>be able to estimate their minimum and maximum projected CAP based on their estimated grade range for each module</p>
+<p>Be able to estimate their minimum and maximum projected CAP based on their estimated grade range for each module</p>
 </li>
 <li>
-<p>know if any semesters have modules that have too many difficult modules that would pull down their cap unexpectedly, or too many easy modules that could be distributed to other semesters to maintain and more steady and predictable CAP for all semesters.</p>
+<p>Find out if any semester has too many difficult modules that would pull down their CAP unexpectedly, or too many easy modules that could be distributed to other semesters to maintain a more steady and predictable CAP for all semesters.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>GradTrak is able to consolidate all the information about the modules they plan to take and the limit preferences they have for each semester. This allows the user to run a CAP analysis on their current module plan and generate the results to be printed all in one page on their screen.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>edit</code> command allows users indicate their expected minimum and maximum grades for each module they plan to take.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>setlimit</code> command allows users indicate their CAP preferences for each semester.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>The cklimit command calculates the expected minimum and maximum CAP of each semester and checks them against the limit preferences set by the user.<br>
+<p>The <code>cklimit</code> command calculates the expected minimum and maximum CAP of each semester and checks them against the limit preferences set by the user.<br>
 Format: <code>cklimit</code></p>
 </div>
 <div class="paragraph">
@@ -279,21 +349,21 @@ Format: <code>cklimit</code></p>
 <div class="content">
 <img src="../images/CheckLimitDisplay.png" alt="CheckLimitDisplay" width="1000">
 </div>
+<div class="title">Figure 1. Results of <code>cklimit</code> is displayed</div>
 </div>
-<div class="paragraph">
-<p>Figure 2000000000000000000000. Results of <code>cklimit</code> is displayed</p>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This command also analyzes and prints workload information.</p>
+</li>
+<li>
+<p>This command is undoable</p>
+</li>
+</ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This command also analyzes and prints workload information.
-</td>
-</tr>
-</table>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -304,30 +374,15 @@ This command also analyzes and prints workload information.
 <div class="ulist">
 <ul>
 <li>
-<p>know how many hours of workload their current module plan has for each semester in total.</p>
+<p>Know what is the total number of workload hours for each semester in their current module plan.</p>
 </li>
 <li>
-<p>find out if any semester is too heavy or light on any type of workload that could suggest a reallocation of modules to redistribute the workload across all semesters.</p>
+<p>Find out if any semester is too heavy or light on any type of workload that could suggest a reallocation of modules to redistribute the workload across all semesters.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>GradTrak is able to consolidate all the information about the modules they plan to take and what limit preferences they have for each semester. This allows the user to run a workload analysis on their current module plan and generate the results to be printed all in one page on their screen.</p>
-</div>
-<div class="paragraph">
-<p>The cklimit command calculates the total expected weekly workload of each semester and checks against the limit preferences set by the user.<br>
-Format: <code>cklimit</code><br></p>
-</div>
-<div class="paragraph">
-<p>The image below shows the display after using the <code>cklimit</code> command and scrolling down the result page to the workload information:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CheckLimitScrolledDownDisplay.png" alt="CheckLimitScrolledDownDisplay" width="1000">
-</div>
-</div>
-<div class="paragraph">
-<p>Figure 2000000000000000000001. Results of <code>cklimit</code> is displayed after scrolling down the result page</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -336,10 +391,46 @@ Format: <code>cklimit</code><br></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This command also analyzes and prints CAP information
+The <code>edit</code> command allows users indicate their expected workloads for each module they plan to take.
 </td>
 </tr>
 </table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>setlimit</code> command allows users indicate their workload preferences for each semester.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>cklimit</code> command calculates the total expected weekly workload of each semester and checks against the limit preferences set by the user.<br>
+Format: <code>cklimit</code><br></p>
+</div>
+<div class="paragraph">
+<p>The image below shows the display after using the <code>cklimit</code> command and scrolling down the result page to the section on workload information:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CheckLimitScrolledDownDisplay.png" alt="CheckLimitScrolledDownDisplay" width="1000">
+</div>
+<div class="title">Figure 2. Results of <code>cklimit</code> is displayed after scrolling down the result page</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This command also analyzes and prints CAP information</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -382,4 +473,4 @@ to investigate various effects of different Cuckoo Hash schemes.
 and <a href="https://github.com/monikernemo/CS5330-Experimental-Assignment">more on the codes of the implementation here</a></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 14:23:59 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 03:53:15 UTC</div></div></div></body></html>
