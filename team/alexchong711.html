@@ -21,21 +21,21 @@ It was conceptualised and designed in mind to assist students of NUS to track th
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major feature</strong>: added the ability for users to manage CAP and workload limits</p>
+<p><strong>Major feature</strong>: added the ability for students to manage CAP and workload limits for each semester</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to check if their current module plan for all semesters is aligned with their preferences.
-The user can set their own preferences and check against the modules they plan to take.</p>
+<p>What it does: allows the student to check if the current module plan for all semesters within the preferred limits in difficulty and time required
+The student can set their preferences and check against the modules they plan to take.</p>
 </li>
 <li>
-<p>Why this feature: This is critical for users to ensure that they can manage their workload and maintain their targeted CAP for graduation.
-It is easier for users to detect if any semester will be too challenging or too easy for them.
+<p>Why this feature: This is critical for students to ensure that they can manage their workload and maintain their targeted CAP for graduation.
+It is easier for students to detect if any semester will be too challenging or too easy for them.
 This may suggest reallocating some modules to distribute the difficulty more evenly across all semesters.</p>
 </li>
 <li>
 <p>Highlights: This feature depends on many attributes that originally does not exist in the system and can only be implemented after implementing the other smaller features.
-Before being able to check their plan against their preferences, the user must first be able to set their preferences, as well as estimate their workload and grades for each planned module.</p>
+Before being able to check their plan against their preferences, the student must first be able to set their preferences, as well as estimate their workload and grades for each planned module.</p>
 </li>
 </ul>
 </div>
@@ -71,7 +71,7 @@ Before being able to check their plan against their preferences, the user must f
 <div class="ulist">
 <ul>
 <li>
-<p>Morphed the original Person class in Address Book to contain the attributes of the module taken by the user - Level 4 code base</p>
+<p>Morphed the original Person class in Address Book to contain the attributes of the module taken by the student - Level 4 code base</p>
 </li>
 </ul>
 </div>
@@ -106,7 +106,7 @@ Before being able to check their plan against their preferences, the user must f
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users, such that technical terms describing how the application works are reduced as end-users are only concerned with how the application can help them.</p>
-<p class="tableblock">The guide will include how users can use the application to manage their CAP and workload expectations while planning for the modules to take.</em></p></td>
+<p class="tableblock">The guide will include how students can use the application to manage their CAP and workload expectations while planning for the modules to take.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -476,25 +476,204 @@ This sets the minimum number of weekly lecture hours acceptable to 2.5 and maxim
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="current-semester-tracking"><a class="link" href="#current-semester-tracking">Current Semester Tracking</a></h3>
+<h3 id="checking-of-limits"><a class="link" href="#checking-of-limits">Checking of limits</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>Modules taken before the current semester must have a finalized grade such that</p>
+<p>The <code>cklimit</code> command is able to calculate the CAP and workload information of the current module plan and display the results in a report together with the preferred limits set by the student for comparison.</p>
 </div>
 <div class="paragraph">
-<p>when the user tries to shift the current semester forward, the app will check through all the modules taken before the current semester to ensure that the maximum and minimum expected grades are set to be the same.
-or else the <code>cursem</code> command will fail and be rejected with an error message</p>
+<p>The <code>LimitChecker</code> class does all the computation and generation of the report.
+It makes use of the following classes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Semester</code></p>
+</li>
+<li>
+<p><code>ObservableList</code> of <code>SemesterLimit</code></p>
+</li>
+<li>
+<p><code>ObservableList</code> of <code>ModuleTaken</code></p>
+</li>
+<li>
+<p><code>ModuleInfoList</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&lt;class diagram&gt;</p>
+</div>
+<div class="paragraph">
+<p>The CAP of the student is calculated using the formula below</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/modular-system.png" alt="modular system" width="800">
+</div>
+<div class="title">Figure 3. Formula for CAP calculation</div>
+</div>
+<div class="paragraph">
+<p>GradTrak uses the Classes <code>CapAverage</code>, <code>WeightedGrade</code>, and <code>ModuleInfoCredits</code> to store and manipulate the variables for calculation.</p>
+</div>
+<div class="paragraph">
+<p>The <code>CapAverage</code> class contains an <code>ArrayList</code> of <code>WeightedGrade</code>.
+Each weight grade has a CAP score and information on the number of Modular Credits weighted by the score.</p>
+</div>
+<div class="paragraph">
+<p>The minimum and maximum expected CAP is calculated with the minimum and maximum expected CAP of every module taken respectively.</p>
+</div>
+<div class="paragraph">
+<p>The current CAP only includes modules that are completed. Modules are considered completed if they are taken on a semester before the current semester.</p>
+</div>
+<div class="paragraph">
+<p>Once all the calculations are completed, the HTML string report is generated and stored in the <code>checkedReport</code> variable in the <code>LimitChecker</code> to be displayed.</p>
+</div>
+<div class="paragraph">
+<p><code>LimitChecker</code> implements the <code>ClassForPrinting</code> and can be used to set the HTML string generated to be displayed on the <code>BrowserPanel</code> using the <code>setSelectedClassForPrinting</code> method as seen below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ClassForPrintingUsageExample.png" alt="ClassForPrintingUsageExample" width="800">
+</div>
+<div class="title">Figure 4. Usage example for the <code>ClassForPrinting</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-having-to-change-multiple-types-of-limits"><a class="link" href="#aspect-having-to-change-multiple-types-of-limits">Aspect: Having to change multiple types of limits.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: Using a single command to check both the CAP limits as well as the workload limits and print the results all to one page</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only one command needs to be known and it can check everything in one page to ensure that the module plan meets the selected limit preferences</p>
+</li>
+<li>
+<p>Cons: Unwanted information that was not requested is also shown on the page and may cause confusion</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong> Alternative: Using separate commands to display CAP limits and workload limits on their own individual page</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The information needed can be easily identified from the page displayed</p>
+</li>
+<li>
+<p>Cons: Two commands need to be known and keyed in to check the limits every time a modification is made to the module plan.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The current choice was chosen because the student will become more experienced and familiar GradTrak over time and be less confused by the result page. Scrolling up and down the page is easier than having to type two commands alternatively to view the limits.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements"><a class="link" href="#possible-improvements">Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check if any row has their minimum or maximum limits violated and highlight them to user</p>
+</li>
+<li>
+<p>Style the table to suit the theme of the app so that the user has a better experience using the app
+=== Current Semester Tracking</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>cursem</code> command allows the user to track the current semester using GradTrak. This indicates completion of all modules in the previous semesters and includes them in the current CAP computation during the <code>cklimit</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The interaction of how the <code>cursem</code> command interacts with the system is shown below as a sequence diagram.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/SetCurrentSemesterSequenceDiagram.png" alt="SetCurrentSemesterSequenceDiagram" width="1000">
 </div>
+<div class="title">Figure 5. Sequence Diagram for setting of the current semester</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storage-location-of-the-current-semester"><a class="link" href="#aspect-storage-location-of-the-current-semester">Aspect: Storage location of the current semester.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: Storing of current semester within the <code>VersionedGradTrak</code> </strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the <code>cursem</code> command to be undoable and redoable</p>
+</li>
+<li>
+<p>Cons: The storage file <code>gradtrak.json</code> has to contain more than just the modules taken and it is difficult to make changes due to the requirement of a large scale restructuring of the application and multiple unit tests.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong> Alternative: Storing of the current semester outside of the <code>VersionedGradTrak</code> together with the module and course information</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Minimal changes are required to implement it</p>
+</li>
+<li>
+<p>Cons: Problems may occur later on in maintaining the integrity of the application as <code>cursem</code> can only be performed if grades in the previous semesters have been finalized. The <code>undo</code> and <code>redo</code> commands can bypass the checks for finalized grades and lead to instability in the application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The current choice was chosen because it will be worth the effort to restructure the application storage to make GradTrak easier to develop in the future and be less likely to cause problems.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements-2"><a class="link" href="#possible-improvements-2">Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prevent the student from adding or editing his module plan if doing so will violate the limits set</p>
+</li>
+<li>
+<p>Allowing the student to type semester indexes instead of the entire semester name
+=== Semester CAP and workload management feature</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>setlimit</code> command allows the user to set CAP limits and workload limits for each semester. This helps the student manage the difficulty and time required of the modules taken. Various types of limits can be set, such as the minimum and maximum amount of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours acceptable for each semester, as well as the minimum and maximum CAP acceptable for the semester.</p>
+</div>
+<div class="paragraph">
+<p>The interaction of how the <code>setlimit</code> command interacts with the system is shown below as a sequence diagram.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/SetSemesterLimitSequenceDiagram.png" alt="SetSemesterLimitSequenceDiagram" width="1000">
 </div>
+<div class="title">Figure 6. Sequence Diagram for setting of the limits for a semester</div>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -509,4 +688,4 @@ or else the <code>cursem</code> command will fail and be rejected with an error 
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 12:37:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:20:43 UTC</div></div></div></body></html>
