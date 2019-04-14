@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta moduleInfoCode="viewport" content="width=device-width, initial-scale=1.0"><meta moduleInfoCode="generator" content="Asciidoctor 1.5.6.1"><title>Lee Yi Quan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w14-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lee Yi Quan - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-gradtrak-a-graduation-tracker-for-nus"><a class="link" href="#project-gradtrak-a-graduation-tracker-for-nus">PROJECT: GradTrak - A Graduation Tracker for NUS</a></h2>
+<h2 id="project-gradtrak-a-graduation-tracker-by-nus-students-for-nus-students"><a class="link" href="#project-gradtrak-a-graduation-tracker-by-nus-students-for-nus-students">PROJECT: GradTrak - A Graduation Tracker by NUS Students, for NUS Students</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -11,7 +11,13 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>GradTrak is an application that was morphed from the codebase of <a href="https://github.com/nus-cs2103-AY1819S2/addressbook-level4">Address Book - Level 4</a>.
-It was conceptualised and designed in mind to assist students of NUS to track their graduation progress and plan future modules that they want to take.</p>
+It was conceptualised and designed in mind to assist students of NUS to track their graduation progress and plan modules
+they want to take in the future.</p>
+</div>
+<div class="paragraph">
+<p>I was involved in designing the functionality for users to track their course requirement. In the sections that follow,
+I will showcase my contributions to the project and also some of the section that I have written
+in the User and Developer&#8217;s Guides.</p>
 </div>
 </div>
 </div>
@@ -25,31 +31,43 @@ It was conceptualised and designed in mind to assist students of NUS to track th
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to check against the a list of modules they have taken / are planning to take, whether
-they have fulfilled the requirements. If the requirement is not fulfilled, the feature also allows the users
-to know approximately, the extent of completion of these graduation requirements and suggest the suitable modules
-they can take to satisfy the requirement</p>
+<p>What it does: This feature allows the user to check against a list of modules they have taken / are planning to take
+and informs them whether they have fulfilled the requirements. The feature also allows the users
+to know approximately, the extent of completion of these graduation requirements.</p>
 </li>
 <li>
 <p>Why this feature: This feature is one of the core functionalities of GradTrak. This greatly enhances quality of life of
-students in NUS as it would allow them to find out the modules they can take to satisfy graduation requirement.</p>
+students in NUS as it would allow them to find out their graduation requirements as well as how far are they away from
+fulfilling them.</p>
 </li>
 <li>
-<p>Highlights: It is difficult to implement this feature properly because it is difficult to capture the
-key characteristics of graduation requirements since they can vary quite a fair bit.
-I had to do some research on design patterns to understand how to mimic
-some of the behaviours of Course Requirements as intended.</p>
+<p>Highlights: It is difficult to implement this feature because course requirements can vary greatly. As a course
+requirement can be composed of simpler course requirements, another technical difficulty that I faced was designing an
+interface that treats simple and more complex course requirements uniformly. To tackle this hurdle, I had to do some
+research on design patterns to understand how to come up with such design to suit the need of my project.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: created user editable files for users to store different courses
-and course requirements, added some sample courses into the application namely: Computer Science Algorithms, Artificial Intelligence
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>created user editable files for users to store different courses and course requirements</p>
+</li>
+<li>
+<p>added some sample courses into the application namely: Computer Science Algorithms, Artificial Intelligence
 and Software Engineering.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/cs2103-ay1819s2-w14-4/main/tree/master/src/main/java/seedu/address/model/course">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+<p>created utility for to load json file formats after exporting jar file. <a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/94">#94</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=monikernemo">Project Code Dashboard</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -60,39 +78,36 @@ and Software Engineering.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Set up milestones, issue tracker</p>
+<p>Set up milestones, issue tracker <a href="https://github.com/cs2103-ay1819s2-w14-4/main/issues?q=is%3Aissue+author%3Amonikernemo+is%3Aclosed">(examples)</a></p>
 </li>
 <li>
-<p>Put up user stories</p>
+<p>Added user stories <a href="https://github.com/cs2103-ay1819s2-w14-4/main/issues?q=label%3Atype.Story+is%3Aclosed">(examples)</a></p>
+</li>
+<li>
+<p>Reviewed and assigned issues to teammates in previous round of product testing <a href="https://github.com/cs2103-ay1819s2-w14-4/main/issues?q=is%3Aissue+author%3Acs2103-feedback-bot+is%3Aclosed">(examples)</a></p>
+</li>
+<li>
+<p>Managing release, <a href="https://github.com/cs2103-ay1819s2-w14-4/main/releases/tag/v1.4">v1.4</a>
+which should be up in a couple of days</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Refactored Code</p>
+<p>Refactored Code and changed documentation from AddressBook - Level 4 code base</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Renamed significant amount of variables, classes in Address Book - Level 4 code base</p>
+<p>Renamed significant amount of variables, classes in Address Book - Level 4 code base <a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/66">#66</a></p>
 </li>
-<li>
-<p>Updated some documentation and their visuals inherited from Address Book - Level 4 to match GradTrak</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
 <li>
 <p>Changed some visuals for the User Guide, Developer Guide <a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/90">#90</a></p>
 </li>
 <li>
-<p>Changed some of the prose of the User Guide, Developer Guide (see above PR)</p>
+<p>Changed some of the prose of the User Guide, Developer Guide (see above Pull Request)</p>
 </li>
 <li>
-<p>Modified some sections of User Guide, Developer Guide</p>
+<p>Modified irrelevant sections of User Guide, Developer Guide (see above Pull Request)</p>
 </li>
 </ul>
 </div>
@@ -107,11 +122,15 @@ and Software Engineering.</p>
 <div class="sect1">
 <h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>In this section, I will highlight some of my contributions to the user guide namely,
+the <code>displayreq</code> and <code>study</code> commands in <code>GradTrak</code>.</p>
+</div>
 <div class="sect2">
 <h3 id="display-course-requirements-code-displayreq-code"><a class="link" href="#display-course-requirements-code-displayreq-code">Display course requirements: <code>displayreq</code></a></h3>
 <div class="paragraph">
 <p>One of the core functions of GradTrak is to check whether the user has fulfilled his/her degree requirement.
-As of <code>v1.3</code> of the application, GradTrak currently only has course information of 3 Computer Science major Focus Areas, namely:</p>
+As of <code>v1.4</code> of the application, GradTrak currently only has course information of 3 Computer Science major Focus Areas, namely:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -127,12 +146,12 @@ As of <code>v1.3</code> of the application, GradTrak currently only has course i
 </ul>
 </div>
 <div class="paragraph">
-<p>You may refer to the guide on <code>study</code> command to understand how to set your current course of study.</p>
+<p>The course of study can be changed by using the <code>study</code> command which will be outlined in the later sections of this guide.</p>
 </div>
 <div class="paragraph">
-<p>This command uses information of the modules the user has already taken or is planning to take in the future semesters,
-keyed in through the <code>add</code> command. It displays to the user the degree to which they have completed their course requirements
-and other relevant information. This can be seen in the annotated screenshot below:</p>
+<p>Based off the modules you have passed and completed, or have planned to take in the future semesters, this command
+displays to you the degree to which you have completed your course requirements. It also displays other relevant
+information regarding your course&#8217;s requirements. This can be seen in the annotated screenshot below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -141,7 +160,7 @@ and other relevant information. This can be seen in the annotated screenshot bel
 <div class="title">Figure 1. Annotated screenshot when <code>displayreq</code> is invoked</div>
 </div>
 <div class="paragraph">
-<p>These information are displayed in the result panel when <code>displayreq</code> is invoked:</p>
+<p>These information are displayed in the result panel when <code>displayreq</code> is keyed in:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -206,7 +225,7 @@ from the courses mentioned below:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -217,7 +236,7 @@ Sets the course of study to Computer Science with Focus Area Algorithms. Invokin
 </ul>
 </div>
 <div class="paragraph">
-<p>More courses will be rolled out in GradTrak in its future iteration.</p>
+<p>More courses will be rolled out in GradTrak in the future.</p>
 </div>
 </div>
 </div>
@@ -225,6 +244,9 @@ Sets the course of study to Computer Science with Focus Area Algorithms. Invokin
 <div class="sect1">
 <h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>In this section, I will highlight some of my contributions to the developer guide.</p>
+</div>
 <div class="sect2">
 <h3 id="display-course-requirement-feature"><a class="link" href="#display-course-requirement-feature">Display Course Requirement feature</a></h3>
 <div class="sect3">
@@ -242,13 +264,13 @@ they all share. This can be seen in the examples found below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/nus_requirement.PNG" alt="nus requirement" width="800">
+<img src="../images/nus_requirement.PNG" alt="nus requirement" width="400">
 </div>
 <div class="title">Figure 2. Computer Systems Team Project Requirement</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/nus_requirement2.PNG" alt="nus requirement2" width="800">
+<img src="../images/nus_requirement2.PNG" alt="nus requirement2" width="400">
 </div>
 <div class="title">Figure 3. Focus Area Requirement</div>
 </div>
@@ -261,29 +283,37 @@ we are still able to draw some key observations about what they have in common:<
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Each requirement is composed of conjunction or disjunction of condition and each condition can
-be composed by conjunction and disjunction of other simpler conditions.</p>
+<p>Each requirement is composed of conjunction or disjunction of clauses. In turn, the clauses can
+be composed by conjunction and disjunction of other simpler clauses.</p>
 </li>
 <li>
-<p>Conditions that cannot be further broken down into simpler conditions usually contains information on the list of
-modules that can be used to satisfy the condition and how many of the modules should be completed to satisfy the
-condition.</p>
+<p>Clauses that cannot be further broken down into smaller clauses usually contain the following information:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>a list of modules that can be used to satisfy the clause</p>
+</li>
+<li>
+<p>how many of the modules should be completed to satisfy the clause.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>These observations gives us some insight as to how we should design the interface. As such, the <code>CourseRequirement</code> interface follows a <code>Composite</code> design pattern. This is favoured as it allows
-us to treat individual and composition of <code>CourseRequirement</code> objects uniformly. The diagram below gives an overview of
+us to treat individual and composition of <code>CourseRequirement</code> objects uniformly through the use of polymorphism. The diagram below gives an overview of
 how <code>CourseRequirement</code> is implemented.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/CompositeDesignPattern.png" alt="CompositeDesignPattern" width="800">
+<img src="../images/CompositeDesignPattern.png" alt="CompositeDesignPattern" width="400">
 </div>
 <div class="title">Figure 4. <code>CourseRequirement</code> class diagram</div>
 </div>
 <div class="paragraph">
-<p>This interface is implemented by 2 subclasses - <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code>.
+<p>This interface is realised by 2 subclasses - <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code>.
 The <code>PrimitiveRequirement</code> is the simplest building block for <code>CourseRequirement</code>. Each <code>PrimitiveRequirement</code> stores a
 list of <code>Condition</code> objects. A <code>Condition</code> object stores a <code>Java</code> <code>Pattern</code> and an <code>int</code>, <code>minToSatisfy</code>. A <code>Condition</code>
 is satisfied if there are at least <code>minToSatisfy</code> many distinct
@@ -307,7 +337,7 @@ satisfy the both <code>CourseRequirement</code> objects contained in <code>Compo
 <div class="ulist">
 <ul>
 <li>
-<p><code>isFulfilled</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a <code>boolean</code> to indicate whether the list of
+<p><code>isFulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a <code>boolean</code> to indicate whether the list of
 <code>ModuleInfoCode</code> can satisfy the all the <code>CourseRequirement</code></p>
 <div class="ulist">
 <ul>
@@ -323,24 +353,24 @@ first <code>CourseRequirement#isFulfilled</code> <code>LogicalConnector</code> s
 </div>
 </li>
 <li>
-<p><code>percentageFulfilled</code>&#8201;&#8212;&#8201;a method that also accepts a list of ModuleInfoCode returns a <code>double</code> value that represents the
+<p><code>percentageFulfilled()</code>&#8201;&#8212;&#8201;a method that also accepts a list of ModuleInfoCode returns a <code>double</code> value that represents the
 percentage of completion of the <code>CourseRequirement</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>In <code>PrimitiveRequirement</code>, this is achieved by calculating the number of distinct modules that satisfy at least
-1 of the <code>Condition</code> in the list and divided by the sum of <code>minToSatisfy</code>.</p>
+<p>In <code>PrimitiveRequirement</code>, this is achieved by calculating the number of distinct modules that satisfy for each <code>Condition</code>,
+in <code>PrimitiveRequirement</code> and it is divided by the sum of <code>minToSatisfy</code>.</p>
 </li>
 <li>
 <p>This depends on the <code>LogicalConnector</code> in <code>CompositeRequirement</code>. If it is a <code>OR</code> connector, we return the maximum
-of the two. The <code>AND</code> logical connector returns the average of the degree of completion for both requirements.</p>
+of <code>first#percentageFulfilled</code> or <code>second#percentageFulfilled</code>. The <code>AND</code> logical connector returns the average of the degree of completion for both requirements.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><code>getUnfulfilled</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a list of RegExes from where none of the
-<code>ModuleInfoCode</code> matches. This method is used in the recommend feature.</p>
+<p><code>getUnfulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a list of RegExes from where none of the
+<code>ModuleInfoCode</code> matches. This method is used in the module recommendation feature.</p>
 </li>
 </ul>
 </div>
@@ -353,7 +383,7 @@ This can be seen in the class diagram below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/RequirementStatusClassDiagram.png" alt="RequirementStatusClassDiagram" width="800">
+<img src="../images/RequirementStatusClassDiagram.png" alt="RequirementStatusClassDiagram" width="400">
 </div>
 <div class="title">Figure 5. <code>RequirementStatus</code> class diagram</div>
 </div>
@@ -367,8 +397,8 @@ methods acting on the list of <code>ModuleInfoCode</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Model#updateRequirementStatusList</code> is called. This clears the pre-existing <code>RequirementStatusList</code>
-and fills it with new <code>RequirementStatus</code> objects based on current <code>Course</code> and <code>ModulesTakenList</code>.</p>
+<p><code>Model#updateRequirementStatusList</code> is called. This updates the pre-existing <code>RequirementStatusList</code>
+and fills it with new <code>RequirementStatus</code> objects based on current <code>nonFailedCodeList</code> from <code>GradTrak</code>.</p>
 </li>
 <li>
 <p><code>UI</code> calls <code>getRequirementStatusList</code> from <code>Logic</code> and retrieves the updated <code>RequirementStatusList</code>
@@ -377,7 +407,13 @@ from <code>Model</code>. This list is displayed in the <code>ResultPanel</code>.
 </ol>
 </div>
 <div class="paragraph">
-<p>The sequence diagram below summarises the execution as described above.</p>
+<p>The sequence diagram below summarises the execution mentioned earlier:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displayreqcommandsequence.png" alt="displayreqcommandsequence" width="800">
+</div>
+<div class="title">Figure 6. Sequence Diagram when <code>displayreq</code> executes</div>
 </div>
 </div>
 </div>
@@ -397,8 +433,8 @@ from <code>Model</code>. This list is displayed in the <code>ResultPanel</code>.
 pattern in <code>Condition</code></p>
 </li>
 <li>
-<p>Cons: Possibility that the <code>CourseRequirement</code> class fails to check requirements that does not
-not depend on <code>ModuleInfoCode</code></p>
+<p>Cons: Possible that the <code>CourseRequirement</code> class is unable to replicate
+requirements that does not depend on <code>ModuleInfoCode</code></p>
 </li>
 </ul>
 </div>
@@ -458,9 +494,9 @@ Modules</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>We chose our current choice over the alternative as it takes up much fewer space to store. Moreover, storing a pattern
-also improves performance time since each <code>ModuleInfoCode</code> is matched against a <code>Pattern</code> instead a list of <code>String</code>
-objects.</p>
+<p>We chose our current choice as it takes up much fewer space to store. Moreover, storing a pattern
+also improves performance time since each <code>ModuleInfoCode</code> is compared against one`Pattern` instead of an entire
+list of <code>String</code> objects.</p>
 </div>
 </div>
 </div>
@@ -472,7 +508,7 @@ objects.</p>
 <p>Allow users to create and export their own <code>Course</code> and <code>CourseRequirement</code> objects.</p>
 </li>
 <li>
-<p>Allow <code>Condition</code> to check its fulfillment access other attributes of a <code>ModuleTaken</code> object in the future.</p>
+<p>Allow <code>Condition</code> to check its fulfillment by accessing other attributes of a <code>ModuleTaken</code> object in the future.</p>
 </li>
 </ol>
 </div>
@@ -484,10 +520,10 @@ objects.</p>
 <h2 id="project-cuckoo-hash"><a class="link" href="#project-cuckoo-hash">PROJECT: Cuckoo Hash</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>An experimental assignment from <a href="https://www.comp.nus.edu.sg/~gilbert/CS5330/">CS5330 - Randomised Algorithm</a>
-to investigate various effects of different Cuckoo Hash schemes.
-<a href="https://www.comp.nus.edu.sg/~gilbert/CS5330/2019/psets/ExperimentalAlgorithms.pdf">More information on assignment here</a>
-and <a href="https://github.com/monikernemo/CS5330-Experimental-Assignment">more on the codes of the implementation here</a></p>
+<p>This is an experimental assignment from <a href="https://www.comp.nus.edu.sg/~gilbert/CS5330/">CS5330 - Randomised Algorithm</a>. The
+aim was to investigate various effects of different Cuckoo Hash schemes. More information on assignment
+<a href="https://www.comp.nus.edu.sg/~gilbert/CS5330/2019/psets/ExperimentalAlgorithms.pdf">here</a>
+and more on the codes of the implementation <a href="https://github.com/monikernemo/CS5330-Experimental-Assignment"> here</a></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 16:12:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 16:19:38 UTC</div></div></div></body></html>
