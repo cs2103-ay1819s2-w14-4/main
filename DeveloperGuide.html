@@ -563,7 +563,7 @@ The <code>Storage</code> component,</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="read-only-storage"><a class="link" href="#read-only-storage">2.5.2. Read only storage</a></h4>
+<h4 id="Read-Only"><a class="link" href="#Read-Only">2.5.2. Read only storage</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/moduleinfostorage.png" alt="moduleinfostorage" width="800">
@@ -571,7 +571,7 @@ The <code>Storage</code> component,</p>
 <div class="title">Figure 8. Structure of read only storage component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/Storage/ModuleInfoStorage.java"><code>ModuleInfoStorage.java</code></a>
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/storage/ModuleInfoStorage/ModuleInfoStorage.java"><code>ModuleInfoStorage.java</code></a>
 The <code>ModuleInfoStorage</code> and <code>CourseStorage</code> is a read-only storage in <code>GradTrak</code>. It is only reads the list of module
 and course information saved in a JSON file and coverts them into <code>ModuleInfo</code> and <code>Course</code> objects stored in model.</p>
 </div>
@@ -594,36 +594,168 @@ and course information saved in a JSON file and coverts them into <code>ModuleIn
 <div class="sect2">
 <h3 id="displaymod-feature"><a class="link" href="#displaymod-feature">3.1. Displaymod feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
 <div class="paragraph">
-<p>The <code>displaymod</code> is a search function that displays all available information with regards to the module codes the user types
-into the command box.</p>
+<p><code>displaymod</code> is a command that displays a module&#8217;s information based on the user&#8217;s search. The main reason for implementing
+such a feature is so that users can have immediate access to all available modules in NUS instead of searching through the
+internet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creation-of-code-moduleinfo-code"><a class="link" href="#creation-of-code-moduleinfo-code">3.1.2. Creation of <code>ModuleInfo</code></a></h4>
+<div class="paragraph">
+<p>Most of the processing of this feature is done during the launch of the application. The modules are created as a object
+called <code>ModuleInfo</code>. These objects only contain vital information of a particular module and nothing else. This to ensure that
+only information relevant students are displayed. This process is done with aid of the <code>Storage</code> class, to be more exact
+it uses <a href="#Read-Only">Section 2.5.2, &#8220;Read only storage&#8221;</a> extracting all the data from <code>allModule.Json</code> file found in the <code>resources</code> folder.<br></p>
 </div>
 <div class="paragraph">
-<p>When the application is launched, a JSON file containing all of NUS module information is then converted
-into an Object Class called ModuleInfo individually and stored into an ObservableList&lt;ModuleInfo&gt; called ModuleInfoList.</p>
+<p>The figure below shows the class diagram for <code>ModuleInfo</code> :</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ConversionModuleInfo.png" alt="ConversionModuleInfo" width="800">
+<img src="images/ModuleInfoclass.png" alt="ModuleInfoclass" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>The usage of ModuleInfoList is only temporary as it is passed into <code>ModelManager</code> and then converted into an ObservableList&lt;&gt;.</p>
+<p>As seen from above the <code>ModuleInfo</code> class is made up of 8 other classes:<br></p>
 </div>
-<div class="admonitionblock note">
-<table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
 <tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The purpose of having ModuleInfoList is not only for temporary use; it also serves as form of Error handling if the application
-is unable to find the location of the JSON file containing all of the module information, a blank ModuleInfoList is handed to the
-ModelManager.
-</td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoDepartment</code></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoTitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoWorkload</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoCredits</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoPrerequisite</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoDescription</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoPreclusion</code> <strong>For V2.0</strong></p></td>
+</tr>
+</tbody>
 </table>
+<div class="paragraph">
+<p>The information found in the modules are separated into their own class to maintain modularity in the
+code. All of these objects are created in the construction of the <code>ModuleInfo</code> Object.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/moduleinfoconstructor.png" alt="moduleinfoconstructor" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="generating-prerequisite-trees"><a class="link" href="#generating-prerequisite-trees">3.1.3. Generating prerequisite trees</a></h4>
+<div class="paragraph">
+<p>Within the <code>ModuleInfo</code> class, the <code>ModuleInfoPrerequisite</code> class requires the most pre-processing. If users wishes to take
+a particular module, they have to check if they can satisfy the prerequisites, thus presenting the prerequisite tree is
+paramount to the <code>ModuleInfo</code> class.<br></p>
+</div>
+<div class="paragraph">
+<p><code>ModuleInfoPrerequisite</code> contains a custom data structure called <code>ModuleTree</code> which can be found in the
+<code>commons.Util</code> package. It was place in the <code>commons</code> package since it was a data structure and other functions
+or feature may require the <code>ModuleTree</code> <strong>i.e.</strong> when adding/deleting modules from user&#8217;s <code>ModuleTaken</code> list.<br></p>
+</div>
+<div class="paragraph">
+<p>The <code>ModuleTree</code> data structure consist of "smaller" objects called <code>Node</code>, which can also be found in <code>commons.Util</code>.
+<code>Node</code> can represent one of the following information:<br></p>
+</div>
+<div class="paragraph">
+<p><strong>1.</strong> <strong>Head</strong> : The head/root of the <code>ModuleTree</code> which holds a <code>value</code> of the module code of the "larger" <code>ModuleInfo</code> object.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>2.</strong> <strong>Operator</strong> : Either "OR" or "AND" to indicate if only one of the module is required to fulfill the prerequisite or
+all of the listed modules are required respectively.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>3.</strong> <strong>Module Code</strong> : The module code that is required to meet the prerequisite.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PrerequisiteTreeAnnotated.png" alt="PrerequisiteTreeAnnotated" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>generatePrerequisiteTree()</code> function is called after the <code>ModuleInfoPrerequisite</code> object has been created, since
+the <code>ModuleTree</code> is dependent on the <code>String</code> input <code>prereq</code> which later be saved as <code>prerequisiteString</code>.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PrerequisiteString.png" alt="PrerequisiteString" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The input <code>prerequisite</code> usually comes in the format:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>"Prerequisite":"[MA1312 or MA1521 or MA1505 or (MA1511 and MA1512)] and [ST2334 or ST2131 or ST2132] and [IS3106 or BT3103]"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The input value is then split into an <code>array</code> using regular expressions:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RegexSplitter.png" alt="RegexSplitter" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>This helps with the arrangement of the <code>ModuleTree</code> as shown below:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/prerequisiteStep1.png" alt="prerequisiteStep1" width="600">
+</div>
+<div class="title">Figure 9. Step 1:The first index <code>String</code> is used to create a minor tree</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/prerequisiteStep2.png" alt="prerequisiteStep2" width="600">
+</div>
+<div class="title">Figure 10. Step 2:Since the previous <code>String</code> ended with a "OR" the next <code>String</code> is made and added as a child to the predecessor.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/prerequisiteStep3.png" alt="prerequisiteStep3" width="600">
+</div>
+<div class="title">Figure 11. Step 3:The next <code>String</code> is a lone "AND" operator thus it supersedes as the new root node.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/prerequisiteStep4.png" alt="prerequisiteStep4" width="600">
+</div>
+<div class="title">Figure 12. Step 4:The subsequent minor tree is added to the root node.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/prerequisiteStepFinal.png" alt="prerequisiteStepFinal" width="600">
+</div>
+<div class="title">Figure 13. Step 5:Finally, since the next operator is same as the current root operator the next minor tree is added as a child.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="making-it-into-a-list"><a class="link" href="#making-it-into-a-list">3.1.4. Making it into a list</a></h4>
+<div class="paragraph">
+<p>The final part of this entire process is storing all the <code>ModuleInfo</code> objects into a list. Currently, we did this using
+an <code>ObservableList&lt;&gt;</code>, this is done so that we can take advantage of the <code>FilteredList&lt;&gt;</code> class by filtering the list using
+<code>Predicates</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>During initial launch, after each module&#8217;s information is converted into a <code>ModuleInfo</code> object, it will be added to a
+<code>ModuleInfoList</code> object which contains an <code>ArrayList&lt;ModuleInfo&gt;</code>. After all the modules are added into <code>ModuleInfoList</code>,
+<code>ModuleInfoList</code> will be passed into <code>ModelManager</code> and will be converted into an <code>ObservableList&lt;&gt;</code> called <code>allModules</code>.
+ Following that, a <code>FilteredList&lt;&gt;</code> object called <code>displaylist</code> will also be constructed from the <code>allModules</code> <code>ObservableList&lt;&gt;</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -631,53 +763,43 @@ ModelManager.
 </div>
 </div>
 <div class="paragraph">
-<p>This is done as <code>ObservableList&lt;&gt;</code> comes with a <code>FilteredList&lt;&gt;</code> feature: which wraps an ObservableList and filters the contents
-based on <code>predicates</code>.</p>
+<p>Whenever the user searches for a particular <code>ModuleInfo</code> , the <code>ObservableList&lt;&gt;</code> is always ready and the <code>FilteredList&lt;&gt;</code>
+will be updated using a <code>Predicate</code> List generated from the user&#8217;s search keywords.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Predicates</code>&#8201;&#8212;&#8201;All search keywords i.e <strong>Module Code</strong> is saved as a list of <code>predicates</code>.</p>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/keywords.png" alt="keywords" width="600">
 </div>
-<div class="paragraph">
-<p>This allows for easier search throughout the list of all Module Information, as the User can search for multiple modules in
-a single search.</p>
-</div>
-<div class="paragraph">
-<p>The FilteredList is then collected and the ModuleInfo Objects will be formatted into Strings so that the information required
-is displayed by the UI.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.5. Design considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-displaymod-executes"><a class="link" href="#aspect-how-displaymod-executes">Aspect: How Displaymod executes</a></h5>
+<h5 id="aspect-moduletree-data-structure"><a class="link" href="#aspect-moduletree-data-structure">Aspect: ModuleTree data structure</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current Implementation :</strong> Searches based on Module Codes Only</p>
+<p><strong>Current implementation :</strong> Custom Module tree data structure</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Searches is slightly faster since its only based on Module Codes</p>
+<p>Pros: Able to handle "AND" or "OR" operations found in the prerequisite Tree.</p>
 </li>
 <li>
-<p>Cons: Limited search since it requires User to know Module Codes beforehand.</p>
+<p>Cons: Takes a extremely long time to implement and design. Not to mention extremely error-prone.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Future Implementation :</strong> Search based on keywords</p>
+<p><strong>Alternative considered :</strong> Use a current <code>JDK</code> <code>Tree</code> data structure</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User can search for Modules based on keywords thus require no prior knowledge on a particular module code</p>
+<p>Pros: Easy to deploy into current code base.</p>
 </li>
 <li>
-<p>Cons: Have to combine all module information into a single String and search for keywords; slower searches.</p>
+<p>Cons: Unable to deal with special operations like "AND" or "OR".</p>
 </li>
 </ul>
 </div>
@@ -687,7 +809,7 @@ is displayed by the UI.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="aspect-data-structure-used"><a class="link" href="#aspect-data-structure-used">3.1.3. Aspect: Data Structure Used</a></h4>
+<h4 id="aspect-storing-code-moduleinfo-code-objects-in-an-code-observablelist-code"><a class="link" href="#aspect-storing-code-moduleinfo-code-objects-in-an-code-observablelist-code">3.1.6. Aspect: Storing <code>ModuleInfo</code> objects in an <code>ObservableList&lt;&gt;</code></a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -704,14 +826,14 @@ is displayed by the UI.</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative :</strong> Sticking to the <code>ArrayList&lt;&gt;</code></p>
+<p><strong>Alternative considered:</strong> Sticking to <code>ArrayList&lt;&gt;</code></p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy to handle as it is a simple data structure.</p>
 </li>
 <li>
-<p>Cons: Harder to search for specific Keywords(future implementation)</p>
+<p>Cons: Harder to search for <code>ModuleInfo</code> objects based on codes and keywords.</p>
 </li>
 </ul>
 </div>
@@ -941,13 +1063,13 @@ they all share. This can be seen in the examples found below:</p>
 <div class="content">
 <img src="images/nus_requirement.PNG" alt="nus requirement" width="800">
 </div>
-<div class="title">Figure 9. Computer Systems Team Project Requirement</div>
+<div class="title">Figure 14. Computer Systems Team Project Requirement</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/nus_requirement2.PNG" alt="nus requirement2" width="800">
 </div>
-<div class="title">Figure 10. Focus Area Requirement</div>
+<div class="title">Figure 15. Focus Area Requirement</div>
 </div>
 <div class="paragraph">
 <p>For the requirement shown in Figure 9, students just have to complete at least one of CS3203 or
@@ -977,7 +1099,7 @@ how <code>CourseRequirement</code> is implemented.</p>
 <div class="content">
 <img src="images/CompositeDesignPattern.png" alt="CompositeDesignPattern" width="800">
 </div>
-<div class="title">Figure 11. <code>CourseRequirement</code> class diagram</div>
+<div class="title">Figure 16. <code>CourseRequirement</code> class diagram</div>
 </div>
 <div class="paragraph">
 <p>This interface is implemented by 2 subclasses - <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code>.
@@ -1052,7 +1174,7 @@ This can be seen in the class diagram below:</p>
 <div class="content">
 <img src="images/RequirementStatusClassDiagram.png" alt="RequirementStatusClassDiagram" width="800">
 </div>
-<div class="title">Figure 12. <code>RequirementStatus</code> class diagram</div>
+<div class="title">Figure 17. <code>RequirementStatus</code> class diagram</div>
 </div>
 <div class="paragraph">
 <p>It also stores the result of the associated <code>CourseRequirement</code> object&#8217;s <code>isFulfilled</code> and <code>percentageFulfilled</code>
@@ -1192,7 +1314,7 @@ types satisfied. The entire list is displayed on the Result Panel upon entering 
 <div class="content">
 <img src="images/RecModuleClassDiagram.png" alt="RecModuleClassDiagram" width="400">
 </div>
-<div class="title">Figure 13. <code>RecModule</code> class diagram</div>
+<div class="title">Figure 18. <code>RecModule</code> class diagram</div>
 </div>
 <div class="paragraph">
 <p>When <code>ModelManager</code> is initialised, <code>Model#getObservableRecModuleList</code> is called which generates an
@@ -1270,19 +1392,19 @@ must be run again to reflect the updated recommendation list.</p>
 <div class="content">
 <img src="images/RecCommandSequenceDiagram.png" alt="RecCommandSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 14. <code>RecCommand</code> sequence diagram</div>
+<div class="title">Figure 19. <code>RecCommand</code> sequence diagram</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/RecModulePredicateSequenceDiagram.png" alt="RecModulePredicateSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 15. <code>RecModulePredicate</code> sequence diagram</div>
+<div class="title">Figure 20. <code>RecModulePredicate</code> sequence diagram</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/RecModuleComparatorSequenceDiagram.png" alt="RecModuleComparatorSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 16. <code>RecModuleComparator</code> sequence diagram</div>
+<div class="title">Figure 21. <code>RecModuleComparator</code> sequence diagram</div>
 </div>
 </div>
 <div class="sect3">
@@ -1517,7 +1639,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 22. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3221,4 +3343,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 08:56:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 12:37:58 UTC</div></div></div></body></html>
