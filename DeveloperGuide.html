@@ -77,12 +77,10 @@
 <li><a href="#use-cases">Appendix D: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix F: Glossary</a></li>
-<li><a href="#product-survey">Appendix G: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-module">G.2. Deleting a module</a></li>
 </ul>
 </li>
 </ul>
@@ -1178,7 +1176,7 @@ objects.</p>
 <div class="sect2">
 <h3 id="module-recommendation-feature"><a class="link" href="#module-recommendation-feature">3.4. Module recommendation feature</a></h3>
 <div class="paragraph">
-<p>The module recommendation feature displays modules which the user is recommended to read based on existing GradTrak modules
+<p>The module recommendation feature displays modules which the user is recommended to read based on the current module plan
 and specific course requirements. It generates a list of module codes together with their corresponding titles and requirement
 types satisfied. The entire list is displayed on the Result Panel upon entering the <code>rec</code> command.</p>
 </div>
@@ -1490,7 +1488,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect2">
 <h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></h3>
 <div class="paragraph">
-<p>The <a href="https://github.com/cs2103-ay1819s2-w14-4/main/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how all documentation files within this project are rendered.</p>
+<p>The <a href="https://github.com/cs2103-ay1819s2-w14-4/main/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affect how all documentation files within this project are rendered.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1499,7 +1497,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Attributes left unset in the <code>build.gradle</code> file will use their <strong>default value</strong>, if any.
+Attributes left unset in the <code>build.gradle</code> file will use their <strong>default values</strong>, if any.
 </td>
 </tr>
 </table>
@@ -1549,7 +1547,7 @@ This will render the SE-EDU navigation bar at the top of the page, and add some 
 <div class="sect2">
 <h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></h3>
 <div class="paragraph">
-<p>Each <code>.adoc</code> file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affects how the file is rendered.</p>
+<p>Each <code>.adoc</code> file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affect how the file is rendered.</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor&#8217;s <a href="https://asciidoctor.org/docs/user-manual/#builtin-attributes">built-in attributes</a> may be specified and used as well.</p>
@@ -1561,7 +1559,7 @@ This will render the SE-EDU navigation bar at the top of the page, and add some 
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Attributes left unset in <code>.adoc</code> files will use their <strong>default value</strong>, if any.
+Attributes left unset in <code>.adoc</code> files will use their <strong>default values</strong>, if any.
 </td>
 </tr>
 </table>
@@ -1647,7 +1645,7 @@ The SE-EDU team does not provide support for modified template files.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The most reliable way to run tests is the 3rd one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
+The most reliable way to run tests is the third one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
 </td>
 </tr>
 </table>
@@ -1682,7 +1680,7 @@ The most reliable way to run tests is the 3rd one. The first two methods might f
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run tests using Gradle.
+See <a href="UsingGradle.html">UsingGradle.adoc</a> for more information on how to run tests using Gradle.
 </td>
 </tr>
 </table>
@@ -1691,7 +1689,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <p><strong>Method 3: Using Gradle (headless)</strong></p>
 </div>
 <div class="paragraph">
-<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX</a> library we use, our GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the Computer while the tests are running.</p>
+<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX</a> library we use, our GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the computer while the tests are running.</p>
 </div>
 <div class="paragraph">
 <p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
@@ -1705,11 +1703,11 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include,</p>
+<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>System Tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
+<p><em>System tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
 </li>
 <li>
 <p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
@@ -1718,7 +1716,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </li>
 <li>
-<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include,</p>
+<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1730,7 +1728,7 @@ e.g. <code>seedu.address.commons.StringUtilTest</code></p>
 e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
 </li>
 <li>
-<p>Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.<br>
+<p>Hybrids of unit and integration tests. These tests are checking multiple code units as well as how they are connected together.<br>
 e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </li>
 </ol>
@@ -1792,7 +1790,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version courseReqCredits in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version <code>courseReqCredits</code> in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -2549,10 +2547,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>has a need to manage a significant courseReqCredits of contacts</p>
+<p>has a need to manage a significant <code>courseReqCredits</code> of contacts</p>
 </li>
 <li>
-<p>prefer desktop apps over other types</p>
+<p>prefer desktop applications over other types</p>
 </li>
 <li>
 <p>can type fast</p>
@@ -2561,12 +2559,12 @@ for <code>RemarkCommandParser</code>.</p>
 <p>prefers typing over mouse input</p>
 </li>
 <li>
-<p>is reasonably comfortable using CLI apps</p>
+<p>is reasonably comfortable using CLI applications</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven application</p>
 </div>
 </div>
 </div>
@@ -2988,17 +2986,51 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-display-module-info" class="discrete">Use case: Display module info</h3>
+<h3 id="use-case-display-nus-module-information" class="discrete">Use case: Display NUS module information</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Student keys command to find module code or keywords in the title of module.</p>
+<p>User enters <code>displaymod</code> to find an NUS module based on module code or keywords in the module title.</p>
 </li>
 <li>
-<p>System returns module given module code or keywords.</p>
+<p>System returns full module information.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-recommend-modules" class="discrete">Use case: Recommend modules</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters <code>rec</code> command.</p>
+</li>
+<li>
+<p>System returns a list of module codes (with title) that the user is recommended to take.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-find-modules" class="discrete">Use case: Find modules</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters <code>find</code> command to search the module plan based on module code, semester, grade or finished status.</p>
+</li>
+<li>
+<p>System returns a list of modules in the module plan which satisfy the given parameters.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3006,7 +3038,37 @@ for <code>RemarkCommandParser</code>.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><em>{More to be added}</em></p>
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User enters <code>find</code> without parameters.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System gives an "invalid command format" message and provides the correct format.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. User enters an invalid grade or semester.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System rejects the command and provides the correct format for grade or semester.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3019,15 +3081,12 @@ for <code>RemarkCommandParser</code>.</p>
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 modulesTaken without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 1000 <code>modulesTaken</code> without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -3040,56 +3099,15 @@ for <code>RemarkCommandParser</code>.</p>
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
-</dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix G: Product Survey</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Given below are instructions to test the app manually.</p>
+<p>Given below are instructions to test the application manually.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3104,7 +3122,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">H.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3112,11 +3130,11 @@ These instructions only provide a starting point for testers to work on; testers
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Download the jar file and copy into an empty folder</p>
+<p>Download the jar file and copy it into an empty folder.</p>
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+Expected: Shows the GUI with an empty module plan. The window size may not be optimum.</p>
 </li>
 </ol>
 </div>
@@ -3137,31 +3155,28 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
+<h3 id="deleting-a-module"><a class="link" href="#deleting-a-module">G.2. Deleting a module</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all modulesTaken are listed</p>
+<p>Deleting a module while all <code>moduleTaken</code> are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all modulesTaken using the <code>list</code> command. Multiple modulesTaken in the list.</p>
+<p>Prerequisites: List all <code>moduleTaken</code> using the <code>list</code> command.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First module is deleted from the list. Details of the deleted module are shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No module is deleted. Error details are shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size or negative)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -3169,29 +3184,6 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 04:45:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:16:19 UTC</div></div></div></body></html>

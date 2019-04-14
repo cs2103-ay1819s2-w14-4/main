@@ -75,7 +75,7 @@ Stay tuned as we will be adding other courses in the near future!</p>
 <p>Copy the file to the folder you want to use as the home folder for your GradTrak.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The app window should appear within a few seconds.</p>
+<p>Double-click the file to start the application. The application window should appear within a few seconds.</p>
 </li>
 </ol>
 </div>
@@ -85,7 +85,7 @@ Stay tuned as we will be adding other courses in the near future!</p>
 <h2 id="quick-guide"><a class="link" href="#quick-guide">3. Quick Guide</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Read the guide below to have a quick understanding of the usage of this app.</p>
+<p>Read the guide below to have a quick understanding of the usage of this application.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -127,7 +127,7 @@ For example, typing <strong><code>help</code></strong> and pressing <kbd>Enter</
 <li>
 <p>You might wish to set the course of study first. There are currently 3 courses available in this app: Computer Science Algorithms,
 Computer Science Artificial Intelligence, Computer Science Software Engineering.
-To set the course, enter one of the following commands:
+To set the course, enter the following command:
 <code>study [COURSE]</code></p>
 </li>
 <li>
@@ -135,19 +135,19 @@ To set the course, enter one of the following commands:
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>add</code></strong><code>c/CS1010 s/Y1S1</code> : adds the module "CS1010", taken in Y1S1, into the module plan.</p>
+<p><strong><code>add</code></strong><code>c/CS1010 s/Y1S1</code> : adds the module "CS1010", taken in Y1S1, to the module plan</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>1</code> : deletes the first module on the most recently displayed list.</p>
+<p><strong><code>delete</code></strong><code>1</code> : deletes the first module on the most recently displayed list</p>
 </li>
 <li>
 <p><strong><code>displayreq</code></strong>: displays information on your course requirements and the percentage completed for each requirement.</p>
 </li>
 <li>
-<p><strong><code>cklimit</code></strong>: displays information on your current semester and a report with the CAP and workload information of the current module plan.</p>
+<p><strong><code>cklimit</code></strong>: displays information on your current semester and a report with the CAP and workload information of the current module plan</p>
 </li>
 <li>
-<p><strong><code>exit</code></strong> : exits the app</p>
+<p><strong><code>exit</code></strong> : exits the application</p>
 </li>
 </ul>
 </div>
@@ -183,7 +183,7 @@ will give you a more detailed guide/walk through for each command.</p>
 <div class="sect2">
 <h3 id="add"><a class="link" href="#add">4.1. Add module: <code>add</code></a></h3>
 <div class="paragraph">
-<p>Adds a module to GradTrak based on the given module code, semester taken and expected / obtained grade.<br>
+<p>Adds a module to the module plan based on the given module code, semester taken and expected / obtained grade.<br>
 Format: <code>add c/MODULE_CODE s/SEMESTER [ming/NEW_EXPECTED_MIN_GRADE] [maxg/NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code><br></p>
 </div>
 <div class="sidebarblock">
@@ -370,7 +370,7 @@ Format: <code>cklimit</code><br></p>
 <div class="sect2">
 <h3 id="clear-all-data-entered-code-clear-code"><a class="link" href="#clear-all-data-entered-code-clear-code">4.4. Clear all data entered: <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Deletes all the added modules.<br>
+<p>Deletes all the added modules in the module plan.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
@@ -432,17 +432,15 @@ Sets the current semester to the graduated semester.</p>
 <div class="sect2">
 <h3 id="delete-module-code-delete-code"><a class="link" href="#delete-module-code-delete-code">4.6. Delete module: <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Removes a module from GradTrak based on module code or index in the most recently displayed list.<br>
-Format: <code>delete INDEX</code><br>
-or<br>
-<code>delete c/MODULE_CODE</code></p>
+<p>Removes a module from the module plan based on its index in the most recently displayed list.<br>
+Format: <code>delete INDEX</code><br></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Shows a message if the given module code is not found.</p>
+<p>Shows a message if the given index is invalid</p>
 </li>
 <li>
 <p>This command is undoable and redoable</p>
@@ -456,10 +454,6 @@ or<br>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>delete c/CS2103T</code><br>
-Deletes CS2103T from GradTrak.</p>
-</li>
 <li>
 <p><code>delete 1</code><br>
 Deletes the first module on the most recently displayed list.</p>
@@ -675,7 +669,7 @@ requirement.</p>
 <div class="sect2">
 <h3 id="edit-module-code-edit-code"><a class="link" href="#edit-module-code-edit-code">4.9. Edit module: <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits the grade and workload of a module as well as which semester it should be taken in the module plan based on module code or index in the most recently displayed list.<br>
+<p>Edits the semester, grade or workload of a module in the module plan, based on its index in the most recently displayed list.<br>
 Format: <code>edit INDEX [s/NEW_SEMESTER] [ming/NEW_EXPECTED_MIN_GRADE] [maxg/NEW_EXPECTED_MAX_GRADE] [lec/NEW_LECTURE_HOURS] [tut/NEW_TUTORIAL_HOURS] [lab/NEW_LAB_HOURS] [proj/NEW_PROJ_HOURS] [prep/NEW_PREP_HOURS]</code><br></p>
 </div>
 <div class="sidebarblock">
@@ -725,7 +719,7 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="find-module-code-find-code"><a class="link" href="#find-module-code-find-code">4.11. Find module: <code>find</code></a></h3>
 <div class="paragraph">
-<p>Finds modules in GradTrak matching all given module code, semester, grade or finished status.<br>
+<p>Finds modules in the module plan matching all given module code, semester, grade or finished status.<br>
 Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code></p>
 </div>
 <div class="sidebarblock">
@@ -755,7 +749,7 @@ Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code>
 <ul>
 <li>
 <p><code>find c/CS</code><br>
-Lists all CS modules in GradTrak.</p>
+Lists all CS modules in the module plan.</p>
 </li>
 </ul>
 </div>
@@ -769,7 +763,7 @@ Lists all CS modules in GradTrak.</p>
 <ul>
 <li>
 <p><code>find s/Y1S2</code><br>
-Lists all modules in Y1S2 in GradTrak.</p>
+Lists all modules in Y1S2 in the module plan.</p>
 </li>
 </ul>
 </div>
@@ -825,14 +819,14 @@ Format: <code>history</code></p>
 <div class="sect2">
 <h3 id="listing-all-modules-in-gradtrak-code-list-code"><a class="link" href="#listing-all-modules-in-gradtrak-code-list-code">4.14. Listing all modules in GradTrak: <code>list</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all modules in GradTrak.<br>
+<p>Shows a list of all modules in the module plan.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="recommend-module-code-rec-code"><a class="link" href="#recommend-module-code-rec-code">4.15. Recommend module: <code>rec</code></a></h3>
 <div class="paragraph">
-<p>Recommends a list of modules that can be read based on GradTrak modules and course requirements.
+<p>Recommends a list of modules that can be read based on the current module plan and course requirements.
 Modules with unmet prerequisites or those already added (unless they have been failed) will not be recommended.<br>
 Recommended modules are displayed in order of requirement type satisfied: Core, Breadth &amp; Depth, Industry Experience, Faculty, General Education, Unrestricted Electives.
 Modules with the same requirement type satisfied are sorted by level.<br>
@@ -1151,7 +1145,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GradTrak folder.</p>
+<strong>A</strong>: Install the application on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GradTrak folder.</p>
 </div>
 </div>
 </div>
@@ -1161,7 +1155,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong>: `add c/MODULE_CODE s/SEMESTER</p>
+<p><strong>Add</strong>: <code>add c/MODULE_CODE s/SEMESTER</code></p>
 </li>
 <li>
 <p><strong>Cklimit</strong>: <code>cklimit</code></p>
@@ -1182,7 +1176,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p><strong>Displayreq</strong>: <code>displayreq</code></p>
 </li>
 <li>
-<p><strong>Edit</strong>: `edit INDEX [s/NEW_SEMESTER]</p>
+<p><strong>Edit</strong>: <code>edit INDEX [s/NEW_SEMESTER]</code></p>
 </li>
 <li>
 <p><strong>Exit</strong>: <code>exit</code></p>
@@ -1217,4 +1211,4 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 04:45:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 06:16:19 UTC</div></div></div></body></html>
