@@ -31,8 +31,8 @@
 <li><a href="#recommend-module-code-rec-code">4.15. Recommend module: <code>rec</code></a></li>
 <li><a href="#redo-the-previously-undone-command-code-redo-code">4.16. Redo the previously undone command: <code>redo</code></a></li>
 <li><a href="#set-the-current-course-of-study-code-study-code">4.17. Set the current course of study: <code>study</code></a></li>
-<li><a href="#set-the-cap-limit-code-setlimit-code">4.18. Set the CAP limit: <code>setlimit</code></a></li>
-<li><a href="#set-the-workload-limit-code-setlimit-code">4.19. Set the workload limit: <code>setlimit</code></a></li>
+<li><a href="#set-cap-limits-code-setlimit-code">4.18. Set CAP limits: <code>setlimit</code></a></li>
+<li><a href="#set-workload-limits-code-setlimit-code">4.19. Set workload limits: <code>setlimit</code></a></li>
 <li><a href="#undo-previous-command-code-undo-code">4.20. Undo previous command: <code>undo</code></a></li>
 <li><a href="#save-data">4.21. Save data</a></li>
 <li><a href="#encrypt-data-files-code-coming-in-v2-0-code">4.22. Encrypt data files <code>[coming in v2.0]</code></a></li>
@@ -957,9 +957,9 @@ Sets the course of study to Computer Science with Focus Area Algorithms. Invokin
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-the-cap-limit-code-setlimit-code"><a class="link" href="#set-the-cap-limit-code-setlimit-code">4.18. Set the CAP limit: <code>setlimit</code></a></h3>
+<h3 id="set-cap-limits-code-setlimit-code"><a class="link" href="#set-cap-limits-code-setlimit-code">4.18. Set CAP limits: <code>setlimit</code></a></h3>
 <div class="paragraph">
-<p>Some students have a desired CAP for graduation. They may like to plan their modules such that it helps them to keep their CAP at a suitable range at all times. This helps to ensure that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Challenge, or maintain the CAP requirement of their scholarship for each semester.</p>
+<p>Some students have a desired CAP for graduation. They may like to plan their modules such that it helps them to keep their CAP at a suitable range at all times. This helps to ensure that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Colleges, or maintain the CAP requirement of their scholarship for each semester.</p>
 </div>
 <div class="paragraph">
 <p>GradTrak can keep track of their CAP limit preferences so that it is possible to help them detect whether their current module plan fulfils their preferences.</p>
@@ -994,7 +994,7 @@ Format: <code>setlimit SEMESTER [mincap/MIN_CAP] [maxcap/MAX_CAP]</code></p>
 <p>At least one field to be edited must be given.</p>
 </li>
 <li>
-<p>Newly edited limits must be not be out of order. Minimum CAP must not be more than maximum CAP</p>
+<p>Newly edited limits must be not be out of order. Minimum CAP must not be more than the maximum CAP</p>
 </li>
 </ul>
 </div>
@@ -1027,12 +1027,12 @@ This sets the minimum CAP acceptable to 2.52 and maximum CAP acceptable to 5.00 
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-the-workload-limit-code-setlimit-code"><a class="link" href="#set-the-workload-limit-code-setlimit-code">4.19. Set the workload limit: <code>setlimit</code></a></h3>
+<h3 id="set-workload-limits-code-setlimit-code"><a class="link" href="#set-workload-limits-code-setlimit-code">4.19. Set workload limits: <code>setlimit</code></a></h3>
 <div class="paragraph">
 <p>Some students who do not have a strong programming background may be slightly uncomfortable taking multiple programming modules in year 1 as they may feel too stressed from huge weekly lab workloads. Other students who like project work may like to take 1 or 2 team-based modules per semester that focuses on communication skills.</p>
 </div>
 <div class="paragraph">
-<p>GradTrak can keep track of their workload limit preferences for each semester so that it is possible to help them detect whether their current module plan fulfils their preferences. Various types of workload limits  such as total number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours can be tracked.</p>
+<p>GradTrak can keep track of their workload limit preferences for each semester so that it is possible to help them detect whether their current module plan fulfils their preferences. Various types of workload limits  such as total number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours can be set by the student.</p>
 </div>
 <div class="paragraph">
 <p>The <code>setlimit</code> command allows you to set the minimum and maximum total weekly workload limits for a semester.<br>
@@ -1192,7 +1192,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p><strong>Clear</strong>: <code>clear</code></p>
 </li>
 <li>
-<p><strong>Cursem</strong>: <code>cursem s/SEMESTER</code></p>
+<p><strong>Cursem</strong>: <code>cursem SEMESTER</code></p>
 </li>
 <li>
 <p><strong>Delete</strong>: <code>delete INDEX</code><br></p>
@@ -1239,4 +1239,4 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:13:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:34:30 UTC</div></div></div></body></html>
