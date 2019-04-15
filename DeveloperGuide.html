@@ -771,7 +771,7 @@ an <code>ObservableList&lt;&gt;</code>, this is done so that we can take advanta
 </div>
 <div class="paragraph">
 <p>Whenever the student searches for a particular <code>ModuleInfo</code> , the <code>ObservableList&lt;&gt;</code> is always ready and the <code>FilteredList&lt;&gt;</code>
-will be updated using a <code>Predicate</code> List generated from the keywords searched by the student.</p>
+will be updated using a <code>Predicate</code> List gclaenerated from the keywords searched by the student.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1454,7 +1454,7 @@ must be run again to reflect the updated recommendation list.</p>
 <p>Pros: Easy to implement and modify</p>
 </li>
 <li>
-<p>Cons: User may have his own order of priority that differs from the default one</p>
+<p>Cons: Student may have his own order of priority that differs from the default one</p>
 </li>
 </ul>
 </div>
@@ -1464,7 +1464,7 @@ must be run again to reflect the updated recommendation list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User can sort the list according to his own preferences</p>
+<p>Pros: Student can sort the list according to his own preferences</p>
 </li>
 <li>
 <p>Cons: Difficult to implement if several parameters for sorting is allowed; input method for the custom order is problematic</p>
@@ -1484,10 +1484,10 @@ must be run again to reflect the updated recommendation list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User has a greater freedom of choice</p>
+<p>Pros: Student has a greater freedom of choice</p>
 </li>
 <li>
-<p>Cons: User may be confused or unable to decide if the list is too long</p>
+<p>Cons: Student may be confused or unable to decide if the list is too long</p>
 </li>
 </ul>
 </div>
@@ -1497,7 +1497,7 @@ must be run again to reflect the updated recommendation list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: User can plan modules for specific semesters easily and quickly</p>
+<p>Pros: Student can plan modules for specific semesters easily and quickly</p>
 </li>
 <li>
 <p>Cons: Algorithm required to plan for all semesters can be complex; student may not prefer the given plan</p>
@@ -1540,43 +1540,65 @@ It makes use of the following classes as input:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Semester</code></p>
+<p><code>Semester</code> that holds the current semester</p>
 </li>
 <li>
-<p><code>ObservableList</code> of <code>SemesterLimit</code></p>
+<p><code>ObservableList</code> of <code>SemesterLimit</code> that holds the current semester limits</p>
 </li>
 <li>
-<p><code>ObservableList</code> of <code>ModuleTaken</code></p>
+<p><code>ObservableList</code> of <code>ModuleTaken</code> that holds the list of modules currently planned</p>
 </li>
 <li>
-<p><code>ModuleInfoList</code></p>
+<p><code>ModuleInfoList</code> that holds the list of modules with the number of module credits they have</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>&lt;class diagram&gt;</p>
+<p>The LimitChecker class is modelled with the class diagram as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LimitCheckerClassDiagram.png" alt="LimitCheckerClassDiagram" width="800">
+</div>
+<div class="title">Figure 23. <code>LimitChecker</code> class diagram</div>
 </div>
 <div class="paragraph">
-<p>The CAP of the student is calculated using the formula below</p>
+<p>GradTrak uses the following classes to store and manipulate the variables for calculation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CapAverage</code></p>
+</li>
+<li>
+<p><code>WeightedGrade</code></p>
+</li>
+<li>
+<p><code>ModuleInfoCredits</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>CapAverage</code> class contains an <code>ArrayList</code> of <code>WeightedGrade</code>.
+Each <code>WeightedGrade</code> has a CAP score and information on the number of module credits weighted by the score.</p>
+</div>
+<div class="paragraph">
+<p>The aggregated minimum and maximum expected CAP is calculated with the minimum and maximum expected CAP of every module taken respectively.</p>
+</div>
+<div class="paragraph">
+<p>The current CAP only includes modules that are completed. Modules are considered completed if they are taken on a semester before the current semester.</p>
+</div>
+<div class="paragraph">
+<p>The CAP of the student is calculated using the formula below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/modular-system.png" alt="modular system" width="800">
 </div>
-<div class="title">Figure 23. Formula for CAP calculation</div>
+<div class="title">Figure 24. Formula for CAP calculation</div>
 </div>
 <div class="paragraph">
-<p>GradTrak uses the classes <code>CapAverage</code>, <code>WeightedGrade</code>, and <code>ModuleInfoCredits</code> to store and manipulate the variables for calculation.</p>
-</div>
-<div class="paragraph">
-<p>The <code>CapAverage</code> class contains an <code>ArrayList</code> of <code>WeightedGrade</code>.
-Each weight grade has a CAP score and information on the number of Modular Credits weighted by the score.</p>
-</div>
-<div class="paragraph">
-<p>The minimum and maximum expected CAP is calculated with the minimum and maximum expected CAP of every module taken respectively.</p>
-</div>
-<div class="paragraph">
-<p>The current CAP only includes modules that are completed. Modules are considered completed if they are taken on a semester before the current semester.</p>
+<p>The total number of hours for each type of workload for each semester are also summed up to be displayed.</p>
 </div>
 <div class="paragraph">
 <p>Once all the calculations are completed, the HTML string report is generated and stored in the <code>checkedReport</code> variable in the <code>LimitChecker</code> to be displayed.</p>
@@ -1588,7 +1610,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="content">
 <img src="images/ClassForPrintingUsageExample.png" alt="ClassForPrintingUsageExample" width="800">
 </div>
-<div class="title">Figure 24. Usage example for the <code>ClassForPrinting</code></div>
+<div class="title">Figure 25. Usage example for the <code>ClassForPrinting</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1658,7 +1680,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="content">
 <img src="images/SetCurrentSemesterSequenceDiagram.png" alt="SetCurrentSemesterSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 25. Sequence Diagram for setting of the current semester</div>
+<div class="title">Figure 26. Sequence Diagram for setting of the current semester</div>
 </div>
 </div>
 <div class="sect3">
@@ -1728,7 +1750,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="content">
 <img src="images/SetSemesterLimitSequenceDiagram.png" alt="SetSemesterLimitSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 26. Sequence Diagram for setting of the limits for a semester</div>
+<div class="title">Figure 27. Sequence Diagram for setting of the limits for a semester</div>
 </div>
 </div>
 </div>
@@ -1837,7 +1859,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 27. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 28. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2189,10 +2211,10 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <p>NUS student from Computer Science, intending to specialise in Algorithms, Artificial Intelligence or Software Engineering</p>
 </li>
 <li>
-<p>Has taken many modules in NUS</p>
+<p>has taken many modules in NUS</p>
 </li>
 <li>
-<p>prefer desktop applications over other types</p>
+<p>prefers desktop applications over other types</p>
 </li>
 <li>
 <p>can type fast</p>
@@ -2241,7 +2263,7 @@ to refer to different webpages.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
 </tr>
@@ -2262,12 +2284,6 @@ to refer to different webpages.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">find a module by code, semester, grade or finished status</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate details of modules without having to go through the entire list</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2612,7 +2628,7 @@ to refer to different webpages.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters <code>displaymod</code> to find an NUS module based on module code or keywords in the module title.</p>
+<p>Student enters <code>displaymod</code> to find an NUS module based on module code or keywords in the module title.</p>
 </li>
 <li>
 <p>System returns full module information.</p>
@@ -2629,7 +2645,7 @@ to refer to different webpages.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters <code>rec</code> command.</p>
+<p>Student enters <code>rec</code> command.</p>
 </li>
 <li>
 <p>System returns a list of module codes (with title) that the student is recommended to take.</p>
@@ -2646,7 +2662,7 @@ to refer to different webpages.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters <code>find</code> command to search the module plan based on module code, semester, grade or finished status.</p>
+<p>Student enters <code>find</code> command to search the module plan based on module code, semester, grade or finished status.</p>
 </li>
 <li>
 <p>System returns a list of modules in the module plan which satisfy the given parameters.</p>
@@ -2662,7 +2678,7 @@ to refer to different webpages.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User enters <code>find</code> without parameters.</p>
+<p>1a. Student enters <code>find</code> without parameters.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -2675,7 +2691,7 @@ to refer to different webpages.</p>
 </div>
 </li>
 <li>
-<p>1b. User enters an invalid grade or semester.</p>
+<p>1b. Student enters an invalid grade or semester.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -2696,7 +2712,7 @@ to refer to different webpages.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters <code>displayreq</code> command.</p>
+<p>Student enters <code>displayreq</code> command.</p>
 </li>
 <li>
 <p>System returns a list of course requirement along side their details and percentage of the requirement fulfilled.</p>
@@ -2713,7 +2729,7 @@ to refer to different webpages.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters <code>study</code> command with some course parameter.</p>
+<p>Student enters <code>study</code> command with some course parameter.</p>
 </li>
 <li>
 <p>System changes course of study to course intended by student.</p>
@@ -2729,7 +2745,7 @@ to refer to different webpages.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. User enters <code>study</code> with courses not inside of GT.</p>
+<p>1a. Student enters <code>study</code> with courses not inside of GT.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -2740,7 +2756,7 @@ Use case ends.</p>
 </div>
 </li>
 <li>
-<p>1b. User enters <code>study</code> without parameter.<br></p>
+<p>1b. Student enters <code>study</code> without parameter.<br></p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -2927,4 +2943,4 @@ but failed a module in Y1S1. The failed module does not count towards any requir
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 05:39:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:03:13 UTC</div></div></div></body></html>

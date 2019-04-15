@@ -489,43 +489,65 @@ It makes use of the following classes as input:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>Semester</code></p>
+<p><code>Semester</code> that holds the current semester</p>
 </li>
 <li>
-<p><code>ObservableList</code> of <code>SemesterLimit</code></p>
+<p><code>ObservableList</code> of <code>SemesterLimit</code> that holds the current semester limits</p>
 </li>
 <li>
-<p><code>ObservableList</code> of <code>ModuleTaken</code></p>
+<p><code>ObservableList</code> of <code>ModuleTaken</code> that holds the list of modules currently planned</p>
 </li>
 <li>
-<p><code>ModuleInfoList</code></p>
+<p><code>ModuleInfoList</code> that holds the list of modules with the number of module credits they have</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>&lt;class diagram&gt;</p>
+<p>The LimitChecker class is modelled with the class diagram as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LimitCheckerClassDiagram.png" alt="LimitCheckerClassDiagram" width="800">
+</div>
+<div class="title">Figure 3. <code>LimitChecker</code> class diagram</div>
 </div>
 <div class="paragraph">
-<p>The CAP of the student is calculated using the formula below</p>
+<p>GradTrak uses the following classes to store and manipulate the variables for calculation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CapAverage</code></p>
+</li>
+<li>
+<p><code>WeightedGrade</code></p>
+</li>
+<li>
+<p><code>ModuleInfoCredits</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>CapAverage</code> class contains an <code>ArrayList</code> of <code>WeightedGrade</code>.
+Each <code>WeightedGrade</code> has a CAP score and information on the number of module credits weighted by the score.</p>
+</div>
+<div class="paragraph">
+<p>The aggregated minimum and maximum expected CAP is calculated with the minimum and maximum expected CAP of every module taken respectively.</p>
+</div>
+<div class="paragraph">
+<p>The current CAP only includes modules that are completed. Modules are considered completed if they are taken on a semester before the current semester.</p>
+</div>
+<div class="paragraph">
+<p>The CAP of the student is calculated using the formula below.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/modular-system.png" alt="modular system" width="800">
 </div>
-<div class="title">Figure 3. Formula for CAP calculation</div>
+<div class="title">Figure 4. Formula for CAP calculation</div>
 </div>
 <div class="paragraph">
-<p>GradTrak uses the classes <code>CapAverage</code>, <code>WeightedGrade</code>, and <code>ModuleInfoCredits</code> to store and manipulate the variables for calculation.</p>
-</div>
-<div class="paragraph">
-<p>The <code>CapAverage</code> class contains an <code>ArrayList</code> of <code>WeightedGrade</code>.
-Each weight grade has a CAP score and information on the number of Modular Credits weighted by the score.</p>
-</div>
-<div class="paragraph">
-<p>The minimum and maximum expected CAP is calculated with the minimum and maximum expected CAP of every module taken respectively.</p>
-</div>
-<div class="paragraph">
-<p>The current CAP only includes modules that are completed. Modules are considered completed if they are taken on a semester before the current semester.</p>
+<p>The total number of hours for each type of workload for each semester are also summed up to be displayed.</p>
 </div>
 <div class="paragraph">
 <p>Once all the calculations are completed, the HTML string report is generated and stored in the <code>checkedReport</code> variable in the <code>LimitChecker</code> to be displayed.</p>
@@ -537,7 +559,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="content">
 <img src="../images/ClassForPrintingUsageExample.png" alt="ClassForPrintingUsageExample" width="800">
 </div>
-<div class="title">Figure 4. Usage example for the <code>ClassForPrinting</code></div>
+<div class="title">Figure 5. Usage example for the <code>ClassForPrinting</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -607,7 +629,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="content">
 <img src="../images/SetCurrentSemesterSequenceDiagram.png" alt="SetCurrentSemesterSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 5. Sequence Diagram for setting of the current semester</div>
+<div class="title">Figure 6. Sequence Diagram for setting of the current semester</div>
 </div>
 </div>
 <div class="sect3">
@@ -677,7 +699,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 <div class="content">
 <img src="../images/SetSemesterLimitSequenceDiagram.png" alt="SetSemesterLimitSequenceDiagram" width="1000">
 </div>
-<div class="title">Figure 6. Sequence Diagram for setting of the limits for a semester</div>
+<div class="title">Figure 7. Sequence Diagram for setting of the limits for a semester</div>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -692,4 +714,4 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 05:39:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:03:13 UTC</div></div></div></body></html>
