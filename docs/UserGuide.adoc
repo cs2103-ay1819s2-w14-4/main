@@ -479,9 +479,9 @@ More courses will be rolled out in GradTrak in the future.
 // end::study[]
 
 // tag::SetSemesterLimit[]
-=== Set the CAP limit: `setlimit`
+=== Set CAP limits: `setlimit`
 
-Some students have a desired CAP for graduation. They may like to plan their modules such that it helps them to keep their CAP at a suitable range at all times. This helps to ensure that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Challenge, or maintain the CAP requirement of their scholarship for each semester.
+Some students have a desired CAP for graduation. They may like to plan their modules such that it helps them to keep their CAP at a suitable range at all times. This helps to ensure that they can easily apply for programs with minimum CAP requirements such as the Student Exchange Program, or NUS Overseas Colleges, or maintain the CAP requirement of their scholarship for each semester.
 
 GradTrak can keep track of their CAP limit preferences so that it is possible to help them detect whether their current module plan fulfils their preferences.
 
@@ -495,7 +495,7 @@ Format: `setlimit SEMESTER [mincap/MIN_CAP] [maxcap/MAX_CAP]`
 * Parameters can be in any order, but the semester must be entered first.
 * The given semester must be a valid semester from year 1 to 5, in either the first or second semester.
 * At least one field to be edited must be given.
-* Newly edited limits must be not be out of order. Minimum CAP must not be more than maximum CAP
+* Newly edited limits must be not be out of order. Minimum CAP must not be more than the maximum CAP
 ****
 
 Examples:
@@ -508,11 +508,11 @@ This sets the minimum CAP acceptable to 2.52 and maximum CAP acceptable to 5.00 
 * This command is undoable and redoable
 ****
 
-=== Set the workload limit: `setlimit`
+=== Set workload limits: `setlimit`
 
 Some students who do not have a strong programming background may be slightly uncomfortable taking multiple programming modules in year 1 as they may feel too stressed from huge weekly lab workloads. Other students who like project work may like to take 1 or 2 team-based modules per semester that focuses on communication skills.
 
-GradTrak can keep track of their workload limit preferences for each semester so that it is possible to help them detect whether their current module plan fulfils their preferences. Various types of workload limits  such as total number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours can be tracked.
+GradTrak can keep track of their workload limit preferences for each semester so that it is possible to help them detect whether their current module plan fulfils their preferences. Various types of workload limits  such as total number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours can be set by the student.
 
 The `setlimit` command allows you to set the minimum and maximum total weekly workload limits for a semester. +
 Format: `setlimit SEMESTER [minlec/MIN_LECTURE_HOURS] [maxlec/MAX_LECTURE_HOURS] [mintut/MIN_TUTORIAL_HOURS] [maxtut/MAX_TUTORIAL_HOURS] [minlab/MIN_LAB_HOURS] [maxlab/MAX_LAB_HOURS] [minproj/MIN_PROJ_HOURS] [maxproj/MAX_PROJ_HOURS] [minprep/MIN_PREP_HOURS] [maxprep/MAX_PREP_HOURS]`
@@ -591,7 +591,7 @@ Retrieves the latest information of all modules from CORS.
 * *Add*: `add c/MODULE_CODE s/SEMESTER`
 * *Cklimit*: `cklimit`
 * *Clear*: `clear`
-* *Cursem*: `cursem s/SEMESTER`
+* *Cursem*: `cursem SEMESTER`
 * *Delete*: `delete INDEX` +
 * *Displaymod*: `displaym o/OPTIONS [MORE_ARGUMENTS]`
 * *Displayreq*: `displayreq`
