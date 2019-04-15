@@ -27,7 +27,7 @@ public class ModuleInfo {
         this.department = new ModuleInfoDepartment(department);
         this.prerequisites = new ModuleInfoPrerequisites(code, prerequisites);
 
-        //System.out.println("Module:" + code + " has been created");
+        System.out.println("Module:" + code + " has been created");
 
         this.prerequisites.generatePrerequisiteTree();
 

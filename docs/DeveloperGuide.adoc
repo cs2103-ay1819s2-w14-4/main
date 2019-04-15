@@ -305,12 +305,12 @@ all of the listed modules are required respectively. +
 
 *3.* *Module Code* : The module code that is required to meet the prerequisite. +
 
-image::PrerequisiteTreeAnnotated.png[width="600"]
+image::PrerequisiteTreeAnnotated.png[width="300"]
 
 The `generatePrerequisiteTree()` function is called after the `ModuleInfoPrerequisite` object has been created, since
 the `ModuleTree` is dependent on the `String` input `prereq` which later be saved as `prerequisiteString`. +
 
-image::PrerequisiteString.png[width="800"]
+image::PrerequisiteString.png[width="600"]
 
 The input `prerequisite` usually comes in the format:
 
@@ -318,24 +318,18 @@ The input `prerequisite` usually comes in the format:
 
 The input value is then split into an `array` using regular expressions:
 
-image::RegexSplitter.png[width="400"]
+image::RegexSplitter.png[width="200"]
 
 This helps with the arrangement of the `ModuleTree` as shown below: +
 
 .Step 1:The first index `String` is used to create a minor tree
-image::prerequisiteStep1.png[width="600"]
+image::prerequisiteStep1.png[width="400"]
 
 .Step 2:Since the previous `String` ended with a "OR" the next `String` is made and added as a child to the predecessor.
-image::prerequisiteStep2.png[width="600"]
+image::prerequisiteStep2.png[width="400"]
 
-.Step 3:The next `String` is a lone "AND" operator thus it supersedes as the new root node.
-image::prerequisiteStep3.png[width="600"]
-
-.Step 4:The subsequent minor tree is added to the root node.
-image::prerequisiteStep4.png[width="600"]
-
-.Step 5:Finally, since the next operator is same as the current root operator the next minor tree is added as a child.
-image::prerequisiteStepFinal.png[width="600"]
+.Step 3:Finally,the same process is repeated with the other Strings until the tree is complete.
+image::prerequisiteStepFinal.png[width="400"]
 
 
 ==== Making it into a list

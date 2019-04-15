@@ -244,7 +244,7 @@ image::displaymod1cexamplecmd.png[width="500"]
 The search above should yield a result: +
 
 .Single module code search result +
-image::displaymod1cexampleresult.png[width="800"]
+image::displaymod1cexampleresult.png[width="500"]
 
 However if students wishes to search for multiple modules at once they can follow the example given below: +
 
@@ -254,7 +254,7 @@ image::displaymodMcexamplecmd.png[width="500"]
 The search above should yield a result: +
 
 .Multiple module code search result +
-image::displaymodMcexampleresult.png[width="800"]
+image::displaymodMcexampleresult.png[width="500"]
 
 * Search by *name*:
 There are cases where students may not remember or know the module code but vaguely remember the module name. Students
@@ -271,7 +271,7 @@ The search above should yield a result: +
 
 
 .Single module name search command result +
-image::displaymod1nexampleresult.png[width="800"]
+image::displaymod1nexampleresult.png[width="500"]
 
 However if students wishes to search for multiple modules at once they can follow the example given below: +
 
@@ -281,7 +281,7 @@ image::displaymodMnexamplecmd.png[width="500"]
 The search above should yield a result: +
 
 .Multiple module name keyword search result +
-image::displaymodMnexampleresult.png[width="800"]
+image::displaymodMnexampleresult.png[width="500"]
 
 If the student has successfully managed to display a module of their choice, they will be presented with module/s containing
 several information that the student will find useful. The example below will show the information provided for each module

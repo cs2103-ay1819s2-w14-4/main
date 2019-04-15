@@ -1,6 +1,8 @@
 package seedu.address.model.moduleinfo;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 
 /**
  * Represents a moduleInfo's description
@@ -15,7 +17,7 @@ public class ModuleInfoDescription {
 
     public ModuleInfoDescription(String moduleDescription) {
         requireNonNull(moduleDescription);
-        //checkArgument(isValidModuleInfoDescription(moduleDescription), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidModuleInfoDescription(moduleDescription), MESSAGE_CONSTRAINTS);
         description = moduleDescription;
     }
 

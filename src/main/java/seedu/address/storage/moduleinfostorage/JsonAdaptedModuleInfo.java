@@ -47,7 +47,7 @@ public class JsonAdaptedModuleInfo {
             this.prerequisites = prerequisite;
         }
 
-        if (description == null) {
+        if (description == null || description == "") {
             this.description = "No work load information provided";
         } else {
             this.description = description;
