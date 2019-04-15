@@ -29,7 +29,8 @@ public class GuiTestAssert {
     /**
      * Asserts that {@code actualCard} displays the details of {@code expectedModuleTaken}.
      */
-    public static void assertCardDisplaysModuleTaken(ModuleTaken expectedModuleTaken, ModuleTakenCardHandle actualCard) {
+    public static void assertCardDisplaysModuleTaken(
+            ModuleTaken expectedModuleTaken, ModuleTakenCardHandle actualCard) {
         assertEquals(expectedModuleTaken.getModuleInfoCode().toString(), actualCard.getModuleInfoCode());
         assertEquals(expectedModuleTaken.getSemester().toString(), actualCard.getSemester());
         assertEquals(expectedModuleTaken.getExpectedMinGrade().toString(), actualCard.getExpectedMinGrade());
@@ -39,10 +40,12 @@ public class GuiTestAssert {
     }
 
     /**
-     * Asserts that the list in {@code moduleTakenListPanelHandle} displays the details of {@code moduleTakens} correctly and
+     * Asserts that the list in {@code moduleTakenListPanelHandle}
+     * displays the details of {@code moduleTakens} correctly and
      * in the correct order.
      */
-    public static void assertListMatching(ModuleTakenListPanelHandle moduleTakenListPanelHandle, ModuleTaken... moduleTakens) {
+    public static void assertListMatching(
+            ModuleTakenListPanelHandle moduleTakenListPanelHandle, ModuleTaken... moduleTakens) {
         for (int i = 0; i < moduleTakens.length; i++) {
             moduleTakenListPanelHandle.navigateToCard(i);
             assertCardDisplaysModuleTaken(moduleTakens[i], moduleTakenListPanelHandle.getModuleTakenCardHandle(i));
@@ -50,10 +53,12 @@ public class GuiTestAssert {
     }
 
     /**
-     * Asserts that the list in {@code moduleTakenListPanelHandle} displays the details of {@code moduleTakens} correctly and
+     * Asserts that the list in {@code moduleTakenListPanelHandle}
+     * displays the details of {@code moduleTakens} correctly and
      * in the correct order.
      */
-    public static void assertListMatching(ModuleTakenListPanelHandle moduleTakenListPanelHandle, List<ModuleTaken> moduleTakens) {
+    public static void assertListMatching(
+            ModuleTakenListPanelHandle moduleTakenListPanelHandle, List<ModuleTaken> moduleTakens) {
         assertListMatching(moduleTakenListPanelHandle, moduleTakens.toArray(new ModuleTaken[0]));
     }
 

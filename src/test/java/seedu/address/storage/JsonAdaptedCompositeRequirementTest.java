@@ -30,8 +30,7 @@ public class JsonAdaptedCompositeRequirementTest {
     private final String invalidEnum = "invalid";
 
     @Test
-    public void toModelType_validCompositeRequirement_returnsCompositeRequirement() throws Exception
-    {
+    public void toModelType_validCompositeRequirement_returnsCompositeRequirement() throws Exception {
         JsonAdaptedCompositeRequirement test = new JsonAdaptedCompositeRequirement(firstAndSecond);
         assertEquals(firstAndSecond, test.toModelType());
         test = new JsonAdaptedCompositeRequirement(secondOrFirst);

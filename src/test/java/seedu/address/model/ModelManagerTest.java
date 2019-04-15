@@ -113,7 +113,7 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void deleteModuleTaken_moduleTakenIsSelectedAndSecondModuleTakenInFilteredModuleTakenList_firstModuleTakenSelected() {
+    public void deleteModTaken_modTakenIsSelectedAndSecondModTakenInFilteredModTakenList_firstModTakenSelected() {
         modelManager.addModuleTaken(CS2103T);
         modelManager.addModuleTaken(DEFAULT_MODULE_CS1010);
         assertEquals(Arrays.asList(CS2103T, DEFAULT_MODULE_CS1010), modelManager.getFilteredModulesTakenList());

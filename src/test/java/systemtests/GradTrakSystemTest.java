@@ -182,7 +182,8 @@ public abstract class GradTrakSystemTest {
     }
 
     /**
-     * Calls {@code BrowserPanelHandle}, {@code ModuleTakenListPanelHandle} and {@code StatusBarFooterHandle} to remember
+     * Calls {@code BrowserPanelHandle}, {@code ModuleTakenListPanelHandle}
+     * and {@code StatusBarFooterHandle} to remember
      * their current state.
      */
     private void rememberStates() {

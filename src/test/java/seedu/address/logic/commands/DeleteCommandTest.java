@@ -35,7 +35,8 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
+        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(
+                INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MODULE_TAKEN_SUCCESS, moduleTakenToDelete);
@@ -61,7 +62,8 @@ public class DeleteCommandTest {
     public void execute_validIndexFilteredList_success() {
         showModuleTakenAtIndex(model, INDEX_FIRST_MODULE_TAKEN);
 
-        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
+        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(
+                INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MODULE_TAKEN_SUCCESS, moduleTakenToDelete);
@@ -91,7 +93,8 @@ public class DeleteCommandTest {
 
     @Test
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
-        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
+        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(
+                INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
         Model expectedModel = new ModelManager(model.getGradTrak(), new UserPrefs(),
                 new ModuleInfoList(), new CourseList(), new UserInfo());
@@ -138,7 +141,8 @@ public class DeleteCommandTest {
                 new ModuleInfoList(), new CourseList(), new UserInfo());
 
         showModuleTakenAtIndex(model, INDEX_SECOND_MODULE_TAKEN);
-        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
+        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(
+                INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         expectedModel.deleteModuleTaken(moduleTakenToDelete);
         expectedModel.commitGradTrak();
 
