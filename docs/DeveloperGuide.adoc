@@ -781,7 +781,7 @@ The current choice was chosen because it will be worth the effort to restructure
 
 ==== Current Implementation
 
-The `setlimit` command allows the student to set CAP limits and workload limits for each semester. This helps the student manage the difficulty and time required of the modules taken. Various types of limits can be set, such as the minimum and maximum number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours acceptable for each semester, as well as the minimum and maximum CAP acceptable for the semester.
+The `setlimit` command allows the student to set CAP limits and workload limits for each semester. This helps the student manage the difficulty and time required of the modules taken. Various types of limits can be set, such as the minimum and maximum number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours acceptable, as well as the minimum and maximum CAP acceptable for each semester.
 
 The interaction of how the `setlimit` command interacts with the system is shown below as a sequence diagram.
 
