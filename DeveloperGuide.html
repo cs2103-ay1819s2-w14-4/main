@@ -1360,19 +1360,19 @@ which is further wrapped in a <code>SortedList</code>, both stored in <code>Mode
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Model#updateRecModuleList</code> is called, which creates a <code>RecModulePredicate</code> given the student&#8217;s <code>Course</code> and <code>GradTrak</code>, and a <code>RecModuleComparator</code>.</p>
+<p><code>Model#updateRecModuleList</code> is called, which creates a <code>RecModulePredicate</code> given the student&#8217;s <code>Course</code> and <code>ReadOnlyGradTrak</code>, and a <code>RecModuleComparator</code>.</p>
 </li>
 <li>
 <p>The <code>RecModulePredicate</code> is applied to the <code>FilteredList</code> of <code>RecModule</code>. In each test:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>An <code>EligibleModulePredicate</code> which takes in <code>GradTrak</code> tests if the <code>ModuleInfo</code> of this <code>RecModule</code> is eligible to be read.
-If the module is already present in GradTrak or does not have its prerequisites satisfied, this <code>RecModule</code> is filtered out.</p>
+<p>An <code>EligibleModulePredicate</code> which takes in <code>ReadOnlyGradTrak</code> tests if the <code>ModuleInfo</code> of this <code>RecModule</code> is eligible to be read.
+If the module is already present in the module plan or does not have its prerequisites satisfied, this <code>RecModule</code> is filtered out.</p>
 </li>
 <li>
 <p>The <code>ModuleInfoCode</code> (call it <code>codeToTest</code>) of the <code>RecModule</code> is retrieved.<br>
-A <code>nonFailedCodeList</code> of <code>ModuleInfoCode</code> corresponding to non-failed <code>ModuleTaken</code> (already passed or to be read in a future semester) is also retrieved from <code>GradTrak</code>.</p>
+A <code>nonFailedCodeList</code> of <code>ModuleInfoCode</code> corresponding to non-failed <code>ModuleTaken</code> (already passed or to be read in a future semester) is also retrieved from <code>ReadOnlyGradTrak</code>.</p>
 </li>
 <li>
 <p>The <code>codeToTest</code> is then passed into <code>Course#getCourseReqTypeOf</code>, which in turn calls <code>CourseRequirement#canFulfill</code> for each <code>CourseRequirement</code> listed in <code>Course</code>.
@@ -1415,7 +1415,7 @@ considering that lower level modules are usually read first. In the case of equa
 </ol>
 </div>
 <div class="paragraph">
-<p>If there are changes to <code>GradTrak</code> (adding, editing or deleting modules) or <code>Course</code> (changing the course of study), the <code>rec</code> command
+<p>If there are changes to <code>ReadOnlyGradTrak</code> (adding, editing or deleting modules) or <code>Course</code> (changing the course of study), the <code>rec</code> command
 must be run again to reflect the updated recommendation list.</p>
 </div>
 <div class="paragraph">
@@ -1510,7 +1510,7 @@ must be run again to reflect the updated recommendation list.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="possible-enhancements"><a class="link" href="#possible-enhancements">3.4.3. Possible Enhancements</a></h4>
+<h4 id="possible-improvements-2"><a class="link" href="#possible-improvements-2">3.4.3. Possible Improvements</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1631,7 +1631,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 </div>
 </div>
 <div class="sect3">
-<h4 id="possible-improvements-2"><a class="link" href="#possible-improvements-2">3.5.3. Possible Improvements</a></h4>
+<h4 id="possible-improvements-3"><a class="link" href="#possible-improvements-3">3.5.3. Possible Improvements</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1701,7 +1701,7 @@ Each weight grade has a CAP score and information on the number of Modular Credi
 </div>
 </div>
 <div class="sect3">
-<h4 id="possible-improvements-3"><a class="link" href="#possible-improvements-3">3.6.3. Possible Improvements</a></h4>
+<h4 id="possible-improvements-4"><a class="link" href="#possible-improvements-4">3.6.3. Possible Improvements</a></h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2927,4 +2927,4 @@ but failed a module in Y1S1. The failed module does not count towards any requir
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 04:49:35 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 05:39:40 UTC</div></div></div></body></html>
