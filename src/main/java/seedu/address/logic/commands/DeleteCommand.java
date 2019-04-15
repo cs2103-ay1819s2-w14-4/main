@@ -19,7 +19,8 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the moduleTaken identified by the index number used in the displayed list of modules in plan.\n"
+            + ": Deletes the moduleTaken identified by the "
+            + "index number used in the displayed list of modules in plan.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
