@@ -144,13 +144,13 @@ This sections shows how users can search for modules available in NUS currently 
 <div class="sect2">
 <h3 id="display-module-information-code-displaymod-code"><a class="link" href="#display-module-information-code-displaymod-code">Display module information: <code>displaymod</code></a></h3>
 <div class="paragraph">
-<p>The <code>displaymod</code> command shows all the modules that are available in NUS based on the user&#8217;s search. This command simply
-shows modules straight from NUS&#8217;s database of modules and does not check if the user has met the prerequisites to read
+<p>The <code>displaymod</code> command shows all the modules that are available in NUS based on the search by the student. This command simply
+shows modules straight from NUS&#8217;s database of modules and does not check if the student has met the prerequisites to read
 a particular module.</p>
 </div>
 <div class="paragraph">
-<p>This command will allow users to find out more about a module or even compare modules so as to decide which modules to read
-in the upcoming semesters. Once decided on which module the user plans to read, they can use <a href="#add">[add]</a> command to add the
+<p>This command will allow students to find out more about a module or even compare modules so as to decide which modules to read
+in the upcoming semesters. Once decided on which module the student plans to read, they can use <a href="#add">[add]</a> command to add the
 module to their own list.</p>
 </div>
 <div class="admonitionblock note">
@@ -172,7 +172,7 @@ Searches are <strong>case-insensitive</strong>.
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Users must strictly adhere to syntax of the <code>displaymod</code> command in order to get optimum search results.
+Students must strictly adhere to syntax of the <code>displaymod</code> command in order to get optimum search results.
 </td>
 </tr>
 </table>
@@ -206,7 +206,7 @@ Format: `displaymod c/MODULE_CODE,[MODULE_CODE]</p>
 <div class="title">Figure 2. Single module code search result<br></div>
 </div>
 <div class="paragraph">
-<p>However if users wishes to search for multiple modules at once they can follow the example given below:<br></p>
+<p>However if students wishes to search for multiple modules at once they can follow the example given below:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -227,9 +227,9 @@ Format: `displaymod c/MODULE_CODE,[MODULE_CODE]</p>
 <ul>
 <li>
 <p>Search by <strong>name</strong>:
-There are cases where students may not remember or know a module&#8217;s code but vaguely remember the module&#8217;s name. Users
+There are cases where students may not remember or know the module code but vaguely remember the module name. Students
 who find themselves in such a situation can search for modules by their names by adding a <code>n/</code> prefix after the
-<code>displaymod</code> command, followed by keyword/s that can be found in the module&#8217;s name. Keywords have to be separated by <code>+</code>
+<code>displaymod</code> command, followed by keyword/s that can be found in the module name. Keywords have to be separated by <code>+</code>
 symbol.<br>
 Format: <code>displaymod n/KEYWORD+[KEYWORD]</code></p>
 </li>
@@ -251,7 +251,7 @@ Format: <code>displaymod n/KEYWORD+[KEYWORD]</code></p>
 <div class="title">Figure 6. Single module name search command result<br></div>
 </div>
 <div class="paragraph">
-<p>However if users wishes to search for multiple modules at once they can follow the example given below:<br></p>
+<p>However if students wishes to search for multiple modules at once they can follow the example given below:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -269,8 +269,8 @@ Format: <code>displaymod n/KEYWORD+[KEYWORD]</code></p>
 <div class="title">Figure 8. Multiple module name keyword search result<br></div>
 </div>
 <div class="paragraph">
-<p>If the user has successfully managed to display a module of their choice, they will be presented with module/s containing
-several information that the user will find useful. The example below will show the information provided for each module
+<p>If the student has successfully managed to display a module of their choice, they will be presented with module/s containing
+several information that the student will find useful. The example below will show the information provided for each module
 after a successful search:</p>
 </div>
 <div class="imageblock">
@@ -536,7 +536,7 @@ an <code>ObservableList&lt;&gt;</code>, this is done so that we can take advanta
 </div>
 <div class="paragraph">
 <p>Whenever the student searches for a particular <code>ModuleInfo</code> , the <code>ObservableList&lt;&gt;</code> is always ready and the <code>FilteredList&lt;&gt;</code>
-will be updated using a <code>Predicate</code> List gclaenerated from the keywords searched by the student.</p>
+will be updated using a <code>Predicate</code> List generated from the keywords searched by the student.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -615,4 +615,4 @@ will be updated using a <code>Predicate</code> List gclaenerated from the keywor
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:03:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:13:40 UTC</div></div></div></body></html>
