@@ -1,0 +1,606 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta moduleInfoCode="viewport" content="width=device-width, initial-scale=1.0"><meta moduleInfoCode="generator" content="Asciidoctor 1.5.6.1"><title>T Anandakkoomar - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w14-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>T Anandakkoomar - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-gradtrak-a-graduation-tracker-for-nus-students"><a class="link" href="#project-gradtrak-a-graduation-tracker-for-nus-students">PROJECT: GradTrak - A Graduation Tracker for NUS Students</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GradTrak is an application that was created to aid students with their graduation requirements. NUS has multiple requirements
+before its students can file for graduation and checking if all of the requirements have been met is a hassle for most
+students.<br></p>
+</div>
+<div class="paragraph">
+<p>Initially we were given a base code <a href="https://github.com/nus-cs2103-AY1819S2/addressbook-level4">Address Book - Level 4</a> which
+we had the choice of either morphing into something entirely different or enhance the current code. My team and I decided to
+challenge ourselves and morph it into <a href="https://github.com/cs2103-ay1819s2-w14-4/main">GradTrak</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>My team and I had to complete the application within 6 weeks. The final products came out as intended with minor hiccups
+or problems.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contribution"><a class="link" href="#summary-of-contribution">Summary of Contribution</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major Feature</strong>: Added a search functionality that allows students to see all available NUS modules locally.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Users are able to search locally(without internet) all modules that are currently available in NUS. Users
+are allowed to search for modules that they interested in by the module&#8217;s code or even by searching for keywords found in the
+module&#8217;s name. Based on their search, a list of module/s will be presented to them. The information for each module also
+contains a prerequisite tree and a workload table so that students can also plan their modules semester by semester.</p>
+</li>
+<li>
+<p>Why this feature: Knowing what modules are available is integral to graduate on time, instead of searching through the
+internet on what modules are available, bringing this feature to the user/students computer locally will greatly
+improve the efficiency at which students are able to plan and track their graduation.</p>
+</li>
+<li>
+<p>Highlights: There are thousands of modules that need to be loaded during launch of the application and all of these
+information is stored in a JSON file <code>allModules.json</code> which was obtained from <a href="http://awards.nusmods.com/2018-2019/moduleInformation.json">moduleinformation</a>.
+Further more a significant number of modules have a prerequisite tree which is crucial for students to see if they are
+eligible to read a particular module and this prerequisite tree was custom made as we could not find another data structure
+that fit the prerequisite tree.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor Enhancement</strong>: Designed and implemented a data structure called <code>ModuleTree</code> which helps to display and check prerequisites,
+implemented a one-way read-only storage class to read the <code>allModules.json</code> file.</p>
+</li>
+<li>
+<p><strong>Code Contributed</strong> : [<a href="https://github.com/cs2103-ay1819s2-w14-4/main/tree/master/src/main/java/seedu/address/model/moduleinfo">functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Code Contributions on Dashboard</strong> : <a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=anand270294">Contributions</a></p>
+</li>
+<li>
+<p><strong>Other Contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Set up Issue Tracker</p>
+</li>
+<li>
+<p>Managed deadlines for team</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Refactored Code</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refactored the storage class to read-only json files.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Did the README.adoc file and the initial UI mockUp</p>
+</li>
+<li>
+<p>Modified sections of the UG and DG to match the application GradTrak.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>UI:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Implemented a <code>panelhandler</code> so the panel changes with accordance to the command typed in.[<a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/78">PR here</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/cs2103-ay1819s2-w14-4/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+author%3AAnand270294+">Pull Request Made for this project</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide which will show my ability to write to end-users who have no prior knowledge
+on programming. This section of the guide does not delve into the technical aspects of this application, only showing instructions on how
+to navigate through GradTrak.
+This sections shows how users can search for modules available in NUS currently and the limitations of this feature.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="display-module-information-code-displaymod-code"><a class="link" href="#display-module-information-code-displaymod-code">Display module information: <code>displaymod</code></a></h3>
+<div class="paragraph">
+<p>The <code>displaymod</code> command shows all the modules that are available in NUS based on the search by the student. This command simply
+shows modules straight from NUS&#8217;s database of modules and does not check if the student has met the prerequisites to read
+a particular module.</p>
+</div>
+<div class="paragraph">
+<p>This command will allow students to find out more about a module or even compare modules so as to decide which modules to read
+in the upcoming semesters. Once decided on which module the student plans to read, they can use <a href="#add">[add]</a> command to add the
+module to their own list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Searches are <strong>case-insensitive</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Students must strictly adhere to syntax of the <code>displaymod</code> command in order to get optimum search results.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There are <strong>2</strong> ways to search for modules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Search by <strong>code</strong>:
+All modules have module code associated with it, this makes it easier to remember modules.To search for modules based on
+code, a <code>c/</code> prefix must be added after <code>displaymod</code> command, followed by a list of modules which are separated by <code>,</code>.<br>
+Format: `displaymod c/MODULE_CODE,[MODULE_CODE]</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymod1cexamplecmd.png" alt="displaymod1cexamplecmd" width="500">
+</div>
+<div class="title">Figure 1. Single module code search command format<br></div>
+</div>
+<div class="paragraph">
+<p>The search above should yield a result:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymod1cexampleresult.png" alt="displaymod1cexampleresult" width="500">
+</div>
+<div class="title">Figure 2. Single module code search result<br></div>
+</div>
+<div class="paragraph">
+<p>However if students wishes to search for multiple modules at once they can follow the example given below:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymodMcexamplecmd.png" alt="displaymodMcexamplecmd" width="500">
+</div>
+<div class="title">Figure 3. Multiple module codes search command format<br></div>
+</div>
+<div class="paragraph">
+<p>The search above should yield a result:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymodMcexampleresult.png" alt="displaymodMcexampleresult" width="500">
+</div>
+<div class="title">Figure 4. Multiple module code search result<br></div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Search by <strong>name</strong>:
+There are cases where students may not remember or know the module code but vaguely remember the module name. Students
+who find themselves in such a situation can search for modules by their names by adding a <code>n/</code> prefix after the
+<code>displaymod</code> command, followed by keyword/s that can be found in the module name. Keywords have to be separated by <code>+</code>
+symbol.<br>
+Format: <code>displaymod n/KEYWORD+[KEYWORD]</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymod1nexamplecmd.png" alt="displaymod1nexamplecmd" width="500">
+</div>
+<div class="title">Figure 5. Single module name search command format</div>
+</div>
+<div class="paragraph">
+<p>The search above should yield a result:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymod1nexampleresult.png" alt="displaymod1nexampleresult" width="500">
+</div>
+<div class="title">Figure 6. Single module name search command result<br></div>
+</div>
+<div class="paragraph">
+<p>However if students wishes to search for multiple modules at once they can follow the example given below:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymodMnexamplecmd.png" alt="displaymodMnexamplecmd" width="500">
+</div>
+<div class="title">Figure 7. Multiple module name keyword search format<br></div>
+</div>
+<div class="paragraph">
+<p>The search above should yield a result:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymodMnexampleresult.png" alt="displaymodMnexampleresult" width="500">
+</div>
+<div class="title">Figure 8. Multiple module name keyword search result<br></div>
+</div>
+<div class="paragraph">
+<p>If the student has successfully managed to display a module of their choice, they will be presented with module/s containing
+several information that the student will find useful. The example below will show the information provided for each module
+after a successful search:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displaymoddisplay.png" alt="displaymoddisplay" width="800">
+</div>
+<div class="title">Figure 9. What information each module contains</div>
+</div>
+<div class="paragraph">
+<p>What each number displays:<br>
+<strong>1.</strong> Shows the module <strong>code</strong> and module <strong>name</strong>.<br>
+<strong>2.</strong> Shows which <strong>department</strong> the module belongs to.<br>
+<strong>3.</strong> Displays the amount of module <strong>credits</strong> a student can gain by reading this module.<br>
+<strong>4.</strong> Displays a brief description of the modules and potentially the topics that may be covered.<br>
+<strong>5.</strong> Contains the <strong>prerequisite tree</strong> for each module.<br>
+<strong>6.</strong> Contains <strong>workload</strong> load information, the values are meant to be read as <strong>Hours</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Given below are sections I contributed to the Developer Guide, which is showcase my ability to write technical documentations.
+This section will contain information on how the <code>ModuleInfo</code> class is implemented and how the custom data structure <code>ModuleTree</code>
+has be designed to aid with displaying relevant information for students. This documentation will allow readers to understand the
+backend of this application and potentially aid them in improving this product or even morphing it again.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">Storage component</a></h3>
+<div class="paragraph">
+<p>Within the <code>Storage</code> component there are <strong>2</strong> types of storage classes:<br>
+1. read and write storage<br>
+2. read only storage</p>
+</div>
+<div class="sect3">
+<h4 id="read-and-write-storage"><a class="link" href="#read-and-write-storage">Read and write storage</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+</div>
+<div class="title">Figure 10. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/blob/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a>
+The <code>Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can save <code>UserPref</code>, <code>UserInfo</code> objects in json format and read it back.</p>
+</li>
+<li>
+<p>can save the GradTrak data in json format and read it back.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="read-only-storage"><a class="link" href="#read-only-storage">Read-only storage</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/moduleinfostorage.png" alt="moduleinfostorage" width="800">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CourseStorage.png" alt="CourseStorage" width="800">
+</div>
+<div class="title">Figure 11. Structure of read-only storage components</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/blob/master/src/main/java/seedu/address/storage/moduleinfostorage/ModuleInfoStorage.java"><code>ModuleInfoStorage.java</code></a>,
+<a href="{repoURL}/blob/master/src/main/java/seedu/address/storage/coursestorage/CourseStorage.java"><code>CourseStorage.java</code></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>loads <code>ModuleInfoStorage</code> and <code>CourseStorage</code> from json format into memory</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="displaymod-feature"><a class="link" href="#displaymod-feature">Displaymod feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
+<div class="paragraph">
+<p><code>displaymod</code> is a command that displays the information of a module based on the search by the student. The main reason for implementing
+such a feature is so that students can have immediate access to all available modules in NUS instead of searching through the
+internet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creation-of-code-moduleinfo-code"><a class="link" href="#creation-of-code-moduleinfo-code">Creation of <code>ModuleInfo</code></a></h4>
+<div class="paragraph">
+<p>Most of the processing of this feature is done during the launch of the application. The modules are created as a object
+called <code>ModuleInfo</code>. These objects only contain vital information of a particular module and nothing else. This to ensure that
+only information relevant students are displayed. This process is done with aid of the <code>Storage</code> class, to be more exact
+it uses <a href="#Read-Only">[Read-Only]</a> extracting all the data from <code>allModule.Json</code> file found in the <code>resources</code> folder.<br></p>
+</div>
+<div class="paragraph">
+<p>The figure below shows the class diagram for <code>ModuleInfo</code> :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModuleInfoclass.png" alt="ModuleInfoclass" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As seen from above the <code>ModuleInfo</code> class is made up of 8 other classes:<br></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoDepartment</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoTitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoWorkload</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoCredits</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoPrerequisite</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoDescription</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoPreclusion</code> <strong>For V2.0</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The information found in the modules are separated into their own class to maintain modularity in the
+code. All of these objects are created in the construction of the <code>ModuleInfo</code> Object.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/moduleinfoconstructor.png" alt="moduleinfoconstructor" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="generating-prerequisite-trees"><a class="link" href="#generating-prerequisite-trees">Generating prerequisite trees</a></h4>
+<div class="paragraph">
+<p>Within the <code>ModuleInfo</code> class, the <code>ModuleInfoPrerequisite</code> class requires the most pre-processing. If a student wishes to take
+a particular module, they have to check if they can satisfy the prerequisites, thus presenting the prerequisite tree is
+paramount to the <code>ModuleInfo</code> class.<br></p>
+</div>
+<div class="paragraph">
+<p><code>ModuleInfoPrerequisite</code> contains a custom data structure called <code>ModuleTree</code> which can be found in the
+<code>commons.Util</code> package. It was place in the <code>commons</code> package since it was a data structure and other functions
+or feature may require the <code>ModuleTree</code> <strong>i.e.</strong> when adding/deleting modules from the <code>ModuleTaken</code> list of the student.<br></p>
+</div>
+<div class="paragraph">
+<p>The <code>ModuleTree</code> data structure consist of "smaller" objects called <code>Node</code>, which can also be found in <code>commons.Util</code>.
+<code>Node</code> can represent one of the following information:<br></p>
+</div>
+<div class="paragraph">
+<p><strong>1.</strong> <strong>Head</strong> : The head/root of the <code>ModuleTree</code> which holds a <code>value</code> of the module code of the "larger" <code>ModuleInfo</code> object.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>2.</strong> <strong>Operator</strong> : Either "OR" or "AND" to indicate if only one of the module is required to fulfill the prerequisite or
+all of the listed modules are required respectively.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>3.</strong> <strong>Module Code</strong> : The module code that is required to meet the prerequisite.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PrerequisiteTreeAnnotated.png" alt="PrerequisiteTreeAnnotated" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>generatePrerequisiteTree()</code> function is called after the <code>ModuleInfoPrerequisite</code> object has been created, since
+the <code>ModuleTree</code> is dependent on the <code>String</code> input <code>prereq</code> which later be saved as <code>prerequisiteString</code>.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PrerequisiteString.png" alt="PrerequisiteString" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>The input <code>prerequisite</code> usually comes in the format:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>"Prerequisite":"[MA1312 or MA1521 or MA1505 or (MA1511 and MA1512)] and [ST2334 or ST2131 or ST2132] and [IS3106 or BT3103]"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The input value is then split into an <code>array</code> using regular expressions:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RegexSplitter.png" alt="RegexSplitter" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p>This helps with the arrangement of the <code>ModuleTree</code> as shown below:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/prerequisiteStep1.png" alt="prerequisiteStep1" width="400">
+</div>
+<div class="title">Figure 12. Step 1:The first index <code>String</code> is used to create a minor tree</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/prerequisiteStep2.png" alt="prerequisiteStep2" width="400">
+</div>
+<div class="title">Figure 13. Step 2:Since the previous <code>String</code> ended with a "OR" the next <code>String</code> is made and added as a child to the predecessor.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/prerequisiteStepFinal.png" alt="prerequisiteStepFinal" width="400">
+</div>
+<div class="title">Figure 14. Step 3:Finally,the same process is repeated with the other Strings until the tree is complete.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="making-it-into-a-list"><a class="link" href="#making-it-into-a-list">Making it into a list</a></h4>
+<div class="paragraph">
+<p>The final part of this entire process is storing all the <code>ModuleInfo</code> objects into a list. Currently, we did this using
+an <code>ObservableList&lt;&gt;</code>, this is done so that we can take advantage of the <code>FilteredList&lt;&gt;</code> class by filtering the list using
+<code>Predicates</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>During initial launch, after each module&#8217;s information is converted into a <code>ModuleInfo</code> object, it will be added to a
+<code>ModuleInfoList</code> object which contains an <code>ArrayList&lt;ModuleInfo&gt;</code>. After all the modules are added into <code>ModuleInfoList</code>,
+<code>ModuleInfoList</code> will be passed into <code>ModelManager</code> and will be converted into an <code>ObservableList&lt;&gt;</code> called <code>allModules</code>.
+ Following that, a <code>FilteredList&lt;&gt;</code> object called <code>displaylist</code> will also be constructed from the <code>allModules</code> <code>ObservableList&lt;&gt;</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Observable.png" alt="Observable" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Whenever the student searches for a particular <code>ModuleInfo</code> , the <code>ObservableList&lt;&gt;</code> is always ready and the <code>FilteredList&lt;&gt;</code>
+will be updated using a <code>Predicate</code> List generated from the keywords searched by the student.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/keywords.png" alt="keywords" width="600">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-moduletree-data-structure"><a class="link" href="#aspect-moduletree-data-structure">Aspect: ModuleTree data structure</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation :</strong> Custom Module tree data structure</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Able to handle "AND" or "OR" operations found in the prerequisite Tree.</p>
+</li>
+<li>
+<p>Cons: Takes a extremely long time to implement and design. Not to mention extremely error-prone.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative considered :</strong> Use a current <code>JDK</code> <code>Tree</code> data structure</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to deploy into current code base.</p>
+</li>
+<li>
+<p>Cons: Unable to deal with special operations like "AND" or "OR".</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-storing-code-moduleinfo-code-objects-in-an-code-observablelist-code"><a class="link" href="#aspect-storing-code-moduleinfo-code-objects-in-an-code-observablelist-code">Aspect: Storing <code>ModuleInfo</code> objects in an <code>ObservableList&lt;&gt;</code></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Implementation :</strong> <code>ObservableList&lt;&gt;</code> is used</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for <code>FilteredList&lt;&gt;</code> to be used based on predicates; easy implementation.</p>
+</li>
+<li>
+<p>Cons: Requires additional classes to be implemented to handle the use of <code>Predicates</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative considered:</strong> Sticking to <code>ArrayList&lt;&gt;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to handle as it is a simple data structure.</p>
+</li>
+<li>
+<p>Cons: Harder to search for <code>ModuleInfo</code> objects based on codes and keywords.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:59:24 UTC</div></div></div></body></html>

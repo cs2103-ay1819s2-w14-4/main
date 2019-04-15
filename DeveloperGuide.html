@@ -1,0 +1,2934 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta moduleInfoCode="viewport" content="width=device-width, initial-scale=1.0"><meta moduleInfoCode="generator" content="Asciidoctor 1.5.6.1"><title>GradTrak - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w14-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>GradTrak - Developer Guide</h1></div><div id="content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>By: <code>Team W14-4</code>      Since: <code>Feb 2019</code>      Licence: <code>MIT</code></p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#setting-up">1. Setting up</a>
+<ul class="sectlevel2">
+<li><a href="#checking-prerequisites">1.1. Checking prerequisites</a></li>
+<li><a href="#setting-up-the-project">1.2. Setting up the project</a></li>
+<li><a href="#verifying-the-setup">1.3. Verifying the setup</a></li>
+<li><a href="#configurating-the-project">1.4. Configurating the project</a></li>
+</ul>
+</li>
+<li><a href="#design">2. Design</a>
+<ul class="sectlevel2">
+<li><a href="#architecture">2.1. Architecture</a></li>
+<li><a href="#Design-Ui">2.2. UI component</a></li>
+<li><a href="#Design-Logic">2.3. Logic component</a></li>
+<li><a href="#Design-Model">2.4. Model component</a></li>
+<li><a href="#Design-Storage">2.5. Storage component</a></li>
+<li><a href="#Design-Commons">2.6. Common classes</a></li>
+</ul>
+</li>
+<li><a href="#implementation">3. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#displaymod-feature">3.1. Displaymod feature</a></li>
+<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
+<li><a href="#display-course-requirement-feature">3.3. Display Course Requirement feature</a></li>
+<li><a href="#module-recommendation-feature">3.4. Module recommendation feature</a></li>
+<li><a href="#checking-of-limits">3.5. Checking of limits</a></li>
+<li><a href="#current-semester-tracking">3.6. Current Semester Tracking</a></li>
+<li><a href="#semester-cap-and-workload-management-feature">3.7. Semester CAP and workload management feature</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#documentation">4. Documentation</a>
+<ul class="sectlevel2">
+<li><a href="#editing-documentation">4.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">4.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></li>
+<li><a href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></li>
+<li><a href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></li>
+<li><a href="#site-template">4.6. Site Template</a></li>
+</ul>
+</li>
+<li><a href="#Testing">5. Testing</a>
+<ul class="sectlevel2">
+<li><a href="#running-tests">5.1. Running Tests</a></li>
+<li><a href="#types-of-tests">5.2. Types of tests</a></li>
+<li><a href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></li>
+</ul>
+</li>
+<li><a href="#dev-ops">6. Dev Ops</a>
+<ul class="sectlevel2">
+<li><a href="#build-automation">6.1. Build Automation</a></li>
+<li><a href="#continuous-integration">6.2. Continuous Integration</a></li>
+<li><a href="#coverage-reporting">6.3. Coverage Reporting</a></li>
+<li><a href="#documentation-previews">6.4. Documentation Previews</a></li>
+<li><a href="#making-a-release">6.5. Making a Release</a></li>
+<li><a href="#managing-dependencies">6.6. Managing Dependencies</a></li>
+</ul>
+</li>
+<li><a href="#product-scope">Appendix A: Product Scope</a></li>
+<li><a href="#user-stories">Appendix B: User Stories</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
+<li><a href="#glossary">Appendix E: Glossary</a></li>
+<li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
+<ul class="sectlevel2">
+<li><a href="#launch-and-shutdown">F.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-module">F.2. Deleting a module</a></li>
+<li><a href="#check-completion-of-course-requirements">F.3. Check completion of course requirements</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Go through the following sections to set up GradTrak.</p>
+</div>
+<div class="sect2">
+<h3 id="checking-prerequisites"><a class="link" href="#checking-prerequisites">1.1. Checking prerequisites</a></h3>
+<div class="paragraph">
+<p>Ensure that each of the following software has been installed.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>JDK <code>9</code></strong> or later</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+JDK <code>10</code> on Windows will fail to run tests in <a href="UsingGradle.html#Running-Tests">headless mode</a> due to a <a href="https://github.com/javafxports/openjdk-jfx/issues/66">JavaFX bug</a>.
+Windows developers are highly recommended to use JDK <code>9</code>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>IntelliJ</strong> IDE</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-the-project"><a class="link" href="#setting-up-the-project">1.2. Setting up the project</a></h3>
+<div class="paragraph">
+<p>Follow the instructions below to set up the project on your computer.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fork this repo, and clone the fork to your computer.</p>
+</li>
+<li>
+<p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first).</p>
+</li>
+<li>
+<p>Set up the correct JDK version for Gradle.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click <code>Configure</code> &gt; <code>Project Defaults</code> &gt; <code>Project Structure</code>.</p>
+</li>
+<li>
+<p>Click <code>New&#8230;&#8203;</code> and find the directory of the JDK.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Click <code>Import Project</code>.</p>
+</li>
+<li>
+<p>Locate the <code>build.gradle</code> file and select it. Click <code>OK</code>.</p>
+</li>
+<li>
+<p>Click <code>Open as Project</code>.</p>
+</li>
+<li>
+<p>Click <code>OK</code> to accept the default settings.</p>
+</li>
+<li>
+<p>Open a console and run the command <code>gradlew processResources</code> (Mac/Linux: <code>./gradlew processResources</code>). It should finish with the <code>BUILD SUCCESSFUL</code> message.<br>
+This will generate all resources required by the application and tests.</p>
+</li>
+<li>
+<p>Open <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow.java</code></a> and check for any code errors.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Due to an ongoing <a href="https://youtrack.jetbrains.com/issue/IDEA-189060">issue</a> with some of the newer versions of IntelliJ, code errors may be detected even if the project can be built and run successfully.</p>
+</li>
+<li>
+<p>To resolve this, place your cursor over any of the code section highlighted in red. Press <span class="keyseq"><kbd>ALT</kbd>+<kbd>ENTER</kbd></span>, and select <code>Add '--add-modules=&#8230;&#8203;' to module compiler options</code> for each error.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Repeat this for the test folder as well (e.g. check <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/test/java/seedu/address/ui/HelpWindowTest.java"><code>HelpWindowTest.java</code></a> for code errors, and if so, resolve it the same way).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">1.3. Verifying the setup</a></h3>
+<div class="paragraph">
+<p>Follow the instructions below to verify that the setup is successful.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run <code>seedu.address.MainApp</code> and try a few commands.</p>
+</li>
+<li>
+<p><a href="#Testing">Run the tests</a> to ensure all of them pass.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configurating-the-project"><a class="link" href="#configurating-the-project">1.4. Configurating the project</a></h3>
+<div class="paragraph">
+<p>Go through the following sections to configure the project.</p>
+</div>
+<div class="sect3">
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">1.4.1. Configuring the coding style</a></h4>
+<div class="paragraph">
+<p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.adoc">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order.
+Follow the instructions below to rectify this issue.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to <code>File</code> &gt; <code>Settings&#8230;&#8203;</code> (Windows/Linux), or <code>IntelliJ IDEA</code> &gt; <code>Preferences&#8230;&#8203;</code> (macOS).</p>
+</li>
+<li>
+<p>Select <code>Editor</code> &gt; <code>Code Style</code> &gt; <code>Java</code>.</p>
+</li>
+<li>
+<p>Click on the <code>Imports</code> tab to set the order.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For <code>Class count to use import with '*'</code> and <code>Names count to use static import with '*'</code>: Set to <code>999</code> to prevent IntelliJ from contracting the import statements.</p>
+</li>
+<li>
+<p>For <code>Import Layout</code>: The order is <code>import static all other imports</code>, <code>import java.*</code>, <code>import javax.*</code>, <code>import org.*</code>, <code>import com.*</code>, <code>import all other imports</code>. Add a <code>&lt;blank line&gt;</code> between each <code>import</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Optionally, you can follow the <a href="UsingCheckstyle.html">UsingCheckstyle.adoc</a> document to configure Intellij to check style-compliance as you write code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">1.4.2. Setting up CI</a></h4>
+<div class="paragraph">
+<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
+</div>
+<div class="paragraph">
+<p>After setting up Travis, you can optionally set up coverage reporting for your team fork (see <a href="UsingCoveralls.html">UsingCoveralls.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Coverage reporting could be useful for a team repository that hosts the final version but it is not that useful for your personal fork.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Having both Travis and AppVeyor ensures your App works on both Unix-based platforms and Windows-based platforms (Travis is Unix-based and AppVeyor is Windows-based)
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">1.4.3. Getting started with coding</a></h4>
+<div class="paragraph">
+<p>Follow the instructions below when you are ready to start coding.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Get some sense of the overall design by reading <a href="#Design-Architecture">[Design-Architecture]</a>.</p>
+</li>
+<li>
+<p>Take a look at <a href="#GetStartedProgramming">[GetStartedProgramming]</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
+<div class="sectionbody">
+<div id="Design-Architecture" class="paragraph">
+<p>The following sections explain the design of GradTrak.</p>
+</div>
+<div class="sect2">
+<h3 id="architecture"><a class="link" href="#architecture">2.1. Architecture</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/Architecture.png" alt="Architecture" width="600">
+</div>
+<div class="title">Figure 1. Architecture Diagram</div>
+</div>
+<div class="paragraph">
+<p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The <code>.pptx</code> files used to create diagrams in this document can be found in the <a href="https://github.com/cs2103-ay1819s2-w14-4/main/docs/diagrams/">diagrams</a> folder. To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose <code>Save as picture</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>Main</code> has only one class called <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At app launch: Initializing the components in the correct sequence and connecting them with one another.</p>
+</li>
+<li>
+<p>At shut down: Shutting down the components and invoking cleanup methods where necessary.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components.
+The following class plays an important role at the architecture level:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The rest of the App consists of four components.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The user interface (UI) of the App.</p>
+</li>
+<li>
+<p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: The command executor.</p>
+</li>
+<li>
+<p><a href="#Design-Model"><strong><code>Model</code></strong></a>: The model holding the data of the App in-memory.</p>
+</li>
+<li>
+<p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: The storage which reads data from and writes data to the hard disk.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each of the four components above:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Defines its Application Programming Interface (API) in an <code>interface</code> with the same name as the Component.</p>
+</li>
+<li>
+<p>Exposes its functionality using a <code>{Component Name}Manager</code> class.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, the <code>Logic</code> component (see class diagram in Section 2.3) defines its API in the <code>Logic.java</code> interface and exposes its functionality using the <code>LogicManager.java</code> class.</p>
+</div>
+<h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
+<div class="paragraph">
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SDforDeleteModuleTaken.png" alt="SDforDeleteModuleTaken" width="800">
+</div>
+<div class="title">Figure 2. Component interactions for <code>delete 1</code> command</div>
+</div>
+<div class="paragraph">
+<p>The sections below give more details of each component.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
+</div>
+<div class="title">Figure 3. Structure of the UI Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic component</a></h3>
+<div id="fig-LogicClassDiagram" class="imageblock">
+<div class="content">
+<img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
+</div>
+<div class="title">Figure 4. Structure of the Logic Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> :
+<a href="https://github.com/cs2103-ay1819s2-w14-4/main/blob/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Logic</code> uses the <code>GradTrakParser</code> class to parse the user command.</p>
+</li>
+<li>
+<p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
+</li>
+<li>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a module).</p>
+</li>
+<li>
+<p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
+</li>
+<li>
+<p>In addition, the <code>CommandResult</code> object can also instruct the <code>Ui</code> to perform certain actions, such as displaying help to the user.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Given below is the Sequence Diagram for interactions within the <code>Logic</code> component for the <code>execute("delete 1")</code> API call.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteModuleTakenSdForLogic.png" alt="DeleteModuleTakenSdForLogic" width="800">
+</div>
+<div class="title">Figure 5. Interactions inside the Logic Component for the <code>delete 1</code> Command</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+</div>
+<div class="title">Figure 6. Structure of the Model Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/blob/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>Model</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
+</li>
+<li>
+<p>stores a <code>UserInfo</code> object that represents user&#8217;s information such as <code>Course</code> and <code>SemLimit</code></p>
+</li>
+<li>
+<p>stores the GradTrak data.</p>
+</li>
+<li>
+<p>stores a filtered list of <code>ModuleInfo</code>, <code>RecModule</code> that represents a list of modules NUS offers</p>
+</li>
+<li>
+<p>stores a list of <code>RequirementStatus</code> that keep tracks of the status of each <code>CourseRequirement</code> of the <code>Course</code>.</p>
+</li>
+<li>
+<p>exposes an unmodifiable <code>ObservableList&lt;ModuleTaken&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+</li>
+<li>
+<p>does not depend on any of the other three components.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As a more OOP model, we can store a <code>Tag</code> list in <code>GradTrak</code>, which <code>ModuleTaken</code> can reference. This would allow <code>GradTrak</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>ModuleTaken</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+<br>
+<span class="image"><img src="images/ModelClassBetterOopDiagram.png" alt="ModelClassBetterOopDiagram" width="800"></span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
+<div class="paragraph">
+<p>Within the <code>Storage</code> component there are <strong>2</strong> types of storage classes:<br>
+1. read and write storage<br>
+2. read only storage</p>
+</div>
+<div class="sect3">
+<h4 id="read-and-write-storage"><a class="link" href="#read-and-write-storage">2.5.1. Read and write storage</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
+</div>
+<div class="title">Figure 7. Structure of the Storage Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/blob/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a>
+The <code>Storage</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can save <code>UserPref</code>, <code>UserInfo</code> objects in json format and read it back.</p>
+</li>
+<li>
+<p>can save the GradTrak data in json format and read it back.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="read-only-storage"><a class="link" href="#read-only-storage">2.5.2. Read-only storage</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/moduleinfostorage.png" alt="moduleinfostorage" width="800">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CourseStorage.png" alt="CourseStorage" width="800">
+</div>
+<div class="title">Figure 8. Structure of read-only storage components</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="https://github.com/cs2103-ay1819s2-w14-4/main/blob/master/src/main/java/seedu/address/storage/moduleinfostorage/ModuleInfoStorage.java"><code>ModuleInfoStorage.java</code></a>,
+<a href="https://github.com/cs2103-ay1819s2-w14-4/main/blob/master/src/main/java/seedu/address/storage/coursestorage/CourseStorage.java"><code>CourseStorage.java</code></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>loads <code>ModuleInfoStorage</code> and <code>CourseStorage</code> from json format into memory</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<div class="paragraph">
+<p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes some noteworthy details on how certain features are implemented.</p>
+</div>
+<div class="sect2">
+<h3 id="displaymod-feature"><a class="link" href="#displaymod-feature">3.1. Displaymod feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">3.1.1. Current implementation</a></h4>
+<div class="paragraph">
+<p><code>displaymod</code> is a command that displays the information of a module based on the search by the student. The main reason for implementing
+such a feature is so that students can have immediate access to all available modules in NUS instead of searching through the
+internet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creation-of-code-moduleinfo-code"><a class="link" href="#creation-of-code-moduleinfo-code">3.1.2. Creation of <code>ModuleInfo</code></a></h4>
+<div class="paragraph">
+<p>Most of the processing of this feature is done during the launch of the application. The modules are created as a object
+called <code>ModuleInfo</code>. These objects only contain vital information of a particular module and nothing else. This to ensure that
+only information relevant students are displayed. This process is done with aid of the <code>Storage</code> class, to be more exact
+it uses <a href="#Read-Only">[Read-Only]</a> extracting all the data from <code>allModule.Json</code> file found in the <code>resources</code> folder.<br></p>
+</div>
+<div class="paragraph">
+<p>The figure below shows the class diagram for <code>ModuleInfo</code> :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModuleInfoclass.png" alt="ModuleInfoclass" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As seen from above the <code>ModuleInfo</code> class is made up of 8 other classes:<br></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoDepartment</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoTitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoWorkload</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoCredits</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoPrerequisite</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoDescription</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ModuleInfoPreclusion</code> <strong>For V2.0</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The information found in the modules are separated into their own class to maintain modularity in the
+code. All of these objects are created in the construction of the <code>ModuleInfo</code> Object.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/moduleinfoconstructor.png" alt="moduleinfoconstructor" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="generating-prerequisite-trees"><a class="link" href="#generating-prerequisite-trees">3.1.3. Generating prerequisite trees</a></h4>
+<div class="paragraph">
+<p>Within the <code>ModuleInfo</code> class, the <code>ModuleInfoPrerequisite</code> class requires the most pre-processing. If a student wishes to take
+a particular module, they have to check if they can satisfy the prerequisites, thus presenting the prerequisite tree is
+paramount to the <code>ModuleInfo</code> class.<br></p>
+</div>
+<div class="paragraph">
+<p><code>ModuleInfoPrerequisite</code> contains a custom data structure called <code>ModuleTree</code> which can be found in the
+<code>commons.Util</code> package. It was place in the <code>commons</code> package since it was a data structure and other functions
+or feature may require the <code>ModuleTree</code> <strong>i.e.</strong> when adding/deleting modules from the <code>ModuleTaken</code> list of the student.<br></p>
+</div>
+<div class="paragraph">
+<p>The <code>ModuleTree</code> data structure consist of "smaller" objects called <code>Node</code>, which can also be found in <code>commons.Util</code>.
+<code>Node</code> can represent one of the following information:<br></p>
+</div>
+<div class="paragraph">
+<p><strong>1.</strong> <strong>Head</strong> : The head/root of the <code>ModuleTree</code> which holds a <code>value</code> of the module code of the "larger" <code>ModuleInfo</code> object.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>2.</strong> <strong>Operator</strong> : Either "OR" or "AND" to indicate if only one of the module is required to fulfill the prerequisite or
+all of the listed modules are required respectively.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>3.</strong> <strong>Module Code</strong> : The module code that is required to meet the prerequisite.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PrerequisiteTreeAnnotated.png" alt="PrerequisiteTreeAnnotated" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>generatePrerequisiteTree()</code> function is called after the <code>ModuleInfoPrerequisite</code> object has been created, since
+the <code>ModuleTree</code> is dependent on the <code>String</code> input <code>prereq</code> which later be saved as <code>prerequisiteString</code>.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/PrerequisiteString.png" alt="PrerequisiteString" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>The input <code>prerequisite</code> usually comes in the format:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>"Prerequisite":"[MA1312 or MA1521 or MA1505 or (MA1511 and MA1512)] and [ST2334 or ST2131 or ST2132] and [IS3106 or BT3103]"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The input value is then split into an <code>array</code> using regular expressions:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RegexSplitter.png" alt="RegexSplitter" width="200">
+</div>
+</div>
+<div class="paragraph">
+<p>This helps with the arrangement of the <code>ModuleTree</code> as shown below:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/prerequisiteStep1.png" alt="prerequisiteStep1" width="400">
+</div>
+<div class="title">Figure 9. Step 1:The first index <code>String</code> is used to create a minor tree</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/prerequisiteStep2.png" alt="prerequisiteStep2" width="400">
+</div>
+<div class="title">Figure 10. Step 2:Since the previous <code>String</code> ended with a "OR" the next <code>String</code> is made and added as a child to the predecessor.</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/prerequisiteStepFinal.png" alt="prerequisiteStepFinal" width="400">
+</div>
+<div class="title">Figure 11. Step 3:Finally,the same process is repeated with the other Strings until the tree is complete.</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="making-it-into-a-list"><a class="link" href="#making-it-into-a-list">3.1.4. Making it into a list</a></h4>
+<div class="paragraph">
+<p>The final part of this entire process is storing all the <code>ModuleInfo</code> objects into a list. Currently, we did this using
+an <code>ObservableList&lt;&gt;</code>, this is done so that we can take advantage of the <code>FilteredList&lt;&gt;</code> class by filtering the list using
+<code>Predicates</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>During initial launch, after each module&#8217;s information is converted into a <code>ModuleInfo</code> object, it will be added to a
+<code>ModuleInfoList</code> object which contains an <code>ArrayList&lt;ModuleInfo&gt;</code>. After all the modules are added into <code>ModuleInfoList</code>,
+<code>ModuleInfoList</code> will be passed into <code>ModelManager</code> and will be converted into an <code>ObservableList&lt;&gt;</code> called <code>allModules</code>.
+ Following that, a <code>FilteredList&lt;&gt;</code> object called <code>displaylist</code> will also be constructed from the <code>allModules</code> <code>ObservableList&lt;&gt;</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Observable.png" alt="Observable" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Whenever the student searches for a particular <code>ModuleInfo</code> , the <code>ObservableList&lt;&gt;</code> is always ready and the <code>FilteredList&lt;&gt;</code>
+will be updated using a <code>Predicate</code> List generated from the keywords searched by the student.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/keywords.png" alt="keywords" width="600">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.1.5. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-moduletree-data-structure"><a class="link" href="#aspect-moduletree-data-structure">Aspect: ModuleTree data structure</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation :</strong> Custom Module tree data structure</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Able to handle "AND" or "OR" operations found in the prerequisite Tree.</p>
+</li>
+<li>
+<p>Cons: Takes a extremely long time to implement and design. Not to mention extremely error-prone.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative considered :</strong> Use a current <code>JDK</code> <code>Tree</code> data structure</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to deploy into current code base.</p>
+</li>
+<li>
+<p>Cons: Unable to deal with special operations like "AND" or "OR".</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-storing-code-moduleinfo-code-objects-in-an-code-observablelist-code"><a class="link" href="#aspect-storing-code-moduleinfo-code-objects-in-an-code-observablelist-code">3.1.6. Aspect: Storing <code>ModuleInfo</code> objects in an <code>ObservableList&lt;&gt;</code></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Implementation :</strong> <code>ObservableList&lt;&gt;</code> is used</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for <code>FilteredList&lt;&gt;</code> to be used based on predicates; easy implementation.</p>
+</li>
+<li>
+<p>Cons: Requires additional classes to be implemented to handle the use of <code>Predicates</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative considered:</strong> Sticking to <code>ArrayList&lt;&gt;</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to handle as it is a simple data structure.</p>
+</li>
+<li>
+<p>Cons: Harder to search for <code>ModuleInfo</code> objects based on codes and keywords.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The undo/redo mechanism is facilitated by <code>VersionedGradTrak</code>.
+It extends <code>GradTrak</code> with an undo/redo history, stored internally as an <code>gradTrakStateList</code> and <code>currentStatePointer</code>.
+Additionally, it implements the following operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>VersionedGradTrak#commit()</code>&#8201;&#8212;&#8201;Saves the current GradTrak state in its history.</p>
+</li>
+<li>
+<p><code>VersionedGradTrak#undo()</code>&#8201;&#8212;&#8201;Restores the previous GradTrak state from its history.</p>
+</li>
+<li>
+<p><code>VersionedGradTrak#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone GradTrak state from its history.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitGradTrak()</code>, <code>Model#undoGradTrak()</code> and <code>Model#redoGradTrak()</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The student launches the application for the first time. The <code>VersionedGradTrak</code> will be initialized with the initial GradTrak state, and the <code>currentStatePointer</code> pointing to that single GradTrak state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 2. The student executes <code>delete 5</code> command to delete the 5th module in the GradTrak. The <code>delete</code> command calls <code>Model#commitGradTrak()</code>, causing the modified state of the GradTrak after the <code>delete 5</code> command executes to be saved in the <code>GradTrakStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted GradTrak state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 3. The student executes <code>add c/CS2103T &#8230;&#8203;</code> to add a new module. The <code>add</code> command also calls <code>Model#commitGradTrak()</code>, causing another modified GradTrak state to be saved into the <code>gradTrakStateList</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a command fails its execution, it will not call <code>Model#commitGradTrak()</code>, so the GradTrak state will not be saved into the <code>gradTrakStateList</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 4. The student now decides that adding the module was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoGradTrak()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous GradTrak state, and restores the GradTrak to that state.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial GradTrak state, then there are no previous GradTrak states to restore. The <code>undo</code> command uses <code>Model#canUndoGradTrak()</code> to check if this is the case. If so, it will return an error to the student rather than attempting to perform the undo.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the undo operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoGradTrak()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the GradTrak to that state.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the <code>currentStatePointer</code> is at index <code>gradTrakStateList.size() - 1</code>, pointing to the latest GradTrak state, then there are no undone GradTrak states to restore. The <code>redo</code> command uses <code>Model#canRedoGradTrak()</code> to check if this is the case. If so, it will return an error to the student rather than attempting to perform the redo.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Step 5. The student then decides to execute the command <code>list</code>. Commands that do not modify the GradTrak, such as <code>list</code>, will usually not call <code>Model#commitGradTrak()</code>, <code>Model#undoGradTrak()</code> or <code>Model#redoGradTrak()</code>. Thus, the <code>gradTrakStateList</code> remains unchanged.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Step 6. The student executes <code>clear</code>, which calls <code>Model#commitGradTrak()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>gradTrakStateList</code>, all GradTrak states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add c/CS2103T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a student executes a new command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire GradTrak.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+</li>
+<li>
+<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of GradTrak states.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy for less experienced developers to understand.</p>
+</li>
+<li>
+<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedGradTrak</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+</li>
+<li>
+<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="display-course-requirement-feature"><a class="link" href="#display-course-requirement-feature">3.3. Display Course Requirement feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>displayreq</code> command allows the students to see all their course requirements and also check if the modules they have
+taken fulfils them. This command is currently facilitated by 2 classes in <code>Model</code>, <code>CourseRequirement</code> and
+<code>RequirementStatus</code>:</p>
+</div>
+<div class="sect4">
+<h5 id="code-courserequirement-code-interface"><a class="link" href="#code-courserequirement-code-interface"><code>CourseRequirement</code> Interface</a></h5>
+<div class="paragraph">
+<p>As there are many different kinds of course requirements that can be found in NUS, it is difficult to iron down the common characteristic
+they all share. This can be seen in the examples found below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/nus_requirement.PNG" alt="nus requirement" width="400">
+</div>
+<div class="title">Figure 12. Computer Systems Team Project Requirement</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/nus_requirement2.PNG" alt="nus requirement2" width="400">
+</div>
+<div class="title">Figure 13. Focus Area Requirement</div>
+</div>
+<div class="paragraph">
+<p>For the requirement shown in Figure 9, students just have to complete at least one of CS3203 or
+CS3216 and CS3217 or CS3281 and CS3282. Whereas for the requirement in Figure 10, students have to fulfill
+all of the conditions stated above. Even though these two conditions might seem quite different,
+we are still able to draw some key observations about what they have in common:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Each requirement is composed of conjunction or disjunction of clauses. In turn, the clauses can
+be composed by conjunction and disjunction of other simpler clauses.</p>
+</li>
+<li>
+<p>Clauses that cannot be further broken down into smaller clauses usually contain the following information:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>a list of modules that can be used to satisfy the clause</p>
+</li>
+<li>
+<p>how many of the modules should be completed to satisfy the clause.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>These observations gives us some insight as to how we should design the interface. As such, the <code>CourseRequirement</code> interface follows a <code>Composite</code> design pattern. This is favoured as it allows
+us to treat individual and composition of <code>CourseRequirement</code> objects uniformly through the use of polymorphism. The diagram below gives an overview of
+how <code>CourseRequirement</code> is implemented.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/CompositeDesignPattern.png" alt="CompositeDesignPattern" width="400">
+</div>
+<div class="title">Figure 14. <code>CourseRequirement</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>This interface is realised by 2 subclasses - <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code>.
+The <code>PrimitiveRequirement</code> is the simplest building block for <code>CourseRequirement</code>. Each <code>PrimitiveRequirement</code> stores a
+list of <code>Condition</code> objects. A <code>Condition</code> object stores a <code>Java</code> <code>Pattern</code> and an <code>int</code>, <code>minToSatisfy</code>. A <code>Condition</code>
+is satisfied if there are at least <code>minToSatisfy</code> many distinct
+<code>ModuleInfoCode</code> that matches <code>Pattern</code> in it. <code>PrimitiveRequirement</code> is satisfied only if all <code>Condition</code> objects in the list are
+fulfilled.</p>
+</div>
+<div class="paragraph">
+<p>For instance in Figure 9, a suitable <code>Condition</code> for completing CS3216 and CS3217 would be
+a <code>Pattern</code> that accepts only CS3216 or CS3217, and a <code>minToSatisfy</code> of 2.</p>
+</div>
+<div class="paragraph">
+<p>The <code>CompositeRequirement</code> can replicate the behaviour of more complex course requirements. Each <code>CompositeRequirement</code>
+object contains two <code>CourseRequirement</code> objects. It also contains a <code>LogicalConnector</code> enumeration
+that tells the <code>CompositeRequirement</code> how two different <code>CourseRequirement</code> are composed using logical operations. For instance, for
+a list of <code>ModuleInfoCode</code> to satisfy a <code>CompositeRequirement</code> that has a <code>AND</code> <code>LogicalConnector</code>, the list must
+satisfy the both <code>CourseRequirement</code> objects contained in <code>CompositeRequirement</code>.</p>
+</div>
+<div class="paragraph">
+<p>There currently 3 methods that <code>CourseRequirement</code> provides information to the student:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>isFulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a <code>boolean</code> to indicate whether the list of
+<code>ModuleInfoCode</code> can satisfy the all the <code>CourseRequirement</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>In <code>PrimitiveRequirement</code>, this is achieved by checking whether all the <code>ModuleInfoCode</code> satisfies all the
+<code>Condition</code> stored in it.</p>
+</li>
+<li>
+<p>In <code>CompositeRequirement</code>, this is dependent on the <code>LogicalConnector</code> it has. It would return the value of
+first <code>CourseRequirement#isFulfilled</code> <code>LogicalConnector</code> second <code>CourseRequirement#isFulfilled</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>percentageFulfilled()</code>&#8201;&#8212;&#8201;a method that also accepts a list of ModuleInfoCode returns a <code>double</code> value that represents the
+percentage of completion of the <code>CourseRequirement</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>In <code>PrimitiveRequirement</code>, this is achieved by calculating the number of distinct modules that satisfy for each <code>Condition</code>,
+in <code>PrimitiveRequirement</code> and it is divided by the sum of <code>minToSatisfy</code>.</p>
+</li>
+<li>
+<p>This depends on the <code>LogicalConnector</code> in <code>CompositeRequirement</code>. If it is a <code>OR</code> connector, we return the maximum
+of <code>first#percentageFulfilled</code> or <code>second#percentageFulfilled</code>. The <code>AND</code> logical connector returns the average of the degree of completion for both requirements.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>getUnfulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a list of RegExes from where none of the
+<code>ModuleInfoCode</code> matches. This method is used in the module recommendation feature.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="code-requirementstatus-code-class"><a class="link" href="#code-requirementstatus-code-class"><code>RequirementStatus</code> Class</a></h5>
+<div class="paragraph">
+<p>The <code>RequirementStatus</code> is an association class that links a <code>CourseRequirement</code> with <code>VersionedGradTrak</code> in <code>Model</code>.
+This can be seen in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RequirementStatusClassDiagram.png" alt="RequirementStatusClassDiagram" width="400">
+</div>
+<div class="title">Figure 15. <code>RequirementStatus</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>It also stores the result of the associated <code>CourseRequirement</code> object&#8217;s <code>isFulfilled</code> and <code>percentageFulfilled</code>
+methods acting on the list of <code>ModuleInfoCode</code>.</p>
+</div>
+<div class="paragraph">
+<p>Below is a sequence of execution when <code>displayreq</code> command is executed by the student:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Model#updateRequirementStatusList</code> is called. This updates the pre-existing <code>RequirementStatusList</code>
+and fills it with new <code>RequirementStatus</code> objects based on current <code>nonFailedCodeList</code> from <code>GradTrak</code>.</p>
+</li>
+<li>
+<p><code>UI</code> calls <code>getRequirementStatusList</code> from <code>Logic</code> and retrieves the updated <code>RequirementStatusList</code>
+from <code>Model</code>. This list is displayed in the <code>ResultPanel</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below summarises the execution mentioned earlier:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/displayreqcommandsequence.png" alt="displayreqcommandsequence" width="800">
+</div>
+<div class="title">Figure 16. Sequence Diagram when <code>displayreq</code> executes</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-code-condition-code-class-checks-if-it-is-fulfilled"><a class="link" href="#aspect-how-code-condition-code-class-checks-if-it-is-fulfilled">Aspect: How <code>Condition</code> class checks if it is fulfilled.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: Checking <code>Condition</code> fulfilled by only using <code>ModuleInfoCode</code> of
+<code>ModuleTaken</code></strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement since we are restricting scope to only checking whether strings match
+pattern in <code>Condition</code></p>
+</li>
+<li>
+<p>Cons: Possible that the <code>CourseRequirement</code> class is unable to replicate
+requirements that does not depend on <code>ModuleInfoCode</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong> Alternative: Checking Requirement fulfilled by accessing any attribute of <code>ModuleTaken</code></strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Increased flexibility and easier to replicate actual NUS requirements that does not depend
+on <code>ModuleInfoCode</code></p>
+</li>
+<li>
+<p>Cons: Increased complexity to implement <code>CourseRequirement</code> class properly.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose the current choice over the alternative due to time constraints in the project. Moreover, our current choice
+is sufficient to replicate most NUS requirements accurately.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-choice-of-information-stored-in-code-condition-code-class"><a class="link" href="#aspect-choice-of-information-stored-in-code-condition-code-class">Aspect: Choice of information stored in <code>Condition</code> class</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: <code>Condition</code> class stores a <code>Pattern</code> to check whether a requirement is satisfied</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Compact representation of which <code>ModuleInfoCode</code> fulfills the requirement</p>
+</li>
+<li>
+<p>Cons: Difficult to find the correct regular expression for some <code>Condition.</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative: <code>Condition</code> class stores an exact list of <code>String</code> to check whether a condition is satisfied</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy and interpretive to use.</p>
+</li>
+<li>
+<p>Cons: Might need to store a long list of <code>String</code> if many modules can fulfil the <code>Condition</code> eg: General Education
+Modules</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose our current choice as it takes up much fewer space to store. Moreover, storing a pattern
+also improves performance time since each <code>ModuleInfoCode</code> is compared against one`Pattern` instead of an entire
+list of <code>String</code> objects.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements"><a class="link" href="#possible-improvements">3.3.3. Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Allow students to create and export their own <code>Course</code> and <code>CourseRequirement</code> objects.</p>
+</li>
+<li>
+<p>Allow <code>Condition</code> to check its fulfillment by accessing other attributes of a <code>ModuleTaken</code> object in the future.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="module-recommendation-feature"><a class="link" href="#module-recommendation-feature">3.4. Module recommendation feature</a></h3>
+<div class="paragraph">
+<p>The module recommendation feature displays modules which the student is recommended to read based on the current module plan
+and specific course requirements. It generates a list of module codes together with their corresponding titles and requirement
+types satisfied. The entire list is displayed on the Result Panel upon entering the <code>rec</code> command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Modules which satisfy only Unrestricted Electives are not included to prevent the list from being too long.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current implementation</a></h4>
+<div class="paragraph">
+<p>Each recommended module is represented by a <code>RecModule</code> which contains a unique <code>ModuleInfo</code> and its corresponding
+<code>CourseReqType</code> satisfied, as shown in the diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RecModuleClassDiagram.png" alt="RecModuleClassDiagram" width="400">
+</div>
+<div class="title">Figure 17. <code>RecModule</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>When <code>ModelManager</code> is initialised, <code>Model#getObservableRecModuleList</code> is called which generates an
+<code>ObservableList</code> of <code>RecModule</code> , one for each module in the entire <code>ModuleInfoList</code>. This list is wrapped in a <code>FilteredList</code>,
+which is further wrapped in a <code>SortedList</code>, both stored in <code>ModelManager</code>. At this point, all <code>RecModule</code> in the list contain an empty <code>CourseReqType</code> field.</p>
+</div>
+<div class="paragraph">
+<p>When the <code>rec</code> command is entered, the sequence of execution is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Model#updateRecModuleList</code> is called, which creates a <code>RecModulePredicate</code> given the student&#8217;s <code>Course</code> and <code>ReadOnlyGradTrak</code>, and a <code>RecModuleComparator</code>.</p>
+</li>
+<li>
+<p>The <code>RecModulePredicate</code> is applied to the <code>FilteredList</code> of <code>RecModule</code>. In each test:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>An <code>EligibleModulePredicate</code> which takes in <code>ReadOnlyGradTrak</code> tests if the <code>ModuleInfo</code> of this <code>RecModule</code> is eligible to be read.
+If the module is already present in the module plan or does not have its prerequisites satisfied, this <code>RecModule</code> is filtered out.</p>
+</li>
+<li>
+<p>The <code>ModuleInfoCode</code> (call it <code>codeToTest</code>) of the <code>RecModule</code> is retrieved.<br>
+A <code>nonFailedCodeList</code> of <code>ModuleInfoCode</code> corresponding to non-failed <code>ModuleTaken</code> (already passed or to be read in a future semester) is also retrieved from <code>ReadOnlyGradTrak</code>.</p>
+</li>
+<li>
+<p>The <code>codeToTest</code> is then passed into <code>Course#getCourseReqTypeOf</code>, which in turn calls <code>CourseRequirement#canFulfill</code> for each <code>CourseRequirement</code> listed in <code>Course</code>.
+ A list of <code>CourseReqType</code> that the <code>codeToTest</code> can satisfy is returned.
+This <code>courseReqTypeList</code> is sorted by the priority of <code>CourseReqType</code> as defined in the <code>enum</code> class: <code>CORE</code>, <code>BD</code>, <code>IE</code>, <code>FAC</code>, <code>GE</code>.</p>
+</li>
+<li>
+<p>For each <code>CourseReqType</code> in the <code>courseReqTypeList</code> (highest priority first):</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>Course#isCodeContributing</code> is called, which takes in the <code>CourseReqType</code>, <code>nonFailedCodeList</code> and <code>codeToTest</code>.</p>
+</li>
+<li>
+<p>For each <code>CourseRequirement</code> listed in <code>Course</code> corresponding to the given <code>CourseReqType</code>, <code>CourseRequirement#getUnfulfilled</code>
+is called which takes in the <code>nonFailedCodeList</code> and returns an <code>unfulfilledRegexList</code> of RegExes not satisfied.</p>
+</li>
+<li>
+<p>If the <code>codeToTest</code> matches any of the RegExes in the
+<code>unfulfilledRegexList</code>, <code>Course#isCodeContributing</code> returns <code>true</code> and the loop for <code>courseReqTypeList</code> terminates.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The <code>CourseReqType</code> of highest priority satisfied by <code>codeToTest</code> is then set into the <code>RecModule</code>. However, if the <code>codeToTest</code> does not
+contribute to any of the <code>CourseRequirement</code> listed in <code>Course</code>, this <code>RecModule</code> is filtered out.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The <code>RecModuleComparator</code> is applied to the <code>SortedList</code> of <code>RecModule</code>. It sorts the list in decreasing priority of the
+<code>CourseReqType</code> satisfied by the <code>RecModule</code>. Those <code>RecModule</code> with equal priority are sorted by module level (the first numerical digit of its <code>ModuleInfoCode</code>),
+considering that lower level modules are usually read first. In the case of equal priority and module level, lexicographical sorting of its <code>ModuleInfoCode</code> is used.</p>
+</li>
+<li>
+<p>The <code>SortedList</code> of <code>RecModule</code> is retrieved from <code>ModelManager</code> and displayed to the student in the Result Panel.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If there are changes to <code>ReadOnlyGradTrak</code> (adding, editing or deleting modules) or <code>Course</code> (changing the course of study), the <code>rec</code> command
+must be run again to reflect the updated recommendation list.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagrams summarising the above execution are shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RecCommandSequenceDiagram.png" alt="RecCommandSequenceDiagram" width="1000">
+</div>
+<div class="title">Figure 18. <code>RecCommand</code> sequence diagram</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RecModulePredicateSequenceDiagram.png" alt="RecModulePredicateSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 19. <code>RecModulePredicate</code> sequence diagram</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RecModuleComparatorSequenceDiagram.png" alt="RecModuleComparatorSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 20. <code>RecModuleComparator</code> sequence diagram</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-sorting-of-recommendation-list"><a class="link" href="#aspect-sorting-of-recommendation-list">Aspect: Sorting of recommendation list</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): Recommendation list is sorted by a fixed order of <code>CourseReqType</code> priority as defined in the <code>enum</code> class</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and modify</p>
+</li>
+<li>
+<p>Cons: Student may have his own order of priority that differs from the default one</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: Recommendation list can be sorted by a custom order defined by the student</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Student can sort the list according to his own preferences</p>
+</li>
+<li>
+<p>Cons: Difficult to implement if several parameters for sorting is allowed; input method for the custom order is problematic</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-format-of-recommendation"><a class="link" href="#aspect-format-of-recommendation">Aspect: Format of recommendation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): Display a list of all eligible modules that contribute to course requirements</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Student has a greater freedom of choice</p>
+</li>
+<li>
+<p>Cons: Student may be confused or unable to decide if the list is too long</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: Display <code>n</code> modules for each semester, where <code>n</code> is decided by the student</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Student can plan modules for specific semesters easily and quickly</p>
+</li>
+<li>
+<p>Cons: Algorithm required to plan for all semesters can be complex; student may not prefer the given plan</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements-2"><a class="link" href="#possible-improvements-2">3.4.3. Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Allow the student to display a module&#8217;s information (from <code>displaymod</code> command) using its index in the recommendation list</p>
+</li>
+<li>
+<p>Allow the student to add a module to the module plan using its index in the recommendation list</p>
+</li>
+<li>
+<p>Enable recommendation of Unrestricted Electives based on personal interests of the user</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="checking-of-limits"><a class="link" href="#checking-of-limits">3.5. Checking of limits</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>cklimit</code> command is able to calculate the CAP and workload information of the current module plan and display the results in a report together with the preferred limits set by the student for comparison.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LimitChecker</code> class does all the computation and generation of the report.
+It makes use of the following classes as input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Semester</code> that holds the current semester</p>
+</li>
+<li>
+<p><code>ObservableList</code> of <code>SemesterLimit<em>s</em></code> that holds the current semester limits</p>
+</li>
+<li>
+<p><code>ObservableList</code> of <code>ModuleTaken<em>s</em></code> that holds the list of modules currently planned</p>
+</li>
+<li>
+<p><code>ModuleInfoList</code> that holds the list of modules with the number of module credits they have</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The LimitChecker class is modelled with the class diagram as shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LimitCheckerClassDiagram.png" alt="LimitCheckerClassDiagram" width="800">
+</div>
+<div class="title">Figure 21. <code>LimitChecker</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>GradTrak uses the following classes to store and manipulate the variables for calculation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CapAverage</code></p>
+</li>
+<li>
+<p><code>WeightedGrade</code></p>
+</li>
+<li>
+<p><code>ModuleInfoCredits</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>CapAverage</code> class contains an <code>ArrayList</code> of <code>WeightedGrade<em>s</em></code>.
+Each <code>WeightedGrade</code> has a CAP score and information on the number of module credits weighted by the score.</p>
+</div>
+<div class="paragraph">
+<p>The aggregated minimum and maximum expected CAP is calculated with the minimum and maximum expected CAP of every module taken respectively.</p>
+</div>
+<div class="paragraph">
+<p>The current CAP only includes modules that are completed. Modules are considered completed if they are taken on a semester before the current semester.</p>
+</div>
+<div class="paragraph">
+<p>The CAP of the student is calculated using the formula below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/modular-system.png" alt="modular system" width="800">
+</div>
+<div class="title">Figure 22. Formula for CAP calculation</div>
+</div>
+<div class="paragraph">
+<p>The total number of hours for each type of workload for each semester are also summed up to be displayed.</p>
+</div>
+<div class="paragraph">
+<p>Once all the calculations are completed, the HTML string report is generated and stored in the <code>checkedReport</code> variable in the <code>LimitChecker</code> to be displayed.</p>
+</div>
+<div class="paragraph">
+<p><code>LimitChecker</code> implements the <code>ClassForPrinting</code> and can be used to set the HTML string generated to be displayed on the <code>BrowserPanel</code> using the <code>setSelectedClassForPrinting</code> method as seen below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ClassForPrintingUsageExample.png" alt="ClassForPrintingUsageExample" width="800">
+</div>
+<div class="title">Figure 23. Usage example for the <code>ClassForPrinting</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-having-to-change-multiple-types-of-limits"><a class="link" href="#aspect-having-to-change-multiple-types-of-limits">Aspect: Having to change multiple types of limits.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: Using a single command to check both the CAP limits as well as the workload limits and print the results all to one page</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Only one command needs to be known and it can check everything in one page to ensure that the module plan meets the selected limit preferences</p>
+</li>
+<li>
+<p>Cons: Unwanted information that was not requested is also shown on the page and may cause confusion</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong> Alternative: Using separate commands to display CAP limits and workload limits on their own individual page</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The information needed can be easily identified from the page displayed</p>
+</li>
+<li>
+<p>Cons: Two commands need to be known and keyed in to check the limits every time a modification is made to the module plan.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The current choice was chosen because the student will become more experienced and familiar GradTrak over time and be less confused by the result page. Scrolling up and down the page is easier than having to type two commands alternatively to view the limits.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements-3"><a class="link" href="#possible-improvements-3">3.5.3. Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check if any row has their minimum or maximum limits violated and highlight them to student</p>
+</li>
+<li>
+<p>Style the table to suit the theme of the app so that the student has a better experience using the app</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="current-semester-tracking"><a class="link" href="#current-semester-tracking">3.6. Current Semester Tracking</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.6.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>cursem</code> command allows the student to track the current semester using GradTrak. This indicates completion of all modules in the previous semesters and includes them in the current CAP computation during the <code>cklimit</code> command.</p>
+</div>
+<div class="paragraph">
+<p>The interaction of how the <code>cursem</code> command interacts with the system is shown below as a sequence diagram.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SetCurrentSemesterSequenceDiagram.png" alt="SetCurrentSemesterSequenceDiagram" width="1000">
+</div>
+<div class="title">Figure 24. Sequence Diagram for setting of the current semester</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storage-location-of-the-current-semester"><a class="link" href="#aspect-storage-location-of-the-current-semester">Aspect: Storage location of the current semester.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: Storing of current semester within the <code>VersionedGradTrak</code> </strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the <code>cursem</code> command to be undoable and redoable</p>
+</li>
+<li>
+<p>Cons: The storage file <code>gradtrak.json</code> has to contain more than just the modules taken and it is difficult to make changes due to the requirement of a large scale restructuring of the application and multiple unit tests.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong> Alternative: Storing of the current semester outside of the <code>VersionedGradTrak</code> together with the module and course information</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Minimal changes are required to implement it</p>
+</li>
+<li>
+<p>Cons: Problems may occur later on in maintaining the integrity of the application as <code>cursem</code> can only be performed if grades in the previous semesters have been finalized. The <code>undo</code> and <code>redo</code> commands can bypass the checks for finalized grades and lead to instability in the application.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The current choice was chosen because it will be worth the effort to restructure the application storage to make GradTrak easier to develop in the future and be less likely to cause problems.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements-4"><a class="link" href="#possible-improvements-4">3.6.3. Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Prevent the student from adding or editing his module plan if doing so will violate the limits set</p>
+</li>
+<li>
+<p>Allowing the student to type semester indexes instead of the entire semester name</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="semester-cap-and-workload-management-feature"><a class="link" href="#semester-cap-and-workload-management-feature">3.7. Semester CAP and workload management feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>setlimit</code> command allows the student to set CAP limits and workload limits for each semester. This helps the student manage the difficulty and time required of the modules taken. Various types of limits can be set, such as the minimum and maximum number of weekly lecture hours, tutorial hours, lab hours, project hours, and preparation hours acceptable for each semester, as well as the minimum and maximum CAP acceptable for the semester.</p>
+</div>
+<div class="paragraph">
+<p>The interaction of how the <code>setlimit</code> command interacts with the system is shown below as a sequence diagram.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SetSemesterLimitSequenceDiagram.png" alt="SetSemesterLimitSequenceDiagram" width="1000">
+</div>
+<div class="title">Figure 25. Sequence Diagram for setting of the limits for a semester</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<div class="paragraph">
+<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+</li>
+<li>
+<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
+</li>
+<li>
+<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Logging Levels</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
+</li>
+<li>
+<p><code>WARNING</code> : Can continue, but with caution</p>
+</li>
+<li>
+<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
+</li>
+<li>
+<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<div class="paragraph">
+<p>Certain properties of the application can be controlled (e.g student prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We use asciidoc for writing documentation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We chose asciidoc over Markdown because asciidoc, although a bit more complex than Markdown, provides more flexibility in formatting.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">4.1. Editing Documentation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
+Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">4.2. Publishing Documentation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">4.3. Converting Documentation to PDF format</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
+</div>
+<div class="paragraph">
+<p>Here are the steps to convert the project documentation files to PDF format.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Follow the instructions in <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to convert the AsciiDoc files in the <code>docs/</code> directory to HTML format.</p>
+</li>
+<li>
+<p>Go to your generated HTML files in the <code>build/docs</code> folder, right click on them and select <code>Open with</code> &#8594; <code>Google Chrome</code>.</p>
+</li>
+<li>
+<p>Within Chrome, click on the <code>Print</code> option in Chrome&#8217;s menu.</p>
+</li>
+<li>
+<p>Set the destination to <code>Save as PDF</code>, then click <code>Save</code> to save a copy of the file in PDF format. For best results, use the settings indicated in the screenshot below.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
+</div>
+<div class="title">Figure 26. Saving documentation as PDF files in Chrome</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Docs-SiteWideDocSettings"><a class="link" href="#Docs-SiteWideDocSettings">4.4. Site-wide Documentation Settings</a></h3>
+<div class="paragraph">
+<p>The <a href="https://github.com/cs2103-ay1819s2-w14-4/main/build.gradle"><code>build.gradle</code></a> file specifies some project-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affect how all documentation files within this project are rendered.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Attributes left unset in the <code>build.gradle</code> file will use their <strong>default values</strong>, if any.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. List of site-wide attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-name</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The name of the website.
+If set, the name will be displayed near the top of the page.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-githuburl</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>URL to the site&#8217;s repository on <a href="https://github.com">GitHub</a>.
+Setting this will add a "View on GitHub" link in the navigation bar.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-seedu</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Define this attribute if the project is an official SE-EDU project.
+This will render the SE-EDU navigation bar at the top of the page, and add some SE-EDU-specific navigation items.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="Docs-PerFileDocSettings"><a class="link" href="#Docs-PerFileDocSettings">4.5. Per-file Documentation Settings</a></h3>
+<div class="paragraph">
+<p>Each <code>.adoc</code> file may also specify some file-specific <a href="https://asciidoctor.org/docs/user-manual/#attributes">asciidoc attributes</a> which affect how the file is rendered.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor&#8217;s <a href="https://asciidoctor.org/docs/user-manual/#builtin-attributes">built-in attributes</a> may be specified and used as well.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Attributes left unset in <code>.adoc</code> files will use their <strong>default values</strong>, if any.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. List of per-file attributes, excluding Asciidoctor&#8217;s built-in attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>site-section</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Site section that the document belongs to.
+This will cause the associated item in the navigation bar to be highlighted.
+One of: <code>UserGuide</code>, <code>DeveloperGuide</code>, <code>LearningOutcomes</code>*, <code>AboutUs</code>, <code>ContactUs</code></p>
+</div>
+<div class="paragraph">
+<p><em>* Official SE-EDU projects only</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no-site-header</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Set this attribute to remove the site navigation bar.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="site-template"><a class="link" href="#site-template">4.6. Site Template</a></h3>
+<div class="paragraph">
+<p>The files in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/docs/stylesheets"><code>docs/stylesheets</code></a> are the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS stylesheets</a> of the site.
+You can modify them to change some properties of the site&#8217;s design.</p>
+</div>
+<div class="paragraph">
+<p>The files in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/docs/templates"><code>docs/templates</code></a> controls the rendering of <code>.adoc</code> files into HTML5.
+These template files are written in a mixture of <a href="https://www.ruby-lang.org">Ruby</a> and <a href="http://slim-lang.com">Slim</a>.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Modifying the template files in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/docs/templates"><code>docs/templates</code></a> requires some knowledge and experience with Ruby and Asciidoctor&#8217;s API.
+You should only modify them if you need greater control over the site&#8217;s layout than what stylesheets can provide.
+The SE-EDU team does not provide support for modified template files.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Testing"><a class="link" href="#Testing">5. Testing</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="running-tests"><a class="link" href="#running-tests">5.1. Running Tests</a></h3>
+<div class="paragraph">
+<p>There are three ways to run tests.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The most reliable way to run tests is the third one. The first two methods might fail some GUI tests due to platform/resolution-specific idiosyncrasies.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Method 1: Using IntelliJ JUnit test runner</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To run all tests, right-click on the <code>src/test/java</code> folder and choose <code>Run 'All Tests'</code></p>
+</li>
+<li>
+<p>To run a subset of tests, you can right-click on a test package, test class, or a test and choose <code>Run 'ABC'</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Method 2: Using Gradle</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open a console and run the command <code>gradlew clean allTests</code> (Mac/Linux: <code>./gradlew clean allTests</code>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See <a href="UsingGradle.html">UsingGradle.adoc</a> for more information on how to run tests using Gradle.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Method 3: Using Gradle (headless)</strong></p>
+</div>
+<div class="paragraph">
+<p>Thanks to the <a href="https://github.com/TestFX/TestFX">TestFX</a> library we use, our GUI tests can be run in the <em>headless</em> mode. In the headless mode, GUI tests do not show up on the screen. That means the developer can do other things on the computer while the tests are running.</p>
+</div>
+<div class="paragraph">
+<p>To run tests in headless mode, open a console and run the command <code>gradlew clean headless allTests</code> (Mac/Linux: <code>./gradlew clean headless allTests</code>)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">5.2. Types of tests</a></h3>
+<div class="paragraph">
+<p>We have two types of tests:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>GUI Tests</strong> - These are tests involving the GUI. They include:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>System tests</em> that test the entire App by simulating user actions on the GUI. These are in the <code>systemtests</code> package.</p>
+</li>
+<li>
+<p><em>Unit tests</em> that test the individual components. These are in <code>seedu.address.ui</code> package.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Non-GUI Tests</strong> - These are tests not involving the GUI. They include:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>Unit tests</em> targeting the lowest level methods/classes.<br>
+e.g. <code>seedu.address.commons.StringUtilTest</code></p>
+</li>
+<li>
+<p><em>Integration tests</em> that are checking the integration of multiple code units (those code units are assumed to be working).<br>
+e.g. <code>seedu.address.storage.StorageManagerTest</code></p>
+</li>
+<li>
+<p>Hybrids of unit and integration tests. These tests are checking multiple code units as well as how they are connected together.<br>
+e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">5.3. Troubleshooting Testing</a></h3>
+<div class="paragraph">
+<p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reason: One of its dependencies, <code>HelpWindow.html</code> in <code>src/main/resources/docs</code> is missing.</p>
+</li>
+<li>
+<p>Solution: Execute Gradle task <code>processResources</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="build-automation"><a class="link" href="#build-automation">6.1. Build Automation</a></h3>
+<div class="paragraph">
+<p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">6.2. Continuous Integration</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">6.3. Coverage Reporting</a></h3>
+<div class="paragraph">
+<p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects. See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="documentation-previews"><a class="link" href="#documentation-previews">6.4. Documentation Previews</a></h3>
+<div class="paragraph">
+<p>When a pull request has changes to asciidoc files, you can use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="making-a-release"><a class="link" href="#making-a-release">6.5. Making a Release</a></h3>
+<div class="paragraph">
+<p>Here are the steps to create a new release.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update the version <code>courseReqCredits</code> in <a href="https://github.com/cs2103-ay1819s2-w14-4/main/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+</li>
+<li>
+<p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
+</li>
+<li>
+<p>Tag the repo with the version courseReqCredits. e.g. <code>v0.1</code></p>
+</li>
+<li>
+<p><a href="https://help.github.com/articles/creating-releases/">Create a new release using GitHub</a> and upload the JAR file you created.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">6.6. Managing Dependencies</a></h3>
+<div class="paragraph">
+<p>A project often depends on third-party libraries. For example, GradTrak depends on the <a href="https://github.com/FasterXML/jackson">Jackson library</a> for JSON parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Include those libraries in the repo (this bloats the repo size)</p>
+</li>
+<li>
+<p>Require developers to download those libraries manually (this creates extra work for developers)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Target user profile</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NUS student from Computer Science, intending to specialise in Algorithms, Artificial Intelligence or Software Engineering</p>
+</li>
+<li>
+<p>has taken many modules in NUS</p>
+</li>
+<li>
+<p>prefers desktop applications over other types</p>
+</li>
+<li>
+<p>can type fast</p>
+</li>
+<li>
+<p>prefers typing over mouse input</p>
+</li>
+<li>
+<p>is reasonably comfortable using CLI applications</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Value proposition</strong>: planning modules to take in future semesters and graduation requirement without having
+to refer to different webpages.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track the modules I am taking</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what I need to complete my graduation requirement</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a module for the current semester</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of all the modules I intend to take</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete a module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove modules that I am not taking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find a module by code, semester, grade or finished status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of modules without having to go through the entire list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view pre-requisites for a module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">take the pre-requisite modules ahead of time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add my modules in future semesters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">plan ahead</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know my current CAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track my academic performance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">predict my maximum and minimum CAP for graduation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">compare them against my current CAP and check my performance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the total workload for each semester</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ensure an even distribution of workload across all semesters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see a recommended list of modules I can take in order of priority</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fulfil the graduation requirements on time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student with many modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sort module by name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">locate a module easily</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is <code>GT</code> (GradTrak) and the <strong>Actor</strong> is the <code>Student</code>, unless specified otherwise)</p>
+</div>
+<h3 id="use-case-initialising" class="discrete">Use case: Initialising</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student starts GT.</p>
+</li>
+<li>
+<p>GT loads courses, module information and modules taken.</p>
+</li>
+<li>
+<p>GT loads loading screen.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-adding-to-completed-list-of-modules" class="discrete">Use case: Adding to completed list of modules</h3>
+<div class="paragraph">
+<p>Precondition: Student has already initialised GT</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters command to add modules with module code, semester completed and grades.</p>
+</li>
+<li>
+<p>System records module code, semester completed and grades.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Student enters invalid grade.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. GT informs student that grade is invalid.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. Student enters invalid module code.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. GT informs student that module code is invalid.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c. Student enters invalid semester.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. GT informs student that semester is invalid.</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1d. Student enters module that is already in list of completed modules and same semester.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1d1. GT informs student that there is a repeat of module code.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-module" class="discrete">Use case: Delete module</h3>
+<div class="paragraph">
+<p>Precondition: Student has already intialised GT</p>
+</div>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters command to remove modules by keying in position in list.</p>
+</li>
+<li>
+<p>System removes module from list of completed / planned modules.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Student enters numbers that is 0, negative or exceeds the size of the list.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. GT shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-modify-details-of-modules-taken" class="discrete">Use case: Modify details of modules taken</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters command to edit modules indicated by position on list and gives grades and semester taken / planning to take.</p>
+</li>
+<li>
+<p>System edits relevant details.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Number keyed in is 0, negative or exceeds size of list.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. GT shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Student enters invalid module code, invalid grade or invalid semester.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. GT shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-set-semester-limit-for-a-semester" class="discrete">Use case: Set Semester Limit for a semester</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters a command to indicate the semester to set the limit as well as the limits to be set on the semester</p>
+</li>
+<li>
+<p>System edits relevant details.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Semester provided is invalid</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. GT shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Limit provided is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. GT shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1c. Limit provided is out of order, such that the minimum limit is more than the maximum limit.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1c1. GT shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-check-limits" class="discrete">Use case: Check limits</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters the command to check the current plan against their preferred semester limits</p>
+</li>
+<li>
+<p>System analyses the current module plan to generate and display a report comparing the current plan against the semester limits.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-display-nus-module-information" class="discrete">Use case: Display NUS module information</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters <code>displaymod</code> to find an NUS module based on module code or keywords in the module title.</p>
+</li>
+<li>
+<p>System returns full module information.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-recommend-modules" class="discrete">Use case: Recommend modules</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters <code>rec</code> command.</p>
+</li>
+<li>
+<p>System returns a list of module codes (with title) that the student is recommended to take.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-find-modules" class="discrete">Use case: Find modules</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters <code>find</code> command to search the module plan based on module code, semester, grade or finished status.</p>
+</li>
+<li>
+<p>System returns a list of modules in the module plan which satisfy the given parameters.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Student enters <code>find</code> without parameters.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System gives an "invalid command format" message and provides the correct format.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Student enters an invalid grade or semester.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System rejects the command and provides the correct format for grade or semester.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-display-requirements" class="discrete">Use case: Display requirements</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters <code>displayreq</code> command.</p>
+</li>
+<li>
+<p>System returns a list of course requirement along side their details and percentage of the requirement fulfilled.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-change-course-of-study" class="discrete">Use case: Change course of study</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Student enters <code>study</code> command with some course parameter.</p>
+</li>
+<li>
+<p>System changes course of study to course intended by student.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Student enters <code>study</code> with courses not inside of GT.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. System informs student that no such course is available.<br>
+Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. Student enters <code>study</code> without parameter.<br></p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. System informs student of the right command format.<br>
+Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 1000 <code>modulesTaken</code> without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
+<dd>
+<p>Windows, Linux, Unix, OS-X</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test the application manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">F.1. Launch and Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy it into an empty folder.</p>
+</li>
+<li>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with an empty module plan. The window size may not be optimum.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-module"><a class="link" href="#deleting-a-module">F.2. Deleting a module</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a module while all <code>moduleTaken</code> are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all <code>moduleTaken</code> using the <code>list</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>delete 1</code><br>
+Expected: First module is deleted from the list. Details of the deleted module are shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete 0</code><br>
+Expected: No module is deleted. Error details are shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size or negative)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="check-completion-of-course-requirements"><a class="link" href="#check-completion-of-course-requirements">F.3. Check completion of course requirements</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check what are the course requirement completed based on list of modules taken or planning to take</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisite: Set the course to intended choice of study eg: <code>study Computer Science Artificial Intelligence</code>, empty
+list of module taken<br></p>
+</li>
+<li>
+<p>Test case: <code>study Computer Science Algorithms</code>, <code>displayreq</code><br>
+Expected: Display all course requirements for the course Computer Science Algorithms</p>
+</li>
+<li>
+<p>Test case: <code>study Computer Science Algorithms</code>, <code>displayreq</code> <code>study Computer Science Artificial Intelligence</code>, <code>displayreq</code><br>
+Expected: Display all course requirements for course Computer Science Artificial Intelligence.</p>
+</li>
+<li>
+<p>Test case: <code>add GER1000 s/Y1S1</code>, <code>add GEQ1000 s/Y1S1</code>, <code>add GES1000 s/Y1S1</code>, <code>add GEH1000 s/Y1S1</code>, <code>add GET1000 s/Y1S1</code>, <code>displayreq</code><br>
+Expected: Display University Level Requirement is completed.</p>
+</li>
+<li>
+<p>Test case: <code>add GER1000 s/Y1S1</code>, <code>add GEQ1000 s/Y1S1</code>, <code>add GES1000 s/Y1S1</code>, <code>add GEH1000 s/Y1S1</code>, <code>add GEH1036 s/Y1S1</code>, <code>displayreq</code> <br>
+Expected: Display University Level Requirement is not completed but at completion rate of 80%.</p>
+</li>
+<li>
+<p>Test case: <code>add GER1000 s/Y1S1</code>, <code>add GEQ1000 s/Y1S1</code>, <code>add GES1000 s/Y1S1</code>, <code>add GEH1000 s/Y1S1</code>, <code>add GEH1000 s/Y1S2</code>, <code>displayreq</code> <br>
+Expected: Display University Level Requirement is not completed but at completion rate of 80%.</p>
+</li>
+<li>
+<p>Test case: <code>add CS3281 s/Y1S1</code>, <code>displayreq</code><br>
+Expected: Show that Software System Project Requirement not completed and has a completion rate of 50%.</p>
+</li>
+<li>
+<p>Other test cases to consider:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Duplicate modules in different semesters not double counted in requirement</p>
+</li>
+<li>
+<p>Module that satisfy the same condition e.g. CS1010 and CS1101S can fulfil same condition, not double counted</p>
+</li>
+<li>
+<p>Modules failed in previous semesters does not contribute in fulfilling requirement e.g.: current semester Y1S2,
+but failed a module in Y1S1. The failed module does not count towards any requirement.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:59:24 UTC</div></div></div></body></html>

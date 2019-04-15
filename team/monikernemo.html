@@ -1,0 +1,529 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta moduleInfoCode="viewport" content="width=device-width, initial-scale=1.0"><meta moduleInfoCode="generator" content="Asciidoctor 1.5.6.1"><title>Lee Yi Quan - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w14-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lee Yi Quan - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-gradtrak-a-graduation-tracker-by-nus-students-for-nus-students"><a class="link" href="#project-gradtrak-a-graduation-tracker-by-nus-students-for-nus-students">PROJECT: GradTrak - A Graduation Tracker by NUS Students, for NUS Students</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GradTrak is an application that was morphed from the codebase of <a href="https://github.com/nus-cs2103-AY1819S2/addressbook-level4">Address Book - Level 4</a>.
+It was conceptualised and designed in mind to assist students of NUS to track their graduation progress and plan modules
+they want to take in the future.</p>
+</div>
+<div class="paragraph">
+<p>I was involved in designing the functionality for users to track their course requirement. In the sections that follow,
+I will showcase my contributions to the project and also some of the section that I have written
+in the User and Developer&#8217;s Guides.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major feature</strong>: added the functionality for users to track their graduation requirements</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This feature allows the user to check against a list of modules they have taken / are planning to take
+and informs them whether they have fulfilled the requirements. The feature also allows the users
+to know approximately, the extent of completion of these graduation requirements.</p>
+</li>
+<li>
+<p>Why this feature: This feature is one of the core functionalities of GradTrak. This greatly enhances quality of life of
+students in NUS as it would allow them to find out their graduation requirements as well as how far are they away from
+fulfilling them.</p>
+</li>
+<li>
+<p>Highlights: It is difficult to implement this feature because course requirements can vary greatly. As a course
+requirement can be composed of simpler course requirements, another technical difficulty that I faced was designing an
+interface that treats simple and more complex course requirements uniformly. To tackle this hurdle, I had to do some
+research on design patterns to understand how to come up with such design to suit the need of my project.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>created user editable files for users to store different courses and course requirements</p>
+</li>
+<li>
+<p>added some sample courses into the application namely: Computer Science Algorithms, Artificial Intelligence
+and Software Engineering.</p>
+</li>
+<li>
+<p>created utility for to load json file formats after exporting jar file. <a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/94">#94</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=monikernemo">Project Code Dashboard</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Management</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Set up milestones, issue tracker <a href="https://github.com/cs2103-ay1819s2-w14-4/main/issues?q=is%3Aissue+author%3Amonikernemo+is%3Aclosed">(examples)</a></p>
+</li>
+<li>
+<p>Added user stories <a href="https://github.com/cs2103-ay1819s2-w14-4/main/issues?q=label%3Atype.Story+is%3Aclosed">(examples)</a></p>
+</li>
+<li>
+<p>Reviewed and assigned issues to teammates in previous round of product testing <a href="https://github.com/cs2103-ay1819s2-w14-4/main/issues?q=is%3Aissue+author%3Acs2103-feedback-bot+is%3Aclosed">(examples)</a></p>
+</li>
+<li>
+<p>Managing release, <a href="https://github.com/cs2103-ay1819s2-w14-4/main/releases/tag/v1.4">v1.4</a>
+which should be up in a couple of days</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Refactored Code and changed documentation from AddressBook - Level 4 code base</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Renamed significant amount of variables, classes in Address Book - Level 4 code base <a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/66">#66</a></p>
+</li>
+<li>
+<p>Changed some visuals for the User Guide, Developer Guide <a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/90">#90</a></p>
+</li>
+<li>
+<p>Changed some of the prose of the User Guide, Developer Guide (see above Pull Request)</p>
+</li>
+<li>
+<p>Modified irrelevant sections of User Guide, Developer Guide (see above Pull Request)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section, I will highlight some of my contributions to the user guide namely,
+the <code>displayreq</code> and <code>study</code> commands in <code>GradTrak</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="display-course-requirements-code-displayreq-code"><a class="link" href="#display-course-requirements-code-displayreq-code">Display course requirements: <code>displayreq</code></a></h3>
+<div class="paragraph">
+<p>One of the core functions of GradTrak is to check whether the student has fulfilled his/her degree requirement.
+As of <code>v1.4</code> of the application, GradTrak currently only has course information of 3 Computer Science major Focus Areas, namely:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Algorithms</p>
+</li>
+<li>
+<p>Artificial Intelligence</p>
+</li>
+<li>
+<p>Software Engineering</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The course of study can be changed by using the <code>study</code> command which will be outlined in the later sections of this guide.</p>
+</div>
+<div class="paragraph">
+<p>Based off the modules you have passed and completed, or have planned to take in the future semesters, this command
+displays to you the degree to which you have completed your course requirements. It also displays other relevant
+information regarding your course&#8217;s requirements. This can be seen in the annotated screenshot below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displayreqcommand.png" alt="displayreqcommand" width="800">
+</div>
+<div class="title">Figure 1. Annotated screenshot when <code>displayreq</code> is invoked</div>
+</div>
+<div class="paragraph">
+<p>These information are displayed in the result panel when <code>displayreq</code> is keyed in:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Name of the course requirement.<br></p>
+</li>
+<li>
+<p>Description of the course requirement. Gives an overview of the modules the student should take to fulfill the requirement.<br></p>
+</li>
+<li>
+<p>Requirement type. Informs the student the importance of the requirement in relation to their course of study.<br></p>
+</li>
+<li>
+<p>Requirement progress bar and percentage. Informs the student the extent to which he/she have fulfilled the course
+requirement.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Format: <code>displayreq</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-the-current-course-of-study-code-study-code"><a class="link" href="#set-the-current-course-of-study-code-study-code">Set the current course of study: <code>study</code></a></h3>
+<div class="paragraph">
+<p>To set the desired course of study, the student can simply key in the following command:</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>study COURSE</code><br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The parameter <code>COURSE</code> is case-sensitive.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As of <code>v1.4</code>, GradTrak has information to keep track of course requirement
+from the courses mentioned below:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Computer Science Algorithms</p>
+</li>
+<li>
+<p>Computer Science Artificial Intelligence</p>
+</li>
+<li>
+<p>Computer Science Software Engineering</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>study Computer Science Algorithms</code><br>
+Sets the course of study to Computer Science with Focus Area Algorithms. Invoking <code>study</code> command again will change your course of study.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More courses will be rolled out in GradTrak in the future.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section, I will highlight some of my contributions to the developer guide.</p>
+</div>
+<div class="sect2">
+<h3 id="display-course-requirement-feature"><a class="link" href="#display-course-requirement-feature">Display Course Requirement feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>displayreq</code> command allows the students to see all their course requirements and also check if the modules they have
+taken fulfils them. This command is currently facilitated by 2 classes in <code>Model</code>, <code>CourseRequirement</code> and
+<code>RequirementStatus</code>:</p>
+</div>
+<div class="sect4">
+<h5 id="code-courserequirement-code-interface"><a class="link" href="#code-courserequirement-code-interface"><code>CourseRequirement</code> Interface</a></h5>
+<div class="paragraph">
+<p>As there are many different kinds of course requirements that can be found in NUS, it is difficult to iron down the common characteristic
+they all share. This can be seen in the examples found below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/nus_requirement.PNG" alt="nus requirement" width="400">
+</div>
+<div class="title">Figure 2. Computer Systems Team Project Requirement</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/nus_requirement2.PNG" alt="nus requirement2" width="400">
+</div>
+<div class="title">Figure 3. Focus Area Requirement</div>
+</div>
+<div class="paragraph">
+<p>For the requirement shown in Figure 9, students just have to complete at least one of CS3203 or
+CS3216 and CS3217 or CS3281 and CS3282. Whereas for the requirement in Figure 10, students have to fulfill
+all of the conditions stated above. Even though these two conditions might seem quite different,
+we are still able to draw some key observations about what they have in common:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Each requirement is composed of conjunction or disjunction of clauses. In turn, the clauses can
+be composed by conjunction and disjunction of other simpler clauses.</p>
+</li>
+<li>
+<p>Clauses that cannot be further broken down into smaller clauses usually contain the following information:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>a list of modules that can be used to satisfy the clause</p>
+</li>
+<li>
+<p>how many of the modules should be completed to satisfy the clause.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>These observations gives us some insight as to how we should design the interface. As such, the <code>CourseRequirement</code> interface follows a <code>Composite</code> design pattern. This is favoured as it allows
+us to treat individual and composition of <code>CourseRequirement</code> objects uniformly through the use of polymorphism. The diagram below gives an overview of
+how <code>CourseRequirement</code> is implemented.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CompositeDesignPattern.png" alt="CompositeDesignPattern" width="400">
+</div>
+<div class="title">Figure 4. <code>CourseRequirement</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>This interface is realised by 2 subclasses - <code>PrimitiveRequirement</code> and <code>CompositeRequirement</code>.
+The <code>PrimitiveRequirement</code> is the simplest building block for <code>CourseRequirement</code>. Each <code>PrimitiveRequirement</code> stores a
+list of <code>Condition</code> objects. A <code>Condition</code> object stores a <code>Java</code> <code>Pattern</code> and an <code>int</code>, <code>minToSatisfy</code>. A <code>Condition</code>
+is satisfied if there are at least <code>minToSatisfy</code> many distinct
+<code>ModuleInfoCode</code> that matches <code>Pattern</code> in it. <code>PrimitiveRequirement</code> is satisfied only if all <code>Condition</code> objects in the list are
+fulfilled.</p>
+</div>
+<div class="paragraph">
+<p>For instance in Figure 9, a suitable <code>Condition</code> for completing CS3216 and CS3217 would be
+a <code>Pattern</code> that accepts only CS3216 or CS3217, and a <code>minToSatisfy</code> of 2.</p>
+</div>
+<div class="paragraph">
+<p>The <code>CompositeRequirement</code> can replicate the behaviour of more complex course requirements. Each <code>CompositeRequirement</code>
+object contains two <code>CourseRequirement</code> objects. It also contains a <code>LogicalConnector</code> enumeration
+that tells the <code>CompositeRequirement</code> how two different <code>CourseRequirement</code> are composed using logical operations. For instance, for
+a list of <code>ModuleInfoCode</code> to satisfy a <code>CompositeRequirement</code> that has a <code>AND</code> <code>LogicalConnector</code>, the list must
+satisfy the both <code>CourseRequirement</code> objects contained in <code>CompositeRequirement</code>.</p>
+</div>
+<div class="paragraph">
+<p>There currently 3 methods that <code>CourseRequirement</code> provides information to the student:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>isFulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a <code>boolean</code> to indicate whether the list of
+<code>ModuleInfoCode</code> can satisfy the all the <code>CourseRequirement</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>In <code>PrimitiveRequirement</code>, this is achieved by checking whether all the <code>ModuleInfoCode</code> satisfies all the
+<code>Condition</code> stored in it.</p>
+</li>
+<li>
+<p>In <code>CompositeRequirement</code>, this is dependent on the <code>LogicalConnector</code> it has. It would return the value of
+first <code>CourseRequirement#isFulfilled</code> <code>LogicalConnector</code> second <code>CourseRequirement#isFulfilled</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>percentageFulfilled()</code>&#8201;&#8212;&#8201;a method that also accepts a list of ModuleInfoCode returns a <code>double</code> value that represents the
+percentage of completion of the <code>CourseRequirement</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>In <code>PrimitiveRequirement</code>, this is achieved by calculating the number of distinct modules that satisfy for each <code>Condition</code>,
+in <code>PrimitiveRequirement</code> and it is divided by the sum of <code>minToSatisfy</code>.</p>
+</li>
+<li>
+<p>This depends on the <code>LogicalConnector</code> in <code>CompositeRequirement</code>. If it is a <code>OR</code> connector, we return the maximum
+of <code>first#percentageFulfilled</code> or <code>second#percentageFulfilled</code>. The <code>AND</code> logical connector returns the average of the degree of completion for both requirements.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>getUnfulfilled()</code>&#8201;&#8212;&#8201;a method that accepts a list of <code>ModuleInfoCode</code> and returns a list of RegExes from where none of the
+<code>ModuleInfoCode</code> matches. This method is used in the module recommendation feature.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="code-requirementstatus-code-class"><a class="link" href="#code-requirementstatus-code-class"><code>RequirementStatus</code> Class</a></h5>
+<div class="paragraph">
+<p>The <code>RequirementStatus</code> is an association class that links a <code>CourseRequirement</code> with <code>VersionedGradTrak</code> in <code>Model</code>.
+This can be seen in the class diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RequirementStatusClassDiagram.png" alt="RequirementStatusClassDiagram" width="400">
+</div>
+<div class="title">Figure 5. <code>RequirementStatus</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>It also stores the result of the associated <code>CourseRequirement</code> object&#8217;s <code>isFulfilled</code> and <code>percentageFulfilled</code>
+methods acting on the list of <code>ModuleInfoCode</code>.</p>
+</div>
+<div class="paragraph">
+<p>Below is a sequence of execution when <code>displayreq</code> command is executed by the student:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Model#updateRequirementStatusList</code> is called. This updates the pre-existing <code>RequirementStatusList</code>
+and fills it with new <code>RequirementStatus</code> objects based on current <code>nonFailedCodeList</code> from <code>GradTrak</code>.</p>
+</li>
+<li>
+<p><code>UI</code> calls <code>getRequirementStatusList</code> from <code>Logic</code> and retrieves the updated <code>RequirementStatusList</code>
+from <code>Model</code>. This list is displayed in the <code>ResultPanel</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below summarises the execution mentioned earlier:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/displayreqcommandsequence.png" alt="displayreqcommandsequence" width="800">
+</div>
+<div class="title">Figure 6. Sequence Diagram when <code>displayreq</code> executes</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-code-condition-code-class-checks-if-it-is-fulfilled"><a class="link" href="#aspect-how-code-condition-code-class-checks-if-it-is-fulfilled">Aspect: How <code>Condition</code> class checks if it is fulfilled.</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: Checking <code>Condition</code> fulfilled by only using <code>ModuleInfoCode</code> of
+<code>ModuleTaken</code></strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement since we are restricting scope to only checking whether strings match
+pattern in <code>Condition</code></p>
+</li>
+<li>
+<p>Cons: Possible that the <code>CourseRequirement</code> class is unable to replicate
+requirements that does not depend on <code>ModuleInfoCode</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong> Alternative: Checking Requirement fulfilled by accessing any attribute of <code>ModuleTaken</code></strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Increased flexibility and easier to replicate actual NUS requirements that does not depend
+on <code>ModuleInfoCode</code></p>
+</li>
+<li>
+<p>Cons: Increased complexity to implement <code>CourseRequirement</code> class properly.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose the current choice over the alternative due to time constraints in the project. Moreover, our current choice
+is sufficient to replicate most NUS requirements accurately.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-choice-of-information-stored-in-code-condition-code-class"><a class="link" href="#aspect-choice-of-information-stored-in-code-condition-code-class">Aspect: Choice of information stored in <code>Condition</code> class</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current choice: <code>Condition</code> class stores a <code>Pattern</code> to check whether a requirement is satisfied</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Compact representation of which <code>ModuleInfoCode</code> fulfills the requirement</p>
+</li>
+<li>
+<p>Cons: Difficult to find the correct regular expression for some <code>Condition.</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative: <code>Condition</code> class stores an exact list of <code>String</code> to check whether a condition is satisfied</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy and interpretive to use.</p>
+</li>
+<li>
+<p>Cons: Might need to store a long list of <code>String</code> if many modules can fulfil the <code>Condition</code> eg: General Education
+Modules</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We chose our current choice as it takes up much fewer space to store. Moreover, storing a pattern
+also improves performance time since each <code>ModuleInfoCode</code> is compared against one`Pattern` instead of an entire
+list of <code>String</code> objects.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements"><a class="link" href="#possible-improvements">Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Allow students to create and export their own <code>Course</code> and <code>CourseRequirement</code> objects.</p>
+</li>
+<li>
+<p>Allow <code>Condition</code> to check its fulfillment by accessing other attributes of a <code>ModuleTaken</code> object in the future.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-cuckoo-hash"><a class="link" href="#project-cuckoo-hash">PROJECT: Cuckoo Hash</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is an experimental assignment from <a href="https://www.comp.nus.edu.sg/~gilbert/CS5330/">CS5330 - Randomised Algorithm</a>. The
+aim was to investigate various effects of different Cuckoo Hash schemes. More information on assignment
+<a href="https://www.comp.nus.edu.sg/~gilbert/CS5330/2019/psets/ExperimentalAlgorithms.pdf">here</a>
+and more on the codes of the implementation <a href="https://github.com/monikernemo/CS5330-Experimental-Assignment"> here</a></p>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:59:24 UTC</div></div></div></body></html>

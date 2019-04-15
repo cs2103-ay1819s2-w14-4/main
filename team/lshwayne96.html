@@ -1,0 +1,464 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta moduleInfoCode="viewport" content="width=device-width, initial-scale=1.0"><meta moduleInfoCode="generator" content="Asciidoctor 1.5.6.1"><title>Lim Shao Hong - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-w14-4/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lim Shao Hong - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-gradtrak"><a class="link" href="#project-gradtrak">PROJECT: GradTrak</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>My team was tasked with enhancing a basic command line interface (CLI) AddressBook for our Software Engineering project.
+We decided to morph it into a school module tracker called GradTrak.<br>
+GradTrak is an application designed for students of National University of Singapore (NUS) to easily plan and track modules as well as check them against the graduation requirements.<br>
+The user interacts with GradTrak mainly through the CLI, but it also has a Graphical User Interface (GUI) created with JavaFX. It is written in Java and has more than ten thousand lines of code.</p>
+</div>
+<div class="paragraph">
+<p>My role was to design and write the codes for the module recommendation feature, and to enhance the existing module finding feature.
+The following sections illustrate these contributions in more detail, as well as the relevant sections I have added to the User Guide and Developer Guide.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section summarises my coding and other helpful contributions to GradTrak.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added a <strong>module recommendation</strong> feature</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>What it does:</em> This feature displays a list of modules which the user is recommended to read based on existing GradTrak modules and graduation requirements specific to the user&#8217;s course of study.
+The list is sorted primarily by the priority of the requirement type satisfied by the recommended module, and secondarily by the level of the module.</p>
+</li>
+<li>
+<p><em>Justification:</em> This feature significantly benefits users who are unfamiliar with the exact graduation requirements of their course, or are unsure of what modules to read for future semesters.
+They can simply pick a high-priority module near the top of the recommendation list&#8201;&#8212;&#8201;this module already has its prerequisites satisfied, contributes to their graduation requirements and
+will likely serve as a prerequisite for higher level modules. This allows users to plan their modules systematically so that they are on the right track towards graduation.</p>
+</li>
+<li>
+<p><em>Highlights:</em> The implementation of this feature was challenging as it requires interactions with many components of GradTrak. It needs to retrieve information of all NUS modules,
+check each module for its preclusions or prerequisites in the user&#8217;s module list, and determine whether it contributes to the user&#8217;s course requirements and if so, the requirement type of highest priority that it satisfies.
+In particular, it was necessary to liaise with the implementation of the graduation-checking feature to ensure that the recommended modules actually bring the user closer to graduation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added additional parameters for the module finding feature, allowing the user to search GradTrak modules by
+module code, semester, grade or finished status.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=lshwayne96">Project Code Dashboard</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed release <code>v1.3</code> on Github (<a href="https://github.com/cs2103-ay1819s2-w14-4/main/releases">releases</a>)</p>
+</li>
+<li>
+<p>Added user stories on Github (<a href="https://github.com/cs2103-ay1819s2-w14-4/main/issues/67">example</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Helped to proofread and polish the language of the User Guide and Developer Guide</p>
+</li>
+<li>
+<p>Edited some old diagrams from AddressBook for the purpose of GradTrak (<a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/80">#80</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Helped with my teammates' features (checking of prerequisites and graduation requirements) which are closely related to mine (<a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/91/files">#91</a>, <a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/100">#100</a>, <a href="https://github.com/cs2103-ay1819s2-w14-4/main/pull/172">#172</a>)</p>
+</li>
+<li>
+<p>Reported bugs and suggested improvements for other teams in the class (e.g. <a href="https://github.com/CS2103-AY1819S2-T12-2/main/issues/64">1</a>, <a href="https://github.com/CS2103-AY1819S2-T12-2/main/issues/68">2</a>, <a href="https://github.com/CS2103-AY1819S2-T12-2/main/issues/71">3</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="recommend-module-code-rec-code"><a class="link" href="#recommend-module-code-rec-code">Recommend module: <code>rec</code></a></h3>
+<div class="paragraph">
+<p>Recommends modules that can be read based on the current module plan and course requirements.<br>
+Format: <code>rec</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Modules with unmet prerequisites or those already added (except for failed modules) will not be recommended.</p>
+</li>
+<li>
+<p>Recommended modules are displayed in order of requirement type satisfied: <em>Core</em>, <em>Breadth &amp; Depth</em>, <em>Industry Experience</em>, <em>Faculty</em>, <em>General Education</em>.
+Modules with the same requirement type satisfied are sorted by level.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If any change is made to the course or module plan, enter <code>rec</code> again to update the recommendation list.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The figure below shows a sample recommendation list for a student studying Computer Science Algorithms with an empty module plan.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/recommend.png" alt="recommend" width="800">
+</div>
+<div class="title">Figure 1. Recommendation list for Computer Science Algorithms</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-module-code-find-code"><a class="link" href="#find-module-code-find-code">Find module: <code>find</code></a></h3>
+<div class="paragraph">
+<p>Finds modules in the module plan matching all given module code, semester, grade or finished status.<br>
+Format: <code>find [c/MODULE_CODE] [s/SEMESTER] [g/GRADE] [f/IS_FINISHED]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Parameters can be in any order and are case-insensitive.</p>
+</li>
+<li>
+<p>Module code can be entered partially, but semester and grade must be in the exact format.</p>
+</li>
+<li>
+<p>For unfinished modules, searching by grade will display those whose grade range covers that grade.</p>
+</li>
+<li>
+<p>Finished status is indicated by <code>y</code> for finished module (i.e. semester read is before current semester) or any other value for unfinished.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find c/CS</code><br>
+Lists all modules with "CS" in their codes.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/find(c).png" alt="find(c)" width="800">
+</div>
+<div class="title">Figure 2. Finding modules with "CS"</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find s/Y1S2</code><br>
+Lists all modules in Y1S2.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/find(s).png" alt="find(s)" width="800">
+</div>
+<div class="title">Figure 3. Finding modules in Y1S2</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find g/A f/y</code><br>
+Lists all finished modules with grade A.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/find(g,f).png" alt="find(g,f)" width="800">
+</div>
+<div class="title">Figure 4. Finding finished modules with grade A (current semester: Y1S2)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="module-recommendation-feature"><a class="link" href="#module-recommendation-feature">Module recommendation feature</a></h3>
+<div class="paragraph">
+<p>The module recommendation feature displays modules which the student is recommended to read based on the current module plan
+and specific course requirements. It generates a list of module codes together with their corresponding titles and requirement
+types satisfied. The entire list is displayed on the Result Panel upon entering the <code>rec</code> command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Modules which satisfy only Unrestricted Electives are not included to prevent the list from being too long.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current implementation</a></h4>
+<div class="paragraph">
+<p>Each recommended module is represented by a <code>RecModule</code> which contains a unique <code>ModuleInfo</code> and its corresponding
+<code>CourseReqType</code> satisfied, as shown in the diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RecModuleClassDiagram.png" alt="RecModuleClassDiagram" width="400">
+</div>
+<div class="title">Figure 5. <code>RecModule</code> class diagram</div>
+</div>
+<div class="paragraph">
+<p>When <code>ModelManager</code> is initialised, <code>Model#getObservableRecModuleList</code> is called which generates an
+<code>ObservableList</code> of <code>RecModule</code> , one for each module in the entire <code>ModuleInfoList</code>. This list is wrapped in a <code>FilteredList</code>,
+which is further wrapped in a <code>SortedList</code>, both stored in <code>ModelManager</code>. At this point, all <code>RecModule</code> in the list contain an empty <code>CourseReqType</code> field.</p>
+</div>
+<div class="paragraph">
+<p>When the <code>rec</code> command is entered, the sequence of execution is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Model#updateRecModuleList</code> is called, which creates a <code>RecModulePredicate</code> given the student&#8217;s <code>Course</code> and <code>ReadOnlyGradTrak</code>, and a <code>RecModuleComparator</code>.</p>
+</li>
+<li>
+<p>The <code>RecModulePredicate</code> is applied to the <code>FilteredList</code> of <code>RecModule</code>. In each test:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>An <code>EligibleModulePredicate</code> which takes in <code>ReadOnlyGradTrak</code> tests if the <code>ModuleInfo</code> of this <code>RecModule</code> is eligible to be read.
+If the module is already present in the module plan or does not have its prerequisites satisfied, this <code>RecModule</code> is filtered out.</p>
+</li>
+<li>
+<p>The <code>ModuleInfoCode</code> (call it <code>codeToTest</code>) of the <code>RecModule</code> is retrieved.<br>
+A <code>nonFailedCodeList</code> of <code>ModuleInfoCode</code> corresponding to non-failed <code>ModuleTaken</code> (already passed or to be read in a future semester) is also retrieved from <code>ReadOnlyGradTrak</code>.</p>
+</li>
+<li>
+<p>The <code>codeToTest</code> is then passed into <code>Course#getCourseReqTypeOf</code>, which in turn calls <code>CourseRequirement#canFulfill</code> for each <code>CourseRequirement</code> listed in <code>Course</code>.
+ A list of <code>CourseReqType</code> that the <code>codeToTest</code> can satisfy is returned.
+This <code>courseReqTypeList</code> is sorted by the priority of <code>CourseReqType</code> as defined in the <code>enum</code> class: <code>CORE</code>, <code>BD</code>, <code>IE</code>, <code>FAC</code>, <code>GE</code>.</p>
+</li>
+<li>
+<p>For each <code>CourseReqType</code> in the <code>courseReqTypeList</code> (highest priority first):</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>Course#isCodeContributing</code> is called, which takes in the <code>CourseReqType</code>, <code>nonFailedCodeList</code> and <code>codeToTest</code>.</p>
+</li>
+<li>
+<p>For each <code>CourseRequirement</code> listed in <code>Course</code> corresponding to the given <code>CourseReqType</code>, <code>CourseRequirement#getUnfulfilled</code>
+is called which takes in the <code>nonFailedCodeList</code> and returns an <code>unfulfilledRegexList</code> of RegExes not satisfied.</p>
+</li>
+<li>
+<p>If the <code>codeToTest</code> matches any of the RegExes in the
+<code>unfulfilledRegexList</code>, <code>Course#isCodeContributing</code> returns <code>true</code> and the loop for <code>courseReqTypeList</code> terminates.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The <code>CourseReqType</code> of highest priority satisfied by <code>codeToTest</code> is then set into the <code>RecModule</code>. However, if the <code>codeToTest</code> does not
+contribute to any of the <code>CourseRequirement</code> listed in <code>Course</code>, this <code>RecModule</code> is filtered out.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>The <code>RecModuleComparator</code> is applied to the <code>SortedList</code> of <code>RecModule</code>. It sorts the list in decreasing priority of the
+<code>CourseReqType</code> satisfied by the <code>RecModule</code>. Those <code>RecModule</code> with equal priority are sorted by module level (the first numerical digit of its <code>ModuleInfoCode</code>),
+considering that lower level modules are usually read first. In the case of equal priority and module level, lexicographical sorting of its <code>ModuleInfoCode</code> is used.</p>
+</li>
+<li>
+<p>The <code>SortedList</code> of <code>RecModule</code> is retrieved from <code>ModelManager</code> and displayed to the student in the Result Panel.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If there are changes to <code>ReadOnlyGradTrak</code> (adding, editing or deleting modules) or <code>Course</code> (changing the course of study), the <code>rec</code> command
+must be run again to reflect the updated recommendation list.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagrams summarising the above execution are shown below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RecCommandSequenceDiagram.png" alt="RecCommandSequenceDiagram" width="1000">
+</div>
+<div class="title">Figure 6. <code>RecCommand</code> sequence diagram</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RecModulePredicateSequenceDiagram.png" alt="RecModulePredicateSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 7. <code>RecModulePredicate</code> sequence diagram</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RecModuleComparatorSequenceDiagram.png" alt="RecModuleComparatorSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 8. <code>RecModuleComparator</code> sequence diagram</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-sorting-of-recommendation-list"><a class="link" href="#aspect-sorting-of-recommendation-list">Aspect: Sorting of recommendation list</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): Recommendation list is sorted by a fixed order of <code>CourseReqType</code> priority as defined in the <code>enum</code> class</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and modify</p>
+</li>
+<li>
+<p>Cons: Student may have his own order of priority that differs from the default one</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: Recommendation list can be sorted by a custom order defined by the student</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Student can sort the list according to his own preferences</p>
+</li>
+<li>
+<p>Cons: Difficult to implement if several parameters for sorting is allowed; input method for the custom order is problematic</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-format-of-recommendation"><a class="link" href="#aspect-format-of-recommendation">Aspect: Format of recommendation</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice): Display a list of all eligible modules that contribute to course requirements</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Student has a greater freedom of choice</p>
+</li>
+<li>
+<p>Cons: Student may be confused or unable to decide if the list is too long</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2: Display <code>n</code> modules for each semester, where <code>n</code> is decided by the student</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Student can plan modules for specific semesters easily and quickly</p>
+</li>
+<li>
+<p>Cons: Algorithm required to plan for all semesters can be complex; student may not prefer the given plan</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements"><a class="link" href="#possible-improvements">Possible Improvements</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Allow the student to display a module&#8217;s information (from <code>displaymod</code> command) using its index in the recommendation list</p>
+</li>
+<li>
+<p>Allow the student to add a module to the module plan using its index in the recommendation list</p>
+</li>
+<li>
+<p>Enable recommendation of Unrestricted Electives based on personal interests of the user</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 06:59:24 UTC</div></div></div></body></html>
