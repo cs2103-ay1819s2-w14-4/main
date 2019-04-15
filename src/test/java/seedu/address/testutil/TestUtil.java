@@ -49,7 +49,7 @@ public class TestUtil {
     /**
      * Returns the moduleTaken in the {@code model}'s moduleTaken list at {@code index}.
      */
-    public static ModuleTaken getPerson(Model model, Index index) {
+    public static ModuleTaken getModuleTaken(Model model, Index index) {
         return model.getFilteredModulesTakenList().get(index.getZeroBased());
     }
 }

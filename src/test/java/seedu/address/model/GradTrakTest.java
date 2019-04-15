@@ -56,7 +56,7 @@ public class GradTrakTest {
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
+    public void resetData_withDuplicateModulesTaken_throwsDuplicateModuleTakenException() {
         // Two modulesTaken with the same identity fields
         ModuleTaken editedAlice = new ModuleTakenBuilder(CS2103T)
                 .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_CS1010)

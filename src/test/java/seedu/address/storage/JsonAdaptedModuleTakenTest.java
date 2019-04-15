@@ -43,193 +43,193 @@ public class JsonAdaptedModuleTakenTest {
             .collect(Collectors.toList());
 
     @Test
-    public void toModelType_validPersonDetails_returnsPerson() throws Exception {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(CS2101);
-        assertEquals(CS2101, person.toModelType());
+    public void toModelType_validModuleTakenDetails_returnsModuleTaken() throws Exception {
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(CS2101);
+        assertEquals(CS2101, moduleTaken.toModelType());
     }
 
     @Test
     public void toModelType_invalidName_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(INVALID_NAME, VALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = ModuleInfoCode.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(null, VALID_SEMESTER,
                 VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                 VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, ModuleInfoCode.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidSemester_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, INVALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = Semester.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullSemester_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(VALID_NAME, null,
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(VALID_NAME, null,
                 VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                 VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT,
                 Semester.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidExpectedMinGrade_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                         INVALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = Grade.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullExpectedMinGrade_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                 null, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                 VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidExpectedMaxGrade_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, INVALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = Grade.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullExpectedMaxGrade_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                 VALID_EXPECTED_MIN_GRADE, null, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                 VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Grade.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidLectureHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, INVALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = Hour.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullLectureHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                 VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, null, VALID_TUTORIAL_HOUR,
                 VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Hour.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidTutorialHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, INVALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = Hour.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullTutorialHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                 VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, null,
                 VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Hour.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidLabHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         INVALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = Hour.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullLabHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                 VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                 null, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Hour.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidProjectHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, INVALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = Hour.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullProjectHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                 VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                 VALID_LAB_HOUR, null, VALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Hour.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidPreparationHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, VALID_PROJECT_HOUR, INVALID_PREPARATION_HOUR, VALID_TAGS);
         String expectedMessage = Hour.MESSAGE_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_nullreparationHour_throwsIllegalValueException() {
-        JsonAdaptedModuleTaken person = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
+        JsonAdaptedModuleTaken moduleTaken = new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                 VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                 VALID_LAB_HOUR, VALID_PROJECT_HOUR, null, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Hour.class.getSimpleName());
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, moduleTaken::toModelType);
     }
 
     @Test
     public void toModelType_invalidTags_throwsIllegalValueException() {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
-        JsonAdaptedModuleTaken person =
+        JsonAdaptedModuleTaken moduleTaken =
                 new JsonAdaptedModuleTaken(VALID_NAME, VALID_SEMESTER,
                         VALID_EXPECTED_MIN_GRADE, VALID_EXPECTED_MAX_GRADE, VALID_LECTURE_HOUR, VALID_TUTORIAL_HOUR,
                         VALID_LAB_HOUR, VALID_PROJECT_HOUR, VALID_PREPARATION_HOUR, invalidTags);
-        Assert.assertThrows(IllegalValueException.class, person::toModelType);
+        Assert.assertThrows(IllegalValueException.class, moduleTaken::toModelType);
     }
 
 }

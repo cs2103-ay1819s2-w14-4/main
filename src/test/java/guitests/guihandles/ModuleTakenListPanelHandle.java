@@ -11,24 +11,24 @@ import seedu.address.model.moduletaken.ModuleTaken;
 /**
  * Provides a handle for {@code ModuleTakenListPanel} containing the list of {@code ModuleTakenCard}.
  */
-public class PersonListPanelHandle extends NodeHandle<ListView<ModuleTaken>> {
-    public static final String PERSON_LIST_VIEW_ID = "#moduleTakenListView";
+public class ModuleTakenListPanelHandle extends NodeHandle<ListView<ModuleTaken>> {
+    public static final String MODULE_TAKEN_LIST_VIEW_ID = "#moduleTakenListView";
 
     private static final String CARD_PANE_ID = "#cardPane";
 
-    private Optional<ModuleTaken> lastRememberedSelectedPersonCard;
+    private Optional<ModuleTaken> lastRememberedSelectedModuleTakenCard;
 
-    public PersonListPanelHandle(ListView<ModuleTaken> personListPanelNode) {
+    public ModuleTakenListPanelHandle(ListView<ModuleTaken> personListPanelNode) {
         super(personListPanelNode);
     }
 
     /**
-     * Returns a handle to the selected {@code PersonCardHandle}.
+     * Returns a handle to the selected {@code ModuleTakenCardHandle}.
      * A maximum of 1 item can be selected at any time.
      * @throws AssertionError if no card is selected, or more than 1 card is selected.
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
-    public PersonCardHandle getHandleToSelectedCard() {
+    public ModuleTakenCardHandle getHandleToSelectedCard() {
         List<ModuleTaken> selectedModuleTakenList = getRootNode().getSelectionModel().getSelectedItems();
 
         if (selectedModuleTakenList.size() != 1) {
@@ -36,7 +36,7 @@ public class PersonListPanelHandle extends NodeHandle<ListView<ModuleTaken>> {
         }
 
         return getAllCardNodes().stream()
-                .map(PersonCardHandle::new)
+                .map(ModuleTakenCardHandle::new)
                 .filter(handle -> handle.equals(selectedModuleTakenList.get(0)))
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
@@ -101,15 +101,15 @@ public class PersonListPanelHandle extends NodeHandle<ListView<ModuleTaken>> {
      * Returns the moduleTaken card handle of a moduleTaken associated with the {@code index} in the list.
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
-    public PersonCardHandle getPersonCardHandle(int index) {
+    public ModuleTakenCardHandle getModuleTakenCardHandle(int index) {
         return getAllCardNodes().stream()
-                .map(PersonCardHandle::new)
-                .filter(handle -> handle.equals(getPerson(index)))
+                .map(ModuleTakenCardHandle::new)
+                .filter(handle -> handle.equals(getModuleTaken(index)))
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
     }
 
-    private ModuleTaken getPerson(int index) {
+    private ModuleTaken getModuleTaken(int index) {
         return getRootNode().getItems().get(index);
     }
 
@@ -125,28 +125,28 @@ public class PersonListPanelHandle extends NodeHandle<ListView<ModuleTaken>> {
     /**
      * Remembers the selected {@code ModuleTakenCard} in the list.
      */
-    public void rememberSelectedPersonCard() {
+    public void rememberSelectedModuleTakenCard() {
         List<ModuleTaken> selectedItems = getRootNode().getSelectionModel().getSelectedItems();
 
         if (selectedItems.size() == 0) {
-            lastRememberedSelectedPersonCard = Optional.empty();
+            lastRememberedSelectedModuleTakenCard = Optional.empty();
         } else {
-            lastRememberedSelectedPersonCard = Optional.of(selectedItems.get(0));
+            lastRememberedSelectedModuleTakenCard = Optional.of(selectedItems.get(0));
         }
     }
 
     /**
      * Returns true if the selected {@code ModuleTakenCard} is different from the value remembered by the most recent
-     * {@code rememberSelectedPersonCard()} call.
+     * {@code rememberSelectedModuleTakenCard()} call.
      */
-    public boolean isSelectedPersonCardChanged() {
+    public boolean isSelectedModuleTakenCardChanged() {
         List<ModuleTaken> selectedItems = getRootNode().getSelectionModel().getSelectedItems();
 
         if (selectedItems.size() == 0) {
-            return lastRememberedSelectedPersonCard.isPresent();
+            return lastRememberedSelectedModuleTakenCard.isPresent();
         } else {
-            return !lastRememberedSelectedPersonCard.isPresent()
-                    || !lastRememberedSelectedPersonCard.get().equals(selectedItems.get(0));
+            return !lastRememberedSelectedModuleTakenCard.isPresent()
+                    || !lastRememberedSelectedModuleTakenCard.get().equals(selectedItems.get(0));
         }
     }
 

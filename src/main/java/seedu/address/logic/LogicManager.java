@@ -91,7 +91,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<ModuleTaken> getFilteredPersonList() {
+    public ObservableList<ModuleTaken> getFilteredModuleTakenList() {
         return model.getFilteredModulesTakenList();
     }
 
@@ -116,12 +116,12 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyProperty<ClassForPrinting> selectedPersonProperty() {
+    public ReadOnlyProperty<ClassForPrinting> selectedClassForPrintingProperty() {
         return model.selectedClassForPrintingProperty();
     }
 
     @Override
-    public void setSelectedPerson(ClassForPrinting moduleTaken) {
+    public void setSelectedClassForPrinting(ClassForPrinting moduleTaken) {
         model.setSelectedClassForPrinting(moduleTaken);
     }
 

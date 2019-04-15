@@ -11,7 +11,7 @@ import org.junit.rules.ExpectedException;
 
 import seedu.address.testutil.WorkloadBuilder;
 
-public class WorkloadTest {
+public class GradeRangeTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 

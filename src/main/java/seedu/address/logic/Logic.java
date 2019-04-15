@@ -38,7 +38,7 @@ public interface Logic {
     ReadOnlyGradTrak getAddressBook();
 
     /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<ModuleTaken> getFilteredPersonList();
+    ObservableList<ModuleTaken> getFilteredModuleTakenList();
 
     /**
      * Returns an unmodifiable view of the list of commands entered by the user.
@@ -67,7 +67,7 @@ public interface Logic {
      *
      * @see seedu.address.model.Model#selectedClassForPrintingProperty()
      */
-    ReadOnlyProperty<ClassForPrinting> selectedPersonProperty();
+    ReadOnlyProperty<ClassForPrinting> selectedClassForPrintingProperty();
 
     /**
      * Sets the selected moduleTaken in the filtered moduleTaken list.
@@ -75,7 +75,7 @@ public interface Logic {
      * @see seedu.address.model.Model#setSelectedClassForPrinting(ClassForPrinting)
      */
 
-    void setSelectedPerson(ClassForPrinting moduleTaken);
+    void setSelectedClassForPrinting(ClassForPrinting moduleTaken);
 
     /**
      * Sets the selected person in the filtered person list.

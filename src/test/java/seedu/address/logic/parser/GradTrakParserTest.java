@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MODULE_TAKEN;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -32,7 +32,7 @@ import seedu.address.model.moduletaken.ModuleTaken;
 import seedu.address.testutil.EditModuleTakenDescriptorBuilder;
 import seedu.address.testutil.FindModuleDescriptorBuilder;
 import seedu.address.testutil.ModuleTakenBuilder;
-import seedu.address.testutil.PersonUtil;
+import seedu.address.testutil.ModuleTakenUtil;
 
 public class GradTrakParserTest {
     @Rule
@@ -43,7 +43,7 @@ public class GradTrakParserTest {
     @Test
     public void parseCommand_add() throws Exception {
         ModuleTaken moduleTaken = new ModuleTakenBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(moduleTaken));
+        AddCommand command = (AddCommand) parser.parseCommand(ModuleTakenUtil.getAddCommand(moduleTaken));
         assertEquals(new AddCommand(moduleTaken), command);
     }
 
@@ -56,8 +56,8 @@ public class GradTrakParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_MODULE_TAKEN.getOneBased());
+        assertEquals(new DeleteCommand(INDEX_FIRST_MODULE_TAKEN), command);
     }
 
     @Test
@@ -65,8 +65,9 @@ public class GradTrakParserTest {
         ModuleTaken moduleTaken = new ModuleTakenBuilder().build();
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder(moduleTaken).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+                + INDEX_FIRST_MODULE_TAKEN.getOneBased()
+                + " " + ModuleTakenUtil.getEditModuleTakenDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(INDEX_FIRST_MODULE_TAKEN, descriptor), command);
     }
 
     @Test
@@ -81,7 +82,7 @@ public class GradTrakParserTest {
         FindModuleDescriptor descriptor = new FindModuleDescriptorBuilder(moduleTaken).build();
 
         FindCommand command = (FindCommand) parser.parseCommand(FindCommand.COMMAND_WORD + " "
-                + PersonUtil.getFindModuleDescriptorDetails(descriptor));
+                + ModuleTakenUtil.getFindModuleDescriptorDetails(descriptor));
         assertEquals(new FindCommand(descriptor), command);
     }
 
@@ -113,8 +114,8 @@ public class GradTrakParserTest {
     @Test
     public void parseCommand_select() throws Exception {
         SelectCommand command = (SelectCommand) parser.parseCommand(
-                SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new SelectCommand(INDEX_FIRST_PERSON), command);
+                SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_MODULE_TAKEN.getOneBased());
+        assertEquals(new SelectCommand(INDEX_FIRST_MODULE_TAKEN), command);
     }
 
     @Test

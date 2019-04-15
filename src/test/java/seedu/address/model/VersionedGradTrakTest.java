@@ -19,11 +19,11 @@ import seedu.address.testutil.GradTrakBuilder;
 public class VersionedGradTrakTest {
 
     private final ReadOnlyGradTrak gradTrakWithCS2103T = new GradTrakBuilder()
-            .withPerson(DEFAULT_MODULE_CS2103T).build();
+            .withModuleTaken(DEFAULT_MODULE_CS2103T).build();
     private final ReadOnlyGradTrak gradTrakWtihCS1010 = new GradTrakBuilder()
-            .withPerson(DEFAULT_MODULE_CS1010).build();
+            .withModuleTaken(DEFAULT_MODULE_CS1010).build();
     private final ReadOnlyGradTrak gradTrakWithCS1010S = new GradTrakBuilder()
-            .withPerson(CS1010S).build();
+            .withModuleTaken(CS1010S).build();
     private final ReadOnlyGradTrak emptyGradTrak = new GradTrakBuilder().build();
 
     @Test

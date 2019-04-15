@@ -27,9 +27,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MODULE_TAKEN;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_MODULE_TAKEN;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_MODULE_TAKEN;
 
 import org.junit.Test;
 
@@ -112,7 +112,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = INDEX_SECOND_PERSON;
+        Index targetIndex = INDEX_SECOND_MODULE_TAKEN;
         String userInput = targetIndex.getOneBased() + SEMESTER_DESC_CS1010 + TAG_DESC_HUSBAND
                 + EXPECTED_MIN_GRADE_DESC_CS2103T + EXPECTED_MAX_GRADE_DESC_CS2103T
                 + NAME_DESC_CS2103T + TAG_DESC_FRIEND;
@@ -130,7 +130,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_MODULE_TAKEN;
         String userInput = targetIndex.getOneBased() + SEMESTER_DESC_CS1010 + EXPECTED_MIN_GRADE_DESC_CS2103T;
 
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder()
@@ -144,7 +144,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD_MODULE_TAKEN;
         String userInput = targetIndex.getOneBased() + NAME_DESC_CS2103T;
         EditCommand.EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder()
                 .withName(VALID_MODULE_INFO_CODE_CS2103T).build();
@@ -182,7 +182,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_MODULE_TAKEN;
         String userInput = targetIndex.getOneBased() + SEMESTER_DESC_CS2103T
                 + EXPECTED_MAX_GRADE_DESC_CS2103T + EXPECTED_MIN_GRADE_DESC_CS2103T
                 + TAG_DESC_FRIEND + SEMESTER_DESC_CS2103T + EXPECTED_MAX_GRADE_DESC_CS2103T
@@ -203,7 +203,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_MODULE_TAKEN;
         String userInput = targetIndex.getOneBased() + INVALID_SEMESTER_DESC + SEMESTER_DESC_CS1010;
         EditCommand.EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder()
                 .withSemester(VALID_SEMESTER_CS1010).build();
@@ -224,7 +224,7 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_resetTags_success() {
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD_MODULE_TAKEN;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder().withTags().build();

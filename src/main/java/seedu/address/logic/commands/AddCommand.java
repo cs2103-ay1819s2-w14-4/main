@@ -23,9 +23,9 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a moduleTaken to GradTrak. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a module to plan. "
             + "Parameters: "
-            + PREFIX_MODULE_INFO_CODE + "ModuleInfoCode "
+            + PREFIX_MODULE_INFO_CODE + "MODULE INFO CODE "
             + PREFIX_SEMESTER + "SEMESTER "
             + PREFIX_EXPECTED_MIN_GRADE + "EXPECTED MIN GRADE "
             + PREFIX_EXPECTED_MAX_GRADE + "EXPECTED MAX GRADE "
@@ -38,8 +38,8 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "Software "
             + PREFIX_TAG + "OOP";
 
-    public static final String MESSAGE_SUCCESS = "New moduleTaken added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This moduleTaken already exists in the address book";
+    public static final String MESSAGE_SUCCESS = "New module added to plan: %1$s";
+    public static final String MESSAGE_DUPLICATE_MODULE_TAKEN = "This module already added to plan";
 
     private final ModuleTaken toAdd;
 
@@ -56,7 +56,7 @@ public class AddCommand extends Command {
         requireNonNull(model);
 
         if (model.hasModuleTaken(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_MODULE_TAKEN);
         }
 
         if (toAdd.getExpectedMinGrade().getGradePoint()

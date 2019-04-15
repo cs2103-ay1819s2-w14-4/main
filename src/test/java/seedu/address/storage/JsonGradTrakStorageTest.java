@@ -61,13 +61,13 @@ public class JsonGradTrakStorageTest {
     }
 
     @Test
-    public void readAddressBook_invalidPersonAddressBook_throwDataConversionException() throws Exception {
+    public void readAddressBook_invalidModuleTakenAddressBook_throwDataConversionException() throws Exception {
         thrown.expect(DataConversionException.class);
         readGradTrak("ivalidModuleTaken.json");
     }
 
     @Test
-    public void readAddressBook_invalidAndValidPersonAddressBook_throwDataConversionException() throws Exception {
+    public void readAddressBook_invalidAndValidModuleTakenAddressBook_throwDataConversionException() throws Exception {
         thrown.expect(DataConversionException.class);
         readGradTrak("invalidAndValidModulesTaken.json");
     }

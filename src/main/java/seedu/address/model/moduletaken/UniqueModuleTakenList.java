@@ -55,7 +55,7 @@ public class UniqueModuleTakenList implements Iterable<ModuleTaken> {
      * The moduleTaken identity of {@code editedModuleTaken} must not be the same as
      * another existing moduleTaken in the list.
      */
-    public void setPerson(ModuleTaken target, ModuleTaken editedModuleTaken) {
+    public void setModuleTaken(ModuleTaken target, ModuleTaken editedModuleTaken) {
         requireAllNonNull(target, editedModuleTaken);
 
         int index = internalList.indexOf(target);
@@ -81,7 +81,7 @@ public class UniqueModuleTakenList implements Iterable<ModuleTaken> {
         }
     }
 
-    public void setPersons(UniqueModuleTakenList replacement) {
+    public void setModulesTaken(UniqueModuleTakenList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
@@ -90,9 +90,9 @@ public class UniqueModuleTakenList implements Iterable<ModuleTaken> {
      * Replaces the contents of this list with {@code moduleTakens}.
      * {@code moduleTakens} must not contain duplicate moduleTakens.
      */
-    public void setPersons(List<ModuleTaken> moduleTakens) {
+    public void setModulesTaken(List<ModuleTaken> moduleTakens) {
         requireAllNonNull(moduleTakens);
-        if (!personsAreUnique(moduleTakens)) {
+        if (!modulesTakenAreUnique(moduleTakens)) {
             throw new DuplicateModuleTakenException();
         }
 
@@ -126,7 +126,7 @@ public class UniqueModuleTakenList implements Iterable<ModuleTaken> {
     /**
      * Returns true if {@code moduleTakens} contains only unique moduleTakens.
      */
-    private boolean personsAreUnique(List<ModuleTaken> moduleTakens) {
+    private boolean modulesTakenAreUnique(List<ModuleTaken> moduleTakens) {
         for (int i = 0; i < moduleTakens.size() - 1; i++) {
             for (int j = i + 1; j < moduleTakens.size(); j++) {
                 if (moduleTakens.get(i).isSameModuleTaken(moduleTakens.get(j))) {

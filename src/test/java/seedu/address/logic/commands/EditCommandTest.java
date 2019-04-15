@@ -10,9 +10,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_SEMESTER_CS1010
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.logic.commands.CommandTestUtil.showModuleTakenAtIndex;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MODULE_TAKEN;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_MODULE_TAKEN;
 import static seedu.address.testutil.TypicalModuleTaken.getTypicalGradTrak;
 
 import org.junit.Test;
@@ -45,9 +45,9 @@ public class EditCommandTest {
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         ModuleTaken editedModuleTaken = new ModuleTakenBuilder().build();
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder(editedModuleTaken).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_MODULE_TAKEN, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedModuleTaken);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MODULE_TAKEN_SUCCESS, editedModuleTaken);
 
         Model expectedModel = new ModelManager(new GradTrak(model.getGradTrak()), new UserPrefs(),
                                                new ModuleInfoList(), new CourseList(), new UserInfo());
@@ -59,20 +59,20 @@ public class EditCommandTest {
 
     @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
-        Index indexLastPerson = Index.fromOneBased(model.getFilteredModulesTakenList().size());
-        ModuleTaken lastModuleTaken = model.getFilteredModulesTakenList().get(indexLastPerson.getZeroBased());
+        Index indexLastModuleTaken = Index.fromOneBased(model.getFilteredModulesTakenList().size());
+        ModuleTaken lastModuleTaken = model.getFilteredModulesTakenList().get(indexLastModuleTaken.getZeroBased());
 
-        ModuleTakenBuilder personInList = new ModuleTakenBuilder(lastModuleTaken);
-        ModuleTaken editedModuleTaken = personInList.withModuleInfoCode(VALID_MODULE_INFO_CODE_CS1010)
+        ModuleTakenBuilder moduleTakenInList = new ModuleTakenBuilder(lastModuleTaken);
+        ModuleTaken editedModuleTaken = moduleTakenInList.withModuleInfoCode(VALID_MODULE_INFO_CODE_CS1010)
                 .withSemester(VALID_SEMESTER_CS1010)
                 .withTags(VALID_TAG_HUSBAND).build();
 
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder()
                 .withName(VALID_MODULE_INFO_CODE_CS1010)
                 .withSemester(VALID_SEMESTER_CS1010).withTags(VALID_TAG_HUSBAND).build();
-        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+        EditCommand editCommand = new EditCommand(indexLastModuleTaken, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedModuleTaken);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MODULE_TAKEN_SUCCESS, editedModuleTaken);
 
         Model expectedModel = new ModelManager(new GradTrak(model.getGradTrak()), new UserPrefs(),
                                                new ModuleInfoList(), new CourseList(), new UserInfo());
@@ -84,10 +84,11 @@ public class EditCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, new EditModuleTakenDescriptor());
-        ModuleTaken editedModuleTaken = model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_MODULE_TAKEN, new EditModuleTakenDescriptor());
+        ModuleTaken editedModuleTaken = model.getFilteredModulesTakenList().get(
+                INDEX_FIRST_MODULE_TAKEN.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedModuleTaken);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MODULE_TAKEN_SUCCESS, editedModuleTaken);
 
         Model expectedModel = new ModelManager(new GradTrak(model.getGradTrak()), new UserPrefs(),
                                                new ModuleInfoList(), new CourseList(), new UserInfo());
@@ -98,16 +99,16 @@ public class EditCommandTest {
 
     @Test
     public void execute_filteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+        showModuleTakenAtIndex(model, INDEX_FIRST_MODULE_TAKEN);
 
         ModuleTaken moduleTakenInFilteredList = model.getFilteredModulesTakenList()
-                .get(INDEX_FIRST_PERSON.getZeroBased());
+                .get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         ModuleTaken editedModuleTaken = new ModuleTakenBuilder(moduleTakenInFilteredList)
                 .withModuleInfoCode(VALID_MODULE_INFO_CODE_CS1010).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_MODULE_TAKEN,
                 new EditModuleTakenDescriptorBuilder().withName(VALID_MODULE_INFO_CODE_CS1010).build());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedModuleTaken);
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_MODULE_TAKEN_SUCCESS, editedModuleTaken);
 
         Model expectedModel = new ModelManager(new GradTrak(model.getGradTrak()), new UserPrefs(),
                                                new ModuleInfoList(), new CourseList(), new UserInfo());
@@ -118,29 +119,29 @@ public class EditCommandTest {
     }
 
     @Test
-    public void execute_duplicatePersonUnfilteredList_failure() {
-        ModuleTaken firstModuleTaken = model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased());
+    public void execute_duplicateModuleTakenUnfilteredList_failure() {
+        ModuleTaken firstModuleTaken = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder(firstModuleTaken).build();
-        EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_SECOND_MODULE_TAKEN, descriptor);
 
-        assertCommandFailure(editCommand, model, commandHistory, EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editCommand, model, commandHistory, EditCommand.MESSAGE_DUPLICATE_MODULE_TAKEN);
     }
 
     @Test
-    public void execute_duplicatePersonFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+    public void execute_duplicateModuleTakenFilteredList_failure() {
+        showModuleTakenAtIndex(model, INDEX_FIRST_MODULE_TAKEN);
 
         // edit moduleTaken in filtered list into a duplicate in address book
         ModuleTaken moduleTakenInList = model.getGradTrak().getModulesTakenList()
-                .get(INDEX_SECOND_PERSON.getZeroBased());
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
+                .get(INDEX_SECOND_MODULE_TAKEN.getZeroBased());
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_MODULE_TAKEN,
                 new EditModuleTakenDescriptorBuilder(moduleTakenInList).build());
 
-        assertCommandFailure(editCommand, model, commandHistory, EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editCommand, model, commandHistory, EditCommand.MESSAGE_DUPLICATE_MODULE_TAKEN);
     }
 
     @Test
-    public void execute_invalidPersonIndexUnfilteredList_failure() {
+    public void execute_invalidModuleTakenIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredModulesTakenList().size() + 1);
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder()
                 .withName(VALID_MODULE_INFO_CODE_CS1010).build();
@@ -154,9 +155,9 @@ public class EditCommandTest {
      * but smaller than size of address book
      */
     @Test
-    public void execute_invalidPersonIndexFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
+    public void execute_invalidModuleTakenIndexFilteredList_failure() {
+        showModuleTakenAtIndex(model, INDEX_FIRST_MODULE_TAKEN);
+        Index outOfBoundIndex = INDEX_SECOND_MODULE_TAKEN;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getGradTrak().getModulesTakenList().size());
 
@@ -169,9 +170,10 @@ public class EditCommandTest {
     @Test
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         ModuleTaken editedModuleTaken = new ModuleTakenBuilder().build();
-        ModuleTaken moduleTakenToEdit = model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased());
+        ModuleTaken moduleTakenToEdit = model.getFilteredModulesTakenList().get(
+                INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder(editedModuleTaken).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_MODULE_TAKEN, descriptor);
         Model expectedModel = new ModelManager(new GradTrak(model.getGradTrak()), new UserPrefs(),
                                                new ModuleInfoList(), new CourseList(), new UserInfo());
         expectedModel.setModuleTaken(moduleTakenToEdit, editedModuleTaken);
@@ -180,7 +182,7 @@ public class EditCommandTest {
         // edit -> first moduleTaken edited
         editCommand.execute(model, commandHistory);
 
-        // undo -> reverts addressbook back to previous state and filtered moduleTaken list to show all persons
+        // undo -> reverts addressbook back to previous state and filtered moduleTaken list to show all modulesTaken
         expectedModel.undoGradTrak();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
@@ -212,15 +214,16 @@ public class EditCommandTest {
      * 4. Redo the edit. This ensures {@code RedoCommand} edits the moduleTaken object regardless of indexing.
      */
     @Test
-    public void executeUndoRedo_validIndexFilteredList_samePersonEdited() throws Exception {
+    public void executeUndoRedo_validIndexFilteredList_sameModuleTakenEdited() throws Exception {
         ModuleTaken editedModuleTaken = new ModuleTakenBuilder().build();
         EditModuleTakenDescriptor descriptor = new EditModuleTakenDescriptorBuilder(editedModuleTaken).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_MODULE_TAKEN, descriptor);
         Model expectedModel = new ModelManager(new GradTrak(model.getGradTrak()), new UserPrefs(),
                                                new ModuleInfoList(), new CourseList(), new UserInfo());
 
-        showPersonAtIndex(model, INDEX_SECOND_PERSON);
-        ModuleTaken moduleTakenToEdit = model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased());
+        showModuleTakenAtIndex(model, INDEX_SECOND_MODULE_TAKEN);
+        ModuleTaken moduleTakenToEdit = model.getFilteredModulesTakenList().get(
+                INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         expectedModel.setModuleTaken(moduleTakenToEdit, editedModuleTaken);
         expectedModel.commitGradTrak();
 
@@ -228,11 +231,12 @@ public class EditCommandTest {
         // filtered moduleTaken list
         editCommand.execute(model, commandHistory);
 
-        // undo -> reverts addressbook back to previous state and filtered moduleTaken list to show all persons
+        // undo -> reverts addressbook back to previous state and filtered moduleTaken list to show all modulesTaken
         expectedModel.undoGradTrak();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
-        assertNotEquals(model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased()), moduleTakenToEdit);
+        assertNotEquals(model.getFilteredModulesTakenList().get(
+                INDEX_FIRST_MODULE_TAKEN.getZeroBased()), moduleTakenToEdit);
         // redo -> edits same second moduleTaken in unfiltered moduleTaken list
         expectedModel.redoGradTrak();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
@@ -240,11 +244,11 @@ public class EditCommandTest {
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_CS2103T);
+        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_MODULE_TAKEN, DESC_CS2103T);
 
         // same values -> returns true
         EditModuleTakenDescriptor copyDescriptor = new EditModuleTakenDescriptor(DESC_CS2103T);
-        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_PERSON, copyDescriptor);
+        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_MODULE_TAKEN, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -257,10 +261,10 @@ public class EditCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_PERSON, DESC_CS2103T)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_MODULE_TAKEN, DESC_CS2103T)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_PERSON, DESC_CS1010)));
+        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_MODULE_TAKEN, DESC_CS1010)));
     }
 
 }

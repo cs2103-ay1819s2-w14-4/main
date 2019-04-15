@@ -21,19 +21,19 @@ import seedu.address.model.tag.Tag;
 /**
  * A utility class for ModuleTaken.
  */
-public class PersonUtil {
+public class ModuleTakenUtil {
 
     /**
      * Returns an add command string for adding the {@code moduleTaken}.
      */
     public static String getAddCommand(ModuleTaken moduleTaken) {
-        return AddCommand.COMMAND_WORD + " " + getPersonDetails(moduleTaken);
+        return AddCommand.COMMAND_WORD + " " + getModuleTakenDetails(moduleTaken);
     }
 
     /**
      * Returns the part of command string for the given {@code moduleTaken}'s details.
      */
-    public static String getPersonDetails(ModuleTaken moduleTaken) {
+    public static String getModuleTakenDetails(ModuleTaken moduleTaken) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_MODULE_INFO_CODE + moduleTaken.getModuleInfoCode().toString() + " ");
         sb.append(PREFIX_SEMESTER + moduleTaken.getSemester().toString() + " ");
@@ -48,7 +48,7 @@ public class PersonUtil {
     /**
      * Returns the part of command string for the given {@code EditModuleTakenDescriptor}'s details.
      */
-    public static String getEditPersonDescriptorDetails(EditModuleTakenDescriptor descriptor) {
+    public static String getEditModuleTakenDescriptorDetails(EditModuleTakenDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getModuleInfoCode().ifPresent(infoCode ->
                 sb.append(PREFIX_MODULE_INFO_CODE).append(infoCode.toString()).append(" "));

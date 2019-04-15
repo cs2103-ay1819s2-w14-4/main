@@ -30,8 +30,8 @@ public class PanelHandler {
         panels.put(DisplayreqCommand.COMMAND_WORD,
                 new DisplayRequirementStatusList(logic.getRequirementStatusList()).getRoot());
         panels.put(RecCommand.COMMAND_WORD, new DisplayRecModuleList(logic.getRecModuleListSorted()).getRoot());
-        panels.put(SelectCommand.COMMAND_WORD, new BrowserPanel(logic.selectedPersonProperty()).getRoot());
-        panels.put(CheckLimitCommand.COMMAND_WORD, new BrowserPanel(logic.selectedPersonProperty()).getRoot());
+        panels.put(SelectCommand.COMMAND_WORD, new BrowserPanel(logic.selectedClassForPrintingProperty()).getRoot());
+        panels.put(CheckLimitCommand.COMMAND_WORD, new BrowserPanel(logic.selectedClassForPrintingProperty()).getRoot());
     }
 
     public Optional<Node> getCommandPanel(String command) {

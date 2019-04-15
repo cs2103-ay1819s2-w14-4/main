@@ -26,7 +26,7 @@ import guitests.guihandles.BrowserPanelHandle;
 import guitests.guihandles.CommandBoxHandle;
 import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.MainWindowHandle;
-import guitests.guihandles.PersonListPanelHandle;
+import guitests.guihandles.ModuleTakenListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.StatusBarFooterHandle;
 import seedu.address.TestApp;
@@ -99,8 +99,8 @@ public abstract class GradTrakSystemTest {
         return mainWindowHandle.getCommandBox();
     }
 
-    public PersonListPanelHandle getPersonListPanel() {
-        return mainWindowHandle.getPersonListPanel();
+    public ModuleTakenListPanelHandle getModuleTakenListPanel() {
+        return mainWindowHandle.getModuleTakenListPanel();
     }
 
     public MainMenuHandle getMainMenu() {
@@ -137,7 +137,7 @@ public abstract class GradTrakSystemTest {
     /**
      * Displays all persons in the address book.
      */
-    protected void showAllPersons() {
+    protected void showAllModulesTaken() {
         executeCommand(ListCommand.COMMAND_WORD);
         assertEquals(getModel().getGradTrak().getModulesTakenList().size(),
                 getModel().getFilteredModulesTakenList().size());
@@ -146,7 +146,7 @@ public abstract class GradTrakSystemTest {
     /**
      * Displays all persons with any parts of their names matching {@code keyword} (case-insensitive).
      */
-    protected void showPersonsWithName(String keyword) {
+    protected void showModulesTakenWithName(String keyword) {
         executeCommand(FindCommand.COMMAND_WORD + " " + PREFIX_MODULE_INFO_CODE + keyword);
         assertTrue(getModel().getFilteredModulesTakenList().size()
                 < getModel().getGradTrak().getModulesTakenList().size());
@@ -155,15 +155,15 @@ public abstract class GradTrakSystemTest {
     /**
      * Selects the moduleTaken at {@code index} of the displayed list.
      */
-    protected void selectPerson(Index index) {
+    protected void selectModuleTaken(Index index) {
         executeCommand(SelectCommand.COMMAND_WORD + " " + index.getOneBased());
-        assertEquals(index.getZeroBased(), getPersonListPanel().getSelectedCardIndex());
+        assertEquals(index.getZeroBased(), getModuleTakenListPanel().getSelectedCardIndex());
     }
 
     /**
-     * Deletes all persons in the address book.
+     * Deletes all modules taken in GradTrak.
      */
-    protected void deleteAllPersons() {
+    protected void deleteAllModulesTaken() {
         executeCommand(ClearCommand.COMMAND_WORD);
         assertEquals(0, getModel().getGradTrak().getModulesTakenList().size());
     }
@@ -178,11 +178,11 @@ public abstract class GradTrakSystemTest {
         assertEquals(expectedCommandInput, getCommandBox().getInput());
         assertEquals(expectedResultMessage, getResultDisplay().getText());
         assertEquals(new GradTrak(expectedModel.getGradTrak()), testApp.readStorageAddressBook());
-        assertListMatching(getPersonListPanel(), expectedModel.getFilteredModulesTakenList());
+        assertListMatching(getModuleTakenListPanel(), expectedModel.getFilteredModulesTakenList());
     }
 
     /**
-     * Calls {@code BrowserPanelHandle}, {@code PersonListPanelHandle} and {@code StatusBarFooterHandle} to remember
+     * Calls {@code BrowserPanelHandle}, {@code ModuleTakenListPanelHandle} and {@code StatusBarFooterHandle} to remember
      * their current state.
      */
     private void rememberStates() {
@@ -190,7 +190,7 @@ public abstract class GradTrakSystemTest {
         getBrowserPanel().rememberUrl();
         statusBarFooterHandle.rememberSaveLocation();
         statusBarFooterHandle.rememberSyncStatus();
-        getPersonListPanel().rememberSelectedPersonCard();
+        getModuleTakenListPanel().rememberSelectedModuleTakenCard();
     }
 
     /**
@@ -200,7 +200,7 @@ public abstract class GradTrakSystemTest {
      */
     protected void assertSelectedCardDeselected() {
         assertEquals(BrowserPanel.DEFAULT_PAGE, getBrowserPanel().getLoadedUrl());
-        assertFalse(getPersonListPanel().isAnyCardSelected());
+        assertFalse(getModuleTakenListPanel().isAnyCardSelected());
     }
 
     /**
@@ -208,11 +208,11 @@ public abstract class GradTrakSystemTest {
      * moduleTaken list panel at {@code expectedSelectedCardIndex},
      * and only the card at {@code expectedSelectedCardIndex} is selected.
      * @see BrowserPanelHandle#isUrlChanged()
-     * @see PersonListPanelHandle#isSelectedPersonCardChanged()
+     * @see ModuleTakenListPanelHandle#isSelectedModuleTakenCardChanged()
      */
     protected void assertSelectedCardChanged(Index expectedSelectedCardIndex) {
-        getPersonListPanel().navigateToCard(getPersonListPanel().getSelectedCardIndex());
-        String selectedCardName = getPersonListPanel().getHandleToSelectedCard().getModuleInfoCode();
+        getModuleTakenListPanel().navigateToCard(getModuleTakenListPanel().getSelectedCardIndex());
+        String selectedCardName = getModuleTakenListPanel().getHandleToSelectedCard().getModuleInfoCode();
         URL expectedUrl;
         try {
             expectedUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + selectedCardName.replaceAll(" ", "%20"));
@@ -221,17 +221,17 @@ public abstract class GradTrakSystemTest {
         }
         assertEquals(expectedUrl, getBrowserPanel().getLoadedUrl());
 
-        assertEquals(expectedSelectedCardIndex.getZeroBased(), getPersonListPanel().getSelectedCardIndex());
+        assertEquals(expectedSelectedCardIndex.getZeroBased(), getModuleTakenListPanel().getSelectedCardIndex());
     }
 
     /**
      * Asserts that the browser's url and the selected card in the moduleTaken list panel remain unchanged.
      * @see BrowserPanelHandle#isUrlChanged()
-     * @see PersonListPanelHandle#isSelectedPersonCardChanged()
+     * @see ModuleTakenListPanelHandle#isSelectedModuleTakenCardChanged()
      */
     protected void assertSelectedCardUnchanged() {
         assertFalse(getBrowserPanel().isUrlChanged());
-        assertFalse(getPersonListPanel().isSelectedPersonCardChanged());
+        assertFalse(getModuleTakenListPanel().isSelectedModuleTakenCardChanged());
     }
 
     /**
@@ -275,7 +275,7 @@ public abstract class GradTrakSystemTest {
     private void assertApplicationStartingStateIsCorrect() {
         assertEquals("", getCommandBox().getInput());
         assertEquals("", getResultDisplay().getText());
-        assertListMatching(getPersonListPanel(), getModel().getFilteredModulesTakenList());
+        assertListMatching(getModuleTakenListPanel(), getModel().getFilteredModulesTakenList());
         assertEquals(BrowserPanel.DEFAULT_PAGE, getBrowserPanel().getLoadedUrl());
         assertEquals(Paths.get(".").resolve(testApp.getStorageSaveLocation()).toString(),
                 getStatusBarFooter().getSaveLocation());

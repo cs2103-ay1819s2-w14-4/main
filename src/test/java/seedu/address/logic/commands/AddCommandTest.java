@@ -48,31 +48,31 @@ public class AddCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructor_nullModuleTaken_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         new AddCommand(null);
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+    public void execute_moduleTakenAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingModuleTakenAdded modelStub = new ModelStubAcceptingModuleTakenAdded();
         ModuleTaken validModuleTaken = new ModuleTakenBuilder().build();
 
         CommandResult commandResult = new AddCommand(validModuleTaken).execute(modelStub, commandHistory);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validModuleTaken), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validModuleTaken), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validModuleTaken), modelStub.modulesTakenAdded);
         assertEquals(EMPTY_COMMAND_HISTORY, commandHistory);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() throws Exception {
+    public void execute_duplicateModuleTaken_throwsCommandException() throws Exception {
         ModuleTaken validModuleTaken = new ModuleTakenBuilder().build();
         AddCommand addCommand = new AddCommand(validModuleTaken);
-        ModelStub modelStub = new ModelStubWithPerson(validModuleTaken);
+        ModelStub modelStub = new ModelStubWithModuleTaken(validModuleTaken);
 
         thrown.expect(CommandException.class);
-        thrown.expectMessage(AddCommand.MESSAGE_DUPLICATE_PERSON);
+        thrown.expectMessage(AddCommand.MESSAGE_DUPLICATE_MODULE_TAKEN);
         addCommand.execute(modelStub, commandHistory);
     }
 
@@ -319,10 +319,10 @@ public class AddCommandTest {
     /**
      * A Model stub that contains a single moduleTaken.
      */
-    private class ModelStubWithPerson extends ModelStub {
+    private class ModelStubWithModuleTaken extends ModelStub {
         private final ModuleTaken moduleTaken;
 
-        ModelStubWithPerson(ModuleTaken moduleTaken) {
+        ModelStubWithModuleTaken(ModuleTaken moduleTaken) {
             requireNonNull(moduleTaken);
             this.moduleTaken = moduleTaken;
         }
@@ -337,19 +337,19 @@ public class AddCommandTest {
     /**
      * A Model stub that always accept the moduleTaken being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<ModuleTaken> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingModuleTakenAdded extends ModelStub {
+        final ArrayList<ModuleTaken> modulesTakenAdded = new ArrayList<>();
 
         @Override
         public boolean hasModuleTaken(ModuleTaken moduleTaken) {
             requireNonNull(moduleTaken);
-            return personsAdded.stream().anyMatch(moduleTaken::isSameModuleTaken);
+            return modulesTakenAdded.stream().anyMatch(moduleTaken::isSameModuleTaken);
         }
 
         @Override
         public void addModuleTaken(ModuleTaken moduleTaken) {
             requireNonNull(moduleTaken);
-            personsAdded.add(moduleTaken);
+            modulesTakenAdded.add(moduleTaken);
         }
 
         @Override

@@ -29,8 +29,8 @@ public class RecModulePredicateTest {
 
     @Test
     public void equals() {
-        GradTrak gt1 = new GradTrakBuilder().withPerson(CS2103T).build();
-        GradTrak gt2 = new GradTrakBuilder().withPerson(CS2103T).withPerson(CS2101).build();
+        GradTrak gt1 = new GradTrakBuilder().withModuleTaken(CS2103T).build();
+        GradTrak gt2 = new GradTrakBuilder().withModuleTaken(CS2103T).withModuleTaken(CS2101).build();
 
         /* same course and gradtrak -> returns true */
         RecModulePredicate rmp1 = new RecModulePredicate(algoCourse, gt1);
@@ -53,7 +53,7 @@ public class RecModulePredicateTest {
     @Test
     public void test_ineligibleModule_returnsFalse() {
         /* module without prerequisites but already in GradTrak -> returns false */
-        GradTrak gt = new GradTrakBuilder().withPerson(GER1000).build();
+        GradTrak gt = new GradTrakBuilder().withModuleTaken(GER1000).build();
         RecModulePredicate rmp = new RecModulePredicate(algoCourse, gt);
         RecModule rm = rmb.create("GER1000");
         assertFalse(rmp.test(rm));
@@ -112,15 +112,15 @@ public class RecModulePredicateTest {
     @Test
     public void test_geModule() {
         GradTrak gehGt = new GradTrakBuilder()
-                .withPerson(new ModuleTakenBuilder().withModuleInfoCode("GEH1001").build()).build();
+                .withModuleTaken(new ModuleTakenBuilder().withModuleInfoCode("GEH1001").build()).build();
         GradTrak geqGt = new GradTrakBuilder()
-                .withPerson(new ModuleTakenBuilder().withModuleInfoCode("GEQ1000").build()).build();
+                .withModuleTaken(new ModuleTakenBuilder().withModuleInfoCode("GEQ1000").build()).build();
         GradTrak gerGt = new GradTrakBuilder()
-                .withPerson(new ModuleTakenBuilder().withModuleInfoCode("GER1000").build()).build();
+                .withModuleTaken(new ModuleTakenBuilder().withModuleInfoCode("GER1000").build()).build();
         GradTrak gesGt = new GradTrakBuilder()
-                .withPerson(new ModuleTakenBuilder().withModuleInfoCode("GES1002").build()).build();
+                .withModuleTaken(new ModuleTakenBuilder().withModuleInfoCode("GES1002").build()).build();
         GradTrak getGt = new GradTrakBuilder()
-                .withPerson(new ModuleTakenBuilder().withModuleInfoCode("GET1001").build()).build();
+                .withModuleTaken(new ModuleTakenBuilder().withModuleInfoCode("GET1001").build()).build();
         RecModulePredicate gehRmp = new RecModulePredicate(algoCourse, gehGt);
         RecModulePredicate geqRmp = new RecModulePredicate(algoCourse, geqGt);
         RecModulePredicate gerRmp = new RecModulePredicate(algoCourse, gerGt);

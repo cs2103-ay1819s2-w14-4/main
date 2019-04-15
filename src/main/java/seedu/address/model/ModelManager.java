@@ -201,7 +201,7 @@ public class ModelManager implements Model {
     @Override
     public void addModuleTaken(ModuleTaken moduleTaken) {
         versionedGradTrak.addModuleTaken(moduleTaken);
-        updateFilteredModulesTakenList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredModulesTakenList(PREDICATE_SHOW_ALL_MODULES_TAKEN);
     }
 
     @Override

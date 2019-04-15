@@ -23,7 +23,7 @@ import seedu.address.model.recmodule.RecModule;
  */
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<ModuleTaken> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    Predicate<ModuleTaken> PREDICATE_SHOW_ALL_MODULES_TAKEN = unused -> true;
 
     /**
      * Replaces course data with the data in {@code Model}.

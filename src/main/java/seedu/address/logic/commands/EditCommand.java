@@ -11,7 +11,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PROJECT_HOUR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SEMESTER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TUTORIAL_HOUR;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES_TAKEN;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -60,23 +60,23 @@ public class EditCommand extends Command {
             + PREFIX_SEMESTER + "Y3S1 "
             + PREFIX_EXPECTED_MIN_GRADE + "B";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited ModuleTaken: %1$s";
+    public static final String MESSAGE_EDIT_MODULE_TAKEN_SUCCESS = "Edited ModuleTaken: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This moduleTaken already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_MODULE_TAKEN = "This moduleTaken already exists in the address book.";
 
     private final Index index;
-    private final EditModuleTakenDescriptor editPersonDescriptor;
+    private final EditModuleTakenDescriptor editModuleTakenDescriptor;
 
     /**
      * @param index of the moduleTaken in the filtered moduleTaken list to edit
-     * @param editPersonDescriptor details to edit the moduleTaken with
+     * @param editModuleTakenDescriptor details to edit the moduleTaken with
      */
-    public EditCommand(Index index, EditModuleTakenDescriptor editPersonDescriptor) {
+    public EditCommand(Index index, EditModuleTakenDescriptor editModuleTakenDescriptor) {
         requireNonNull(index);
-        requireNonNull(editPersonDescriptor);
+        requireNonNull(editModuleTakenDescriptor);
 
         this.index = index;
-        this.editPersonDescriptor = new EditModuleTakenDescriptor(editPersonDescriptor);
+        this.editModuleTakenDescriptor = new EditModuleTakenDescriptor(editModuleTakenDescriptor);
     }
 
     @Override
@@ -89,15 +89,15 @@ public class EditCommand extends Command {
         }
 
         ModuleTaken moduleTakenToEdit = lastShownList.get(index.getZeroBased());
-        ModuleTaken editedModuleTaken = createEditedPerson(moduleTakenToEdit, editPersonDescriptor);
+        ModuleTaken editedModuleTaken = createEditedModuleTaken(moduleTakenToEdit, editModuleTakenDescriptor);
 
         if (editedModuleTaken.getExpectedMinGrade().getGradePoint()
                 > editedModuleTaken.getExpectedMaxGrade().getGradePoint()) {
             throw new CommandException(Messages.MESSAGE_GRADES_OUT_OF_ORDER);
         }
 
-        if ((editPersonDescriptor.getExpectedMinGrade().isPresent()
-                || editPersonDescriptor.getExpectedMaxGrade().isPresent())
+        if ((editModuleTakenDescriptor.getExpectedMinGrade().isPresent()
+                || editModuleTakenDescriptor.getExpectedMaxGrade().isPresent())
                 && editedModuleTaken.getSemester().getIndex() < model.getCurrentSemester().getIndex()) {
             throw new CommandException(Messages.MESSAGE_GRADES_NOT_FINALIZED_BEFORE_SEMESTER);
         }
@@ -107,7 +107,7 @@ public class EditCommand extends Command {
         }
 
         if (!moduleTakenToEdit.isSameModuleTaken(editedModuleTaken) && model.hasModuleTaken(editedModuleTaken)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_MODULE_TAKEN);
         }
 
         ModuleInfo moduleInfo = model.getModuleInfoList()
@@ -123,17 +123,17 @@ public class EditCommand extends Command {
         */
 
         model.setModuleTaken(moduleTakenToEdit, editedModuleTaken);
-        model.updateFilteredModulesTakenList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredModulesTakenList(PREDICATE_SHOW_ALL_MODULES_TAKEN);
         model.commitGradTrak();
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedModuleTaken));
+        return new CommandResult(String.format(MESSAGE_EDIT_MODULE_TAKEN_SUCCESS, editedModuleTaken));
     }
 
     /**
      * Creates and returns a {@code ModuleTaken} with the details of {@code moduleTakenToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * edited with {@code editModuleTakenDescriptor}.
      */
-    private static ModuleTaken createEditedPerson(ModuleTaken moduleTakenToEdit,
-                                                  EditModuleTakenDescriptor editPersonDescriptor) {
+    private static ModuleTaken createEditedModuleTaken(ModuleTaken moduleTakenToEdit,
+                                                       EditModuleTakenDescriptor editPersonDescriptor) {
         assert moduleTakenToEdit != null;
 
         ModuleInfoCode updatedName = editPersonDescriptor.getModuleInfoCode()
@@ -176,7 +176,7 @@ public class EditCommand extends Command {
         // state check
         EditCommand e = (EditCommand) other;
         return index.equals(e.index)
-                && editPersonDescriptor.equals(e.editPersonDescriptor);
+                && editModuleTakenDescriptor.equals(e.editModuleTakenDescriptor);
     }
 
     /**

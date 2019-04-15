@@ -5,8 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import guitests.guihandles.PersonCardHandle;
-import guitests.guihandles.PersonListPanelHandle;
+import guitests.guihandles.ModuleTakenCardHandle;
+import guitests.guihandles.ModuleTakenListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import seedu.address.model.moduletaken.ModuleTaken;
 
@@ -17,7 +17,7 @@ public class GuiTestAssert {
     /**
      * Asserts that {@code actualCard} displays the same values as {@code expectedCard}.
      */
-    public static void assertCardEquals(PersonCardHandle expectedCard, PersonCardHandle actualCard) {
+    public static void assertCardEquals(ModuleTakenCardHandle expectedCard, ModuleTakenCardHandle actualCard) {
         assertEquals(expectedCard.getId(), actualCard.getId());
         assertEquals(expectedCard.getExpectedMaxGrade(), actualCard.getExpectedMaxGrade());
         assertEquals(expectedCard.getExpectedMinGrade(), actualCard.getExpectedMinGrade());
@@ -29,7 +29,7 @@ public class GuiTestAssert {
     /**
      * Asserts that {@code actualCard} displays the details of {@code expectedModuleTaken}.
      */
-    public static void assertCardDisplaysPerson(ModuleTaken expectedModuleTaken, PersonCardHandle actualCard) {
+    public static void assertCardDisplaysModuleTaken(ModuleTaken expectedModuleTaken, ModuleTakenCardHandle actualCard) {
         assertEquals(expectedModuleTaken.getModuleInfoCode().toString(), actualCard.getModuleInfoCode());
         assertEquals(expectedModuleTaken.getSemester().toString(), actualCard.getSemester());
         assertEquals(expectedModuleTaken.getExpectedMinGrade().toString(), actualCard.getExpectedMinGrade());
@@ -39,29 +39,29 @@ public class GuiTestAssert {
     }
 
     /**
-     * Asserts that the list in {@code personListPanelHandle} displays the details of {@code moduleTakens} correctly and
+     * Asserts that the list in {@code moduleTakenListPanelHandle} displays the details of {@code moduleTakens} correctly and
      * in the correct order.
      */
-    public static void assertListMatching(PersonListPanelHandle personListPanelHandle, ModuleTaken... moduleTakens) {
+    public static void assertListMatching(ModuleTakenListPanelHandle moduleTakenListPanelHandle, ModuleTaken... moduleTakens) {
         for (int i = 0; i < moduleTakens.length; i++) {
-            personListPanelHandle.navigateToCard(i);
-            assertCardDisplaysPerson(moduleTakens[i], personListPanelHandle.getPersonCardHandle(i));
+            moduleTakenListPanelHandle.navigateToCard(i);
+            assertCardDisplaysModuleTaken(moduleTakens[i], moduleTakenListPanelHandle.getModuleTakenCardHandle(i));
         }
     }
 
     /**
-     * Asserts that the list in {@code personListPanelHandle} displays the details of {@code moduleTakens} correctly and
+     * Asserts that the list in {@code moduleTakenListPanelHandle} displays the details of {@code moduleTakens} correctly and
      * in the correct order.
      */
-    public static void assertListMatching(PersonListPanelHandle personListPanelHandle, List<ModuleTaken> moduleTakens) {
-        assertListMatching(personListPanelHandle, moduleTakens.toArray(new ModuleTaken[0]));
+    public static void assertListMatching(ModuleTakenListPanelHandle moduleTakenListPanelHandle, List<ModuleTaken> moduleTakens) {
+        assertListMatching(moduleTakenListPanelHandle, moduleTakens.toArray(new ModuleTaken[0]));
     }
 
     /**
-     * Asserts the size of the list in {@code personListPanelHandle} equals to {@code size}.
+     * Asserts the size of the list in {@code moduleTakenListPanelHandle} equals to {@code size}.
      */
-    public static void assertListSize(PersonListPanelHandle personListPanelHandle, int size) {
-        int numberOfPeople = personListPanelHandle.getListSize();
+    public static void assertListSize(ModuleTakenListPanelHandle moduleTakenListPanelHandle, int size) {
+        int numberOfPeople = moduleTakenListPanelHandle.getListSize();
         assertEquals(size, numberOfPeople);
     }
 

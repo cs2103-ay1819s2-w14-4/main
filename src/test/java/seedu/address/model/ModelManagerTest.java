@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EXPECTED_MIN_GRADE_CS1010;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MODULES_TAKEN;
 import static seedu.address.testutil.TypicalModuleTaken.CS2101;
 import static seedu.address.testutil.TypicalModuleTaken.CS2103T;
 import static seedu.address.testutil.TypicalModuleTaken.DEFAULT_MODULE_CS1010;
@@ -88,24 +88,24 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasModuleTaken_nullModuleTaken_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         modelManager.hasModuleTaken(null);
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasModuleTaken_moduleTakenNotInAddressBook_returnsFalse() {
         assertFalse(modelManager.hasModuleTaken(CS2103T));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasModuleTaken_moduleTakenInAddressBook_returnsTrue() {
         modelManager.addModuleTaken(CS2103T);
         assertTrue(modelManager.hasModuleTaken(CS2103T));
     }
 
     @Test
-    public void deletePerson_personIsSelectedAndFirstPersonInFilteredPersonList_selectionCleared() {
+    public void deleteModuleTaken_moduleTakenIsSelectedAndFirstModuleTakenInFilteredModuleTakenList_selectionCleared() {
         modelManager.addModuleTaken(CS2103T);
         modelManager.setSelectedClassForPrinting(CS2103T);
         modelManager.deleteModuleTaken(CS2103T);
@@ -113,7 +113,7 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void deletePerson_personIsSelectedAndSecondPersonInFilteredPersonList_firstPersonSelected() {
+    public void deleteModuleTaken_moduleTakenIsSelectedAndSecondModuleTakenInFilteredModuleTakenList_firstModuleTakenSelected() {
         modelManager.addModuleTaken(CS2103T);
         modelManager.addModuleTaken(DEFAULT_MODULE_CS1010);
         assertEquals(Arrays.asList(CS2103T, DEFAULT_MODULE_CS1010), modelManager.getFilteredModulesTakenList());
@@ -123,7 +123,7 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setPerson_personIsSelected_selectedPersonUpdated() {
+    public void setModuleTaken_moduleTakenIsSelected_selectedModuleTakenUpdated() {
         modelManager.addModuleTaken(CS2103T);
         modelManager.setSelectedClassForPrinting(CS2103T);
         ModuleTaken updatedAlice = new ModuleTakenBuilder(CS2103T)
@@ -133,19 +133,19 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredModuleTakenList_modifyList_throwsUnsupportedOperationException() {
         thrown.expect(UnsupportedOperationException.class);
         modelManager.getFilteredModulesTakenList().remove(0);
     }
 
     @Test
-    public void setSelectedPerson_personNotInFilteredPersonList_throwsPersonNotFoundException() {
+    public void setSelectedModuleTaken_moduleTakenNotInFilteredModuleTakenList_throwsModuleTakenNotFoundException() {
         thrown.expect(ModuleTakenNotFoundException.class);
         modelManager.setSelectedClassForPrinting(CS2103T);
     }
 
     @Test
-    public void setSelectedPerson_personInFilteredPersonList_setsSelectedPerson() {
+    public void setSelectedModuleTaken_moduleTakenInFilteredModuleTakenList_setsSelectedModuleTaken() {
         modelManager.addModuleTaken(CS2103T);
         assertEquals(Collections.singletonList(CS2103T), modelManager.getFilteredModulesTakenList());
         modelManager.setSelectedClassForPrinting(CS2103T);
@@ -154,7 +154,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        GradTrak addressBook = new GradTrakBuilder().withPerson(CS2103T).withPerson(CS2101).build();
+        GradTrak addressBook = new GradTrakBuilder().withModuleTaken(CS2103T).withModuleTaken(CS2101).build();
         GradTrak differentAddressBook = new GradTrak();
         UserPrefs userPrefs = new UserPrefs();
         ModuleInfoList moduleInfoList = new ModuleInfoList();
@@ -185,7 +185,7 @@ public class ModelManagerTest {
                 moduleInfoList, courseList, userInfo)));
 
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredModulesTakenList(PREDICATE_SHOW_ALL_PERSONS);
+        modelManager.updateFilteredModulesTakenList(PREDICATE_SHOW_ALL_MODULES_TAKEN);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

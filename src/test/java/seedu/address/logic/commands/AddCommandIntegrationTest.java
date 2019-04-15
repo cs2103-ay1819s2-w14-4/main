@@ -32,7 +32,7 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_newPerson_success() {
+    public void execute_newModuleTaken_success() {
         ModuleTaken validModuleTaken = new ModuleTakenBuilder().build();
 
         Model expectedModel = new ModelManager(model.getGradTrak(), new UserPrefs(),
@@ -45,10 +45,10 @@ public class AddCommandIntegrationTest {
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
+    public void execute_duplicateModuleTaken_throwsCommandException() {
         ModuleTaken moduleTakenInList = model.getGradTrak().getModulesTakenList().get(0);
         assertCommandFailure(new AddCommand(moduleTakenInList), model, commandHistory,
-                AddCommand.MESSAGE_DUPLICATE_PERSON);
+                AddCommand.MESSAGE_DUPLICATE_MODULE_TAKEN);
     }
 
 }

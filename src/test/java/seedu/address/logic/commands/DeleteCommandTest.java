@@ -5,9 +5,9 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.logic.commands.CommandTestUtil.showModuleTakenAtIndex;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_MODULE_TAKEN;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_MODULE_TAKEN;
 import static seedu.address.testutil.TypicalModuleTaken.getTypicalGradTrak;
 
 import org.junit.Test;
@@ -35,10 +35,10 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, moduleTakenToDelete);
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MODULE_TAKEN_SUCCESS, moduleTakenToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getGradTrak(), new UserPrefs(),
                 new ModuleInfoList(), new CourseList(), new UserInfo());
@@ -59,27 +59,27 @@ public class DeleteCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+        showModuleTakenAtIndex(model, INDEX_FIRST_MODULE_TAKEN);
 
-        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
 
-        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, moduleTakenToDelete);
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_MODULE_TAKEN_SUCCESS, moduleTakenToDelete);
 
         Model expectedModel = new ModelManager(model.getGradTrak(), new UserPrefs(),
                 new ModuleInfoList(), new CourseList(), new UserInfo());
         expectedModel.deleteModuleTaken(moduleTakenToDelete);
         expectedModel.commitGradTrak();
-        showNoPerson(expectedModel);
+        showNoModuleTaken(expectedModel);
 
         assertCommandSuccess(deleteCommand, model, commandHistory, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
+        showModuleTakenAtIndex(model, INDEX_FIRST_MODULE_TAKEN);
 
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
+        Index outOfBoundIndex = INDEX_SECOND_MODULE_TAKEN;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getGradTrak().getModulesTakenList().size());
 
@@ -91,8 +91,8 @@ public class DeleteCommandTest {
 
     @Test
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
-        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased());
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
         Model expectedModel = new ModelManager(model.getGradTrak(), new UserPrefs(),
                 new ModuleInfoList(), new CourseList(), new UserInfo());
         expectedModel.deleteModuleTaken(moduleTakenToDelete);
@@ -101,7 +101,7 @@ public class DeleteCommandTest {
         // delete -> first moduleTaken deleted
         deleteCommand.execute(model, commandHistory);
 
-        // undo -> reverts addressbook back to previous state and filtered moduleTaken list to show all persons
+        // undo -> reverts addressbook back to previous state and filtered moduleTaken list to show all modulesTaken
         expectedModel.undoGradTrak();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
@@ -132,13 +132,13 @@ public class DeleteCommandTest {
      * 4. Redo the deletion. This ensures {@code RedoCommand} deletes the moduleTaken object regardless of indexing.
      */
     @Test
-    public void executeUndoRedo_validIndexFilteredList_samePersonDeleted() throws Exception {
-        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+    public void executeUndoRedo_validIndexFilteredList_sameModuleTakenDeleted() throws Exception {
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
         Model expectedModel = new ModelManager(model.getGradTrak(), new UserPrefs(),
                 new ModuleInfoList(), new CourseList(), new UserInfo());
 
-        showPersonAtIndex(model, INDEX_SECOND_PERSON);
-        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased());
+        showModuleTakenAtIndex(model, INDEX_SECOND_MODULE_TAKEN);
+        ModuleTaken moduleTakenToDelete = model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased());
         expectedModel.deleteModuleTaken(moduleTakenToDelete);
         expectedModel.commitGradTrak();
 
@@ -146,12 +146,12 @@ public class DeleteCommandTest {
         // filtered moduleTaken list
         deleteCommand.execute(model, commandHistory);
 
-        // undo -> reverts addressbook back to previous state and filtered moduleTaken list to show all persons
+        // undo -> reverts addressbook back to previous state and filtered moduleTaken list to show all modulesTaken
         expectedModel.undoGradTrak();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         assertNotEquals(moduleTakenToDelete,
-                model.getFilteredModulesTakenList().get(INDEX_FIRST_PERSON.getZeroBased()));
+                model.getFilteredModulesTakenList().get(INDEX_FIRST_MODULE_TAKEN.getZeroBased()));
         // redo -> deletes same second moduleTaken in unfiltered moduleTaken list
         expectedModel.redoGradTrak();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
@@ -159,14 +159,14 @@ public class DeleteCommandTest {
 
     @Test
     public void equals() {
-        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_PERSON);
-        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_PERSON);
+        DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
+        DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_MODULE_TAKEN);
 
         // same object -> returns true
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
-        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST_PERSON);
+        DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST_MODULE_TAKEN);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
@@ -180,9 +180,9 @@ public class DeleteCommandTest {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show no one.
+     * Updates {@code model}'s filtered list to show no modules taken.
      */
-    private void showNoPerson(Model model) {
+    private void showNoModuleTaken(Model model) {
         model.updateFilteredModulesTakenList(p -> false);
 
         assertTrue(model.getFilteredModulesTakenList().isEmpty());

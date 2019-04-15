@@ -29,17 +29,6 @@ public class WorkloadBuilder {
     }
 
     /**
-     * Initializes the WorkloadBuilder with the data of {@code workloadToCopy}.
-     */
-    public WorkloadBuilder(Workload workloadToCopy) {
-        lectureHour = workloadToCopy.getLectureHour();
-        tutorialHour = workloadToCopy.getTutorialHour();
-        labHour = workloadToCopy.getLabHour();
-        projectHour = workloadToCopy.getProjectHour();
-        preparationHour = workloadToCopy.getPreparationHour();
-    }
-
-    /**
      * Sets the {@code lectureHour} of the {@code Hour} that we are building
      */
     public WorkloadBuilder withLectureHour(String lectureHour) {

@@ -293,7 +293,7 @@ public class CommandTestUtil {
      * Updates {@code model}'s filtered list to show only the moduleTaken at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
-    public static void showPersonAtIndex(Model model, Index targetIndex) {
+    public static void showModuleTakenAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredModulesTakenList().size());
 
         ModuleTaken moduleTaken = model.getFilteredModulesTakenList().get(targetIndex.getZeroBased());
@@ -307,7 +307,7 @@ public class CommandTestUtil {
     /**
      * Deletes the first moduleTaken in {@code model}'s filtered list from {@code model}'s address book.
      */
-    public static void deleteFirstPerson(Model model) {
+    public static void deleteFirstModuleTaken(Model model) {
         ModuleTaken firstModuleTaken = model.getFilteredModulesTakenList().get(0);
         model.deleteModuleTaken(firstModuleTaken);
         model.commitGradTrak();

@@ -27,24 +27,24 @@ public class UniqueModuleTakenListTest {
     private final UniqueModuleTakenList uniqueModuleTakenList = new UniqueModuleTakenList();
 
     @Test
-    public void contains_nullPerson_throwsNullPointerException() {
+    public void contains_nullModuleTaken_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         uniqueModuleTakenList.contains(null);
     }
 
     @Test
-    public void contains_personNotInList_returnsFalse() {
+    public void contains_moduleTakenNotInList_returnsFalse() {
         assertFalse(uniqueModuleTakenList.contains(CS2103T));
     }
 
     @Test
-    public void contains_personInList_returnsTrue() {
+    public void contains_moduleTakenInList_returnsTrue() {
         uniqueModuleTakenList.add(CS2103T);
         assertTrue(uniqueModuleTakenList.contains(CS2103T));
     }
 
     @Test
-    public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
+    public void contains_moduleTakenWithSameIdentityFieldsInList_returnsTrue() {
         uniqueModuleTakenList.add(CS2103T);
         ModuleTaken editedAlice = new ModuleTakenBuilder(CS2103T)
                 .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_CS1010)
@@ -54,89 +54,89 @@ public class UniqueModuleTakenListTest {
     }
 
     @Test
-    public void add_nullPerson_throwsNullPointerException() {
+    public void add_nullModuleTaken_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         uniqueModuleTakenList.add(null);
     }
 
     @Test
-    public void add_duplicatePerson_throwsDuplicatePersonException() {
+    public void add_duplicateModuleTaken_throwsDuplicateModuleTakenException() {
         uniqueModuleTakenList.add(CS2103T);
         thrown.expect(DuplicateModuleTakenException.class);
         uniqueModuleTakenList.add(CS2103T);
     }
 
     @Test
-    public void setPerson_nullTargetPerson_throwsNullPointerException() {
+    public void setModuleTaken_nullTargetModuleTaken_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueModuleTakenList.setPerson(null, CS2103T);
+        uniqueModuleTakenList.setModuleTaken(null, CS2103T);
     }
 
     @Test
-    public void setPerson_nullEditedPerson_throwsNullPointerException() {
+    public void setModuleTaken_nullEditedModuleTaken_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueModuleTakenList.setPerson(CS2103T, null);
+        uniqueModuleTakenList.setModuleTaken(CS2103T, null);
     }
 
     @Test
-    public void setPerson_targetPersonNotInList_throwsPersonNotFoundException() {
+    public void setModuleTaken_targetModuleTakenNotInList_throwsModuleTakenNotFoundException() {
         thrown.expect(ModuleTakenNotFoundException.class);
-        uniqueModuleTakenList.setPerson(CS2103T, CS2103T);
+        uniqueModuleTakenList.setModuleTaken(CS2103T, CS2103T);
     }
 
     @Test
-    public void setPerson_editedPersonIsSamePerson_success() {
+    public void setModuleTaken_editedModuleTakenIsSameModuleTaken_success() {
         uniqueModuleTakenList.add(CS2103T);
-        uniqueModuleTakenList.setPerson(CS2103T, CS2103T);
+        uniqueModuleTakenList.setModuleTaken(CS2103T, CS2103T);
         UniqueModuleTakenList expectedUniqueModuleTakenList = new UniqueModuleTakenList();
         expectedUniqueModuleTakenList.add(CS2103T);
         assertEquals(expectedUniqueModuleTakenList, uniqueModuleTakenList);
     }
 
     @Test
-    public void setPerson_editedPersonHasSameIdentity_success() {
+    public void setModuleTaken_editedModuleTakenHasSameIdentity_success() {
         uniqueModuleTakenList.add(CS2103T);
         ModuleTaken editedAlice = new ModuleTakenBuilder(CS2103T)
                 .withExpectedMaxGrade(VALID_EXPECTED_MAX_GRADE_CS1010)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
-        uniqueModuleTakenList.setPerson(CS2103T, editedAlice);
+        uniqueModuleTakenList.setModuleTaken(CS2103T, editedAlice);
         UniqueModuleTakenList expectedUniqueModuleTakenList = new UniqueModuleTakenList();
         expectedUniqueModuleTakenList.add(editedAlice);
         assertEquals(expectedUniqueModuleTakenList, uniqueModuleTakenList);
     }
 
     @Test
-    public void setPerson_editedPersonHasDifferentIdentity_success() {
+    public void setModuleTaken_editedModuleTakenHasDifferentIdentity_success() {
         uniqueModuleTakenList.add(CS2103T);
-        uniqueModuleTakenList.setPerson(CS2103T, DEFAULT_MODULE_CS1010);
+        uniqueModuleTakenList.setModuleTaken(CS2103T, DEFAULT_MODULE_CS1010);
         UniqueModuleTakenList expectedUniqueModuleTakenList = new UniqueModuleTakenList();
         expectedUniqueModuleTakenList.add(DEFAULT_MODULE_CS1010);
         assertEquals(expectedUniqueModuleTakenList, uniqueModuleTakenList);
     }
 
     @Test
-    public void setPerson_editedPersonHasNonUniqueIdentity_throwsDuplicatePersonException() {
+    public void setModuleTaken_editedModuleTakenHasNonUniqueIdentity_throwsDuplicateModuleTakenException() {
         uniqueModuleTakenList.add(CS2103T);
         uniqueModuleTakenList.add(DEFAULT_MODULE_CS1010);
         thrown.expect(DuplicateModuleTakenException.class);
-        uniqueModuleTakenList.setPerson(CS2103T, DEFAULT_MODULE_CS1010);
+        uniqueModuleTakenList.setModuleTaken(CS2103T, DEFAULT_MODULE_CS1010);
     }
 
     @Test
-    public void remove_nullPerson_throwsNullPointerException() {
+    public void remove_nullModuleTaken_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         uniqueModuleTakenList.remove(null);
     }
 
     @Test
-    public void remove_personDoesNotExist_throwsPersonNotFoundException() {
+    public void remove_moduleTakenDoesNotExist_throwsModuleTakenNotFoundException() {
         thrown.expect(ModuleTakenNotFoundException.class);
         uniqueModuleTakenList.remove(CS2103T);
     }
 
     @Test
-    public void remove_existingPerson_removesPerson() {
+    public void remove_existingModuleTaken_removesModuleTaken() {
         uniqueModuleTakenList.add(CS2103T);
         uniqueModuleTakenList.remove(CS2103T);
         UniqueModuleTakenList expectedUniqueModuleTakenList = new UniqueModuleTakenList();
@@ -144,41 +144,41 @@ public class UniqueModuleTakenListTest {
     }
 
     @Test
-    public void setPersons_nullUniquePersonList_throwsNullPointerException() {
+    public void setModulesTaken_nullUniqueModuleTakenList_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueModuleTakenList.setPersons((UniqueModuleTakenList) null);
+        uniqueModuleTakenList.setModulesTaken((UniqueModuleTakenList) null);
     }
 
     @Test
-    public void setPersons_uniquePersonList_replacesOwnListWithProvidedUniquePersonList() {
+    public void setModulesTaken_uniqueModuleTakenList_replacesOwnListWithProvidedUniqueModuleTakenList() {
         uniqueModuleTakenList.add(CS2103T);
         UniqueModuleTakenList expectedUniqueModuleTakenList = new UniqueModuleTakenList();
         expectedUniqueModuleTakenList.add(DEFAULT_MODULE_CS1010);
-        uniqueModuleTakenList.setPersons(expectedUniqueModuleTakenList);
+        uniqueModuleTakenList.setModulesTaken(expectedUniqueModuleTakenList);
         assertEquals(expectedUniqueModuleTakenList, uniqueModuleTakenList);
     }
 
     @Test
-    public void setPersons_nullList_throwsNullPointerException() {
+    public void setModulesTaken_nullList_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueModuleTakenList.setPersons((List<ModuleTaken>) null);
+        uniqueModuleTakenList.setModulesTaken((List<ModuleTaken>) null);
     }
 
     @Test
-    public void setPersons_list_replacesOwnListWithProvidedList() {
+    public void setModulesTaken_list_replacesOwnListWithProvidedList() {
         uniqueModuleTakenList.add(CS2103T);
         List<ModuleTaken> moduleTakenList = Collections.singletonList(DEFAULT_MODULE_CS1010);
-        uniqueModuleTakenList.setPersons(moduleTakenList);
+        uniqueModuleTakenList.setModulesTaken(moduleTakenList);
         UniqueModuleTakenList expectedUniqueModuleTakenList = new UniqueModuleTakenList();
         expectedUniqueModuleTakenList.add(DEFAULT_MODULE_CS1010);
         assertEquals(expectedUniqueModuleTakenList, uniqueModuleTakenList);
     }
 
     @Test
-    public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
+    public void setModulesTaken_listWithDuplicateModulesTaken_throwsDuplicateModuleTakenException() {
         List<ModuleTaken> listWithDuplicateModuleTakens = Arrays.asList(CS2103T, CS2103T);
         thrown.expect(DuplicateModuleTakenException.class);
-        uniqueModuleTakenList.setPersons(listWithDuplicateModuleTakens);
+        uniqueModuleTakenList.setModulesTaken(listWithDuplicateModuleTakens);
     }
 
     @Test

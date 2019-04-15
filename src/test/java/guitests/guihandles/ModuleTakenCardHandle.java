@@ -13,7 +13,7 @@ import seedu.address.model.moduletaken.ModuleTaken;
 /**
  * Provides a handle to a moduleTaken card in the moduleTaken list panel.
  */
-public class PersonCardHandle extends NodeHandle<Node> {
+public class ModuleTakenCardHandle extends NodeHandle<Node> {
     private static final String ID_FIELD_ID = "#id";
     private static final String MODULE_INFO_CODE_ID = "#moduleInfoCode";
     private static final String SEMESTER_FIELD_ID = "#semester";
@@ -28,7 +28,7 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private final Label expectedMinGradeLabel;
     private final List<Label> tagLabels;
 
-    public PersonCardHandle(Node cardNode) {
+    public ModuleTakenCardHandle(Node cardNode) {
         super(cardNode);
 
         idLabel = getChildNode(ID_FIELD_ID);
